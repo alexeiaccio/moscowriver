@@ -58,6 +58,19 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   })
 }
 
+exports.onCreatePage = ({ page, boundActionCreators }) => {
+  const { createPage } = boundActionCreators
+
+  return new Promise((resolve, reject) => {
+    if (page.path.match(/^\/admin/)) {
+      page.layout = "adminLayout"
+      createPage(page)
+    }
+
+    resolve()
+  })
+}
+
 exports.modifyWebpackConfig = ({ config, stage }) => {
   if (stage === "build-javascript") {
     config.plugin("Lodash", webpackLodashPlugin, null);

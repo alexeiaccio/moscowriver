@@ -1,7 +1,5 @@
 import React from "react";
-import { TypographyStyle } from "react-typography"
-
-import typography from "./utils/typography"
+import * as PropTypes from "prop-types"
 
 let stylesStr
 if (process.env.NODE_ENV === `production`) {
@@ -10,6 +8,12 @@ if (process.env.NODE_ENV === `production`) {
   } catch (e) {
     console.log(e)
   }
+}
+
+const propTypes = {
+  headComponents: PropTypes.node.isRequired,
+  body: PropTypes.node.isRequired,
+  postBodyComponents: PropTypes.node.isRequired,
 }
 
 class HTML extends React.Component {
@@ -33,7 +37,7 @@ class HTML extends React.Component {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <TypographyStyle typography={typography} />
+
           {css}
         </head>
         <body>

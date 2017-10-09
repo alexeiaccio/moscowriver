@@ -1,12 +1,11 @@
 ---
 title: My new post
-date: 27/08/2017
 template: post
 ---
 ## Test
 
 text
 
-![trump](/img/trump-black.jpg)
+![new](/img/Ресурс 1.jpg)
 
 some text below

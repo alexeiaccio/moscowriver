@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 
-class AdminLayout extends Component {
+class AdminPage extends Component {
   render() {
     return (
       <div className="admin">
@@ -15,15 +15,13 @@ class AdminLayout extends Component {
 
           <link
             rel="stylesheet"
-            href="https://unpkg.com/netlify-cms@~0.4/dist/cms.css"
-          />          
-
-          <script src="https://unpkg.com/netlify-cms@~0.4/dist/cms.js" />
+            href="https://unpkg.com/netlify-cms@~0.5.1/dist/cms.css"
+          />
+          <script src="https://unpkg.com/netlify-cms@~0.5.1/dist/cms.js" />
         </Helmet>
-        {this.props.children()}
       </div>
     );
   }
 }
 
-export default AdminLayout;
+export default AdminPage;

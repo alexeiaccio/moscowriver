@@ -1,7 +1,6 @@
 const path = require("path");
 const _ = require("lodash");
 const webpackLodashPlugin = require("lodash-webpack-plugin");
-const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   const { createNodeField } = boundActionCreators;
@@ -27,49 +26,59 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
 };
 
 exports.createPages = ({ graphql, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
+  const { createPage } = boundActionCreators;
+
   return new Promise((resolve, reject) => {
-    graphql(`
-      {
-        allMarkdownRemark {
-          edges {
-            node {
-              fields {
-                slug
+    const postPage = path.resolve("src/templates/post.jsx");
+    const postsPage = path.resolve("src/templates/posts.jsx");
+    resolve(
+      graphql(
+        `
+        {
+          allMarkdownRemark {
+            edges {
+              node {
+                frontmatter {
+                  template
+                }
+                fields {
+                  slug
+                }
               }
             }
           }
         }
-      }
-    `
-).then(result => {
-      result.data.allMarkdownRemark.edges.forEach(edge => {
-        createPage({
-          path: edge.node.fields.slug, 
-          component: path.resolve(`./src/templates/result-page.js`),
-          context: {
-            slug: edge.node.fields.slug
-          },
+      `
+      ).then(result => {
+        if (result.errors) {
+          /* eslint no-console: "off"*/
+          console.log(result.errors);
+          reject(result.errors);
+        }
+
+        result.data.allMarkdownRemark.edges.forEach(edge => {
+          if (edge.node.frontmatter.template == 'post') {
+            createPage({
+              path: edge.node.fields.slug,
+              component: postPage,
+              context: {
+                slug: edge.node.fields.slug
+              }
+            });
+          } else if (edge.node.frontmatter.template == 'posts') {
+            createPage({
+              path: edge.node.fields.slug,
+              component: postsPage,
+              context: {
+                slug: edge.node.fields.slug
+              }
+            });
+          }
         })
       })
-
-      resolve()
-    })
+    )
   })
-}
-
-exports.onCreatePage = ({ page, boundActionCreators }) => {
-  const { createPage } = boundActionCreators
-
-  return new Promise((resolve, reject) => {
-    if (page.path.match(/^\/admin/)) {
-      page.layout = "adminLayout"
-      createPage(page)
-    }
-
-    resolve()
-  })
-}
+};
 
 exports.modifyWebpackConfig = ({ config, stage }) => {
   if (stage === "build-javascript") {

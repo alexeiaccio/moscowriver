@@ -1,6 +1,7 @@
 ---
 
 title: Нагатинский разлив
+template: post
 
 ---
 

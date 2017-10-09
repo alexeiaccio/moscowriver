@@ -1,43 +1,41 @@
+/* eslint import/no-unresolved:"off" */
+/* eslint import/extensions:"off" */
+/* eslint global-require:"off" */
 import React from "react";
-import * as PropTypes from "prop-types"
+import favicon from "./favicon.png";
 
-let stylesStr
-if (process.env.NODE_ENV === `production`) {
+let inlinedStyles = "";
+if (process.env.NODE_ENV === "production") {
   try {
-    stylesStr = require(`!raw-loader!../public/styles.css`)
+    /* eslint import/no-webpack-loader-syntax: off */
+    inlinedStyles = require("!raw-loader!../public/styles.css");
   } catch (e) {
-    console.log(e)
+    /* eslint no-console: "off"*/
+    console.log(e);
   }
 }
 
-const propTypes = {
-  headComponents: PropTypes.node.isRequired,
-  body: PropTypes.node.isRequired,
-  postBodyComponents: PropTypes.node.isRequired,
-}
-
-class HTML extends React.Component {
+export default class HTML extends React.Component {
   render() {
     let css;
     if (process.env.NODE_ENV === "production") {
       css = (
         <style
           id="gatsby-inlined-css"
-          dangerouslySetInnerHTML={{ __html: stylesStr }}
+          dangerouslySetInnerHTML={{ __html: inlinedStyles }}
         />
       );
     }
     return (
       <html lang="en">
         <head>
-          {this.props.headComponents}
           <meta charSet="utf-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-
+          {this.props.headComponents}
+          <link rel="shortcut icon" href={favicon} />
           {css}
         </head>
         <body>
@@ -51,5 +49,3 @@ class HTML extends React.Component {
     );
   }
 }
-
-export default HTML

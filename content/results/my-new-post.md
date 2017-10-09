@@ -6,6 +6,6 @@ template: post
 
 text
 
-![new](/img/Ресурс 1.jpg)
+![new](/img/001.jpg)
 
 some text below

@@ -3,20 +3,10 @@ backend:
   repo: alexeiaccio/moscowriver # Path to your Github repository
   branch: first-step # Branch to update (master by default)
 
-media_folder: "content/results/img" # Folder where user uploaded files should go
+media_folder: "static/img" # Folder where user uploaded files should go
 public_folder: "/img"
 
-collections: # A list of collections the CMS should be able to edit
-  - name: "results" # Used in routes, ie.: /admin/collections/:slug/edit
-    label: "Результаты" # Used in the UI, ie.: "New Post"
-    folder: "content/results" # The path to the folder where the documents are stored
-    sort: "title:asc" # Default is title:asc
-    create: true # Allow users to create new documents in this collection
-    slug: "{{slug}}"
-    fields: # The fields each document in this collection have
-      - {label: Title, name: "title", widget: "string", tagname: "h1"}
-      - {label: Template, name: "template", widget: "hidden", default: "post"}
-      - {label: "Body", name: "body", widget: "markdown"}
+collections: # A list of collections the CMS should be able to edit  
   - name: "pages"
     label: "Страницы"
     files:

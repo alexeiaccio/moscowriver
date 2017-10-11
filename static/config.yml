@@ -17,3 +17,14 @@ collections: # A list of collections the CMS should be able to edit
       - {label: Title, name: "title", widget: "string", tagname: "h1"}
       - {label: Template, name: "template", widget: "hidden", default: "post"}
       - {label: "Body", name: "body", widget: "markdown"}
+  - name: "pages"
+    label: "Страницы"
+    files:
+      - file: "data/mainpage.md"
+        label: "Главная"
+        name: "mainpage"
+        fields:
+          - {label: Layout, name: layout, widget: hidden, default: index}
+          - {label: Title, name: title, widget: string}
+          - {label: Heading, name: heading, widget: string}
+          - {label: Description, name: description, widget: string}

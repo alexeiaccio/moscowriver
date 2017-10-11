@@ -25,7 +25,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   }
 };
 
-exports.createPages = ({ graphql, boundActionCreators }) => {
+/*exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
 
   return new Promise((resolve, reject) => {
@@ -49,7 +49,6 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       `
       ).then(result => {
         if (result.errors) {
-          /* eslint no-console: "off"*/
           console.log(result.errors);
           reject(result.errors);
         }
@@ -66,7 +65,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       })
     )
   })
-};
+};*/
 
 exports.onCreatePage = ({ page, boundActionCreators }) => {
   const { createPage } = boundActionCreators

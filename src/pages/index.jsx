@@ -3,13 +3,14 @@ import Helmet from "react-helmet";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import config from "../../gatsby-site-config";
+import "./index.scss";
 
 class Index extends React.Component {
   render() {
     const indexNode = this.props.data.markdownRemark;
     const index = indexNode.frontmatter;
     return (
-      <div className="index-container">
+      <div className="index-container container">
         <Helmet title={config.siteTitle} />  
         <div>
           <h1>

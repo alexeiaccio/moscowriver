@@ -1,4 +1,5 @@
 const config = require("./gatsby-site-config");
+const autoprefixer = require(`autoprefixer`)
 
 const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
 
@@ -33,6 +34,15 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-postcss-sass`,
+      options: {
+        postCssPlugins: [
+          autoprefixer()
+        ],
+        precision: 6
+      },
+    },
+    {
       resolve: "gatsby-transformer-remark",
       options: {
         plugins: [
@@ -54,7 +64,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-nprogress",
       options: {
-        color: "#c62828",
+        color: "#3095BF",
       },
     },
     "gatsby-plugin-sharp",

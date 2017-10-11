@@ -1,8 +1,9 @@
 import React from "react";
 import Helmet from "react-helmet";
 import config from "../../gatsby-site-config";
+import SiteNavi from '../components/SiteNavi'
 import Footer from "../components/Footer/Footer";
-import "./index.css";
+import "./index.scss";
 
 export default class MainLayout extends React.Component {
   getLocalTitle() {
@@ -31,6 +32,7 @@ export default class MainLayout extends React.Component {
           <title>{`${config.siteTitle} |  ${this.getLocalTitle()}`}</title>
           <meta name="description" content={config.siteDescription} />
         </Helmet>
+        <SiteNavi title={config.siteTitle} {...this.props} />
         {children()}
         <Footer config={config} />
       </div>

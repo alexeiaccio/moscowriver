@@ -2,6 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
+import WaterBackground from "../components/WaterBackground";
 import config from "../../gatsby-site-config";
 import "./index.scss";
 
@@ -12,7 +13,8 @@ class Index extends React.Component {
     return (
       <div className="index-container container">
         <Helmet title={config.siteTitle} />  
-        <div>
+        <WaterBackground />
+        <div className="index-heading">
           <h1>
             {index.heading}
           </h1>

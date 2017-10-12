@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import About from "../components/About/About";
+import GoogleMapBackground from "../components/GoogleMapBackground/GoogleMapBackground";
 import config from "../../gatsby-site-config";
 
 class AboutPage extends Component {
@@ -8,7 +8,7 @@ class AboutPage extends Component {
     return (
       <div className="about-container">
         <Helmet title={`About | ${config.siteTitle}`} />
-        <About />
+        <GoogleMapBackground />
       </div>
     );
   }

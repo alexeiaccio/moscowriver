@@ -1,5 +1,5 @@
 import React from 'react'
-import "./index.scss"
+import "./WaterBackground.scss"
 
 class WaterBackground extends React.Component {
   componentDidMount () {

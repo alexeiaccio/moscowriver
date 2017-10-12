@@ -2,7 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
-import WaterBackground from "../components/WaterBackground";
+import WaterBackground from "../components/WaterBackground/WaterBackground";
 import config from "../../gatsby-site-config";
 import "./index.scss";
 

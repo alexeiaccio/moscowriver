@@ -6,12 +6,16 @@ import config from "../../gatsby-site-config";
 
 class AboutPage extends Component {
   render() {
+    const aboutNode = this.props.data.markdownRemark;
+    const about = aboutNode.frontmatter;
+
     return (
+
       <div className="about-container">
         <Helmet title={`About | ${config.siteTitle}`} />
         <GoogleMapBackground />
         <div className='row'>
-          <MapTooltip className="col" id='01' text='First' content='First content'/>
+          <MapTooltip className="col" id='01' text='First' content={aboutNode.html}/>
           <MapTooltip className="col" id='02' text='Second' content='Second content'/>
         </div>        
       </div>
@@ -20,3 +24,18 @@ class AboutPage extends Component {
 }
 
 export default AboutPage;
+
+/* eslint no-undef: "off" */
+export const pageQuery = graphql`
+  query AboutQuery {
+    markdownRemark(frontmatter: {type: {eq: "quote"}}) {
+      frontmatter {
+        type
+        sector
+        human
+        age
+      }
+      html
+    }
+  }
+`;

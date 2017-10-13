@@ -10,11 +10,23 @@ collections: # A list of collections the CMS should be able to edit
   - name: "pages"
     label: "Страницы"
     files:
-      - file: "data/mainpage.md"
+      - file: "content/data/mainpage.md"
         label: "Главная"
         name: "mainpage"
         fields:
-          - {label: Layout, name: layout, widget: hidden, default: index}
+          - {label: Type, name: type, widget: hidden, default: data}
+          - {label: To, name: to, widget: hidden, default: mainpage}
           - {label: Title, name: title, widget: string}
           - {label: Heading, name: heading, widget: string}
           - {label: Description, name: description, widget: string}
+  - name: quotes
+    label: "Цитаты"
+    folder: "content/quotes"
+    create: true
+    fields:
+      - {label: Type, name: type, widget: hidden, default: quotes}
+      - {label: "Участок", name: sector, widget: select, options: ["10", "20", "31", "32", "33"]}
+      - {label: "Вопрос", name: question, widget: string}
+      - {label: "Ответ", name: answer, widget: string}
+      - {label: "Человек", name: human, widget: select, options: ["Child", "Woman", "Man", "Old Man", "Old Woman"]}
+      - {label: "Возраст", name: "age", widget: "number"}

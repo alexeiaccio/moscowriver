@@ -32,7 +32,7 @@ export default Index;
 /* eslint no-undef: "off" */
 export const pageQuery = graphql`
   query IndexQuery {
-    markdownRemark(frontmatter: {layout: {eq: "index"}}) {
+    markdownRemark(frontmatter: {type: {eq: "data"}, to: {eq: "mainpage"}}) {
       frontmatter {
         title
         heading

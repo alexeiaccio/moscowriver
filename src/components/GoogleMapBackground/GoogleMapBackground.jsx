@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import GoogleMap from 'google-map-react';
 import mapStyleArray from './mapstyle'
 import "./GoogleMapBackground.scss"

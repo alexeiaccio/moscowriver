@@ -26,8 +26,8 @@ collections: # A list of collections the CMS should be able to edit
     create: true
     fields:
       - {label: Type, name: type, widget: hidden, default: quotes}
-      - {label: "Участок", name: sector, widget: select, options: ["1.0", "2.0", "3.1", "3.2", "3.3"]}
-      - {label: "Вопрос", name: question, widget: string, default: null}
+      - {label: "Участок", name: sector, widget: select, options: ["10", ".0", "31", "32", "33"]}
+      - {label: "Вопрос", name: question, widget: string, required: false}
       - {label: "Ответ", name: answer, widget: markdown}
       - {label: "Человек", name: human, widget: select, options: ["Child", "Woman", "Man", "Old Man", "Old Woman"]}
-      - {label: "Возраст", name: "age", widget: "number", default: null}
+      - {label: "Возраст", name: "age", widget: "number", required: false}

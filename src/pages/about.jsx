@@ -15,8 +15,8 @@ class AboutPage extends Component {
         <Helmet title={`About | ${config.siteTitle}`} />
         <GoogleMapBackground />
         <div className='row'>
-          <MapTooltip className="col" id='01' text='First' content={aboutNode.html}/>
-          <MapTooltip className="col" id='02' text='Second' content='Second content'/>
+          <MapTooltip className="col" id='01' text='First' content={about.question}/>
+          <MapTooltip className="col" id='02' text='Second' content={aboutNode.html}/>
         </div>        
       </div>
     );
@@ -32,6 +32,7 @@ export const pageQuery = graphql`
       frontmatter {
         type
         sector
+        question
         human
         age
       }

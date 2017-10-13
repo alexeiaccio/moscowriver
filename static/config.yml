@@ -22,11 +22,12 @@ collections: # A list of collections the CMS should be able to edit
   - name: quotes
     label: "Цитаты"
     folder: "content/quotes"
+    slug: "{{slug}}"
     create: true
     fields:
       - {label: Type, name: type, widget: hidden, default: quotes}
       - {label: "Участок", name: sector, widget: select, options: ["10", "20", "31", "32", "33"]}
-      - {label: "Вопрос", name: question, widget: string}
-      - {label: "Ответ", name: answer, widget: string}
+      - {label: "Вопрос", name: question, widget: string, default: null}
+      - {label: "Ответ", name: answer, widget: markdown}
       - {label: "Человек", name: human, widget: select, options: ["Child", "Woman", "Man", "Old Man", "Old Woman"]}
-      - {label: "Возраст", name: "age", widget: "number"}
+      - {label: "Возраст", name: "age", widget: "number", default: null}

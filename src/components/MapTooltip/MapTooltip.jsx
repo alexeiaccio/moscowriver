@@ -11,13 +11,33 @@ class MapTooltip extends React.Component {
   hideTooltip() {
     this.setState({isTooltipActive: false})
   }
-  render() {
+
+  getQuotesList() {
+    const quoteList = [];
+    this.props.quoteEdges.forEach(quoteEdge => {
+      quoteList.push({
+        sector: quoteEdge.node.frontmatter.sector,
+        question: quoteEdge.node.frontmatter.question,
+        html: quoteEdge.node.html,        
+      });
+    });
+    return quoteList;
+  }
+
+  render() {    
+    const quoteList = this.getQuotesList();
+
     return (
-      <div className="container mt-5">
-        <p id={`place-${this.props.id}`} onMouseEnter={::this.showTooltip} onMouseLeave={::this.hideTooltip}>{this.props.text}</p>
-        <ToolTip active={this.state.isTooltipActive} position="top" arrow="center" parent={`#place-${this.props.id}`} group="first">
-          <div dangerouslySetInnerHTML={{ __html: this.props.content }} />
-        </ToolTip>
+      <div className="row">
+        {
+          quoteList.map(quote =>
+            <div className="col" key={quote.sector}>
+              <p id={`place-${quote.sector}`} onMouseEnter={::this.showTooltip} onMouseLeave={::this.hideTooltip}>{quote.question}</p>
+              <ToolTip active={this.state.isTooltipActive} position="top" arrow="center" parent={`#place-${quote.sector}`} group="first">
+                <div dangerouslySetInnerHTML={{ __html: quote.html }} />
+              </ToolTip>
+            </div>
+        )}
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from "react-helmet"
 import "./WaterBackground.scss"
 
 class WaterBackground extends React.Component {
@@ -13,8 +14,13 @@ class WaterBackground extends React.Component {
 
   render() {    
     return (
-      <div className="Background">
-        <canvas className="Background-canvas"></canvas>
+      <div>        
+        <Helmet>
+          <link rel="preload" href="./img/water-preload.jpg" />
+        </Helmet>
+        <div className="Background">
+          <canvas className="Background-canvas"></canvas>
+        </div>
       </div>
     )
   }

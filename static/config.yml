@@ -22,7 +22,6 @@ collections: # A list of collections the CMS should be able to edit
   - name: quotes
     label: "Цитаты"
     folder: "content/quotes"
-    slug: "{{sector}}-{{slug}}"
     create: true
     fields:
       - {label: Type, name: type, widget: hidden, default: quotes}

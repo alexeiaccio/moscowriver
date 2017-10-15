@@ -33,10 +33,8 @@ export default class MainLayout extends React.Component {
           <meta name="description" content={config.siteDescription} />
           <link rel="preload" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:500|Merriweather&amp;subset=cyrillic" as="style" crossOrigin />
           <link rel="prefetch" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400|Merriweather:400i,700,700i&amp;subset=cyrillic" />
-          <link rel="prefetch" href="https://fonts.googleapis.com/css?family=Fira+Mono&amp;subset=cyrillic" />
           <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:500|Merriweather&amp;subset=cyrillic" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400|Merriweather:400i,700,700i&amp;subset=cyrillic" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css?family=Fira+Mono&amp;subset=cyrillic" rel="stylesheet" />
         </Helmet>
         <SiteNavi title={config.siteTitle} {...this.props} />
         {children()}

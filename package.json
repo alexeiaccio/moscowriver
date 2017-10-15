@@ -1,9 +1,9 @@
 {
-  "name": "kalinchernev.github.io",
-  "description": "SIMPLY a blog.",
+  "name": "MyMoscowRiver",
+  "description": "MyMoscowRiver",
   "version": "2.0.0",
-  "author": "Kalin Chernev <kalin.chernev@gmail.com> (https://kalinchernev.github.io)",
-  "homepage": "https://github.com/kalinchernev/kalinchernev.github.io#readme",
+  "author": "Alexei Accio <alexei.accio@gmail.com>",
+  "homepage": "",
   "license": "MIT",
   "keywords": [
     "gatsby",
@@ -12,10 +12,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kalinchernev/kalinchernev.github.io.git"
-  },
-  "bugs": {
-    "url": "https://github.com/kalinchernev/kalinchernev.github.io/issues"
+    "url": "git+https://github.com/alexeiaccio/moscowriver.git"
   },
   "main": "n/a",
   "scripts": {

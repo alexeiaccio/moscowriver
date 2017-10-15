@@ -83,10 +83,10 @@ $font-family-serif: 'Merriweather', serif;
 $font-family-monospace: 'Fira Mono', monospace;
 $font-family-base: $font-family-serif;
 
-$font-size-base: 1.8rem !default; // Assumes the browser default, typically `16px`
-$font-size-lg: 1.8rem !default;
-$font-size-sm: 1.6rem !default;
-$font-size-xs: 1.6rem !default;
+$font-size-base: 1.125rem; // Assumes the browser default, typically `16px`
+$font-size-lg: 1.125rem;
+$font-size-sm: 1.125rem;
+$font-size-xs: 1.125rem;
 
 $font-weight-normal: normal !default;
 $font-weight-bold: bold !default;
@@ -116,14 +116,12 @@ $display4-size: 3.5rem !default;
 
 html,
 body {
-  font-size: 10px;
   height: 100%;
   width: 100%;
   -webkit-font-smoothing: antialiased;
 }
 
 p {
-  font-size: 1.8rem;
   line-height: 1.5;
   margin-bottom: 20px;
 }

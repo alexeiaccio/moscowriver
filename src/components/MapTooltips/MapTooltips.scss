@@ -1,3 +1,17 @@
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+$sector-10: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 31.3 39.16'%3E%3Cdefs%3E%3Cstyle>.a,.b{fill:#4eb96f;}.a{opacity:0.5;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M10.7,28.2a26.87,26.87,0,0,0,14,4,29.37,29.37,0,0,0,5.1-.5V0L6.3,24.4A16.33,16.33,0,0,0,10.7,28.2Z'/%3E%3Cpath class='b' d='M7.1,34.2a33.42,33.42,0,0,0,24.2,4.3L30,31.6a32.87,32.87,0,0,1-5.4.5,27.13,27.13,0,0,1-14-4,14.81,14.81,0,0,1-4.2-3.6L0,27.7A23.51,23.51,0,0,0,7.1,34.2Z'/%3E%3C/svg%3E"), "#", "%23");
+
+$sector-20: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 76 52.9'%3E%3Cdefs%3E%3Cstyle>.a,.b{fill:#945ba4;}.a{opacity:0.5;}%3C/style%3E%3C/defs%3E%3Cpath class='a' d='M68.6,22c-1.8,0-3.9.2-6,.4a70.82,70.82,0,0,1-8.2.5,30.22,30.22,0,0,1-11.2-2C34.2,17.2,28.7,10,24.6,4.2L0,21.4c5.5,7.7,15.1,20.3,31.8,27.2a59.83,59.83,0,0,0,22.6,4.3,111.76,111.76,0,0,0,11.3-.7c1.1-.1,2.7-.3,3.2-.3a55.29,55.29,0,0,0,7.1-.4L73.3,21.6A24.87,24.87,0,0,1,68.6,22Z'/%3E%3Cpath class='b' d='M68.6,15c-7.2.1-15.4,2.5-22.6-.5S34.3,5.7,30.2,0L24.3,3.8c4.1,5.9,9.8,13.4,19,17.2a28,28,0,0,0,11.2,2c2.8,0,5.5-.3,8.2-.5,2.2-.2,4.2-.4,6-.4a44.05,44.05,0,0,0,5.2-.3l-3.4-6.7A6.23,6.23,0,0,0,68.6,15Z'/%3E%3C/svg%3E"), "#", "%23");
+
 .map {
   &--tooltips {
     position: relative;
@@ -28,14 +42,14 @@
       left: calc(50% - 12.2rem);
       width: 3.13rem;
       height: 3.916rem;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.3 39.16"><defs><style>.a,.b{fill:#4eb96f;}.a{opacity:0.5;}</style></defs><title>sector-10</title><path class="a" d="M10.7,28.2a26.87,26.87,0,0,0,14,4,29.37,29.37,0,0,0,5.1-.5V0L6.3,24.4A16.33,16.33,0,0,0,10.7,28.2Z"/><path class="b" d="M7.1,34.2a33.42,33.42,0,0,0,24.2,4.3L30,31.6a32.87,32.87,0,0,1-5.4.5,27.13,27.13,0,0,1-14-4,14.81,14.81,0,0,1-4.2-3.6L0,27.7A23.51,23.51,0,0,0,7.1,34.2Z"/></svg>');
+      background-image: $sector-10;
     }
     &-20 {
       top: 22.8rem;
       left: calc(50% - 15.3rem);
       width: 7.6rem;
       height: 5.29rem;
-      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 76 52.9"><defs><style>.a,.b{fill:#945ba4;}.a{opacity:0.5;}</style></defs><title>sector-20</title><path class="a" d="M68.6,22c-1.8,0-3.9.2-6,.4a70.82,70.82,0,0,1-8.2.5,30.22,30.22,0,0,1-11.2-2C34.2,17.2,28.7,10,24.6,4.2L0,21.4c5.5,7.7,15.1,20.3,31.8,27.2a59.83,59.83,0,0,0,22.6,4.3,111.76,111.76,0,0,0,11.3-.7c1.1-.1,2.7-.3,3.2-.3a55.29,55.29,0,0,0,7.1-.4L73.3,21.6A24.87,24.87,0,0,1,68.6,22Z"/><path class="b" d="M68.6,15c-7.2.1-15.4,2.5-22.6-.5S34.3,5.7,30.2,0L24.3,3.8c4.1,5.9,9.8,13.4,19,17.2a28,28,0,0,0,11.2,2c2.8,0,5.5-.3,8.2-.5,2.2-.2,4.2-.4,6-.4a44.05,44.05,0,0,0,5.2-.3l-3.4-6.7A6.23,6.23,0,0,0,68.6,15Z"/></svg>');
+      background-image: $sector-20;
     }
   }
 }

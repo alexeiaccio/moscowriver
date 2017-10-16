@@ -13,6 +13,8 @@ class Tooltip extends React.Component {
     }
   }
 
+
+
   state = {
     isTooltipActive: false,
     isQuoteActive: false

@@ -8,11 +8,11 @@ class MapTooltips extends React.Component {
 
     this.props.quotesEdges.forEach(quotesEdge => {
       quotesList.push({
-        sector: `<div class="map-embankment"><span class="text-secondary">Участок ${quotesEdge.node.frontmatter.sector/10}.</span> ${quotesEdge.node.frontmatter.embankment}`,
+        sector: `<div class="map-embankment"><span class="text-secondary">Участок ${quotesEdge.node.frontmatter.sector/10}.</span> ${quotesEdge.node.frontmatter.embankment}</div>`,
         embankment: quotesEdge.node.frontmatter.embankment,
         id: quotesEdge.node.frontmatter.sector,
         question: quotesEdge.node.frontmatter.question,
-        html: quotesEdge.node.html,        
+        html: `<div class="map-top"><span class="text-secondary">Участок ${quotesEdge.node.frontmatter.sector/10}.</span> ${quotesEdge.node.frontmatter.embankment}</div><div class="map-quote">${quotesEdge.node.html}</div>`,        
       });
     });
     return quotesList;

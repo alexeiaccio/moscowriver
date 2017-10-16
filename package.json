@@ -54,7 +54,8 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-portal-tooltip": "^2.1.0",
-    "react-share": "^1.15.0"
+    "react-share": "^1.15.0",
+    "reactstrap": "^5.0.0-alpha.3"
   },
   "devDependencies": {
     "bootstrap": "^4.0.0-beta",

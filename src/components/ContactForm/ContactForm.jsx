@@ -1,34 +1,25 @@
 import React from "react";
 
-class ContactForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { email: "" };
-  }
-
-  /* Here’s the juicy bit for posting the form submission */
-
-  handleSubmit = e => {
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...this.state })
-    })
-      .then(() => alert("Success!"))
-      .catch(error => alert(error));
-
-    e.preventDefault();
-  };
-
-  handleChange = e => this.setState({ [e.target.name]: e.target.value });
-
+class ContactForm extends React.Component {  
   render() {
-    const { email } = this.state;
     return (
-      <form onSubmit={this.handleSubmit}>          
+      <form
+        name="contact"
+        method="post"
+        action="/thanks/"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="contact" />
+        <p hidden>
+          <label>
+            Don’t fill this out: <input name="bot-field" />
+          </label>
+        </p>
         <p>
           <label>
-            Your Email: <input type="email" name="email" value={email} onChange={this.handleChange} />
+            Your email:<br />
+            <input type="email" name="email" />
           </label>
         </p>
         <p>

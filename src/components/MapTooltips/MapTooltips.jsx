@@ -1,5 +1,6 @@
 import React from 'react'
 import Tooltip from './Tooltip'
+import "./MapTooltips.scss"
 
 class MapTooltips extends React.Component {
   getQuotesList() {
@@ -19,11 +20,12 @@ class MapTooltips extends React.Component {
 
   render() {    
     const quotesList = this.getQuotesList();
+    
     return (
-      <div className="row">
+      <div className="row map-tooltips">
         {quotesList.map(quote =>
-            <Tooltip className="col-lg-3" {...quote} key={quote.id} />
-        )}
+            <Tooltip className={`map-sector map-sector-${quote.id}`} {...quote} key={quote.id} />
+        )}    
       </div>
     )
   }

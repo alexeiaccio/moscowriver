@@ -1,6 +1,6 @@
 ---
 type: quote
-sector: 20
+sector: 30
 embankment: Фили-Кутузовский
 question: "А тут?"
 human: Man

@@ -8,9 +8,9 @@ class MapTooltips extends React.Component {
 
     this.props.quotesEdges.forEach(quotesEdge => {
       quotesList.push({
-        sector: quotesEdge.node.frontmatter.sector,
+        sector: `<div class="map-embankment"><span class="text-secondary">Участок ${quotesEdge.node.frontmatter.sector/10}.</span> ${quotesEdge.node.frontmatter.embankment}`,
         embankment: quotesEdge.node.frontmatter.embankment,
-        id: quotesEdge.node.frontmatter.sector*10,
+        id: quotesEdge.node.frontmatter.sector,
         question: quotesEdge.node.frontmatter.question,
         html: quotesEdge.node.html,        
       });
@@ -20,7 +20,7 @@ class MapTooltips extends React.Component {
 
   render() {    
     const quotesList = this.getQuotesList();
-    
+
     return (
       <div className="row map-tooltips">
         {quotesList.map(quote =>

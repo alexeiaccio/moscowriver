@@ -1,6 +1,6 @@
 ---
 type: quote
-sector: 1
+sector: 10
 embankment: Шелепихинская — Ботанический сад
 question: Что тут?
 human: Man

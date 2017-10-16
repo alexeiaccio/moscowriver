@@ -41,5 +41,8 @@
 }
 
 .ToolTipPortal {
-
+  &>div:first-of-type {
+    max-width: 60rem;
+    padding: 1rem 2.5rem;
+  }
 }

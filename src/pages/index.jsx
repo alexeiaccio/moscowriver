@@ -6,6 +6,7 @@ import WaterBackground from "../components/WaterBackground/WaterBackground";
 import GoogleMapBackground from "../components/GoogleMapBackground/GoogleMapBackground";
 import MapTooltips from "../components/MapTooltips/MapTooltips";
 import Slider from "../components/Slider/Slider";
+import SubscriptionForm from "../components/SubscriptionForm/SubscriptionForm";
 import config from "../../gatsby-site-config";
 import "./index.scss";
 
@@ -91,7 +92,7 @@ class Index extends React.Component {
             <h2>
               {index.headingForm}
             </h2>
-          {/*form*/}
+            <SubscriptionForm />
           </div>
         </section>
         <section className="index-contact container-fluid">

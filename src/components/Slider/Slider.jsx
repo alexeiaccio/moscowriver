@@ -11,7 +11,6 @@ class Slider extends React.Component {
     const withoutTagP = this.props.images.replace(/<\/?p[^>]*>/g, "");
     const replaced = withoutTagP.replace( /\>\s+\</g, "><" );
     const images = replaced.replace( /\s+\</g, "<" );
-    console.log(images)
     return (
       <div className="container">
         <Carousel showStatus={false} emulateTouch showThumbs={false}>

@@ -17,8 +17,19 @@ collections: # A list of collections the CMS should be able to edit
           - {label: Type, name: type, widget: hidden, default: data}
           - {label: To, name: to, widget: hidden, default: mainpage}
           - {label: Title, name: title, widget: string}
-          - {label: Heading, name: heading, widget: string}
-          - {label: Description, name: description, widget: string}
+          - {label: "Заголовок №1", name: headingOne, widget: string}
+          - {label: "Текст №1-1", name: descriptionOneOne, widget: string}
+          - {label: "Текст №1-2", name: descriptionOneTwo, widget: string}
+          - {label: "Заголовок №2", name: headingTwo, widget: string}
+          - {label: "Текст №2", name: descriptionTwo, widget: string}
+          - {label: "Текст №3-1", name: descriptionThreeOne, widget: string}
+          - {label: "Текст №3-2", name: descriptionThreeTwo, widget: string}
+          - {label: "Заголовок №4", name: headingFour, widget: string}
+          - {label: "Текст №4", name: descriptionFour, widget: string}
+          - {label: "Заголовок №5", name: headingFive, widget: string}
+          - {label: "Текст №5", name: descriptionFive, widget: string}
+          - {label: "Заголовок формы", name: headingForm, widget: string}
+          - {label: "Плейсхолдер формы", name: placholderForm, widget: string}
   - name: quotes
     label: "Цитаты"
     folder: "content/quotes"

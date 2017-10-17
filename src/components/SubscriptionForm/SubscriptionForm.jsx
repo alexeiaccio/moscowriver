@@ -8,7 +8,7 @@ class SubscriptionForm extends React.Component {
     super(props);
 
     this.state = {
-      username: '',
+      email: '',
       submitButtonDisabled: false
     };
 
@@ -28,7 +28,6 @@ class SubscriptionForm extends React.Component {
   }
 
   handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    //e.preventDefault();
 
     this.form.validateFields();
 
@@ -36,8 +35,9 @@ class SubscriptionForm extends React.Component {
 
     if (this.form.isValid()) {
       return true
+    } else {
+      e.preventDefault();
     }
-    return false
   }
 
   render() {
@@ -52,25 +52,23 @@ class SubscriptionForm extends React.Component {
         onSubmit={this.handleSubmit} 
         noValidate>
         <div className="form-group">
-          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="form-name" value="SubscriptionForm" />
           <p hidden>
             <label>
               Don’t fill this out: <input name="bot-field" />
             </label>
           </p>
-          <label htmlFor="username">Username</label>
-          <input className={this.state.submitButtonDisabled ? "form-control is-invalid" : "form-control"} type="email" name="username" id="username" placeholder="Enter email"
-                 value={this.state.username} onChange={this.handleChange}
-                 required minLength={3} />
+          <input className={this.state.submitButtonDisabled ? "form-control is-invalid" : "form-control"} type="email" name="email" id="email" placeholder="Enter email"
+                 value={this.state.email} onChange={this.handleChange}
+                 required minLength={3} />  
+          <button className={this.state.submitButtonDisabled ? "btn btn-primary disabled" : "btn btn-primary"}  disabled={this.state.submitButtonDisabled}>Отправить</button>
           <div className="invalid-feedback">
-            <FieldFeedbacks for="username">             
-              <FieldFeedback when="tooShort">Too short</FieldFeedback>
-              <FieldFeedback when={value => !/\S+@\S+/.test(value)}>Invalid email address.</FieldFeedback>            
-            </FieldFeedbacks>
+              <FieldFeedbacks for="email">          
+              <FieldFeedback when={value => value.length === 0}></FieldFeedback>   
+                <FieldFeedback when="*" />            
+              </FieldFeedbacks>
           </div>
         </div>
-
-        <button className={this.state.submitButtonDisabled ? "btn btn-primary disabled" : "btn btn-primary"}  disabled={this.state.submitButtonDisabled}>Отправить</button>
       </FormWithConstraints>
     )
   }

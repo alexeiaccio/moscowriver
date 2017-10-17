@@ -16,13 +16,13 @@ class Index extends React.Component {
     const index = indexNode.frontmatter;
     return (
       <div>
-        <Helmet title={config.siteTitle} /> 
+        <Helmet title={index.title} /> 
         <section className="index-jumbo container-fluid"> 
           <WaterBackground />
-          <div className="index-heading container">
-            <h1>
+          <div className="index-heading index-heading--inverted container">
+            <h2>
               {index.headingOne}
-            </h1>
+            </h2>
             <p>
               {index.descriptionOneOne}
             </p>          
@@ -41,9 +41,9 @@ class Index extends React.Component {
             </div>
           </div>
           <div className="index-heading container">
-            <h1>
+            <h2>
               {index.headingTwo}
-            </h1>
+            </h2>
             <p>
               {index.descriptionTwo}
             </p>          
@@ -52,9 +52,9 @@ class Index extends React.Component {
         <section className="index-presentation container-fluid">
         <Slider />
         <div className="index-heading container">
-            <h1>
-              {index.headingTwo}
-            </h1>
+            <h2>
+              {index.headingThree}
+            </h2>
             <p>
               {index.descriptionThreeOne}
             </p>  
@@ -66,9 +66,9 @@ class Index extends React.Component {
         <section className="index-research container-fluid">
         {/*youtube*/}
         <div className="index-heading container">
-            <h1>
+            <h2>
               {index.headingFour}
-            </h1>
+            </h2>
             <p>
               {index.descriptionFour}
             </p>  
@@ -76,9 +76,9 @@ class Index extends React.Component {
         </section>
         <section className="index-next container-fluid">
         <div className="index-heading container">
-            <h1>
+            <h2>
               {index.headingFive}
-            </h1>
+            </h2>
             <p>
               {index.descriptionFive}
             </p>  
@@ -86,16 +86,18 @@ class Index extends React.Component {
         </section>
         <section className="index-form container-fluid">
         <div className="index-heading container">
-            <h1>
+            <h2>
               {index.headingForm}
-            </h1>
+            </h2>
+          {/*form*/}
           </div>
         </section>
         <section className="index-contact container-fluid">
         <div className="index-heading container">
-            <h1>
+            <h2>
               Контакты
-            </h1>
+            </h2>
+            {/*contact*/}
           </div>
         </section>
       </div>
@@ -116,6 +118,7 @@ export const indexQuery = graphql`
         descriptionOneTwo
         headingTwo
         descriptionTwo
+        headingThree
         descriptionThreeOne
         descriptionThreeTwo
         headingFour

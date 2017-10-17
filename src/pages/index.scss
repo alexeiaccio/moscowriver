@@ -9,12 +9,14 @@ section {
 }
 
 .index-heading {
-  color: #E5E5E5;
-  h1 {
+  h2 {
     margin-bottom: 2.5rem;
   }
   p {
     max-width: 60rem;
+  }
+  &--inverted {    
+    color: #E5E5E5;
   }
 }
 
@@ -26,7 +28,33 @@ section {
   height: 80rem;
 }
 
-.index-presentation {}
+.index-presentation {
+  overflow: hidden;
+  //
+  .carousel {
+    &.carousel-slider,
+    & .slider-wrapper {
+      overflow: visible;
+    }
+    .slider-wrapper {}
+    .slide {
+      opacity: .5;
+      transition: opacity .35s ease;
+      margin: 0 1rem;
+      &:first-of-type {
+        margin-right: 1rem;
+        margin-left: 0;        
+      }
+      &:last-of-type {
+        margin-right: 0;
+        margin-left: 1rem;        
+      }
+      &.selected {
+        opacity: 1;
+      }
+    }
+  }
+}
 .index-research {}
 .index-next {}
 .index-form {}

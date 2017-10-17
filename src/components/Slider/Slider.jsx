@@ -1,31 +1,23 @@
 import React from 'react'
-import Flickity from '@jamesbliss/react-flickity'
+import { Carousel } from 'react-responsive-carousel';
+import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 class Slider extends React.Component {
-  options = {
-    wrapAround: true, 
-    initialIndex: 2,
-  }
+  
   render() {
     return (
-      <div>
-        <Flickity options={this.options}>
+      <div className="container">
+        <Carousel showStatus={false} emulateTouch>
           <div>
-          <img src="https://source.unsplash.com/1400x420/?city" />
+              <img src="./img/water.jpg" />
           </div>
           <div>
-          <img src="https://source.unsplash.com/1400x420/?nature" />
+              <img src="./img/water.jpg" />
           </div>
           <div>
-          <img src="https://source.unsplash.com/1400x420/?people" />
+              <img src="./img/water.jpg" />
           </div>
-          <div>
-          <img src="https://source.unsplash.com/1400x420/?london" />
-          </div>
-          <div>
-          <img src="https://source.unsplash.com/1400x420/?forest" />
-          </div>
-        </Flickity>
+      </Carousel>
       </div>
     )
   }

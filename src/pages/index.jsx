@@ -1,11 +1,11 @@
 import React from "react";
 import Helmet from "react-helmet";
-import PostListing from "../components/PostListing/PostListing";
 import SEO from "../components/SEO/SEO";
 import WaterBackground from "../components/WaterBackground/WaterBackground";
 import GoogleMapBackground from "../components/GoogleMapBackground/GoogleMapBackground";
 import MapTooltips from "../components/MapTooltips/MapTooltips";
 import Slider from "../components/Slider/Slider";
+import Youtube from "../components/Youtube/Youtube";
 import SubscriptionForm from "../components/SubscriptionForm/SubscriptionForm";
 import config from "../../gatsby-site-config";
 import "./index.scss";
@@ -66,9 +66,13 @@ class Index extends React.Component {
             </p>           
           </div>
         </section>
-        <section className="index-research container-fluid">
-        {/*youtube*/}
-        <div className="index-heading container">
+        <section className="index-research container-fluid p-0">
+          <div className="index-player-wrapper w-100">
+            <div className="index-player">
+              <Youtube />
+            </div>
+          </div>
+          <div className="index-heading container">
             <h2>
               {index.headingFour}
             </h2>

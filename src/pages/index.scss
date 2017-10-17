@@ -29,30 +29,27 @@ section {
 }
 
 .index-presentation {
+}
+.index-slider-wrapper {
   overflow: hidden;
   //
-  .carousel {
-    &.carousel-slider,
-    & .slider-wrapper {
-      overflow: visible;
-    }
-    .slider-wrapper {}
-    .slide {
-      opacity: .5;
-      transition: opacity .35s ease;
-      margin: 0 1rem;
-      &:first-of-type {
-        margin-right: 1rem;
-        margin-left: 0;        
-      }
-      &:last-of-type {
-        margin-right: 0;
-        margin-left: 1rem;        
-      }
-      &.selected {
-        opacity: 1;
-      }
-    }
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+    display: block;
+    height: 100%;
+    width: 10%;
+    top: 0;    
+    z-index: 10;
+  }
+  &:before {
+    left: 0;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  }
+  &:after {
+    right: 0;
+    background: linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
   }
 }
 .index-research {}

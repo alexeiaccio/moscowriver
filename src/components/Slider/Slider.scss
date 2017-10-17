@@ -1,0 +1,108 @@
+@function str-replace($string, $search, $replace: "") {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+$icon-arrow-left: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17.5 35'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:none;stroke:#979797;stroke-width:2px;}%3C/style%3E%3C/defs%3E%3Cpolyline class='a' points='17 34.5 1 17.5 17 0.5'/%3E%3C/svg%3E"), "#", "%23");
+
+$icon-arrow-right: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 17.5 35'%3E%3Cdefs%3E%3Cstyle%3E.a{fill:none;stroke:#979797;stroke-width:2px;}%3C/style%3E%3C/defs%3E%3Cpolyline class='a' points='0.5 0.5 16.5 17.5 0.5 34.5'/%3E%3C/svg%3E"), "#", "%23");
+
+
+.carousel {
+  &.carousel-slider,
+  & .slider-wrapper {
+    overflow: visible;
+  }
+  &.carousel-slider {
+    margin-bottom: 3.5rem;
+  }
+  .slide {
+    opacity: .75;
+    transition: opacity .35s ease;
+    padding: 0 1rem;
+    background: #FFFFFF;
+    &:first-of-type {
+      padding-right: 1rem;
+      padding-left: 0;        
+    }
+    &:last-of-type {
+      padding-right: 0;
+      padding-left: 1rem;        
+    }
+    &.selected {
+      opacity: 1;
+    }
+    //
+    div {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+    img {
+      height: 100%;
+      vertical-align: middle;
+    }
+  }
+  //
+  &.carousel-slider .control {
+    &-arrow {
+      top: calc(50% - 25px);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      outline: 0;
+      background: #FFFFFF;
+      opacity: .75;
+      box-shadow: 0px 4px 10px rgba(103, 105, 107, 0.25);
+      //
+      &:hover {
+        opacity: 1;
+        background: #FFFFFF;
+      }
+    }
+    &-prev.control-arrow:before,
+    &-next.control-arrow:before {
+      position: absolute;
+      top: 10px;
+      margin: 0;
+      width: 15px;
+      height: 30px;
+      background: {
+        repeat: no-repeat;
+        position: center;
+        size: contain;
+      }
+      border: 0;
+    }
+    &-prev {
+      left: -5.625rem;
+      &.control-arrow:before {
+        right: 20px;
+        background-image: $icon-arrow-left;
+      }
+    }
+    &-next {
+      right: -5.625rem;
+      &.control-arrow:before {        
+        left: 20px;
+        background-image: $icon-arrow-right;
+      }
+    }
+    &-dots {
+      bottom: -2.5rem;
+      //
+      & .dot { 
+        background: #979797;
+        box-shadow: none !important;
+        &.selected {
+          background: #3095BF;
+        }
+      }
+    }
+  }
+}

@@ -49,8 +49,10 @@ class Index extends React.Component {
             </p>          
           </div>
         </section>   
-        <section className="index-presentation container-fluid">
-        <Slider />
+        <section className="index-presentation container-fluid p-0">
+          <div className="index-slider-wrapper container-fluid p-0">
+            <Slider images={indexNode.html}/>            
+          </div>
         <div className="index-heading container">
             <h2>
               {index.headingThree}
@@ -128,6 +130,7 @@ export const indexQuery = graphql`
         headingForm
         placholderForm
       }
+      html
     }
     allMarkdownRemark(filter: {frontmatter: {type: {eq: "quote"}}}) {
       edges {

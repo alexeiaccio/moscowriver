@@ -3,9 +3,27 @@ section {
 	position: relative;
 }
 
+.index-header {
+  padding-top: 1.5rem;
+  min-height: 12.5rem;
+  background: linear-gradient(180deg, rgba(148, 91, 164, 0.5) 50%, rgba(148, 91, 164, 0) 100%);
+}
+
+.h1 {
+  color: #B5DEF2;
+}
+.h1-light {
+  font-weight: 300;
+  white-space: nowrap;
+}
+
+.slogan {
+  font-size: 2.25rem;
+  color: #e9ecef;
+}
+
 .index-jubmo {
-  height: 45rem;
-	padding-top: 3rem;
+  height: 45rem;  
   position: relative;
 }
 
@@ -17,10 +35,15 @@ section {
     margin-bottom: 1rem;
   }
   p {
-    max-width: 60rem;
+    max-width: 45rem;
   }
-  &--jumbo {    
-    color: #E5E5E5;
+  &--jumbo {
+    width: 100%;
+    max-width: 45rem;
+    margin: 0 auto; 
+    padding: 1.5rem 4.65rem 2rem;
+    border-radius: 10px;
+    background: rgba(255,255,255,.75);
   }
 }
 

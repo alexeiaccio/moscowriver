@@ -1,5 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
+import Parser from 'html-react-parser'
 import SEO from "../components/SEO/SEO";
 import WaterBackground from "../components/WaterBackground/WaterBackground";
 import GoogleMapBackground from "../components/GoogleMapBackground/GoogleMapBackground";
@@ -21,12 +22,18 @@ class Index extends React.Component {
         <section className="index-first container-fluid p-0"> 
           <div className="index-jubmo container-fluid p-0">
             <WaterBackground />
-            <div className="index-heading index-heading--jumbo container">
+            <div className="index-header text-center">
+              <h1 className="h1">
+                Москва <span className="h1-light">Порты Будущего</span>
+                <p className="slogan">Встреть свою реку!</p>
+              </h1>              
+            </div>
+            <div className="index-heading index-heading--jumbo">
               <h2>
                 {index.headingOne}
               </h2>
               <p>
-                {index.descriptionOneOne}
+                {Parser( index.descriptionOneOne )}
               </p>          
             </div> 
           </div>   

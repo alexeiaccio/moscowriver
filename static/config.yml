@@ -30,7 +30,7 @@ collections: # A list of collections the CMS should be able to edit
           - {label: "Заголовок №5", name: headingFive, widget: string}
           - {label: "Текст №5", name: descriptionFive, widget: string}
           - {label: "Заголовок формы", name: headingForm, widget: string}
-          - {label: "Плейсхолдер формы", name: placholderForm, widget: string}
+          - {label: "Плейсхолдер формы", name: placeholderForm, widget: string}
           - {label: "Фото в слайдер", name: body, widget: "markdown"}
   - name: quotes
     label: "Цитаты"

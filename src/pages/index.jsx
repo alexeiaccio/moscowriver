@@ -18,21 +18,23 @@ class Index extends React.Component {
     return (
       <div>
         <Helmet title={index.title} /> 
-        <section className="index-jumbo container-fluid"> 
-          <WaterBackground />
-          <div className="index-heading index-heading--inverted container">
-            <h2>
-              {index.headingOne}
-            </h2>
-            <p>
-              {index.descriptionOneOne}
-            </p>          
-          </div> 
+        <section className="index-first container-fluid p-0"> 
+          <div className="index-jubmo container-fluid p-0">
+            <WaterBackground />
+            <div className="index-heading index-heading--jumbo container">
+              <h2>
+                {index.headingOne}
+              </h2>
+              <p>
+                {index.descriptionOneOne}
+              </p>          
+            </div> 
+          </div>   
           <div className="index-heading container">
             <p>
               {index.descriptionOneTwo}
             </p>          
-          </div>
+          </div>       
         </section>    
         <section className="index-quotes container-fluid">          
           <div className="map-wrapper w-100">        
@@ -93,7 +95,7 @@ class Index extends React.Component {
         </section>
         <section className="index-form container-fluid">
         <div className="index-heading container">
-            <h2>
+            <h2 className="h3">
               {index.headingForm}
             </h2>
             <SubscriptionForm />
@@ -101,7 +103,7 @@ class Index extends React.Component {
         </section>
         <section className="index-contact container-fluid">
         <div className="index-heading container">
-            <h2>
+            <h2 className="h3" id="contact">
               Контакты
             </h2>
             {/*contact*/}
@@ -133,7 +135,7 @@ export const indexQuery = graphql`
         headingFive
         descriptionFive
         headingForm
-        placholderForm
+        placeholderForm
       }
       html
     }

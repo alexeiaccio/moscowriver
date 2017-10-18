@@ -1,5 +1,6 @@
 import React from 'react'
 import { FormWithConstraints, FieldFeedbacks, FieldFeedback } from 'react-form-with-constraints';
+import './SubscriptionForm.scss'
 
 class SubscriptionForm extends React.Component {
   form: FormWithConstraints;
@@ -42,7 +43,7 @@ class SubscriptionForm extends React.Component {
 
   render() {
     return (
-      <FormWithConstraints className="form-inline" 
+      <FormWithConstraints className="form-inline custom-form w-100" 
         ref={(formWithConstraints: any) => this.form = formWithConstraints} 
         name="SubscriptionForm"
         method="post"
@@ -51,17 +52,18 @@ class SubscriptionForm extends React.Component {
         data-netlify-honeypot="bot-field" 
         onSubmit={this.handleSubmit} 
         noValidate>
-        <div className="form-group">
+        <div className="form-group w-100 d-flex justify-content-between">
           <input type="hidden" name="form-name" value="SubscriptionForm" />
           <p hidden>
             <label>
               Don’t fill this out: <input name="bot-field" />
             </label>
           </p>
-          <input className={this.state.submitButtonDisabled ? "form-control is-invalid" : "form-control"} type="email" name="email" id="email" placeholder="Enter email"
-                 value={this.state.email} onChange={this.handleChange}
-                 required minLength={3} />  
-          <button className={this.state.submitButtonDisabled ? "btn btn-primary disabled" : "btn btn-primary"}  disabled={this.state.submitButtonDisabled}>Отправить</button>
+          <input className={this.state.submitButtonDisabled ? "form-control is-invalid" : "form-control"} type="email" name="email" id="email" 
+              placeholder="Напиши адрес своей почты"
+              value={this.state.email} onChange={this.handleChange}
+              required minLength={3} />  
+          <button className={this.state.submitButtonDisabled ? "btn btn-round btn-primary disabled" : "btn btn-round btn-primary"}  disabled={this.state.submitButtonDisabled}>Отправить</button>
           <div className="invalid-feedback">
               <FieldFeedbacks for="email">          
               <FieldFeedback when={value => value.length === 0}></FieldFeedback>   

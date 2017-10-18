@@ -1,7 +1,6 @@
 import React from "react";
 import Helmet from "react-helmet";
 import config from "../../gatsby-site-config";
-import SiteNavi from '../components/SiteNavi'
 import Footer from "../components/Footer/Footer";
 import "./index.scss";
 
@@ -36,7 +35,6 @@ export default class MainLayout extends React.Component {
           <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:500|Merriweather&amp;subset=cyrillic" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400|Merriweather:400i,700,700i&amp;subset=cyrillic" rel="stylesheet" />
         </Helmet>
-        <SiteNavi title={config.siteTitle} {...this.props} />
         {children()}
         <Footer config={config} />
       </div>

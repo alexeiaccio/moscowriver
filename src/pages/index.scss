@@ -3,19 +3,23 @@ section {
 	position: relative;
 }
 
-.index-jumbo {
-  height: calc(100vh - 75px);
+.index-jubmo {
+  height: 45rem;
 	padding-top: 3rem;
+  position: relative;
 }
 
 .index-heading {
   h2 {
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .h3 {
+    margin-bottom: 1rem;
   }
   p {
     max-width: 60rem;
   }
-  &--inverted {    
+  &--jumbo {    
     color: #E5E5E5;
   }
 }
@@ -65,5 +69,8 @@ section {
 
 }
 .index-next {}
-.index-form {}
+.index-form {
+  background: #D8D8D8;
+  padding: 2rem 0 3.25rem;
+}
 .index-contact {}

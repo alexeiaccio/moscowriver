@@ -17,22 +17,23 @@ $gray-600: #868e96 !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
-$black: #000 !default;
+$black: #261A12;
 
-$blue: #03a9f4 !default;
+$blue: #3095BF;
 $indigo: #3f51b5 !default;
-$purple: #673ab7 !default;
-$pink: #e91e63 !default;
-$red: #f44336 !default;
+$purple: #935CA2;
+$pink: #C4549A;
+$red: #EB5A59;
 $orange: #ff5722 !default;
-$yellow: #ffab00 !default;
-$green: #8bc34a !default;
+$yellow: #F0C41B;
+$green: #53B36C;
+$green-light: #8AC15C;
 $teal: #009688 !default;
 $cyan: #00bcd4 !default;
 
 // Reassign color vars to semantic color scheme
 $theme-colors: (
-    primary: $cyan,
+    primary: $blue,
     secondary: $gray-600,
     success: $green,
     info: $cyan,
@@ -95,8 +96,8 @@ $font-weight-base: $font-weight-normal !default;
 $line-height-base: 1.5 !default;
 
 $h1-font-size: 4rem;
-$h2-font-size: 1.4rem !default;
-$h3-font-size: 1.2rem !default;
+$h2-font-size: 3rem;
+$h3-font-size: 2rem;
 $h4-font-size: 1.1rem !default;
 $h5-font-size: 1.05rem !default;
 $h6-font-size: 1rem !default;

@@ -1,7 +1,11 @@
 import React from "react";
+import Link from 'gatsby-link'
 
 export default () =>
-  <div>
-    <h1>Thank you!</h1>
-    <p>This is a custom thank you page for submissions from the contact form</p>
+  <div className="container m-5">
+    <h1>Спасибо!</h1>
+    <p>Вы подписались на обновления нашего сайта!</p>
+    <Link to="/" className="btn btn-primary">
+      Вернуться на Главную
+    </Link>
   </div>;

@@ -11,16 +11,7 @@ class SiteNavi extends React.Component {
             <h1 className="navbar-brand mb-0">{title}</h1>
           </Link>
           <div className="navbar-nav-scroll">
-            <ul className="navbar-nav bd-navbar-nav flex-row">
-              <li
-                className={
-                  location.pathname === '/' ? 'nav-item active' : 'nav-item'
-                }
-              >
-                <Link to="/" className="nav-link">
-                  Home
-                </Link>
-              </li>
+            <ul className="navbar-nav bd-navbar-nav flex-row text-uppercase">
               <li
                 className={
                   location.pathname === '/#contact'

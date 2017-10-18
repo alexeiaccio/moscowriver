@@ -33,13 +33,13 @@ class Index extends React.Component {
                 {index.headingOne}
               </h2>
               <p>
-                {Parser( index.descriptionOneOne )}
+                {Parser(index.descriptionOneOne)}
               </p>          
             </div> 
           </div>   
-          <div className="index-heading container">
+          <div className="index-heading index-heading--one-two container">
             <p>
-              {index.descriptionOneTwo}
+              {Parser(index.descriptionOneTwo)}
             </p>          
           </div>       
         </section>    
@@ -50,12 +50,12 @@ class Index extends React.Component {
               <MapTooltips quotesEdges={quotesEdges} />
             </div>
           </div>
-          <div className="index-heading container">
+          <div className="index-heading index-heading--two">
             <h2>
               {index.headingTwo}
             </h2>
             <p>
-              {index.descriptionTwo}
+              {Parser(index.descriptionTwo)}
             </p>          
           </div>
         </section>   
@@ -63,15 +63,15 @@ class Index extends React.Component {
           <div className="index-slider-wrapper container-fluid p-0">
             <Slider images={indexNode.html}/>            
           </div>
-        <div className="index-heading container">
+        <div className="index-heading index-heading--three">
             <h2>
               {index.headingThree}
             </h2>
             <p>
-              {index.descriptionThreeOne}
+              {Parser(index.descriptionThreeOne)}
             </p>  
             <p>
-              {index.descriptionThreeTwo}
+              {Parser(index.descriptionThreeTwo)}
             </p>           
           </div>
         </section>
@@ -81,27 +81,27 @@ class Index extends React.Component {
               <Youtube />
             </div>
           </div>
-          <div className="index-heading container">
+          <div className="index-heading index-heading--four">
             <h2>
               {index.headingFour}
             </h2>
             <p>
-              {index.descriptionFour}
+              {Parser(index.descriptionFour)}
             </p>  
           </div>
         </section>
         <section className="index-next container-fluid">
-        <div className="index-heading container">
+        <div className="index-heading index-heading--five">
             <h2>
               {index.headingFive}
             </h2>
             <p>
-              {index.descriptionFive}
+              {Parser(index.descriptionFive)}
             </p>  
           </div>
         </section>
         <section className="index-form container-fluid">
-        <div className="index-heading container">
+        <div className="index-heading">
             <h2 className="h3">
               {index.headingForm}
             </h2>
@@ -109,11 +109,22 @@ class Index extends React.Component {
           </div>
         </section>
         <section className="index-contact container-fluid">
-        <div className="index-heading container">
-            <h2 className="h3" id="contact">
-              Контакты
-            </h2>
-            {/*contact*/}
+          <div className="index-heading container">
+            <div className="row align-items-baseline">
+              <h2 className="h3 col-3" id="contact">
+                Контакты
+              </h2>
+              <div className="col contact-link">Email: <a href="mailto:moscowriver@orchestra-design.com">moscowriver@orchestra-design.com</a>
+              </div>
+              <div className="d-flex ml-auto">
+                <a className="link-social link-social--f" href="https://www.facebook.com/orchestradesignstudio" target="_blank">&nbsp;</a>
+                <a className="link-social link-social--vk" href="https://vk.com/moscowriver2017" target="_blank">&nbsp;</a>
+              </div>
+            </div>
+            <div className="row align-items-end mt-5">
+              <div className="d-flex logo logo--meganom" />
+              <div className="d-flex ml-auto logo logo--orchestra" />
+            </div>
           </div>
         </section>
       </div>

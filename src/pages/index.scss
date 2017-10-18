@@ -28,6 +28,9 @@ section {
 }
 
 .index-heading {
+  width: 100%;
+  max-width: 45rem;
+  margin: 0 auto; 
   h2 {
     margin-bottom: 1.5rem;
   }
@@ -38,17 +41,24 @@ section {
     max-width: 45rem;
   }
   &--jumbo {
-    width: 100%;
-    max-width: 45rem;
-    margin: 0 auto; 
     padding: 1.5rem 4.65rem 2rem;
     border-radius: 10px;
     background: rgba(255,255,255,.75);
   }
-}
-
-.index-quotes {
-  
+  &--one-two,
+  &--four {
+    margin-top: 3.125rem;
+  }  
+  &--two {
+    margin-top: -3.125rem;
+  }
+  &--three,
+  &--five {
+    margin-top: 2rem;
+    p {
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 .map-wrapper {
@@ -60,6 +70,7 @@ section {
 .index-presentation {
 }
 .index-slider-wrapper {
+  margin-top: 3.125rem;
   overflow: hidden;
   //
   &:after,
@@ -81,7 +92,9 @@ section {
     background: linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
   }
 }
-.index-research {}
+.index-research {
+  margin-top: 3.125rem;
+}
 .index-player-wrapper {
   background: #D8D8D8;
 }
@@ -93,7 +106,54 @@ section {
 }
 .index-next {}
 .index-form {
+  margin-top: 3.125rem;
   background: #D8D8D8;
   padding: 2rem 0 3.25rem;
 }
-.index-contact {}
+.index-contact {  
+  padding: 2rem 0 3.125rem;
+  background: #595959;
+  color: #D8D8D8;
+}
+.contact-link {
+  color: #261A12;
+  a {
+    color: #D8D8D8;
+    &:hover {
+      color: inherit;
+    }
+  }
+}
+.link-social {
+  display: inline-block;
+  height: 3.125rem;
+  width: 3.125rem;
+  line-height: 3.125rem;
+  transition: opacity .2s ease;
+  &:hover {
+    opacity: .8;
+  }
+  &--f {
+    margin-right: 1rem;
+    background-image: url('/img/icon_f.svg');
+  }
+  &--vk {
+    background-image: url('/img/icon_vk.svg');
+  }
+}
+.logo {
+  background-repeat: no-repeat;
+  background-size: content;
+  //
+  &--meganom {
+    height: 3.125rem;
+    width: 24.65rem;
+    background-image: url('/img/logo_meganom.png');
+  }
+  &--orchestra {
+    height: 4.69rem;
+    width: 19.9rem;
+    background-image: url('/img/logo_orchestra.png');
+  }
+}
+

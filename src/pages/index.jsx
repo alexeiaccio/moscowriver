@@ -2,6 +2,7 @@ import React from "react";
 import Helmet from "react-helmet";
 import Parser from 'html-react-parser'
 import SEO from "../components/SEO/SEO";
+import SiteNavi from '../components/SiteNavi'
 import WaterBackground from "../components/WaterBackground/WaterBackground";
 import GoogleMapBackground from "../components/GoogleMapBackground/GoogleMapBackground";
 import MapTooltips from "../components/MapTooltips/MapTooltips";
@@ -36,9 +37,12 @@ class Index extends React.Component {
                 {Parser(index.descriptionOneOne)}
               </p>          
             </div> 
-          </div>   
+          </div> 
+        </section>         
+        <SiteNavi title={config.siteTitle} {...this.props} />
+        <section className="index-first container-fluid p-0">
           <div className="index-heading index-heading--one-two container">
-            <p>
+            <p id="map">
               {Parser(index.descriptionOneTwo)}
             </p>          
           </div>       
@@ -59,7 +63,7 @@ class Index extends React.Component {
             </p>          
           </div>
         </section>   
-        <section className="index-presentation container-fluid p-0">
+        <section id="conception" className="index-presentation container-fluid p-0">
           <div className="index-slider-wrapper container-fluid p-0">
             <Slider images={indexNode.html}/>            
           </div>
@@ -75,7 +79,7 @@ class Index extends React.Component {
             </p>           
           </div>
         </section>
-        <section className="index-research container-fluid p-0">
+        <section id="research" className="index-research container-fluid p-0">
           <div className="index-player-wrapper w-100">
             <div className="index-player">
               <Youtube />

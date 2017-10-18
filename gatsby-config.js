@@ -63,7 +63,7 @@ module.exports = {
           {
             resolve: "gatsby-remark-responsive-iframe",
           },          
-          "gatsby-remark-autolink-headers",
+          //"gatsby-remark-autolink-headers",
           "gatsby-remark-copy-linked-files",
         ],
       },

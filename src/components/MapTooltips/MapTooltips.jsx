@@ -11,11 +11,17 @@ class MapTooltips extends React.Component {
         sector: `<div class="map-embankment"><span class="text-secondary">Участок ${quotesEdge.node.frontmatter.sector/10}.</span>&nbsp;<span class="text-warning">${quotesEdge.node.frontmatter.embankment}</span></div>`,
         embankment: quotesEdge.node.frontmatter.embankment,
         id: quotesEdge.node.frontmatter.sector,
-        question: quotesEdge.node.frontmatter.question,
-        html: `<div class="map-top"><span class="text-secondary">Участок ${quotesEdge.node.frontmatter.sector/10}.</span>&nbsp;<span class="text-warning">${quotesEdge.node.frontmatter.embankment}</span></div><div class="map-quote">${quotesEdge.node.html}</div>`,        
+        html: `<div class="map-top"><span class="text-secondary">Участок ${quotesEdge.node.frontmatter.sector/10}.</span>&nbsp;<span class="text-warning">${quotesEdge.node.frontmatter.embankment}</span></div>${ this.getQuestion(quotesEdge.node.frontmatter.question) }<div class="map-quote">${quotesEdge.node.html}</div>`,        
       });
     });
     return quotesList;
+  }
+
+  getQuestion(question) {
+     if (question !== '') {
+      return `<div class="map-question">&mdash;&nbsp;${question}</div>`
+     } 
+     return `<div class='d-none'></div>`
   }
 
   render() {    

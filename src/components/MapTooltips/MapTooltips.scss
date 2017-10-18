@@ -214,13 +214,23 @@
     }
   }
   //
+  &-embankment {    
+    padding: 1rem 2.5rem;
+  }
+  //
+  &-question {
+    color: #3095BF;
+    padding: 1.5rem;
+    border-bottom: 1px solid #D8D8D8;
+  }
+  //
   &-quote {
     width: 36rem !important;
     position: relative;
     color: #868e96;
     font-size: 1rem;    
     text-align: right;
-    padding: .5rem 1.5rem 0;
+    padding: 1rem 2.5rem;
     //
     em {
       display: block;
@@ -245,6 +255,5 @@
 .ToolTipPortal {
   &>div:first-of-type {
     max-width: 40rem;
-    padding: 1rem 2.5rem;
   }
 }

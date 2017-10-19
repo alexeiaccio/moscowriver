@@ -43,3 +43,4 @@ collections: # A list of collections the CMS should be able to edit
       - {label: "Вопрос", name: question, widget: string, required: false}
       - {label: "Ответ", name: body, widget: "markdown"}
       - {label: "Человек", name: human, widget: select, options: ["Child", "Woman", "Man", "Old Man", "Old Woman"]}
+      - {label: "Схема", name: spot, widget: string}

@@ -47,7 +47,7 @@ class Index extends React.Component {
             </p>          
           </div>       
         </section>    
-        <section className="index-quotes container-fluid">          
+        <section className="index-quotes container-fluid p-0">          
           <div className="map-wrapper w-100">        
             <GoogleMapBackground />
             <div className='container mt-5'>          
@@ -170,6 +170,7 @@ export const indexQuery = graphql`
             embankment
             question
             human
+            spot
           }
           html
         }

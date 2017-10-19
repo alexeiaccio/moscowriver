@@ -52,7 +52,6 @@ export default class MainLayout extends React.Component {
         </Helmet>
         { this.getNavi() ? null : <SiteNavi title={config.siteTitle} {...this.props} /> }
         {children()}
-        <Footer config={config} />
       </div>
     );
   }

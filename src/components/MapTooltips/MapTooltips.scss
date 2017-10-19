@@ -1,216 +1,44 @@
 
 .map {
-  &--tooltips {
+  &-tooltips {
     position: relative;
+  }
+  &-spots {
+    position: absolute;
+    top: 6.3rem;
+    left: calc(50% - 26.3rem);
+    transform: scale(.75);
   }
   //
   &-sector {
-    display: inline-block;
-    position: absolute;
-    min-height: 1px;
-    min-width: 1px;
     cursor: pointer;
-    background: {
-      position: center;
-      size: 100%;
-      repeat: no-repeat;
-    }
-    transform: scale(.63);
-    z-index: 1;
     opacity: .5;
     transition: opacity,filter .2s ease;
     //
     &:hover {
       opacity: 1;
     }
-    //
     &.active {
       opacity: 1;
     }
     //
-    p {      
-      height: 100%;
-      width: 100%;
-      padding: 0;
-      margin: 0;
+    .cls-1, .cls-13, .cls-2 {
+      fill: #c4549a;
     }
-    //
-    &-10 {
-      top: 21.4rem;
-      left: calc(50% - 12.2rem);
-      width: 3.13rem;
-      height: 3.916rem;
-      background-image: url('./img/sector-10.svg');
-      z-index: 10;
+    .cls-1, .cls-10, .cls-12, .cls-13, .cls-14, .cls-3, .cls-5, .cls-7, .cls-9 {
+      opacity: 0.5;
     }
-    &-20 {
-      top: 22.8rem;
-      left: calc(50% - 15.3rem);
-      width: 7.6rem;
-      height: 5.29rem;
-      background-image: url('./img/sector-20.svg');
+    .cls-3, .cls-4, .cls-9 {
+      fill: #945ba4;
     }
-    &-30 {
-      top: 17.4rem;
-      left: calc(50% - 12.7rem);
-      width: 16rem;
-      height: 9.29rem;
-      background-image: url('./img/sector-30.svg');
+    .cls-12, .cls-5, .cls-6 {
+      fill: #f05a5a;
     }
-    &-40 {
-      top: 20.5rem;
-      left: calc(50% - 11.5rem);
-      width: 11.11rem;
-      height: 8.11rem;
-      background-image: url('./img/sector-40.svg');
+    .cls-14, .cls-7, .cls-8 {
+      fill: #efc319;
     }
-    &-50 {
-      top: 22.7rem;
-      left: calc(50% - 9.5rem);
-      width: 8.64rem;
-      height: 8.59rem;
-      background-image: url('./img/sector-50.svg');
-    }
-    &-61 {
-      top: 26.5rem;
-      left: calc(50% - 11.4rem);
-      width: 5.52rem;
-      height: 5.04rem;
-      background-image: url('./img/sector-61.svg');
-    }
-    &-62 {
-      top: 26.7rem;
-      left: calc(50% - 14.1rem);
-      width: 17.27rem;
-      height: 14.16rem;
-      background-image: url('./img/sector-62.svg');
-    }
-    &-70 {
-      top: 31.6rem;
-      left: calc(50% - 5.9rem);
-      width: 5.15rem;
-      height: 4.92rem;
-      background-image: url('./img/sector-70.svg');
-      z-index: 20;
-    }
-    &-80 {
-      top: 29.5rem;
-      left: calc(50% - 3rem);
-      width: 7.34rem;
-      height: 8.51rem;
-      background-image: url('./img/sector-80.svg');
-    }
-    &-90 {
-      top: 24rem;
-      left: calc(50% + 1.2rem);
-      width: 6.18rem;
-      height: 6.58rem;
-      background-image: url('./img/sector-90.svg');
-    }
-    &-100 {
-      top: 19.7rem;
-      left: calc(50% - 1.1rem);
-      width: 7.12rem;
-      height: 10.17rem;
-      background-image: url('./img/sector-100.svg');
-    }
-    &-110 {
-      top: 26.9rem;
-      left: calc(50% + .1rem);
-      width: 5.38rem;
-      height: 6.91rem;
-      background-image: url('./img/sector-110.svg');
-    }
-    &-120 {
-      top: 18.6rem;
-      left: calc(50% + 1.4rem);
-      width: 11.61rem;
-      height: 10.99rem;
-      background-image: url('./img/sector-120.svg');
-    }
-    &-130 {
-      top: 19.6rem;
-      left: calc(50% + 7.9rem);
-      width: 8.09rem;
-      height: 12.16rem;
-      background-image: url('./img/sector-130.svg');
-    }
-    &-140 {
-      top: 22.2rem;
-      left: calc(50% + 5.7rem);
-      width: 6.8rem;
-      height: 9.54rem;
-      background-image: url('./img/sector-140.svg');
-    }
-    &-150 {
-      top: 14.7rem;
-      left: calc(50% - 22.4rem);
-      width: 12.87rem;
-      height: 12.84rem;
-      background-image: url('./img/sector-150.svg');
-    }
-    &-161 {
-      top: 12.9rem;
-      left: calc(50% - 20.6rem);
-      width: 11.58rem;
-      height: 8.86rem;
-      background-image: url('./img/sector-161.svg');
-    }
-    &-162 {
-      top: 17.1rem;
-      left: calc(50% - 14.1rem);
-      width: 5.36rem;
-      height: 8.14rem;
-      background-image: url('./img/sector-162.svg');
-    }
-    &-170 {
-      top: 25.7rem;
-      left: calc(50% + 2.9rem);
-      width: 12.08rem;
-      height: 14.12rem;
-      background-image: url('./img/sector-170.svg');
-    }
-    &-180 {
-      top: 25.2rem;
-      left: calc(50% + 5.4rem);
-      width: 12.16rem;
-      height: 17.24rem;
-      background-image: url('./img/sector-180.svg');
-    }
-    &-190 {
-      top: 35.4rem;
-      left: calc(50% + 5.8rem);
-      width: 9.75rem;
-      height: 10.36rem;
-      background-image: url('./img/sector-190.svg');
-    }
-    &-200 {
-      top: 35.1rem;
-      left: calc(50% + 4.2rem);
-      width: 3.95rem;
-      height: 8.84rem;
-      background-image: url('./img/sector-200.svg');
-    }
-    &-220 {
-      top: 40.1rem;
-      left: calc(50% + 3rem);
-      width: 11.43rem;
-      height: 8.01rem;
-      background-image: url('./img/sector-220.svg');
-    }
-    &-230 {
-      top: 39.7rem;
-      left: calc(50% + 10rem);
-      width: 5.89rem;
-      height: 4.9rem;
-      background-image: url('./img/sector-230.svg');
-    }
-    &-240 {
-      top: 34.4rem;
-      left: calc(50% + 11.2rem);
-      width: 8.35rem;
-      height: 8.79rem;
-      background-image: url('./img/sector-240.svg');
+    .cls-10, .cls-11 {
+      fill: #4eb96f;
     }
   }
   //

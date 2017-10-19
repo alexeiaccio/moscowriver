@@ -2,12 +2,13 @@ import React from 'react'
 import Tooltip from './Tooltip'
 import "./MapTooltips.scss"
 
-class MapTooltips extends React.Component {
+class MapTooltips extends React.Component { 
   getQuotesList() {
     const quotesList = [];
 
     this.props.quotesEdges.forEach(quotesEdge => {
       quotesList.push({
+        spot: quotesEdge.node.frontmatter.spot,
         sector: `<div class="map-embankment"><span class="text-secondary">Участок ${quotesEdge.node.frontmatter.sector/10}.</span>&nbsp;<span class="text-warning">${quotesEdge.node.frontmatter.embankment}</span></div>`,
         embankment: quotesEdge.node.frontmatter.embankment,
         id: quotesEdge.node.frontmatter.sector,
@@ -15,7 +16,7 @@ class MapTooltips extends React.Component {
       });
     });
     return quotesList;
-  }
+  }    
 
   getQuestion(question) {
      if (question !== '') {
@@ -28,10 +29,12 @@ class MapTooltips extends React.Component {
     const quotesList = this.getQuotesList();
 
     return (
-      <div className="row map-tooltips">
-        {quotesList.map(quote =>
+      <div className="map-tooltips">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 609 514" className="map-spots">
+          {quotesList.map(quote =>
             <Tooltip className={`map-sector map-sector-${quote.id}`} {...quote} key={quote.id} />
-        )}    
+          )}    
+        </svg>
       </div>
     )
   }

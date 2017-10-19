@@ -31,15 +31,15 @@ class Tooltip extends React.Component {
   }
   render() {
     return (
-      <div className={this.state.isQuoteActive ? `active ${this.props.className}` : this.props.className} key={this.props.id}>
-	      <p id={`sector-${this.props.id}`} onMouseEnter={::this.showTooltip} onClick={::this.showQuote} onMouseLeave={::this.hideTooltip}>&nbsp;</p>
+      <g className={this.state.isQuoteActive ? `active ${this.props.className}` : this.props.className} key={this.props.id}>
+	      <g id={`sector-${this.props.id}`} onMouseEnter={::this.showTooltip} onClick={::this.showQuote} onMouseLeave={::this.hideTooltip} dangerouslySetInnerHTML={{ __html: this.props.spot }} />
 	      <ToolTip active={this.state.isTooltipActive} position="top" arrow="center" parent={`#sector-${this.props.id}`} style={this.style} group="map">
           <div dangerouslySetInnerHTML={{ __html: this.props.sector }} />
         </ToolTip>
         <ToolTip active={this.state.isQuoteActive} onMouseLeave={::this.hideTooltip} position="top" arrow="center" parent={`#sector-${this.props.id}`} style={this.style} group="map">
 	        <div dangerouslySetInnerHTML={{ __html: this.props.html }} />
 	      </ToolTip>
-	    </div>
+	    </g>
     )
   }
 }

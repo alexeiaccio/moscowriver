@@ -170,6 +170,7 @@ export const indexQuery = graphql`
             embankment
             question
             human
+            spot
           }
           html
         }

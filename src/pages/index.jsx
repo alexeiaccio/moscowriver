@@ -75,6 +75,9 @@ class Index extends React.Component {
               {Parser(index.descriptionThreeOne)}
             </p>  
             <p>
+              <a href="https://drive.google.com/file/d/0B7eGpN44KV1nYllBTmVBSXVDVlk/view?usp=sharing" target="_blank" className="btn btn-round btn-primary my-3">Открыть презентацию</a>
+            </p>
+            <p>
               {Parser(index.descriptionThreeTwo)}
             </p>           
           </div>

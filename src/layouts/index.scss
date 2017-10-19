@@ -140,3 +140,10 @@ img:hover {
   -webkit-animation: pulse 0.5s;
   animation: pulse 0.5s;
 }
+
+.btn-round {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 1.25rem;
+  border: 2px solid #D8D8D8;
+}

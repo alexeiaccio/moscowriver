@@ -5,12 +5,15 @@ import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 import "./Slider.scss"
 
 
-
 class Slider extends React.Component {
   render() {
-    const withoutTagP = this.props.images.replace(/<\/?p[^>]*>/g, "");
-    const replaced = withoutTagP.replace( /\>\s+\</g, "><" );
-    const images = replaced.replace( /\s+\</g, "<" );
+    const images = 
+      this.props.images
+        .replace( /<\/?p[^>]*>/g, "" )
+        .replace( /\>\s+\</g, "><" )
+        .replace( /\s+\</g, "<" )
+        .replace( /\>\s+/g, ">" );
+      
     return (
       <div className="container">
         <Carousel showStatus={false} emulateTouch showThumbs={false}>

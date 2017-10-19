@@ -9,7 +9,7 @@ class Tooltip extends React.Component {
       boxShadow: '0px 4px 10px rgba(38, 26, 18, 0.25)',
     },
     arrowStyle: {
-      display: 'none'
+      boxShadow: '0px 4px 10px rgba(38, 26, 18, 0.25)',
     }
   }
 

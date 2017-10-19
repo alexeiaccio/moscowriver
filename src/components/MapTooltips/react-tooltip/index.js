@@ -34,10 +34,9 @@ class Card extends React.Component {
     width: 0,
     height: 0
   }
-  margin = 15
+  margin = 60
   defaultArrowStyle = {
-    color: '#fff',
-    borderColor: 'rgba(0,0,0,.4)'
+    color: '#fff'
   }
   getGlobalStyle() {
     if (!this.props.parentEl) {
@@ -49,7 +48,7 @@ class Card extends React.Component {
       padding: '5px',
       background: '#fff',
       boxShadow: '0 0 8px rgba(0,0,0,.3)',
-      borderRadius: '3px',
+      borderRadius: '10px',
       transition: `${this.state.transition} .3s ease-in-out, visibility .3s ease-in-out`,
       opacity: this.state.hover || this.props.active ? 1 : 0,
       visibility: this.state.hover || this.props.active ? 'visible' : 'hidden',
@@ -64,106 +63,68 @@ class Card extends React.Component {
     return {
       position: 'absolute',
       content: '""',
+      background: '#ffffff',
+      borderRadius: '50%',
+      height: 25,
+      width: 25,
       transition: 'all .3s ease-in-out'
     }
   }
   getArrowStyle() {
     let fgStyle = this.getBaseArrowStyle()
-    let bgStyle = this.getBaseArrowStyle()
     fgStyle.zIndex = 60
-    bgStyle.zIndex = 55
 
     let arrowStyle = assign(this.defaultArrowStyle, this.props.style.arrowStyle)
-    let bgBorderColor = arrowStyle.borderColor ? arrowStyle.borderColor : 'transparent'
 
-    let fgSize = 8
-    let bgSize = 9
-    let fgColorBorder = `10px solid ${arrowStyle.color}`
-    let fgTransBorder = `${fgSize}px solid transparent`
-    let bgColorBorder = `11px solid ${bgBorderColor}`
-    let bgTransBorder = `${bgSize}px solid transparent`
+    let fgSize = 35
 
     let {position, arrow} = this.props
 
     if (position === 'left' || position === 'right') {
       fgStyle.top = '50%'
-      fgStyle.borderTop = fgTransBorder
-      fgStyle.borderBottom = fgTransBorder
-      fgStyle.marginTop = -7
-
-      bgStyle.borderTop = bgTransBorder
-      bgStyle.borderBottom = bgTransBorder
-      bgStyle.top = '50%'
-      bgStyle.marginTop = -8
+      fgStyle.marginTop = -12.5
 
       if (position === 'left') {
-        fgStyle.right = -10
-        fgStyle.borderLeft = fgColorBorder
-        bgStyle.right = -11
-        bgStyle.borderLeft = bgColorBorder
+        fgStyle.right = -50
       }
       else {
-        fgStyle.left = -10
-        fgStyle.borderRight = fgColorBorder
-        bgStyle.left = -11
-        bgStyle.borderRight = bgColorBorder
+        fgStyle.left = -12.5
       }
 
       if (arrow === 'top') {
         fgStyle.top = this.margin
-        bgStyle.top = this.margin
       }
       if (arrow === 'bottom') {
         fgStyle.top = null
-        fgStyle.bottom = this.margin - 7
-        bgStyle.top = null
-        bgStyle.bottom = this.margin - 8
+        fgStyle.bottom = this.margin - 12.5
       }
     }
     else {
       fgStyle.left = '50%'
-      fgStyle.marginLeft = -10
-      fgStyle.borderLeft = fgTransBorder
-      fgStyle.borderRight = fgTransBorder
-      bgStyle.left = '50%'
-      bgStyle.marginLeft = -11
-      bgStyle.borderLeft = bgTransBorder
-      bgStyle.borderRight = bgTransBorder
+      fgStyle.marginLeft = -12.5
 
       if (position === 'top') {
-        fgStyle.bottom = -10
-        fgStyle.borderTop = fgColorBorder
-        bgStyle.bottom = -11
-        bgStyle.borderTop = bgColorBorder
+        fgStyle.bottom = -50
       }
       else {
-        fgStyle.top = -10
-        fgStyle.borderBottom = fgColorBorder
-        bgStyle.top = -11
-        bgStyle.borderBottom = bgColorBorder
+        fgStyle.top = -50
       }
 
       if (arrow === 'right') {
         fgStyle.left = null
         fgStyle.right = this.margin + 1 - fgSize
         fgStyle.marginLeft = 0
-        bgStyle.left = null
-        bgStyle.right = this.margin - fgSize
-        bgStyle.marginLeft = 0
       }
       if (arrow === 'left') {
         fgStyle.left = this.margin + 1 - fgSize
         fgStyle.marginLeft = 0
-        bgStyle.left = this.margin - fgSize
-        bgStyle.marginLeft = 0
       }
     }
 
-    let {color, borderColor, ...propsArrowStyle} = this.props.style.arrowStyle
+    let {color, ...propsArrowStyle} = this.props.style.arrowStyle
 
     return {
-      fgStyle: this.mergeStyle(fgStyle, propsArrowStyle),
-      bgStyle: this.mergeStyle(bgStyle, propsArrowStyle)
+      fgStyle: this.mergeStyle(fgStyle, propsArrowStyle)
     }
   }
   mergeStyle(style, theme) {
@@ -230,7 +191,6 @@ class Card extends React.Component {
         let offset = style.left
         style.left = this.margin
         arrowStyle.fgStyle.marginLeft += offset
-        arrowStyle.bgStyle.marginLeft += offset
       }
       else {
         let rightOffset = style.left + this.state.width - window.innerWidth
@@ -238,7 +198,6 @@ class Card extends React.Component {
           let originalLeft = style.left
           style.left = window.innerWidth - this.state.width - this.margin
           arrowStyle.fgStyle.marginLeft += originalLeft - style.left
-          arrowStyle.bgStyle.marginLeft += originalLeft - style.left
         }
       }
     }
@@ -274,7 +233,6 @@ class Card extends React.Component {
         {this.props.arrow ? (
           <div>
             <span style={arrowStyle.fgStyle}/>
-            <span style={arrowStyle.bgStyle}/>
           </div>)
           : null
         }

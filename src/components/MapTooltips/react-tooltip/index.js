@@ -144,7 +144,6 @@ class Card extends React.Component {
     let top = scrollY + tooltipPosition.top
     let left = scrollX + tooltipPosition.left
     let style = {}
-    console.log(tooltipPosition.left + ' ' + parent.getBBox().width)
 
     const stylesFromPosition = {
       left: () => {

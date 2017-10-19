@@ -8,6 +8,12 @@
     top: 11.6rem;
     left: calc(50% - 20rem);
     width: 37.968rem;
+    //
+    &.has-active {
+      .map-sector:not(.active) {
+        opacity: .15;
+      }
+    }
   }
   //
   &-sector {

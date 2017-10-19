@@ -12,31 +12,26 @@ class Tooltip extends React.Component {
       boxShadow: '0px 4px 10px rgba(38, 26, 18, 0.25)',
     }
   }
-
-
-
-  state = {
-    isTooltipActive: false,
-    isQuoteActive: false
-  }
-  showTooltip() {
-    this.setState({isTooltipActive: true})
-  }
-  showQuote() {
-    this.setState({isQuoteActive: true})
-  }
-  hideTooltip() {
-    this.setState({isTooltipActive: false})
-    this.setState({isQuoteActive: false})
-  }
   render() {
     return (
-      <g className={this.state.isQuoteActive ? `active ${this.props.className}` : this.props.className} key={this.props.id}>
-	      <g id={`sector-${this.props.id}`} onMouseEnter={::this.showTooltip} onClick={::this.showQuote} onMouseLeave={::this.hideTooltip} dangerouslySetInnerHTML={{ __html: this.props.spot }} />
-	      <ToolTip active={this.state.isTooltipActive} position="top" arrow="center" parent={`#sector-${this.props.id}`} style={this.style} group="map">
+      <g className={this.props.isquote ? `active ${this.props.className}` : this.props.className} key={this.props.id}>
+	      <g id={`sector-${this.props.id}`} 
+          onMouseEnter={() => this.props.onMouseEnter()} 
+          onMouseLeave={() => this.props.onMouseLeave()} 
+          onClick={() => this.props.onClick()}
+          dangerouslySetInnerHTML={{ __html: this.props.spot }} 
+        />
+	      <ToolTip active={this.props.istooltip} position="top" arrow="center" parent={`#sector-${this.props.id}`} style={this.style} group="map">
           <div dangerouslySetInnerHTML={{ __html: this.props.sector }} />
         </ToolTip>
-        <ToolTip active={this.state.isQuoteActive} onMouseLeave={::this.hideTooltip} position="top" arrow="center" parent={`#sector-${this.props.id}`} style={this.style} group="map">
+        <ToolTip 
+          active={this.props.isquote}
+          onMouseLeave={() => this.props.onMouseLeave()}
+          position="top" arrow="center" 
+          parent={`#sector-${this.props.id}`} 
+          style={this.style} 
+          group="map"
+        >
 	        <div dangerouslySetInnerHTML={{ __html: this.props.html }} />
 	      </ToolTip>
 	    </g>

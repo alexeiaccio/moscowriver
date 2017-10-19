@@ -1,5 +1,5 @@
 import React from 'react'
-import ToolTip from 'react-portal-tooltip'
+import ToolTip from './react-tooltip'
 
 class Tooltip extends React.Component {
   style = {

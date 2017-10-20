@@ -102,16 +102,16 @@ module.exports = {
         description: config.siteDescription,
         start_url: config.pathPrefix,
         background_color: "#e0e0e0",
-        theme_color: "#c62828",
+        theme_color: "#3095BF",
         display: "minimal-ui",
         icons: [
           {
-            src: "/logos/logo-192x192.png",
+            src: "/logos/logo-192.png",
             sizes: "192x192",
             type: "image/png"
           },
           {
-            src: "/logos/logo-512x512.png",
+            src: "/logos/logo-512.png",
             sizes: "512x512",
             type: "image/png"
           }

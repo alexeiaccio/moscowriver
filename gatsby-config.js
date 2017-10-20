@@ -86,7 +86,16 @@ module.exports = {
         },
         changefreq: `monthly`,
       }
-    },    
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `alegreya sans\:300,400,500&amp;subset=cyrillic`,
+          `merriweather\:400,400i,700&amp;subset=cyrillic` 
+        ]
+      }
+    },
     {
       resolve: "gatsby-plugin-manifest",
       options: {

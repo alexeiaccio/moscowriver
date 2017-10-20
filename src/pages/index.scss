@@ -1,16 +1,19 @@
-
 section {
-	position: relative;
+  position: relative;
 }
 
 .index-header {
   padding-top: 1.5rem;
   min-height: 12.5rem;
-  background: linear-gradient(180deg, rgba(148, 91, 164, 0.5) 50%, rgba(148, 91, 164, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(148, 91, 164, 0.5) 50%,
+    rgba(148, 91, 164, 0) 100%
+  );
 }
 
 .h1 {
-  color: #B5DEF2;
+  color: #b5def2;
 }
 .h1-light {
   font-weight: 300;
@@ -23,14 +26,14 @@ section {
 }
 
 .index-jubmo {
-  height: 45rem;  
+  height: 45rem;
   position: relative;
 }
 
 .index-heading {
   width: 100%;
   max-width: 45rem;
-  margin: 0 auto; 
+  margin: 0 auto;
   h2 {
     margin-bottom: 1.5rem;
   }
@@ -43,12 +46,12 @@ section {
   &--jumbo {
     padding: 1.5rem 4.65rem 2rem;
     border-radius: 10px;
-    background: rgba(255,255,255,.75);
+    background: rgba(255, 255, 255, 0.75);
   }
   &--one-two,
   &--four {
     margin-top: 3.125rem;
-  }  
+  }
   &--two {
     margin-top: -3.125rem;
   }
@@ -80,45 +83,53 @@ section {
     display: block;
     height: 100%;
     width: 10%;
-    top: 0;    
+    top: 0;
     z-index: 10;
   }
   &:before {
     left: 0;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
   &:after {
     right: 0;
-    background: linear-gradient(270deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(
+      270deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 }
 .index-research {
   margin-top: 3.125rem;
 }
 .index-player-wrapper {
-  background: #D8D8D8;
+  background: #d8d8d8;
 }
 .index-player {
   width: 40rem;
   height: 25rem;
   margin: 0 auto;
-
 }
-.index-next {}
+.index-next {
+}
 .index-form {
   margin-top: 3.125rem;
-  background: #D8D8D8;
+  background: #d8d8d8;
   padding: 2rem 0 3.25rem;
 }
-.index-contact {  
+.index-contact {
   padding: 2rem 0 3.125rem;
   background: #595959;
-  color: #D8D8D8;
+  color: #d8d8d8;
 }
 .contact-link {
-  color: #261A12;
+  color: #261a12;
   a {
-    color: #D8D8D8;
+    color: #d8d8d8;
     &:hover {
       color: inherit;
     }
@@ -129,16 +140,16 @@ section {
   height: 3.125rem;
   width: 3.125rem;
   line-height: 3.125rem;
-  transition: opacity .2s ease;
+  transition: opacity 0.2s ease;
   &:hover {
-    opacity: .8;
+    opacity: 0.8;
   }
   &--f {
     margin-right: 1rem;
-    background-image: url('/img/icon_f.svg');
+    background-image: url("/img/icon_f.svg");
   }
   &--vk {
-    background-image: url('/img/icon_vk.svg');
+    background-image: url("/img/icon_vk.svg");
   }
 }
 .logo {
@@ -148,12 +159,11 @@ section {
   &--meganom {
     height: 3.125rem;
     width: 24.65rem;
-    background-image: url('/img/logo_meganom.png');
+    background-image: url("/img/logo_meganom.png");
   }
   &--orchestra {
     height: 4.69rem;
     width: 19.9rem;
-    background-image: url('/img/logo_orchestra.png');
+    background-image: url("/img/logo_orchestra.png");
   }
 }
-

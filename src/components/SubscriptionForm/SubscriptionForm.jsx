@@ -1,6 +1,10 @@
-import React from 'react'
-import { FormWithConstraints, FieldFeedbacks, FieldFeedback } from 'react-form-with-constraints';
-import './SubscriptionForm.scss'
+import React from "react";
+import {
+  FormWithConstraints,
+  FieldFeedbacks,
+  FieldFeedback
+} from "react-form-with-constraints";
+import "./SubscriptionForm.scss";
 
 class SubscriptionForm extends React.Component {
   form: FormWithConstraints;
@@ -9,7 +13,7 @@ class SubscriptionForm extends React.Component {
     super(props);
 
     this.state = {
-      email: '',
+      email: "",
       submitButtonDisabled: false
     };
 
@@ -29,13 +33,12 @@ class SubscriptionForm extends React.Component {
   }
 
   handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-
     this.form.validateFields();
 
-    this.setState({submitButtonDisabled: !this.form.isValid()});
+    this.setState({ submitButtonDisabled: !this.form.isValid() });
 
     if (this.form.isValid()) {
-      return true
+      return true;
     } else {
       e.preventDefault();
     }
@@ -43,15 +46,17 @@ class SubscriptionForm extends React.Component {
 
   render() {
     return (
-      <FormWithConstraints className="form-inline custom-form w-100" 
-        ref={(formWithConstraints: any) => this.form = formWithConstraints} 
+      <FormWithConstraints
+        className="form-inline custom-form w-100"
+        ref={(formWithConstraints: any) => (this.form = formWithConstraints)}
         name="SubscriptionForm"
         method="post"
         action={this.state.submitButtonDisabled ? null : "/thanks/"}
         data-netlify="true"
-        data-netlify-honeypot="bot-field" 
-        onSubmit={this.handleSubmit} 
-        noValidate>
+        data-netlify-honeypot="bot-field"
+        onSubmit={this.handleSubmit}
+        noValidate
+      >
         <div className="form-group w-100 d-flex justify-content-between">
           <input type="hidden" name="form-name" value="SubscriptionForm" />
           <p hidden>
@@ -59,21 +64,41 @@ class SubscriptionForm extends React.Component {
               Don’t fill this out: <input name="bot-field" />
             </label>
           </p>
-          <input className={this.state.submitButtonDisabled ? "form-control is-invalid" : "form-control"} type="email" name="email" id="email" 
-              placeholder="Напиши адрес своей почты"
-              value={this.state.email} onChange={this.handleChange}
-              required minLength={3} />  
-          <button className={this.state.submitButtonDisabled ? "btn btn-round btn-primary disabled" : "btn btn-round btn-primary"}  disabled={this.state.submitButtonDisabled}>Отправить</button>
+          <input
+            className={
+              this.state.submitButtonDisabled
+                ? "form-control is-invalid"
+                : "form-control"
+            }
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Напиши адрес своей почты"
+            value={this.state.email}
+            onChange={this.handleChange}
+            required
+            minLength={3}
+          />
+          <button
+            className={
+              this.state.submitButtonDisabled
+                ? "btn btn-round btn-primary disabled"
+                : "btn btn-round btn-primary"
+            }
+            disabled={this.state.submitButtonDisabled}
+          >
+            Отправить
+          </button>
           <div className="invalid-feedback">
-              <FieldFeedbacks for="email">          
-              <FieldFeedback when={value => value.length === 0}></FieldFeedback>   
-                <FieldFeedback when="*" />            
-              </FieldFeedbacks>
+            <FieldFeedbacks for="email">
+              <FieldFeedback when={value => value.length === 0} />
+              <FieldFeedback when="*" />
+            </FieldFeedbacks>
           </div>
         </div>
       </FormWithConstraints>
-    )
+    );
   }
 }
 
-export default SubscriptionForm
+export default SubscriptionForm;

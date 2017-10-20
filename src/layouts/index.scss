@@ -17,17 +17,17 @@ $gray-600: #868e96 !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
-$black: #261A12;
+$black: #261a12;
 
-$blue: #3095BF;
+$blue: #3095bf;
 $indigo: #3f51b5 !default;
-$purple: #935CA2;
-$pink: #C4549A;
-$red: #EB5A59;
+$purple: #935ca2;
+$pink: #c4549a;
+$red: #eb5a59;
 $orange: #ff5722 !default;
-$yellow: #F0C41B;
-$green: #53B36C;
-$green-light: #8AC15C;
+$yellow: #f0c41b;
+$green: #53b36c;
+$green-light: #8ac15c;
 $teal: #009688 !default;
 $cyan: #00bcd4 !default;
 
@@ -79,9 +79,9 @@ $link-hover-decoration: none !default;
 // Fonts
 //
 // Font, line-height, and color for body text, headings, and more.
-$font-family-sans-serif: 'Alegreya Sans', sans-serif;
-$font-family-serif: 'Merriweather', serif;
-$font-family-monospace: 'Fira Mono', monospace;
+$font-family-sans-serif: "Alegreya Sans", sans-serif;
+$font-family-serif: "Merriweather", serif;
+$font-family-monospace: "Fira Mono", monospace;
 $font-family-base: $font-family-serif;
 
 $font-size-base: 1.125rem; // Assumes the browser default, typically `16px`
@@ -113,7 +113,7 @@ $display2-size: 5.5rem !default;
 $display3-size: 4.5rem !default;
 $display4-size: 3.5rem !default;
 
-@import 'node_modules/bootstrap/scss/bootstrap.scss';
+@import "node_modules/bootstrap/scss/bootstrap.scss";
 
 html,
 body {
@@ -145,5 +145,5 @@ img:hover {
   padding-left: 2rem;
   padding-right: 2rem;
   border-radius: 1.25rem;
-  border: 2px solid #D8D8D8;
+  border: 2px solid #d8d8d8;
 }

@@ -1,4 +1,3 @@
-
 .map {
   &-tooltips {
     position: relative;
@@ -11,15 +10,15 @@
     //
     &.has-active {
       .map-sector:not(.active) {
-        opacity: .15;
+        opacity: 0.15;
       }
     }
   }
   //
   &-sector {
     cursor: pointer;
-    opacity: .5;
-    transition: opacity,filter .2s ease;
+    opacity: 0.5;
+    transition: opacity, filter 0.2s ease;
     //
     &:hover {
       opacity: 1;
@@ -28,66 +27,82 @@
       opacity: 1;
     }
     //
-    .cls-1, .cls-13, .cls-2 {
+    .cls-1,
+    .cls-13,
+    .cls-2 {
       fill: #c4549a;
     }
-    .cls-1, .cls-10, .cls-12, .cls-13, .cls-14, .cls-3, .cls-5, .cls-7, .cls-9 {
+    .cls-1,
+    .cls-10,
+    .cls-12,
+    .cls-13,
+    .cls-14,
+    .cls-3,
+    .cls-5,
+    .cls-7,
+    .cls-9 {
       opacity: 0.5;
     }
-    .cls-3, .cls-4, .cls-9 {
+    .cls-3,
+    .cls-4,
+    .cls-9 {
       fill: #945ba4;
     }
-    .cls-12, .cls-5, .cls-6 {
+    .cls-12,
+    .cls-5,
+    .cls-6 {
       fill: #f05a5a;
     }
-    .cls-14, .cls-7, .cls-8 {
+    .cls-14,
+    .cls-7,
+    .cls-8 {
       fill: #efc319;
     }
-    .cls-10, .cls-11 {
+    .cls-10,
+    .cls-11 {
       fill: #4eb96f;
     }
   }
   //
-  &-embankment {    
+  &-embankment {
     padding: 1rem 2.5rem;
   }
   //
   &-question {
-    color: #3095BF;
+    color: #3095bf;
     padding: 1.5rem;
-    border-bottom: 1px solid #D8D8D8;
+    border-bottom: 1px solid #d8d8d8;
   }
   //
   &-quote {
     width: 36rem !important;
     position: relative;
     color: #868e96;
-    font-size: 1rem;    
+    font-size: 1rem;
     text-align: right;
     padding: 1rem 2.5rem;
     //
     em {
       display: block;
-      color: #261A12;
+      color: #261a12;
       font-size: 1.125rem;
       text-align: left;
       padding: 1rem 1.5rem;
-      border-left: 5px solid #F0C41B;
+      border-left: 5px solid #f0c41b;
     }
   }
   &-top {
     position: absolute;
-    padding: .2rem;
+    padding: 0.2rem;
     top: -2.5rem;
-    background: rgba(255,255,255,1);
-    border-radius: .5rem;
-    box-shadow: 0px 0px 5px rgba(255,255,255,1);
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 1);
   }
 }
 
-
 .ToolTipPortal {
-  &>div:first-of-type {
+  & > div:first-of-type {
     max-width: 40rem;
   }
 }

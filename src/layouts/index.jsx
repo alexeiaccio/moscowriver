@@ -1,7 +1,7 @@
 import React from "react";
 import Helmet from "react-helmet";
 import config from "../../gatsby-site-config";
-import SiteNavi from '../components/SiteNavi'
+import SiteNavi from "../components/SiteNavi";
 import Footer from "../components/Footer/Footer";
 import "./index.scss";
 
@@ -23,7 +23,7 @@ export default class MainLayout extends React.Component {
       title = "About";
     } else if (currentPath.includes("posts")) {
       title = "Article";
-    } 
+    }
     return title;
   }
 
@@ -34,9 +34,9 @@ export default class MainLayout extends React.Component {
       .replace("/", "");
     if (currentPath === "") {
       return true;
-    }    
+    }
     return false;
-  } 
+  }
 
   render() {
     const { children } = this.props;
@@ -45,12 +45,20 @@ export default class MainLayout extends React.Component {
         <Helmet>
           <title>{`${config.siteTitle} |  ${this.getLocalTitle()}`}</title>
           <meta name="description" content={config.siteDescription} />
-          <link rel="preload" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:500|Merriweather:400&amp;subset=cyrillic" as="style" crossOrigin />
-          <link rel="prefetch" href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400|Merriweather:400i,700,700i&amp;subset=cyrillic" />
-          <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:500|Merriweather:400&amp;subset=cyrillic" rel="stylesheet" />
-          <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400|Merriweather:400i,700,700i&amp;subset=cyrillic" rel="stylesheet" />
+          <link
+            rel="preload"
+            href="https://fonts.googleapis.com/css?family=Alegreya+Sans:500|Merriweather:400&amp;subset=cyrillic"
+            as="style"
+            crossOrigin
+          />
+          <link
+            rel="prefetch"
+            href="https://fonts.googleapis.com/css?family=Alegreya+Sans:300,400|Merriweather:400i,700,700i&amp;subset=cyrillic"
+          />
         </Helmet>
-        { this.getNavi() ? null : <SiteNavi title={config.siteTitle} {...this.props} /> }
+        {this.getNavi() ? null : (
+          <SiteNavi title={config.siteTitle} {...this.props} />
+        )}
         {children()}
       </div>
     );

@@ -76,7 +76,17 @@ module.exports = {
     },
     "gatsby-plugin-sharp",
     "gatsby-plugin-catch-links",
-    "gatsby-plugin-sitemap",
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {        
+        filter: {
+          path: {
+            ne: "/admin/"
+          }
+        },
+        changefreq: `monthly`,
+      }
+    },    
     {
       resolve: "gatsby-plugin-manifest",
       options: {

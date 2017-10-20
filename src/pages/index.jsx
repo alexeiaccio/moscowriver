@@ -85,7 +85,7 @@ class Index extends React.Component {
         <section id="research" className="index-research container-fluid p-0">
           <div className="index-player-wrapper w-100">
             <div className="index-player">
-              <Youtube />
+              <Youtube youTubeID={index.youTubeID}/>
             </div>
           </div>
           <div className="index-heading index-heading--four">
@@ -155,6 +155,7 @@ export const indexQuery = graphql`
         headingThree
         descriptionThreeOne
         descriptionThreeTwo
+        youTubeID
         headingFour
         descriptionFour
         headingFive

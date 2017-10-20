@@ -25,6 +25,7 @@ collections: # A list of collections the CMS should be able to edit
           - {label: "Заголовок №3", name: headingThree, widget: string}
           - {label: "Текст №3-1", name: descriptionThreeOne, widget: string}
           - {label: "Текст №3-2", name: descriptionThreeTwo, widget: string}
+          - {label: "Youtube ID для видео", name: youTubeID, widget: string}
           - {label: "Заголовок №4", name: headingFour, widget: string}
           - {label: "Текст №4", name: descriptionFour, widget: string}
           - {label: "Заголовок №5", name: headingFive, widget: string}

@@ -3,6 +3,8 @@ import GoogleMap from "google-map-react";
 import mapStyleArray from "./mapstyle";
 import "./GoogleMapBackground.scss";
 
+const API_KEY = 'AIzaSyAkA1UjP9WomYnEz-ge2K6dCM8UrOgM3h8';
+
 function createMapOptions(maps) {
   return {
     panControl: false,
@@ -23,6 +25,11 @@ class GoogleMapBackground extends React.Component {
     return (
       <div className="google-map-background">
         <GoogleMap
+          bootstrapURLKeys={{
+            key: API_KEY,
+            language: 'ru',
+            region: 'ru',
+          }}
           options={createMapOptions}
           defaultCenter={this.props.center}
           defaultZoom={this.props.zoom}

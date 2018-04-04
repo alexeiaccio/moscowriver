@@ -1,12 +1,14 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import Title from '../components/Title'
+import Image from '../components/Image'
 
 const resultTemplate = ({ data }) => {
   const node = data.allPrismicDocument.edges[0].node
   return (
     <div>
     <Title data={node.data} />
+    <Image data={node.data} />
     <Link to="/">Go to Home</Link>
     </div>
   )
@@ -20,6 +22,7 @@ export const query = graphql`
       edges {
         node {
           ...TitleFragment
+          ...ImageFragment
         }
       }
     }

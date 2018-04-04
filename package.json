@@ -4,12 +4,16 @@
   "version": "1.0.0",
   "author": "Alexei Accio <alexei@accio.pro>",
   "dependencies": {
+    "dotenv": "^5.0.1",
     "gatsby": "^1.9.241",
     "gatsby-link": "^1.6.39",
     "gatsby-plugin-react-helmet": "^2.0.8",
+    "gatsby-source-prismic": "^0.1.4",
     "react-helmet": "^5.2.0"
   },
-  "keywords": ["gatsby"],
+  "keywords": [
+    "gatsby"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",

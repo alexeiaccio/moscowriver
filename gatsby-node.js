@@ -1,7 +1,37 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const path = require('path')
 
- // You can delete this file if you're not using it
+exports.createPages = ({ boundActionCreators, graphql }) => {
+  const { createPage } = boundActionCreators
+
+  return new Promise((resolve, reject) => {
+    const resultTemplate = path.resolve('src/templates/result-template.js')
+
+    resolve(
+      graphql(
+        `
+        {
+          allPrismicDocument(filter: {type: {eq: "result"}}) {
+            edges {
+              node  {
+                uid
+              }
+            }
+          }
+        }
+        `
+      ).then(result => {
+        if(result.errors) {
+          reject(result.errors)
+        }
+
+        result.data.allPrismicDocument.edges.forEach(({ node }) => {
+          const path = node.uid
+          createPage({
+            path,
+            component: resultTemplate,
+          })
+        })
+      })
+    )
+  })
+}

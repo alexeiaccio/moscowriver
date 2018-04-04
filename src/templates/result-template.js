@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 import Title from '../components/Title'
 import Image from '../components/Image'
 
-const resultTemplate = ({ data }) => {
+const ResultTemplate = ({ data }) => {
   const node = data.allPrismicDocument.edges[0].node
   return (
     <div>
@@ -14,10 +14,10 @@ const resultTemplate = ({ data }) => {
   )
 }
 
-export default resultTemplate
+export default ResultTemplate
 
 export const query = graphql`
-  query resultTemplateQuery {
+  query ResultTemplateQuery {
     allPrismicDocument(filter: {type: {eq: "result"}}) {
       edges {
         node {

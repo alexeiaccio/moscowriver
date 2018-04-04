@@ -4,7 +4,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators
 
   return new Promise((resolve, reject) => {
-    const resultTemplate = path.resolve('src/templates/result-template.js')
+    const ResultTemplate = path.resolve('src/templates/result-template.js')
 
     resolve(
       graphql(
@@ -28,7 +28,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           const path = node.uid
           createPage({
             path,
-            component: resultTemplate,
+            component: ResultTemplate,
           })
         })
       })

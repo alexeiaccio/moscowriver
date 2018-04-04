@@ -1,10 +1,12 @@
 import React from 'react'
 import Link from 'gatsby-link'
+import Map from '../components/Map'
 
 const SecondPage = () => (
   <div>
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
+    <div style={{height: '800px'}}>
+      <Map />
+    </div>
     <Link to="/">Go back to the homepage</Link>
   </div>
 )

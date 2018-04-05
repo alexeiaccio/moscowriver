@@ -1,12 +1,20 @@
 import React from 'react'
+import styled from 'styled-components'
 import Link from 'gatsby-link'
 import Map from '../components/Map'
 
+const MapWrapper = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+`
+
 const SecondPage = () => (
   <div>
-    <div style={{height: '800px'}}>
+    <MapWrapper>
       <Map />
-    </div>
+    </MapWrapper>
     <Link to="/">Go back to the homepage</Link>
   </div>
 )

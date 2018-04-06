@@ -1,9 +1,10 @@
 import React from 'react'
 import YouTube from 'react-youtube'
+import styled from 'styled-components'
 
 const youTubeID = url => url.match(/(?:\?v=)(.*)/)[1]
 
-const opts = {
+const opts = id => ({
   height: "400",
   width: "712",
   playerVars: {  // https://developers.google.com/youtube/player_parameters
@@ -17,16 +18,23 @@ const opts = {
     disablekb: 0,
     loop: 1,
     color: 'white',
-    origin: 'http://localhost:8000/'
+    origin: 'http://localhost:8000/',
+    playlist: id
   }
-}
+})
+
+const Player = styled(YouTube)`
+  min-width: 100vw;
+  min-height: calc(100vh - 200px);
+`
 
 class Video extends React.Component {
   render() {
+    const id = youTubeID(this.props.data.video.embed_url)
     return (
-      <YouTube
-        videoId={youTubeID(this.props.data.video.embed_url)}
-        opts={opts}
+      <Player
+        videoId={id}
+        opts={opts(id)}
         onReady={this._onReady}
       />
     )

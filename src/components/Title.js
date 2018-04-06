@@ -1,11 +1,19 @@
-import React from "react"
+import React from 'react'
+import styled from 'styled-components'
+import { fontSize } from 'styled-system'
+import getStringFromProps from '../helpers/getStringFromProps'
 
-export default ({ data: { title } }) => (
-  <div>
-    <h1>
-      {title[0].text}
-    </h1>
-  </div>
+export const H1 = styled.h1`
+  ${fontSize}
+`
+
+export default ({ 
+  fontSize, 
+  data: { title } 
+}) => (
+  <H1 fontSize={fontSize} >
+    { getStringFromProps(title) }
+  </H1>
 )
 
 export const query = graphql`

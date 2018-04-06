@@ -1,11 +1,19 @@
 import React from 'react'
+import styled from 'styled-components'
+import { fontSize } from 'styled-system'
+import getParagraphsFromProps from '../helpers/getParagraphsFromProps'
 
-export default ({ data: { cite } }) =>  (
-  <div>
-    <p>
-      {cite[0].text}
-    </p>
-  </div>
+const Cite = styled.cite`
+  ${fontSize}
+`
+
+export default ({  
+  fontSize, 
+  data: { cite } 
+}) =>  (
+  <Cite fontSize={fontSize} >
+    { getParagraphsFromProps(cite) }
+  </Cite>
 )
 
 export const query = graphql`
@@ -17,3 +25,7 @@ export const query = graphql`
     }
   }
 `
+/* {
+      getStringFirst('text')(title)
+      .option('Ooops...')
+    } */

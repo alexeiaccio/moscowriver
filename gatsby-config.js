@@ -16,5 +16,14 @@ module.exports = {
         accessToken: process.env.PRISMIC_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `podkova\:400`,
+          `montserrat\:400,500,600,700` // you can also specify font weights and styles
+        ]
+      }
+    }
   ],
 }

@@ -1,30 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import baseStyles from './base-styles'
+import { ThemeProvider } from 'styled-components'
+import theme from './theme'
 
 import Header from '../components/Header'
-import './index.css'
 
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet
-      title="Gatsby Default Starter"
+      title="390 взглядов на Москву-реку"
       meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
+        { name: 'description', content: 'Исследование «390 взглядов на Москву-реку»' },
+        { name: 'keywords', content: 'Москва, река' },
       ]}
-    />
+      />
+    {baseStyles()}
     {/* <Header /> */}
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: '100%',
-        padding: '0px',
-        paddingTop: 0,
-      }}
-    >
+    <ThemeProvider theme={theme}>
       {children()}
-    </div>
+    </ThemeProvider>
   </div>
 )
 

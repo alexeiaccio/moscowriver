@@ -20,7 +20,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `podkova\:400`,
+          `podkova\:400,500,600,700`,
           `montserrat\:400,500,600,700` // you can also specify font weights and styles
         ]
       }

@@ -5,8 +5,6 @@ import baseStyles from './base-styles'
 import { ThemeProvider } from 'styled-components'
 import theme from './theme'
 
-import Header from '../components/Header'
-
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet
@@ -17,7 +15,6 @@ const TemplateWrapper = ({ children }) => (
       ]}
       />
     {baseStyles()}
-    {/* <Header /> */}
     <ThemeProvider theme={theme}>
       {children()}
     </ThemeProvider>

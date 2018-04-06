@@ -1,17 +1,35 @@
 import React from 'react'
 import styled from 'styled-components'
-import { fontSize } from 'styled-system'
 import getStringFromProps from '../helpers/getStringFromProps'
+import { color, fontSize, lineHeights, size } from 'styled-system'
+import { key } from 'styled-theme'
 
-export const H1 = styled.h1`
+const H1 = styled.h1`
+  ${color}
   ${fontSize}
+  ${lineHeights}
+  position: relative;
+  display: inline-flex;
+  z-index: 0;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 12px;
+    display: flex;
+    width: 100%;
+    height: 27px;
+    background-color: ${key(['palette', 'black', 0])};
+    transition: background-color .4s ease-in-out;
+    z-index: -1;
+  } 
 `
 
-export default ({ 
+export default ({
+  color,
   fontSize, 
   data: { title } 
 }) => (
-  <H1 fontSize={fontSize} >
+  <H1 color={color} fontSize={fontSize} lineHeights={fontSize} >
     { getStringFromProps(title) }
   </H1>
 )

@@ -1,58 +1,58 @@
 // breakpoint values
 // any array length works with styled-system
 const breakpoints = [
-  '40em', '52em', '64em'
+  '120rem'
 ]
 
 const colors = {
-  text: '#024',
-  blue: '#07c',
-  // nested objects work as well
-  dark: {
-    blue: '#058'
+  text: '#261A12',
+  blue: '#3095BF',
+  green: '#4EB96F',
+  yellow: '#EFC319',
+  pink: '#F05A5A',
+  purple: '#C4549A',
+  violet: '#945BA4',
+  bright: {
+    blue: '#00BBF1',
+    green: '#1A9D1C',
+    yellow: '#FFB800',
   },
-  // arrays can be used for scales of colors
+  black: '#000',
+  white: '#FFF',
   gray: [
-    '#333',
-    '#666',
-    '#999',
-    '#ccc',
-    '#eee',
-    '#f6f6f6',
+    '#1D1D1B',
+    '#5A5A5B',
+    '#ABABAA',
+    '#D8D8D7',
   ]
 }
 
 // space is used for margin and padding scales
-// it's recommended to use powers of two to ensure alignment
-// when used in nested elements
 // numbers are converted to px
 const space = [
-  0, 4, 8, 16, 32, 64, 128, 256, 512
+  0, 5, 10, 15, 20, 25, 30, 35, 45, 50, 75, 100, 125, 150, 200
 ]
-
-const fontFamily = {
-  normal:'Raleway', 
-  accident: 'Podkova'
-}
 
 // typographic scale
 const fontSizes = [
-  12, 14, 16, 20, 24, 32, 48, 64, 96, 128
+  64, 34, 24, 21, 18,  16, 14, 12
 ]
 
 // for any scale, either array or objects will work
 const lineHeights = [
-  1, 1.125, 1.25, 1.5
+  '75px', '45px', '35px', '30px', '25px', '20px'
 ]
 
 const fontWeights = {
-  normal: 500,
+  normal: 400,
+  medium: 500,
+  semibold: 600,
   bold: 700
 }
 
 const letterSpacings = {
   normal: 'normal',
-  caps: '0.25em'
+  caps: '0.5em'
 }
 
 // border-radius
@@ -61,7 +61,7 @@ const radii = [
 ]
 
 const borderWidths = [
-  0, 1, 2
+  0, 1, 3, 4, 5, 10
 ]
 
 const shadows = [
@@ -73,7 +73,6 @@ const theme = {
   breakpoints,
   colors,
   space,
-  fontFamily,
   fontSizes,
   lineHeights,
   fontWeights,
@@ -81,6 +80,33 @@ const theme = {
   radii,
   borderWidths,
   shadows,
+}
+
+theme.palette = {
+  text: ['#261A12'],
+  blue: ['#3095BF', '#00BBF1'],
+  green: ['#4EB96F', '#1A9D1C'],
+  yellow: ['#EFC319', '#FFB800'],
+  pink: ['#F05A5A'],
+  purple: ['#C4549A'],
+  violet: ['#945BA4'],
+  black: ['#000'],
+  white: ['#FFF'],
+  gray: [
+    '#1D1D1B',
+    '#5A5A5B',
+    '#ABABAA',
+    '#D8D8D7',
+  ]
+}
+
+theme.fonts = {
+  base: 'Montserrat, Roboto, sans-serif',
+  headers: 'Podkova, Consolas, monospace',
+}
+
+theme.sizes = {
+  maxWidth: '1100px'
 }
 
 export default theme

@@ -80,7 +80,7 @@ const IndexTitle = styled.div`
 const IndexCite = styled.div`
   position: relative;
   text-align: right;
-  padding: ${key(['space', 7])}px 0;
+  padding: ${key(['space', 5])}px 0;
   background: linear-gradient(180deg, ${key('colors.white')} 0%, transparent 100%);
   &> cite {
     margin: 0 auto;
@@ -95,7 +95,7 @@ const IndexPage = ({ data }) => {
     <div>
       <SectionOne>
         <IndexTitle>
-          <Title color='white' fontSize={0} data={node.data} />
+          <Title color='white' fontSize={0} lineHeight='64px' data={node.data} />
         </IndexTitle>
         <div>
           <WrapedMap />

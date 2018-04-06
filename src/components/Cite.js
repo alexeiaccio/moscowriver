@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { color, fontSize, lineHeights } from 'styled-system'
+import { color, fontSize, lineHeight } from 'styled-system'
 import getParagraphsFromProps from '../helpers/getParagraphsFromProps'
 
 const Cite = styled.cite`
   ${color}
   ${fontSize}
-  ${lineHeights} 
+  ${lineHeight} 
 `
 
 export default ({
@@ -14,7 +14,7 @@ export default ({
   fontSize, 
   data: { cite } 
 }) =>  (
-  <Cite color={color} fontSize={fontSize} >
+  <Cite color={color} fontSize={fontSize} lineHeight={fontSize} >
     { getParagraphsFromProps(cite) }
   </Cite>
 )

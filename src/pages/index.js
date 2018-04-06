@@ -97,13 +97,15 @@ const IndexPage = ({ data }) => {
         <IndexTitle>
           <Title color='white' fontSize={0} data={node.data} />
         </IndexTitle>
-        <WrapedMap />
-        <IndexCite>
-          <Cite color='blue' fontSize={2} data={node.data} />
-        </IndexCite>        
+        <div>
+          <WrapedMap />
+          <IndexCite>
+            <Cite color='blue' fontSize={2} data={node.data} />
+          </IndexCite>
+        </div>      
       </SectionOne>
       <SectionTwo>
-         {/* <Video style={{}} data={node.data} /> */}
+         <Video style={{}} data={node.data} />
       </SectionTwo>
     </div>
   )

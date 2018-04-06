@@ -4,12 +4,12 @@ import GoogleMap from 'google-map-react'
 import mapStyles from './mapStyles'
 
 const Div = styled.div`
-  height: 150%;
-  width: 150%;
+  height: 200%;
+  width: 200%;
   position: absolute;
-  top: -100%;
-  left: -100%;
-  transform: translate(50%, 50%) scale(.75);
+  top: -150%;
+  left: -150%;
+  transform: translate(50%, 50%) scale(.55);
 `
 
 const API_KEY = process.env.GOOGLE_MAP_APY_KEY

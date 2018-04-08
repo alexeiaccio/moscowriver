@@ -15,7 +15,7 @@ const opts = id => ({
     iv_load_policy: 3,
     controls: 1,
     enablejsapi: 0,
-    disablekb: 0,
+    disablekb: 1,
     loop: 1,
     color: 'white',
     origin: 'http://localhost:8000/',
@@ -24,8 +24,8 @@ const opts = id => ({
 })
 
 const Player = styled(YouTube)`
-  min-width: 100vw;
-  min-height: calc(100vh - 200px);
+  min-width: 1100px;
+  min-height: 618px;
 `
 
 class Video extends React.Component {
@@ -42,6 +42,7 @@ class Video extends React.Component {
 
   _onReady(event) { // access to player in all event handlers via event.target
     event.target.mute()
+    event.target.setPlaybackQuality('large')
   }
 }
 

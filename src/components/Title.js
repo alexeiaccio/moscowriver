@@ -6,14 +6,14 @@ import getStringFromProps from '../helpers/getStringFromProps'
 const H1 = styled.h1`
   ${color}
   ${fontSize}
-  ${lineHeight} 
+  ${lineHeight}
 `
 
 export default ({
   color,
   fontSize,
   lineHeight,
-  data: { title } 
+  data: { title }
 }) => (
   <H1 color={color} fontSize={fontSize} lineHeight={lineHeight} >
     { getStringFromProps(title) }
@@ -25,7 +25,7 @@ export const query = graphql`
     data {
       title {
         text
-      }     
+      }
     }
   }
 `

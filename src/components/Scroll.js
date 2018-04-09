@@ -5,15 +5,17 @@ import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 import Title from './Title'
 import WrapedMap from './Map'
+import WavePattern from './WavePattern'
 import Cite from './Cite'
 import Video from './Video'
 import pattern from '../assets/Pattern-Waves.svg'
+
 
 const ScrollWrapper = styled.div`
   position: fixed;
   height: 100%;
   width: 100%;
-` 
+`
 
 const Section = styled.section`
   display: flex;
@@ -26,17 +28,17 @@ const Section = styled.section`
 `
 
 const SectionOne = styled(Section)`
-  background-color: ${key(['colors', 'gray', 3])};  
+  background-color: ${key(['colors', 'gray', 3])};
 `
 
 const SectionThree = styled(Section)`
-  background-color: ${key('colors.purple')};  
+  background-color: ${key('colors.purple')};
 `
 
 const SectionTwo = styled(Section)`
   justify-content: center;
   align-items: center;
-  background-color: ${key(['colors', 'gray', 0])};  
+  background-color: ${key(['colors', 'gray', 0])};
   background-image: url(${pattern});
   background-repeat: repeat;
   background-position: center;
@@ -44,25 +46,35 @@ const SectionTwo = styled(Section)`
 
 const shiftBack = keyframes`
   0% {
-    background-position-x: 0%;
+    left: -225px;
   }
   100% {
-    background-position-x: 100%;
+    left: 0px;
+  }
+`
+
+const WaveBack = styled.div`
+  position: absolute;
+  width: 2250px;
+  top: -50px;
+  left: -225px;
+  animation: ${shiftBack} 6s linear infinite;
+  animation-play-state: paused;
+  &:hover {
+    animation-play-state: running;
   }
 `
 
 const IndexTitle = styled.div`
   position: relative;
+  overflow: hidden;
   width: 100%;
   height: ${key(['space', 10])}px;
   font-family: ${key('fonts.headers')};
   text-align: center;
   background-color:${key('colors.black')};
-  background-image: url(${pattern});
-  background-repeat: repeat;
-  background-position-y: center;  
   z-index: 1000;
-  cursor: pointer;   
+  cursor: pointer;
   &> h1{
     position: relative;
     display: inline-flex;
@@ -79,10 +91,7 @@ const IndexTitle = styled.div`
       z-index: -1;
     }
   }
-  animation: ${shiftBack} 10s linear infinite;
-  animation-play-state: paused; 
-  &:hover {    
-    animation-play-state: running;
+  &:hover {
     &> h1::before {
       background-color: ${key('colors.bright.blue')}
     }
@@ -106,14 +115,15 @@ class Scroll extends React.Component {
     super(props)
   }
 
-  render() {      
+  render() {
     const node = this.props.data.allPrismicDocument.edges[0].node
-    
+
     return (
       <ScrollWrapper>
         <Scroller>
           <SectionOne>
             <IndexTitle>
+              <WaveBack><WavePattern /></WaveBack>
               <Title color='white' fontSize={0} lineHeight='64px' data={node.data} />
             </IndexTitle>
             <div>
@@ -121,7 +131,7 @@ class Scroll extends React.Component {
               <IndexCite>
                 <Cite color='blue' fontSize={2} data={node.data} />
               </IndexCite>
-            </div>      
+            </div>
           </SectionOne>
           <SectionTwo>
             <Video style={{}} data={node.data} />
@@ -132,6 +142,6 @@ class Scroll extends React.Component {
       </ScrollWrapper>
     )
   }
-} 
+}
 
 export default Scroll

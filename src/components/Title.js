@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { color, fontSize, lineHeight } from 'styled-system'
-import getStringFromProps from '../helpers/getStringFromProps'
+import { getStringFromProps } from 'Helpers'
 
 const H1 = styled.h1`
   ${color}

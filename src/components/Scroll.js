@@ -10,7 +10,6 @@ import Cite from './Cite'
 import Video from './Video'
 import pattern from '../assets/Pattern-Waves.svg'
 
-
 const ScrollWrapper = styled.div`
   position: fixed;
   height: 100%;

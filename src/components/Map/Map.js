@@ -22,20 +22,30 @@ const createMapOptions = maps => ({
     disableDefaultUI: true
   })
 
-export default (({
-  center={ lat: 55.724828469160926, lng: 37.58707275390621 },
-  zoom=13
-  }) => (
-  <Div>
-    <GoogleMap
-      bootstrapURLKeys={{
-        key: API_KEY,
-        language: 'ru',
-        region: 'ru',
-      }}
-      options={createMapOptions}
-      defaultCenter={center}
-      defaultZoom={zoom}
-      />
-  </Div>
-))
+class Map extends React.Component {
+  static defaultProps = {
+    center: {
+      lat: 55.724828469160926,
+      lng: 37.58707275390621
+    },
+    zoom: 13,
+  }
+
+  render() {
+    return (
+      <Div>
+        <GoogleMap
+          bootstrapURLKeys={{
+            key: API_KEY,
+            language: 'ru',
+            region: 'ru',
+          }}
+          options={createMapOptions}
+          defaultCenter={this.props.center}
+          defaultZoom={this.props.zoom} />
+      </Div>
+    )
+  }
+}
+
+export default Map

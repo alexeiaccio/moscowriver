@@ -28,7 +28,3 @@ export const query = graphql`
     }
   }
 `
-/* {
-      getStringFirst('text')(title)
-      .option('Ooops...')
-    } */

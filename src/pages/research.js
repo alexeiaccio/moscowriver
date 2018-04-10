@@ -10,6 +10,7 @@ const ResearchPage = ({ data }) => {
       {sections.map(({node: {uid,data}}) => (
         <li key={s4()} >
         <h2>{uid}</h2>
+        <p>{JSON.stringify(data.body[0].primary)}</p>
         <ul>{data.body[0].items.map(({text}) => (
           <li key={s4()} >{text === null ? 'null' : JSON.stringify(text) }</li>
         ))}</ul>
@@ -31,6 +32,32 @@ export const query = graphql`
           uid
           data {
             body {
+              primary {
+                title {
+                  text
+                }
+                header {
+                  text
+                }
+                video {
+                  embed_url
+                }
+                cite {
+                  text
+                }
+                description {
+                  text
+                  spans {
+                    start
+                    end
+                    type
+                    data {
+                      link_type
+                      uid
+                    }
+                  }
+                }
+              }
               items {
                 text {
                   type

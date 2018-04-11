@@ -24,6 +24,7 @@ export const query = graphql`
           ...TitleFragment
           ...CiteFragment
           ...VideoFragment
+          ...IndexDescriptionsFragment
           ...HeaderFragment
           ...FooterFragment
         }

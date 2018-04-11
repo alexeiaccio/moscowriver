@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import { Scroller } from 'react-skroll'
 import {
   Header,
@@ -18,6 +17,7 @@ import {
 } from 'Styled'
 import { IndexTitle } from './IndexTitle'
 import { IndexCite } from './IndexCite'
+import { IndexDescriptions } from './IndexDescriptions'
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -40,8 +40,9 @@ class IndexPage extends React.Component {
           <Video data={node.data} />
         </SectionTwo>
         <SectionThree >
+          <IndexDescriptions data={node.data} />
         </SectionThree>
-        <Header data={node.data}/>
+        <Header data={node.data} />
         <Footer data={node.data} />
       </div>
     )

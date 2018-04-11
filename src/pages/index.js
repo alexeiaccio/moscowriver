@@ -19,6 +19,7 @@ export const query = graphql`
           ...TitleFragment
           ...CiteFragment
           ...VideoFragment
+          ...HeaderFragment
         }
       }
     }

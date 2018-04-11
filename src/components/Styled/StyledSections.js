@@ -26,5 +26,6 @@ export const SectionTwo = styled(Section)`
 `
 
 export const SectionThree = styled(Section)`
-  background-color: ${key('colors.purple')};
+  height: calc(100vh - 75px);
+  background-color: ${key('colors.violet')};
 `

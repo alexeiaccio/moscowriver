@@ -1,8 +1,14 @@
 export { MapWrapper } from './MapWrapper'
 export { ScrollWrapper } from './StyledScroll'
 export { WaveWrapper } from './StyledBack'
-export { TitleWrapper } from './StyledTitle'
 export { CiteWrapper } from './StyledCite'
+export {
+  TitleWrapper,
+  HeaderWrapper,
+  H3,
+  StyledLink,
+  Row,
+} from './StyledTitle'
 export {
   Section,
   SectionOne,

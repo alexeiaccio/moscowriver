@@ -2,8 +2,7 @@ import React from 'react'
 import Link from 'gatsby-link'
 import { Scroller } from 'react-skroll'
 import {
-  Title,
-  Cite,
+  Header,
   WavePattern,
   WrappedMap,
   Video,
@@ -43,6 +42,7 @@ class IndexPage extends React.Component {
           </SectionTwo>
           <SectionThree >
           </SectionThree>
+          <Header data={node.data}/>
         </Scroller>
       </ScrollWrapper>
     )

@@ -1,4 +1,5 @@
 export { default as Title } from './Title/Title'
+export { default as Header } from './Header/Header'
 export { default as Cite } from './Cite/Cite'
 export { default as Image } from './Image/Image'
 export { default as WavePattern } from './Waves/WavePattern'

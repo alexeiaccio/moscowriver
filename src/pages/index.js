@@ -1,15 +1,20 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import { ScrollProvider } from 'react-skroll'
+import { ScrollWrapper } from 'Styled'
 import { IndexPage } from 'Components'
 
-export default ({ data }) => {
-  return (
-    <ScrollProvider autoFrame={true} autoScroll={true} >
-      <IndexPage data={data}/>
-    </ScrollProvider>
-  )
+class Index extends React.Component {
+   render() {
+     const data = this.props.data
+
+     return (
+       <IndexPage data={data}/>
+     )
+   }
 }
+
+export default Index
 
 export const query = graphql`
   query IndexQuery {

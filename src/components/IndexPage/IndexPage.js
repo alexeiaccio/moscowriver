@@ -13,7 +13,6 @@ import {
   SectionOne,
   SectionTwo,
   SectionThree,
-  ScrollWrapper,
   WrappedCite,
 } from 'Styled'
 import { IndexTitle } from './IndexTitle'
@@ -28,23 +27,21 @@ class IndexPage extends React.Component {
     const node = this.props.data.allPrismicDocument.edges[0].node
 
     return (
-      <ScrollWrapper>
-        <Scroller>
-          <SectionOne>
-            <IndexTitle data={node.data}/>
-            <div>
-              <WrappedMap />
-              <IndexCite data={node.data}/>
-            </div>
-          </SectionOne>
-          <SectionTwo>
-            <Video data={node.data} />
-          </SectionTwo>
-          <SectionThree >
-          </SectionThree>
-          <Header data={node.data}/>
-        </Scroller>
-      </ScrollWrapper>
+      <div>
+        <SectionOne>
+          <IndexTitle data={node.data}/>
+          <div>
+            <WrappedMap />
+            <IndexCite data={node.data}/>
+          </div>
+        </SectionOne>
+        <SectionTwo>
+          <Video data={node.data} />
+        </SectionTwo>
+        <SectionThree >
+        </SectionThree>
+        <Header data={node.data}/>
+      </div>
     )
   }
 }

@@ -1,7 +1,10 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import Title from '../components/Title'
-import Image from '../components/Image'
+
+import {
+  Title,
+  Image
+} from 'Components'
 
 const ResultTemplate = ({ data }) => {
   const node = data.allPrismicDocument.edges[0].node

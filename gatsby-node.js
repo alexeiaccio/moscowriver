@@ -43,6 +43,7 @@ exports.modifyWebpackConfig = ({ config, stage }) => {
       alias: {
         Components: 'src/components/',
         Helpers: 'src/helpers/',
+        Styled: 'src/components/Styled',
       },
       extensions: ['', '.js', '.jsx']
     }

@@ -1,17 +1,15 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import { ScrollProvider } from 'react-skroll'
-import Scroll from '../components/Scroll'
+import { IndexPage } from 'Components'
 
-const IndexPage = ({ data }) => {
+export default ({ data }) => {
   return (
     <ScrollProvider autoFrame={true} autoScroll={true} >
-      <Scroll data={data}/>
+      <IndexPage data={data}/>
     </ScrollProvider>
   )
 }
-
-export default IndexPage
 
 export const query = graphql`
   query IndexQuery {

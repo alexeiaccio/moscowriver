@@ -3,6 +3,11 @@ export { ScrollWrapper } from './StyledScroll'
 export { WaveWrapper } from './StyledBack'
 export { CiteWrapper } from './StyledCite'
 export {
+  StyledFooter,
+  Email,
+  Logo,
+} from './StyledFooter'
+export {
   TitleWrapper,
   HeaderWrapper,
   H3,

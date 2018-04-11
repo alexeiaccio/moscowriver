@@ -26,6 +26,6 @@ export const SectionTwo = styled(Section)`
 `
 
 export const SectionThree = styled(Section)`
-  height: calc(100vh - 75px);
-  background-color: ${key('colors.violet')};
+  height: calc(100vh - 75px - 270px);
+  background-color: ${key('colors.white')};
 `

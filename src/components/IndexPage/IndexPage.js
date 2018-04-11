@@ -7,6 +7,7 @@ import {
   WrappedMap,
   Video,
   WavedBack,
+  Footer,
 } from 'Components'
 import {
   Section,
@@ -41,6 +42,7 @@ class IndexPage extends React.Component {
         <SectionThree >
         </SectionThree>
         <Header data={node.data}/>
+        <Footer data={node.data} />
       </div>
     )
   }

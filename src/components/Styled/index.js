@@ -1,5 +1,4 @@
 export { MapWrapper } from './MapWrapper'
-export { ScrollWrapper } from './StyledScroll'
 export { WaveWrapper } from './StyledBack'
 export { CiteWrapper } from './StyledCite'
 export {

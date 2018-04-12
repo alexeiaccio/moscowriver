@@ -1,5 +1,4 @@
 import React from 'react'
-import { Scroller } from 'react-skroll'
 import {
   Header,
   WavePattern,
@@ -28,7 +27,7 @@ class IndexPage extends React.Component {
     const node = this.props.data.allPrismicDocument.edges[0].node
 
     return (
-      <div>
+      <main>
         <SectionOne>
           <IndexTitle data={node.data}/>
           <div>
@@ -44,7 +43,7 @@ class IndexPage extends React.Component {
         </SectionThree>
         <Header data={node.data} />
         <Footer data={node.data} />
-      </div>
+      </main>
     )
   }
 }

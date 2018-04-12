@@ -1,7 +1,5 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import { ScrollProvider } from 'react-skroll'
-import { ScrollWrapper } from 'Styled'
 import { IndexPage } from 'Components'
 
 class Index extends React.Component {

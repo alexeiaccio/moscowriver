@@ -156,6 +156,7 @@ export const ButtonText = styled.span`
 `
 
 export const InputMorph = styled.input`
+  width: ${props => props.button ? 'auto' : '400px'};
   padding: ${key(['space', 2])}px ${key(['space', 5])}px;
   font-size: ${key(['fontSizes', 3])}px;
   line-height: ${key(['lineHeights', 3])};
@@ -172,19 +173,39 @@ export const InputMorph = styled.input`
   }
 `
 
-export const SubmitButton = styled.button`
+export const SubmitButton = styled.button`  
   position: absolute;
   top: 10px;
   right: 10px;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 20px;
   border: 5px solid ${key('colors.bright.blue')};
   background-color: ${key('colors.bright.blue')};
   background-image: url(${ArrowIconWhite});
-  background-position: center;
+  background-position: 5px center;
   background-repeat: no-repeat;
   outline: none !important;
   cursor: pointer;
   visibility: ${props => props.submit ? 'visible' : 'hidden'};
+  transition: all .4s ease-in-out;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 15px;
+    font-size: ${key(['fontSizes', 5])}px;
+    font-weight: ${key('fontWeights.semibold')};
+    color: ${key('colors.white')};
+    transition: all .4s ease-in-out .2s;
+    opacity: 0;
+  }
+  &:hover {
+    width: 150px;
+    background-position: 115px center;
+    &::after {
+      content: 'Отправить';
+      opacity: 1;
+    }
+  }
 `

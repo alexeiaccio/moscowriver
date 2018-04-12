@@ -70,6 +70,16 @@ const shadows = [
   `0 1px 4px 0 ${colors.text}`
 ]
 
+const fonts = {
+  base: 'Montserrat, Roboto, sans-serif',
+  headers: 'Podkova, Consolas, monospace',
+}
+
+const sizes = {
+  minWidth: '1100px',
+  width: '960px'
+}
+
 const theme = {
   breakpoints,
   colors,
@@ -81,34 +91,10 @@ const theme = {
   radii,
   borderWidths,
   shadows,
+  fonts,
+  sizes
 }
 
-theme.palette = {
-  text: ['#261A12'],
-  blue: ['#3095BF', '#00BBF1'],
-  green: ['#4EB96F', '#1A9D1C'],
-  yellow: ['#EFC319', '#FFB800'],
-  pink: ['#F05A5A'],
-  purple: ['#C4549A'],
-  violet: ['#945BA4'],
-  black: ['#000'],
-  white: ['#FFF'],
-  gray: [
-    '#1D1D1B',
-    '#5A5A5B',
-    '#ABABAA',
-    '#D8D8D7',
-  ]
-}
 
-theme.fonts = {
-  base: 'Montserrat, Roboto, sans-serif',
-  headers: 'Podkova, Consolas, monospace',
-}
-
-theme.sizes = {
-  minWidth: '1100px',
-  width: '960px'
-}
 
 export default theme

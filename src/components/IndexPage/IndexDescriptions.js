@@ -1,16 +1,16 @@
 import React from 'react'
 import { TitleWrapper } from 'Styled'
-import { getParagraphsFromProps } from 'Helpers'
+import { s4, SerializeHTML } from 'Helpers'
 
 
 export const IndexDescriptions = ({data}) => {
   const paragraphs = data.body.filter(item => item.slice_type === 'text')
-  const buttons = data.body.filter(item => item.slice_type === 'button')
+  //console.log(paragraphs)
 
   return (
   <div>
   {paragraphs.map(({primary}) =>
-    { getParagraphsFromProps(primary.text) }
+    <p key={s4()} dangerouslySetInnerHTML={{ __html: SerializeHTML(primary.text) }} />
   )}
   </div>
 )}
@@ -24,16 +24,15 @@ export const query = graphql`
           text {
             type
             text
-          }
-          image {
-            url
-          }
-          icon {
-            url
-          }
-          linktext {
-            type
-            text
+            spans {
+              start
+              end
+              type
+              data {
+                url
+                uid
+              }
+            }
           }
         }
       }

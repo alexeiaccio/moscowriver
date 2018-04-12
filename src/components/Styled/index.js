@@ -20,4 +20,8 @@ export {
   SectionThree,
   DescriptionWrapper,
   Column,
+  RoundButton,
+  ButtonBack,
+  ButtonShade,
+  ButtonText,
  } from './StyledSections'

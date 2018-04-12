@@ -7,9 +7,7 @@ export const IndexButtons = ({data}) => {
 
   return (
   <div>
-  {paragraphs.map(({primary}) =>
     { JSON.stringify(buttons) }
-  )}
   </div>
 )}
 
@@ -19,6 +17,9 @@ export const query = graphql`
       body {
         slice_type
         primary {
+          name {
+            text
+          }
           image {
             url
           }

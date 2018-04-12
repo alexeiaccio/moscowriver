@@ -17,6 +17,7 @@ import {
 import { IndexTitle } from './IndexTitle'
 import { IndexCite } from './IndexCite'
 import { IndexDescriptions } from './IndexDescriptions'
+import { IndexButtons } from './IndexButtons'
 
 class IndexPage extends React.Component {
   constructor(props) {

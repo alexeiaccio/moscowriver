@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
+import Link from 'gatsby-link'
 import { key } from 'styled-theme'
-import { Row } from 'Styled'
 import patternWaves from '../../assets/PatternWaves.svg'
 import SmallWave from '../../assets/SmallWave.svg'
 
@@ -34,7 +34,9 @@ export const SectionThree = styled(Section)`
   background-color: ${key('colors.white')};
 `
 
-export const DescriptionWrapper = styled(Row)`
+export const DescriptionWrapper = styled.div`
+  width: 100%;
+  position: relative;
   color: ${key('colors.text')};
   font-size: ${key(['fontSizes', 5])}px;
   line-height: ${key(['lineHeights', 3])};
@@ -49,16 +51,38 @@ const shiftBack = keyframes`
   }
 `
 
-
-
 export const Column = styled.div`
   &:first-child {
     padding-right: ${key(['space', 5])}px;
+    &> a {
+      left: -100px;
+      &> div {
+        transform: rotateZ(-90deg) translateY(20px);
+      }
+      &:hover {
+        left: -50px;
+        &> div {
+          transform: rotateZ(0) translate(20px, 0px);
+        }
+      }
+    }
   }
   &:last-child {
     padding-left: ${key(['space', 5])}px;
+    &> a {
+      right: -100px;
+      &> div {
+        transform: rotateZ(-90deg) translateY(-25px);
+      }
+      &:hover {
+        right: -50px;
+        &> div {
+          transform: rotateZ(0) translate(-25px, 0px);
+        }
+      }
+    }
   }
-  & a {
+  &> p a {
     color: ${key('colors.text')};
     text-decoration: none;
     font-weight: ${key('fontWeights.semibold')};
@@ -79,4 +103,50 @@ export const Column = styled.div`
       animation-play-state: running;
     }
   }
+`
+
+export const RoundButton = styled(Link)`
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 225px;
+  height: 225px;
+  border-radius: 50%;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all .4s ease-in-out;
+`
+
+
+export const ButtonBack = styled.img`
+  position: absolute;
+  top: 0;
+  display: block;
+  width: auto;
+  height: 225px;
+`
+
+export const ButtonShade = styled.p`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all .4s ease-in-out;
+  background-color: rgba(0,0,0,.5);
+  &:hover {
+    background-color: rgba(0,0,0,.25);
+  }
+`
+
+export const ButtonText = styled.div`
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  color: ${key('colors.white')};
+  font-size: ${key(['fontSizes', 5])}px;
+  font-weight: ${key('fontWeights.medium')};
+  transition: all .4s ease-in-out;
 `

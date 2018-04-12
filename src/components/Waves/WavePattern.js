@@ -43,7 +43,7 @@ class WavePattern extends React.Component {
           <g id="Canvas">
             <g id="WavePattern">
             {this.state.waves.map(({t, r}, i) =>
-              <Motion key={i} defaultStyle={{t: t, r: r}} style={{t: t, r: spring(r + 10)}}>
+              <Motion key={i} defaultStyle={{t: t, r: r}} style={{t: t, r: spring(r + i)}}>
               {({t, r}) =>
                 <use
                   href="#path0_stroke"

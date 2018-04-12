@@ -22,10 +22,10 @@ const TitleWrapper = BaseWrapper.extend`
     &::before {
       content: '';
       position: absolute;
-      bottom: calc(${key(['fontSizes', 0])}px * .19);
+      bottom: calc(${key(['fontSizes', 0])}px * .20);
       display: flex;
       width: 100%;
-      height: calc(${key(['fontSizes', 0])}px * .42);
+      height: calc(${key(['fontSizes', 0])}px * .44);
       background-color: ${key('colors.black')};
       transition: background-color .4s ease-in-out;
       z-index: -1;

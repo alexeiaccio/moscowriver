@@ -24,4 +24,6 @@ export {
   ButtonBack,
   ButtonShade,
   ButtonText,
+  InputMorph,
+  SubmitButton,
  } from './StyledSections'

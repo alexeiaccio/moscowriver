@@ -32,7 +32,7 @@ class IndexPage extends React.Component {
         <SectionOne>
           <IndexTitle data={node.data}/>
           <div>
-            <WrappedMap />
+            {/* <WrappedMap /> */}
             <IndexCite data={node.data}/>
           </div>
         </SectionOne>
@@ -41,6 +41,7 @@ class IndexPage extends React.Component {
         </SectionTwo>
         <SectionThree >
           <IndexDescriptions data={node.data} />
+          <IndexButtons data={node.data} name='follow' />
         </SectionThree>
         <Header data={node.data} />
         <Footer data={node.data} />

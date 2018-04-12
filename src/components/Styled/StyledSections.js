@@ -3,6 +3,7 @@ import Link from 'gatsby-link'
 import { key } from 'styled-theme'
 import patternWaves from '../../assets/PatternWaves.svg'
 import SmallWave from '../../assets/SmallWave.svg'
+import ArrowIconWhite from '../../assets/ArrowIconWhite.svg'
 
 const Section = styled.section`
   display: flex;
@@ -35,6 +36,7 @@ export const SectionThree = styled(Section)`
 `
 
 export const DescriptionWrapper = styled.div`
+  padding: ${key(['space', 9])}px 0;
   width: 100%;
   position: relative;
   color: ${key('colors.text')};
@@ -56,12 +58,12 @@ export const Column = styled.div`
     padding-right: ${key(['space', 5])}px;
     &> a {
       left: -100px;
-      &> div {
+      &> span {
         transform: rotateZ(-90deg) translateY(20px);
       }
       &:hover {
         left: -50px;
-        &> div {
+        &> span {
           transform: rotateZ(0) translate(20px, 0px);
         }
       }
@@ -71,12 +73,12 @@ export const Column = styled.div`
     padding-left: ${key(['space', 5])}px;
     &> a {
       right: -100px;
-      &> div {
+      &> span {
         transform: rotateZ(-90deg) translateY(-25px);
       }
       &:hover {
         right: -50px;
-        &> div {
+        &> span {
           transform: rotateZ(0) translate(-25px, 0px);
         }
       }
@@ -118,12 +120,14 @@ export const RoundButton = styled(Link)`
 `
 
 
-export const ButtonBack = styled.img`
+export const ButtonBack = styled.div`
   position: absolute;
   top: 0;
   display: block;
-  width: auto;
+  width: 225px;
   height: 225px;
+  background-size: cover;
+  background-repeat: no-repeat;
 `
 
 export const ButtonShade = styled.p`
@@ -138,9 +142,9 @@ export const ButtonShade = styled.p`
   }
 `
 
-export const ButtonText = styled.div`
+export const ButtonText = styled.span`
   position: relative;
-  display: flex;
+  display: inline-flex;
   width: 100%;
   height: 100%;
   justify-content: center;
@@ -149,4 +153,38 @@ export const ButtonText = styled.div`
   font-size: ${key(['fontSizes', 5])}px;
   font-weight: ${key('fontWeights.medium')};
   transition: all .4s ease-in-out;
+`
+
+export const InputMorph = styled.input`
+  padding: ${key(['space', 2])}px ${key(['space', 5])}px;
+  font-size: ${key(['fontSizes', 3])}px;
+  line-height: ${key(['lineHeights', 3])};
+  font-weight: ${key('fontWeights.medium')};
+  background-color: ${props => props.button ? key('colors.bright.blue') : key('colors.white')};
+  color: ${props => props.button ? key('colors.white') : key('colors.black')};
+  border: 5px solid ${key('colors.bright.blue')};
+  border-radius: ${props => props.button ? '2px' : '50px'};
+  outline: none !important;
+  transition: all .6s ease-in-out;
+  cursor: ${props => props.button ? 'pointer' : 'default'};
+  &::placeholder {
+    color: ${key(['colors', 'gray', 1])};
+  }
+`
+
+export const SubmitButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 5px solid ${key('colors.bright.blue')};
+  background-color: ${key('colors.bright.blue')};
+  background-image: url(${ArrowIconWhite});
+  background-position: center;
+  background-repeat: no-repeat;
+  outline: none !important;
+  cursor: pointer;
+  visibility: ${props => props.submit ? 'visible' : 'hidden'};
 `

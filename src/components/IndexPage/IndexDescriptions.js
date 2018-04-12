@@ -6,7 +6,6 @@ import { s4, SerializeHTML } from 'Helpers'
 
 export const IndexDescriptions = ({data}) => {
   const paragraphs = data.body.filter(item => item.slice_type === 'text')
-  console.log(paragraphs)
 
   return (
   <DescriptionWrapper>

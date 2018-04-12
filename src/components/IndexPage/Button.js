@@ -8,7 +8,7 @@ import {
 
 export const Button = ({to, url, text}) =>
   <RoundButton to={to}>
-    <ButtonBack src={url} />
+    <ButtonBack style={{backgroundImage: `url(${url})`}} />
     <ButtonShade />
     <ButtonText>{text}</ButtonText>
   </RoundButton>

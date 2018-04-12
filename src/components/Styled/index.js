@@ -18,4 +18,6 @@ export {
   SectionOne,
   SectionTwo,
   SectionThree,
+  DescriptionWrapper,
+  Column,
  } from './StyledSections'

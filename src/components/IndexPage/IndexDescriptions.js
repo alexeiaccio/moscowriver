@@ -1,5 +1,5 @@
 import React from 'react'
-import { TitleWrapper } from 'Styled'
+import { DescriptionWrapper, Column } from 'Styled'
 import { s4, SerializeHTML } from 'Helpers'
 
 
@@ -8,11 +8,11 @@ export const IndexDescriptions = ({data}) => {
   //console.log(paragraphs)
 
   return (
-  <div>
+  <DescriptionWrapper>
   {paragraphs.map(({primary}) =>
-    <p key={s4()} dangerouslySetInnerHTML={{ __html: SerializeHTML(primary.text) }} />
+    <Column key={s4()} dangerouslySetInnerHTML={{ __html: SerializeHTML(primary.text) }} />
   )}
-  </div>
+  </DescriptionWrapper>
 )}
 
 export const query = graphql`

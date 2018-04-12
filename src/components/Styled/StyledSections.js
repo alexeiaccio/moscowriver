@@ -33,10 +33,13 @@ export const SectionThree = styled(Section)`
   align-items: center;
   height: calc(100vh - 75px - 270px);
   background-color: ${key('colors.white')};
+  background-image: url(${patternWaves});
+  background-repeat: repeat-x;
+  background-position-y: 50vh;
 `
 
 export const DescriptionWrapper = styled.div`
-  padding: ${key(['space', 9])}px 0;
+  padding: 0 0 ${key(['space', 9])}px 0;
   width: 100%;
   position: relative;
   color: ${key('colors.text')};
@@ -117,6 +120,9 @@ export const RoundButton = styled(Link)`
   overflow: hidden;
   text-decoration: none;
   transition: all .4s ease-in-out;
+  &:hover > p {
+    background-color: rgba(0,0,0,.15);
+  }
 `
 
 
@@ -136,10 +142,7 @@ export const ButtonShade = styled.p`
   width: 100%;
   height: 100%;
   transition: all .4s ease-in-out;
-  background-color: rgba(0,0,0,.5);
-  &:hover {
-    background-color: rgba(0,0,0,.25);
-  }
+  background-color: rgba(0,0,0,.5);  
 `
 
 export const ButtonText = styled.span`

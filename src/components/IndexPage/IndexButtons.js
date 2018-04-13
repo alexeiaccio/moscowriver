@@ -76,6 +76,8 @@ export class ButtonOrInput extends React.Component {
           onTouchStart={this.handleTouchStart}
           onChange={this.handleChange}
           type={this.state.type}
+          name='email'
+          id='email'
           button={this.state.button ? true : false}
           value={this.state.value}
           placeholder={this.state.button ? '' : 'Напиши свой email'}

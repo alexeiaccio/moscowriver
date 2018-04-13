@@ -37,8 +37,8 @@ class IndexPage extends React.Component {
       <main>
         <SectionOne id='one'>
           <IndexTitle data={node.data}/>
-          <div>
-            {/* <WrappedMap /> */}
+          <div style={{flex: '1 100%'}} >
+            <WrappedMap />
             <IndexCite data={node.data}/>
             <MapQuotes data={quotes} />
             <SeeVideoButton data={node.data} name='seevideo' />

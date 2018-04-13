@@ -38,6 +38,6 @@ const parseNode = node => {
   }
 }
 
-export const SerializeHTML = (html) =>
+export const SerializeHtml = (html) =>
   html.map(parseNode).join('')
 

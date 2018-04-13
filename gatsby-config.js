@@ -9,6 +9,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-react-next',
     {
       resolve: `gatsby-source-prismic`,
       options: {
@@ -21,7 +22,7 @@ module.exports = {
       options: {
         fonts: [
           `podkova\:400,500,600,700`,
-          `montserrat\:400,500,600,700` // you can also specify font weights and styles
+          `montserrat\:400,500,600,700`
         ]
       }
     }

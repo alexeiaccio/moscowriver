@@ -20,10 +20,12 @@ export {
   SectionThree,
   DescriptionWrapper,
   Column,
+ } from './StyledSections'
+ export {
   RoundButton,
   ButtonBack,
   ButtonShade,
   ButtonText,
   InputMorph,
   SubmitButton,
- } from './StyledSections'
+ } from './StyledButtons'

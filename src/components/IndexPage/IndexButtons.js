@@ -2,8 +2,8 @@ import React from 'react'
 import { InputMorph, SubmitButton } from 'Styled'
 
 
-export class IndexButtons extends React.Component {
-  
+export class ButtonOrInput extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = {
@@ -22,7 +22,7 @@ export class IndexButtons extends React.Component {
       value: this.namedButtons(this.props.name)[0].primary.text[0].text
     })
   }
-  
+
   handleMouseDown = (event) => {
     this.setState({
       type: 'email',
@@ -41,21 +41,33 @@ export class IndexButtons extends React.Component {
   handleChange = (event) => {
     this.setState({value: event.target.value})
     if(!this.state.button && this.state.value.length > 7) {
-      this.setState({submit: true})      
+      this.setState({submit: true})
     }
-    console.log(this.state.submit)
   }
 
   handleSubmit = (event) => {
-    alert('A name was submitted: ' + this.state.value)
+    console.log('A name was submitted: ' + this.state.value)
     event.preventDefault()
   }
 
   render() {
-    
-    
+
+
     return (
-      <form onSubmit={this.handleSubmit} style={{position: 'relative'}}>
+      <form
+        name='SubscriptionForm'
+        onSubmit={this.handleSubmit}
+        method='post'
+        action={this.state.submit ? null : '/thanks/'}
+        data-netlify='true'
+        data-netlify-honeypot='bot-field'
+        style={{position: 'relative'}}>
+        <input type="hidden" name="form-name" value="SubscriptionForm" />
+        <p hidden>
+          <label>
+            Don’t fill this out: <input name="bot-field" />
+          </label>
+        </p>
         <InputMorph
           onMouseDown={this.handleMouseDown}
           onTouchStart={this.handleTouchStart}
@@ -64,6 +76,8 @@ export class IndexButtons extends React.Component {
           button={this.state.button ? true : false}
           value={this.state.value}
           placeholder={this.state.button ? '' : 'Напиши свой email'}
+          required
+          minLength={8}
         />
         <SubmitButton type='submit' submit={this.state.submit ? true : false} />
       </form>

@@ -17,7 +17,7 @@ import {
 import { IndexTitle } from './IndexTitle'
 import { IndexCite } from './IndexCite'
 import { IndexDescriptions } from './IndexDescriptions'
-import { IndexButtons } from './IndexButtons'
+import { ButtonOrInput } from './IndexButtons'
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -41,7 +41,7 @@ class IndexPage extends React.Component {
         </SectionTwo>
         <SectionThree >
           <IndexDescriptions data={node.data} />
-          <IndexButtons data={node.data} name='follow' />
+          <ButtonOrInput data={node.data} name='follow' />
         </SectionThree>
         <Header data={node.data} />
         <Footer data={node.data} />

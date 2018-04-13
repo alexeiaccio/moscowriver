@@ -1,6 +1,6 @@
 import React from 'react'
 import { DescriptionWrapper, Column, Row } from 'Styled'
-import { Button } from './Button'
+import { RoundButtonWithImage } from 'Components'
 import { s4, getHtml } from 'Helpers'
 
 
@@ -14,7 +14,7 @@ export const IndexDescriptions = ({data}) => {
       let to = primary.text[0].spans[0].data.url || '/' + primary.text[0].spans[0].data.uid
       return <Column key={s4()}>
         <p dangerouslySetInnerHTML={{ __html: getHtml(primary.text) }} />
-        <Button to={to} url={primary.image.url} text={primary.linktext[0].text} />
+        <RoundButtonWithImage to={to} url={primary.image.url} text={primary.linktext[0].text} />
       </Column>}
     )}
     </Row>

@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components'
-import Link from 'gatsby-link'
 import { key } from 'styled-theme'
 import patternWaves from '../../assets/PatternWaves.svg'
 import SmallWave from '../../assets/SmallWave.svg'
@@ -35,7 +34,7 @@ export const SectionThree = styled(Section)`
   background-color: ${key('colors.white')};
   background-image: url(${patternWaves});
   background-repeat: repeat-x;
-  background-position-y: 50vh;
+  background-position-y: calc(100% + 250px);
 `
 
 export const DescriptionWrapper = styled.div`
@@ -106,109 +105,6 @@ export const Column = styled.div`
     }
     &:hover::after {
       animation-play-state: running;
-    }
-  }
-`
-
-export const RoundButton = styled(Link)`
-  position: absolute;
-  top: 0;
-  display: block;
-  width: 225px;
-  height: 225px;
-  border-radius: 50%;
-  overflow: hidden;
-  text-decoration: none;
-  transition: all .4s ease-in-out;
-  &:hover > p {
-    background-color: rgba(0,0,0,.15);
-  }
-`
-
-
-export const ButtonBack = styled.div`
-  position: absolute;
-  top: 0;
-  display: block;
-  width: 225px;
-  height: 225px;
-  background-size: cover;
-  background-repeat: no-repeat;
-`
-
-export const ButtonShade = styled.p`
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  transition: all .4s ease-in-out;
-  background-color: rgba(0,0,0,.5);  
-`
-
-export const ButtonText = styled.span`
-  position: relative;
-  display: inline-flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  color: ${key('colors.white')};
-  font-size: ${key(['fontSizes', 5])}px;
-  font-weight: ${key('fontWeights.medium')};
-  transition: all .4s ease-in-out;
-`
-
-export const InputMorph = styled.input`
-  width: ${props => props.button ? 'auto' : '400px'};
-  padding: ${key(['space', 2])}px ${key(['space', 5])}px;
-  font-size: ${key(['fontSizes', 3])}px;
-  line-height: ${key(['lineHeights', 3])};
-  font-weight: ${key('fontWeights.medium')};
-  background-color: ${props => props.button ? key('colors.bright.blue') : key('colors.white')};
-  color: ${props => props.button ? key('colors.white') : key('colors.black')};
-  border: 5px solid ${key('colors.bright.blue')};
-  border-radius: ${props => props.button ? '2px' : '50px'};
-  outline: none !important;
-  transition: all .6s ease-in-out;
-  cursor: ${props => props.button ? 'pointer' : 'default'};
-  &::placeholder {
-    color: ${key(['colors', 'gray', 1])};
-  }
-`
-
-export const SubmitButton = styled.button`  
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  border: 5px solid ${key('colors.bright.blue')};
-  background-color: ${key('colors.bright.blue')};
-  background-image: url(${ArrowIconWhite});
-  background-position: 5px center;
-  background-repeat: no-repeat;
-  outline: none !important;
-  cursor: pointer;
-  visibility: ${props => props.submit ? 'visible' : 'hidden'};
-  transition: all .4s ease-in-out;
-  &::after {
-    content: '';
-    position: absolute;
-    top: 4px;
-    left: 15px;
-    font-size: ${key(['fontSizes', 5])}px;
-    font-weight: ${key('fontWeights.semibold')};
-    color: ${key('colors.white')};
-    transition: all .4s ease-in-out .2s;
-    opacity: 0;
-  }
-  &:hover {
-    width: 150px;
-    background-position: 115px center;
-    &::after {
-      content: 'Отправить';
-      opacity: 1;
     }
   }
 `

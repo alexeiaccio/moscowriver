@@ -8,17 +8,17 @@ const opts = id => ({
   height: "400",
   width: "712",
   playerVars: {  // https://developers.google.com/youtube/player_parameters
-    autoplay: 0,
+    autoplay: 1,
     modestbranding: 1,
     showinfo: 0,
     rel: 0,
     iv_load_policy: 3,
-    controls: 2,
+    controls: 1,
     enablejsapi: 0,
     disablekb: 1,
     loop: 1,
     color: 'white',
-    origin: 'http://localhost:8000/',
+    //origin: 'http://localhost:8000/' || 'http://localhost:5000/',
     playlist: id
   }
 })

@@ -9,7 +9,8 @@ const BaseWrapper = styled.div`
   height: ${key(['space', 10])}px;
   font-family: ${key('fonts.headers')};
   background-color: ${key('colors.black')};
-  z-index: 1000;
+  flex: 0 0 auto;
+  z-index: 9999;
   cursor: pointer;
 `
 

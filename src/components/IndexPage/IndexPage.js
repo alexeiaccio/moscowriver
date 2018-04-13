@@ -8,7 +8,8 @@ import {
   Footer,
   RoundButtonBack,
   RoundButtonForward,
-  RoundButtonWithImage
+  RoundButtonWithImage,
+  MapQuotes,
 } from 'Components'
 import {
   Section,
@@ -29,15 +30,17 @@ class IndexPage extends React.Component {
   }
 
   render() {
-    const node = this.props.data.allPrismicDocument.edges[0].node
+    const node = this.props.data.homepage.edges[0].node
+    const quotes = this.props.data.quotes.edges
 
     return (
       <main>
         <SectionOne id='one'>
           <IndexTitle data={node.data}/>
-          <div>
+          <div style={{flex: '1 100%'}} >
             <WrappedMap />
             <IndexCite data={node.data}/>
+            <MapQuotes data={quotes} />
             <SeeVideoButton data={node.data} name='seevideo' />
           </div>
         </SectionOne>

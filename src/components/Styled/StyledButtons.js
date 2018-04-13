@@ -16,6 +16,9 @@ const RoundTemplate = styled(Link)`
 export const RoundButton = RoundTemplate.extend`
   width: 225px;
   height: 225px;
+  &:hover > p {
+    background-color: rgba(0,0,0,.15);
+  }
 `
 
 export const RoundButtonSmall = RoundTemplate.extend`

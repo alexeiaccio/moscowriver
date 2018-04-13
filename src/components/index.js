@@ -15,6 +15,7 @@ export {
 } from './Buttons/RoundButtons'
 
 export { WrappedMap } from './Map/WrappedMap'
+export { MapQuotes } from './Map/MapQuotes'
 export { WavedBack } from './Backs/WavedBack'
 
 export { default as IndexPage } from './IndexPage/IndexPage'

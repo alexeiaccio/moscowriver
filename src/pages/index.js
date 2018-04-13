@@ -4,9 +4,9 @@ import { IndexPage } from 'Components'
 
 class Index extends React.Component {
    render() {
-     const data = this.props.data
+    const data = this.props.data
 
-     return (
+    return (
        <IndexPage data={data}/>
      )
    }
@@ -16,7 +16,7 @@ export default Index
 
 export const query = graphql`
   query IndexQuery {
-    allPrismicDocument(filter: {type: {eq: "homepage"}}) {
+    homepage: allPrismicDocument(filter: {type: {eq: "homepage"}}) {
       edges {
         node {
           ...TitleFragment
@@ -26,6 +26,13 @@ export const query = graphql`
           ...IndexButtonsFragment
           ...HeaderFragment
           ...FooterFragment
+        }
+      }
+    }
+    quotes: allPrismicDocument(filter: {type: {eq: "quote"}}) {
+      edges {
+        node {
+          ...QuotesFragment
         }
       }
     }

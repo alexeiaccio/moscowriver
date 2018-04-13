@@ -7,7 +7,8 @@ import {
   WavedBack,
   Footer,
   RoundButtonBack,
-  RoundButtonForward
+  RoundButtonForward,
+  RoundButtonWithImage
 } from 'Components'
 import {
   Section,
@@ -20,6 +21,7 @@ import { IndexTitle } from './IndexTitle'
 import { IndexCite } from './IndexCite'
 import { IndexDescriptions } from './IndexDescriptions'
 import { ButtonOrInput } from './ButtonOrInput'
+import { SeeVideoButton } from './SeeVideoButton'
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -36,6 +38,7 @@ class IndexPage extends React.Component {
           <div>
             <WrappedMap />
             <IndexCite data={node.data}/>
+            <SeeVideoButton data={node.data} name='seevideo' />
           </div>
         </SectionOne>
         <SectionTwo id='two'>

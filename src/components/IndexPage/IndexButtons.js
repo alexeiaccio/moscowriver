@@ -1,6 +1,12 @@
 import React from 'react'
+import 'whatwg-fetch'
 import { InputMorph, SubmitButton } from 'Styled'
 
+const encode = (data) => {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&')
+}
 
 export class ButtonOrInput extends React.Component {
 
@@ -46,8 +52,23 @@ export class ButtonOrInput extends React.Component {
   }
 
   handleSubmit = (event) => {
-    console.log('A name was submitted: ' + this.state.value)
-    event.preventDefault()
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encode({ 'form-name': 'contact', ...this.state.value })
+    })
+      .then(() => {
+        console.log('An email was submitted: ' + this.state.value)
+        this.setState({
+          type: 'button',
+          button: true,
+          submit: false,
+          value: 'Вы подписаны на обновления!'
+        })
+      })
+      .catch(error => alert(error))
+
+    e.preventDefault()
   }
 
   render() {
@@ -58,14 +79,13 @@ export class ButtonOrInput extends React.Component {
         name='SubscriptionForm'
         onSubmit={this.handleSubmit}
         method='post'
-        action={this.state.submit ? null : '/thanks/'}
         data-netlify='true'
         data-netlify-honeypot='bot-field'
         style={{position: 'relative'}}>
-        <input type="hidden" name="form-name" value="SubscriptionForm" />
+        <input type='hidden' name='form-name' value='SubscriptionForm' />
         <p hidden>
           <label>
-            Don’t fill this out: <input name="bot-field" />
+            Don’t fill this out: <input name='bot-field' />
           </label>
         </p>
         <InputMorph

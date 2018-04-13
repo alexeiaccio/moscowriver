@@ -3,19 +3,24 @@ import Link from 'gatsby-link'
 import { key } from 'styled-theme'
 import ArrowIconWhite from '../../assets/ArrowIconWhite.svg'
 
-export const RoundButton = styled(Link)`
+const RoundTemplate = styled(Link)`
   position: absolute;
   top: 0;
   display: block;
-  width: 225px;
-  height: 225px;
   border-radius: 50%;
   overflow: hidden;
   text-decoration: none;
   transition: all .4s ease-in-out;
-  &:hover > p {
-    background-color: rgba(0,0,0,.15);
-  }
+`
+
+export const RoundButton = RoundTemplate.extend`
+  width: 225px;
+  height: 225px;
+`
+
+export const RoundButtonSmall = RoundTemplate.extend`
+  width: 100px;
+  height: 100px;
 `
 
 export const ButtonBack = styled.div`

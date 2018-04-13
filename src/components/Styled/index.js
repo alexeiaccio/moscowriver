@@ -23,6 +23,7 @@ export {
  } from './StyledSections'
  export {
   RoundButton,
+  RoundButtonSmall,
   ButtonBack,
   ButtonShade,
   ButtonText,

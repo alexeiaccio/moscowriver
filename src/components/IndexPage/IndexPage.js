@@ -6,6 +6,8 @@ import {
   Video,
   WavedBack,
   Footer,
+  RoundButtonBack,
+  RoundButtonForward
 } from 'Components'
 import {
   Section,
@@ -17,7 +19,7 @@ import {
 import { IndexTitle } from './IndexTitle'
 import { IndexCite } from './IndexCite'
 import { IndexDescriptions } from './IndexDescriptions'
-import { ButtonOrInput } from './IndexButtons'
+import { ButtonOrInput } from './ButtonOrInput'
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -29,17 +31,20 @@ class IndexPage extends React.Component {
 
     return (
       <main>
-        <SectionOne>
+        <SectionOne id='one'>
           <IndexTitle data={node.data}/>
           <div>
             <WrappedMap />
             <IndexCite data={node.data}/>
           </div>
         </SectionOne>
-        <SectionTwo>
+        <SectionTwo id='two'>
+          <RoundButtonBack to='#one' color={['colors', 'gray', 0]} />
           <Video data={node.data} />
+          <RoundButtonForward to='#three' color={['colors', 'gray', 0]} text='Дальше' />
         </SectionTwo>
-        <SectionThree >
+        <SectionThree id='three'>
+          <RoundButtonBack to='#two' color='colors.white' />
           <IndexDescriptions data={node.data} />
           <ButtonOrInput data={node.data} name='follow' />
         </SectionThree>

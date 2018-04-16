@@ -9,6 +9,12 @@ import {
   Sector,
 } from 'Styled'
 
+import styled from 'styled-components'
+
+const Tooltip = styled.div`
+  background-color: red;
+`
+
 class Quotes extends React.Component {
   constructor(props) {
     super(props)
@@ -33,16 +39,14 @@ class Quotes extends React.Component {
   render() {
     const { node } = this.props
     const {uid} = node
-    console.log(node)
     return (
-      <Manager key={uid}>
+      <Fragment>
         <Reference>
           {({ ref }) => (
             <Sector
               color={getSectorColor(uid)}
               className='sector'
               ref={ref}
-              node={node}
               onMouseEnter={this.handleMouseEnter}
               onMouseLeave={this.handleMouseLeave}
               >
@@ -50,23 +54,25 @@ class Quotes extends React.Component {
               <use href={`#${uid}b`} />
             </Sector>
           )}
-        </Reference>
+        </Reference>      
         {this.state.hover && ReactDOM.createPortal(
           <Popper
             placement="auto"
             modifiers={{ preventOverflow: { enabled: true } }}
             eventsEnabled={true}
             positionFixed={false}>
-            {({ node, placement, ref, style, arrowProps }) => (
+            {({ placement, ref, style, arrowProps }) => (
               <div ref={ref} style={style} data-placement={placement}>
-                Hover
-              {console.log(node)}
+                <Tooltip>
+                  Hover {uid}
+                  {console.log(style)}
+                </Tooltip>
               </div>
             )}
           </Popper>,
           document.querySelector('#index-qoutes-wrapper')
         )}
-      </Manager>
+      </Fragment>
     )
   }
 }
@@ -83,16 +89,18 @@ class MapQuotes extends React.Component {
     const { data } = this.props
     return (
       <QoutesWrapper id='index-qoutes-wrapper'>
-        <Markers
-          xmlns='http://www.w3.org/2000/svg'
-          width='609' height='514'
-          viewBox='0 0 609 514'
-          >
-          {data.map(({node}) => {
-            {this.state.mount && <Quotes node={node}/>}
-          })}
-        <SectorsDefs />
-        </Markers>
+        <Manager>
+          <Markers
+            xmlns='http://www.w3.org/2000/svg'
+            width='609' height='514'
+            viewBox='0 0 609 514'
+            >
+            {this.state.mount && data.map(({node}) => (
+              <Quotes key={node.uid} node={node}/>
+            ))}
+          <SectorsDefs />
+          </Markers>
+        </Manager>
       </QoutesWrapper>
   )}
 }

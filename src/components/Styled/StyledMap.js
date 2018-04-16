@@ -25,7 +25,6 @@ export const MapWrapper = styled.div`
 `
 
 export const QoutesWrapper = styled.div`
-  position: relative;
   width: 100%;
   height: 100%;
   display: flex;
@@ -55,4 +54,12 @@ export const Sector = styled.g`
   & .shade {
     opacity: 0.5;
   }
+`
+
+
+export const Tooltip = styled.div`
+  height: 250px;
+  width: 350px;
+  border: 10px solid ${({color}) => key('colors.' + color)};
+  background-color: ${key('colors.white')};
 `

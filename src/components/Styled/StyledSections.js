@@ -18,6 +18,11 @@ export const SectionOne = styled(Section)`
   background-color: ${key(['colors', 'gray', 3])};
 `
 
+export const ContentWrapper = styled.div`
+  flex: 1 100%;
+  z-index: 4000;
+`
+
 export const SectionTwo = styled(Section)`
   justify-content: center;
   align-items: center;

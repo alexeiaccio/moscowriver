@@ -1,82 +1,11 @@
 import React, {Fragment} from 'react'
-import ReactDOM from 'react-dom'
-import { Manager, Reference, Popper } from 'react-popper'
 import SectorsDefs from './SectorsDefs'
 import { getSectorColor } from './getSectorColor'
+import Quotes from './Quotes'
 import {
   QoutesWrapper,
   Markers,
-  Sector,
 } from 'Styled'
-
-import styled from 'styled-components'
-
-const Tooltip = styled.div`
-  background-color: red;
-`
-
-class Quotes extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      hover: false,
-      click: false,
-    }
-  }
-
-  handleMouseEnter = () => {
-    this.setState({ hover: true })
-  }
-
-  handleMouseLeave = () => {
-    this.setState({ hover: false, click: false })
-  }
-
-  handleMouseDown = () => {
-    this.setState({ click: true, hover: false })
-  }
-
-  render() {
-    const { node } = this.props
-    const {uid} = node
-    return (
-      <Manager>
-        <Reference>
-          {({ ref }) => (
-            <g 
-              ref={ref}
-              onMouseEnter={this.handleMouseEnter}
-              onMouseLeave={this.handleMouseLeave} >
-              <Sector
-                color={getSectorColor(uid)}
-                className='sector'              
-                >
-                <use href={`#${uid}a`} className='shade' />
-                <use href={`#${uid}b`} />
-              </Sector>
-            </g>
-          )}
-        </Reference>      
-        {this.state.hover && ReactDOM.createPortal(
-          <Popper
-            placement='top'
-            modifiers={{ preventOverflow: { enabled: true } }}
-            eventsEnabled={true}
-            positionFixed={false}>
-            {({ placement, ref, style, arrowProps }) => (
-              <div ref={ref} style={style} data-placement={placement}>
-                <Tooltip>
-                  Hover {uid}
-                </Tooltip>
-              </div>
-            )}
-          </Popper>,
-          document.querySelector('#index-qoutes-wrapper')
-        )}
-      </Manager>
-    )
-  }
-}
 
 class MapQuotes extends React.Component {
   constructor(props) {
@@ -89,7 +18,7 @@ class MapQuotes extends React.Component {
   render() {
     const { data } = this.props
     return (
-      <QoutesWrapper id='index-qoutes-wrapper'>        
+      <QoutesWrapper id='index-qoutes-wrapper'>
         <Markers
           xmlns='http://www.w3.org/2000/svg'
           width='609' height='514'
@@ -99,7 +28,7 @@ class MapQuotes extends React.Component {
             <Quotes key={node.uid} node={node}/>
           ))}
         <SectorsDefs />
-        </Markers>        
+        </Markers>
       </QoutesWrapper>
   )}
 }

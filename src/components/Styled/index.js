@@ -4,6 +4,7 @@ export {
   QoutesWrapper,
   Markers,
   Sector,
+  Tooltip,
 } from './StyledMap'
 export { WaveWrapper } from './StyledBack'
 export { CiteWrapper } from './StyledCite'
@@ -26,6 +27,7 @@ export {
   SectionThree,
   DescriptionWrapper,
   Column,
+  ContentWrapper,
  } from './StyledSections'
  export {
   RoundButton,

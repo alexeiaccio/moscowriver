@@ -17,6 +17,7 @@ import {
   SectionTwo,
   SectionThree,
   WrappedCite,
+  ContentWrapper
 } from 'Styled'
 import { IndexTitle } from './IndexTitle'
 import { IndexCite } from './IndexCite'
@@ -34,15 +35,15 @@ class IndexPage extends React.Component {
     const quotes = this.props.data.quotes.edges
 
     return (
-      <main>
+      <main>        
         <SectionOne id='one'>
           <IndexTitle data={node.data}/>
-          <div style={{flex: '1 100%'}} >
+          <ContentWrapper>
             <Map />
             <IndexCite data={node.data}/>
             <MapQuotes data={quotes} />
             <SeeVideoButton data={node.data} name='seevideo' />
-          </div>
+          </ContentWrapper>
         </SectionOne>
         <SectionTwo id='two'>
           <RoundButtonBack to='#one' color={['colors', 'gray', 0]} />

@@ -10,7 +10,7 @@ const BaseWrapper = styled.div`
   font-family: ${key('fonts.headers')};
   background-color: ${key('colors.black')};
   flex: 0 0 auto;
-  z-index: 9999;
+  z-index: 3000;
   cursor: pointer;
 `
 

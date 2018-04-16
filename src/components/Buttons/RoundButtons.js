@@ -10,6 +10,7 @@ import {
 } from 'Styled'
 
 const ButtonTemplate = styled(RoundButtonSmall)`
+  left: calc(50% - 100px/2);
   background-color: ${props => key(props.color)};
   background-repeat: no-repeat;
   transition: all .4s ease-in-out;

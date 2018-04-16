@@ -74,7 +74,6 @@ export const MapQuotes = ({data}) => {
         viewBox='0 0 609 514'
         >
         {data.map(({node}) =>{
-          console.log(getMarker(node))
           return <g
             key={node.uid}
             className='sector' dangerouslySetInnerHTML={{ __html: getMarker(node) }} />}

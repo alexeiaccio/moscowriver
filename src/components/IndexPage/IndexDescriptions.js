@@ -1,8 +1,15 @@
 import React from 'react'
+import Link from 'gatsby-link'
+import styled from 'styled-components'
+import { key } from 'styled-theme'
 import { DescriptionWrapper, Column, Row } from 'Styled'
 import { RoundButtonWithImage } from 'Components'
-import { s4, getHtml } from 'Helpers'
+import { s4, getParagraphsFromProps } from 'Helpers'
 
+const StyledLink = styled(Link)`
+  color: ${key('colors.text')};
+  text-decoration: none;
+`
 
 export const IndexDescriptions = ({data}) => {
   const paragraphs = data.body.filter(item => item.slice_type === 'text')
@@ -13,7 +20,9 @@ export const IndexDescriptions = ({data}) => {
     {paragraphs.map(({primary}) =>{
       let to = primary.text[0].spans[0].data.url || '/' + primary.text[0].spans[0].data.uid
       return <Column key={s4()}>
-        <p dangerouslySetInnerHTML={{ __html: getHtml(primary.text) }} />
+        <StyledLink to={to} >
+          { getParagraphsFromProps(primary.text) }
+        </StyledLink>
         <RoundButtonWithImage to={to} url={primary.image.url} text={primary.linktext[0].text} />
       </Column>}
     )}

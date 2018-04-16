@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import GoogleMap from 'google-map-react'
 import mapStyles from './mapStyles'
+import MapBack from '../../assets/MapBack.png'
 
 const Div = styled.div`
   height: 2000px;
@@ -9,6 +10,10 @@ const Div = styled.div`
   flex: 0 0 auto;
   margin-top: calc(50vh - 977px);
   transform: scale(.55);
+  background: url(${MapBack});
+  & div {
+    background-color: rgba(255,255,255,0) !important;
+  }
 `
 
 const API_KEY = process.env.GOOGLE_MAP_APY_KEY || 'AIzaSyAkA1UjP9WomYnEz-ge2K6dCM8UrOgM3h8'

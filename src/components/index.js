@@ -15,7 +15,7 @@ export {
 } from './Buttons/RoundButtons'
 
 export { default as Map } from './Map/Map'
-export { MapQuotes } from './Map/MapQuotes'
+export { default as MapQuotes } from './Map/MapQuotes'
 export { WavedBack } from './Backs/WavedBack'
 
 export { default as IndexPage } from './IndexPage/IndexPage'

@@ -5,6 +5,8 @@ import { getSectorColor } from './getSectorColor'
 import {
   Tooltip,
   Sector,
+  Popover,
+  Arrow
 } from 'Styled'
 
 class Quotes extends React.Component {
@@ -30,7 +32,8 @@ class Quotes extends React.Component {
 
   render() {
     const { node } = this.props
-    const {uid} = node
+    const {uid, data} = node
+    const title = data.title[0].text
     return (
       <Manager>
         <Reference>
@@ -38,10 +41,12 @@ class Quotes extends React.Component {
             <g 
               ref={ref}
               onMouseEnter={this.handleMouseEnter}
-              onMouseLeave={this.handleMouseLeave} >
+              onMouseLeave={this.handleMouseLeave} 
+              onMouseDown={this.handleMouseDown} 
+              >
               <Sector
                 color={getSectorColor(uid)}
-                className='sector'              
+                className={`sector ${this.state.click ? 'active' : ''}`}            
                 >
                 <use href={`#${uid}a`} className='shade' />
                 <use href={`#${uid}b`} />
@@ -51,15 +56,44 @@ class Quotes extends React.Component {
         </Reference>      
         {this.state.hover && ReactDOM.createPortal(
           <Popper
+            placement='top'
+            modifiers={{ preventOverflow: { enabled: true } }}
+            eventsEnabled={true}
+            positionFixed={false}
+            >
+            {({ placement, ref, style, arrowProps }) => (
+              <div ref={ref} style={style} data-placement={placement}
+              onMouseEnter={this.handleMouseEnter}
+              onMouseLeave={this.handleMouseLeave}
+              >
+                <Tooltip color={getSectorColor(uid)}>
+                  {title}
+                </Tooltip>                
+              </div>
+            )}
+          </Popper>,
+          document.querySelector('#index-qoutes-wrapper')
+        )}
+        {this.state.click && ReactDOM.createPortal(
+          <Popper
             placement='auto'
             modifiers={{ preventOverflow: { enabled: true } }}
             eventsEnabled={true}
-            positionFixed={false}>
+            positionFixed={false}
+            >
             {({ placement, ref, style, arrowProps }) => (
-              <div ref={ref} style={style} data-placement={placement}>
-                <Tooltip color={getSectorColor(uid)}>
-                  Hover {uid}
-                </Tooltip>
+              <div ref={ref} style={style} data-placement={placement}
+              onMouseEnter={this.handleMouseDown}
+              onMouseLeave={this.handleMouseLeave}
+              >
+                <Popover color={getSectorColor(uid)}>
+                  {title}
+                </Popover>
+                <Arrow
+                  color={getSectorColor(uid)}
+                  data-placement={placement}
+                  style={arrowProps.style}
+                />             
               </div>
             )}
           </Popper>,

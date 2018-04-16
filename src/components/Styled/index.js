@@ -5,6 +5,8 @@ export {
   Markers,
   Sector,
   Tooltip,
+  Popover,
+  Arrow
 } from './StyledMap'
 export { WaveWrapper } from './StyledBack'
 export { CiteWrapper } from './StyledCite'

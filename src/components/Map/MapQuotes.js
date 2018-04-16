@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { key } from 'styled-theme'
+import SectorsDefs from './SectorsDefs'
 
 const QoutesWrapper = styled.div`
   position: relative;
@@ -15,57 +17,40 @@ const QoutesWrapper = styled.div`
     margin-left: -34px;
     transform: scale(1.1);
   }
-  & > svg > .sector {
-    cursor: pointer;
+`
+
+const Sector = styled.g`
+  fill: ${({color}) => key('colors.' + color)};
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all .2s ease-in-out;
+  //
+  &:hover {
+    opacity: 1;
+  }
+  &.active {
+    opacity: 1;
+  }
+  & .shade {
     opacity: 0.5;
-    transition: opacity, filter 0.2s ease;
-    //
-    &:hover {
-      opacity: 1;
-    }
-    &.active {
-      opacity: 1;
-    }
-    & .cls-1,
-    & .cls-13,
-    & .cls-2 {
-      fill: #c4549a;
-    }
-    & .cls-1,
-    & .cls-10,
-    & .cls-12,
-    & .cls-13,
-    & .cls-14,
-    & .cls-3,
-    & .cls-5,
-    & .cls-7,
-    & .cls-9 {
-      opacity: 0.5;
-    }
-    & .cls-3,
-    & .cls-4,
-    & .cls-9 {
-      fill: #945ba4;
-    }
-    & .cls-12,
-    & .cls-5,
-    & .cls-6 {
-      fill: #f05a5a;
-    }
-    & .cls-14,
-    & .cls-7,
-    & .cls-8 {
-      fill: #efc319;
-    }
-    & .cls-10,
-    & .cls-11 {
-      fill: #4eb96f;
-    }
   }
 `
 
+
+const getColor = () => {
+  const colors = [
+    'blue',
+    'green',
+    'yellow',
+    'pink',
+    'purple',
+    'violet'
+  ]
+  const random = Math.floor(Math.random() * colors.length)
+  return colors[random]
+}
+
 export const MapQuotes = ({data}) => {
-  const getMarker = node => node.data.marker[0].text.replace(/className/gi, 'class')
   return (
     <QoutesWrapper>
       <svg
@@ -74,10 +59,16 @@ export const MapQuotes = ({data}) => {
         viewBox='0 0 609 514'
         >
         {data.map(({node}) =>{
-          return <g
+          return <Sector
             key={node.uid}
-            className='sector' dangerouslySetInnerHTML={{ __html: getMarker(node) }} />}
+            color={getColor()}
+            className='sector'
+            >
+              <use href={`#${node.uid}a`} className='shade' />
+              <use href={`#${node.uid}b`} />
+            </Sector>}
         )}
+        <SectorsDefs />
       </svg>
     </QoutesWrapper>
   )
@@ -91,9 +82,6 @@ export const query = graphql`
         text
       }
       quote {
-        text
-      }
-      marker {
         text
       }
       image {

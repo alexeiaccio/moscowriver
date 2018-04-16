@@ -36,15 +36,15 @@ class IndexPage extends React.Component {
     return (
       <main>
         <SectionOne id='one'>
-          {/* <IndexTitle data={node.data}/> */}
+          <IndexTitle data={node.data}/>
           <div style={{flex: '1 100%'}} >
-            {/* <WrappedMap />
-            <IndexCite data={node.data}/> */}
+            <WrappedMap />
+            <IndexCite data={node.data}/>
             <MapQuotes data={quotes} />
-            {/* <SeeVideoButton data={node.data} name='seevideo' /> */}
+            <SeeVideoButton data={node.data} name='seevideo' />
           </div>
         </SectionOne>
-        {/* <SectionTwo id='two'>
+        <SectionTwo id='two'>
           <RoundButtonBack to='#one' color={['colors', 'gray', 0]} />
           <Video data={node.data} />
           <RoundButtonForward to='#three' color={['colors', 'gray', 0]} text='Дальше' />
@@ -55,7 +55,7 @@ class IndexPage extends React.Component {
           <ButtonOrInput data={node.data} name='follow' />
         </SectionThree>
         <Header data={node.data} />
-        <Footer data={node.data} /> */}
+        <Footer data={node.data} />
       </main>
     )
   }

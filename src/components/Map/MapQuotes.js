@@ -37,17 +37,36 @@ const Sector = styled.g`
 `
 
 
-const getColor = () => {
-  const colors = [
-    'blue',
-    'green',
-    'yellow',
-    'pink',
-    'purple',
-    'violet'
-  ]
-  const random = Math.floor(Math.random() * colors.length)
-  return colors[random]
+const getColor = key => {
+  const colors = {
+    10: 'green',
+    20: 'violet',
+    30: 'purple',
+    40: 'pink',
+    50: 'green',
+    61: 'yellow',
+    62: 'purple',
+    70: 'violet',
+    80: 'pink',
+    90: 'purple',
+    100: 'violet',
+    110: 'yellow',
+    120: 'green',
+    130: 'yellow',
+    140: 'violet',
+    150: 'purple',
+    161: 'yellow',
+    162: 'pink',
+    170: 'pink',
+    181: 'green',
+    182: 'purple',
+    190: 'violet',
+    200: 'yellow',
+    220: 'purple',
+    230: 'pink',
+    240: 'yellow'
+  }
+  return colors[key]
 }
 
 export const MapQuotes = ({data}) => {
@@ -58,14 +77,14 @@ export const MapQuotes = ({data}) => {
         width='609' height='514'
         viewBox='0 0 609 514'
         >
-        {data.map(({node}) =>{
+        {data.map(({node: {uid}}) =>{
           return <Sector
-            key={node.uid}
-            color={getColor()}
+            key={uid}
+            color={getColor(uid)}
             className='sector'
             >
-              <use href={`#${node.uid}a`} className='shade' />
-              <use href={`#${node.uid}b`} />
+              <use href={`#${uid}a`} className='shade' />
+              <use href={`#${uid}b`} />
             </Sector>}
         )}
         <SectorsDefs />

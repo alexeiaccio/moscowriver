@@ -2,7 +2,7 @@ import React from 'react'
 import {
   Header,
   WavePattern,
-  WrappedMap,
+  Map,
   Video,
   WavedBack,
   Footer,
@@ -38,7 +38,7 @@ class IndexPage extends React.Component {
         <SectionOne id='one'>
           <IndexTitle data={node.data}/>
           <div style={{flex: '1 100%'}} >
-            <WrappedMap />
+            <Map />
             <IndexCite data={node.data}/>
             <MapQuotes data={quotes} />
             <SeeVideoButton data={node.data} name='seevideo' />

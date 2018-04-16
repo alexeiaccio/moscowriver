@@ -1,4 +1,10 @@
-export { MapWrapper } from './MapWrapper'
+export {
+  MapWrapper,
+  MapBlock,
+  QoutesWrapper,
+  Markers,
+  Sector,
+} from './StyledMap'
 export { WaveWrapper } from './StyledBack'
 export { CiteWrapper } from './StyledCite'
 export {

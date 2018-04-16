@@ -14,7 +14,7 @@ export {
   RoundButtonForward
 } from './Buttons/RoundButtons'
 
-export { WrappedMap } from './Map/WrappedMap'
+export { default as Map } from './Map/Map'
 export { MapQuotes } from './Map/MapQuotes'
 export { WavedBack } from './Backs/WavedBack'
 

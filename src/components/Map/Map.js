@@ -1,6 +1,6 @@
 import React from 'react'
 import GoogleMap from 'google-map-react'
-import MapStyles from './MapStyles'
+import mapStyles from './mapStyles'
 import { MapWrapper, MapBlock } from 'Styled'
 
 const API_KEY = process.env.GOOGLE_MAP_APY_KEY || 'AIzaSyAkA1UjP9WomYnEz-ge2K6dCM8UrOgM3h8'
@@ -9,7 +9,7 @@ const createMapOptions = maps => ({
     panControl: false,
     mapTypeControl: false,
     scrollwheel: false,
-    styles: MapStyles,
+    styles: mapStyles,
     disableDefaultUI: true
   })
 

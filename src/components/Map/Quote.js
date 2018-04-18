@@ -72,9 +72,19 @@ const QouteImageHeader = styled.div`
   }
 `
 
-const Button = styled.div`
+const Button = styled.a`
+  display: inline-block;
+  margin: 25px 25px 0;
   color: ${key('colors.white')};
+  font-weight: ${key('fontWeights.medium')};
+  padding: ${key(['space', 2])}px ${key(['space', 4])}px;
   background-color: ${({color}) => key('colors.' + color)};
+  text-decoration: none;
+  border-radius: ${key(['radii', 1])}px;
+  transition: all .2s ease-in-out;
+  &:hover {
+    color: ${key('colors.black')};
+  }
 `
 
 export default ({ data, color }) => {
@@ -96,10 +106,14 @@ export default ({ data, color }) => {
         <Quote>
         { getStringFromProps(data.quote) }
         </Quote>
-      { data.body.length > 0 &&
-        <Button color={color}>
-        { data.body[0].primary.link.uid || data.body[0].primary.placeholder }
-        </Button>
+      {data.body.length > 0 &&
+        (data.body[0].primary.link !== null ?
+          <Button color={color} href={`/${data.body[0].primary.link.uid}/`} target='_blank'>
+            Подробнее
+          </Button>
+        : <Button color='silver' disabled>
+          { data.body[0].primary.placeholder }
+          </Button>)
       }
       </QuoteWrapper>
     </Fragment>

@@ -19,6 +19,7 @@ const colors = {
   },
   black: '#000',
   white: '#FFF',
+  silver: '#5A5A5B',
   gray: [
     '#1D1D1B',
     '#5A5A5B',

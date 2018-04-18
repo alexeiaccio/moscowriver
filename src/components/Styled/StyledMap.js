@@ -69,7 +69,7 @@ export const Tooltip = styled.div`
   &::after {
     content: '';
     position: absolute;
-    left: calc(50% - 25px/2);  
+    left: calc(50% - 25px/2);
     top: 50px;
     width: ${key(['space', 5])}px;
     height: ${key(['space', 5])}px;
@@ -87,27 +87,24 @@ export const Arrow = styled.div`
   background-color: ${({color}) => key('colors.' + color)};
   box-shadow: 0px 4px 10px rgba(0,0,0,.25);
   &[data-placement*='top'] {
-    left: calc(50% - 25px/2);  
+    left: calc(50% - 25px/2);
     bottom: -45px;
   }
   &[data-placement*='bottom'] {
-    left: calc(50% - 25px/2);  
+    left: calc(50% - 25px/2);
     top: -45px;
   }
   &[data-placement*='left'] {
-    top: calc(50% - 25px/2);  
+    top: calc(50% - 25px/2);
     right: -45px;
   }
   &[data-placement*='right'] {
-    top: calc(50% - 25px/2);  
+    top: calc(50% - 25px/2);
     left: -45px;
   }
 `
 
 export const Popover = styled.div`
-  height: 250px;
-  width: 350px;
-  border: 10px solid ${({color}) => key('colors.' + color)};
   background-color: ${key('colors.white')};
   box-shadow: 0px 4px 10px rgba(0,0,0,.25);
 `

@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Manager, Reference, Popper } from 'react-popper'
 import { getSectorColor } from './getSectorColor'
+import Quote from './Quote'
 import {
   Tooltip,
   Sector,
@@ -38,22 +39,22 @@ class Quotes extends React.Component {
       <Manager>
         <Reference>
           {({ ref }) => (
-            <g 
+            <g
               ref={ref}
               onMouseEnter={this.handleMouseEnter}
-              onMouseLeave={this.handleMouseLeave} 
-              onMouseDown={this.handleMouseDown} 
+              onMouseLeave={this.handleMouseLeave}
+              onMouseDown={this.handleMouseDown}
               >
               <Sector
                 color={getSectorColor(uid)}
-                className={`sector ${this.state.click ? 'active' : ''}`}            
+                className={`sector ${this.state.click ? 'active' : ''}`}
                 >
                 <use href={`#${uid}a`} className='shade' />
                 <use href={`#${uid}b`} />
               </Sector>
             </g>
           )}
-        </Reference>      
+        </Reference>
         {this.state.hover && ReactDOM.createPortal(
           <Popper
             placement='top'
@@ -68,7 +69,7 @@ class Quotes extends React.Component {
               >
                 <Tooltip color={getSectorColor(uid)}>
                   {title}
-                </Tooltip>                
+                </Tooltip>
               </div>
             )}
           </Popper>,
@@ -86,14 +87,14 @@ class Quotes extends React.Component {
               onMouseEnter={this.handleMouseDown}
               onMouseLeave={this.handleMouseLeave}
               >
-                <Popover color={getSectorColor(uid)}>
-                  {title}
+                <Popover>
+                  <Quote data={data} color={getSectorColor(uid)} />
                 </Popover>
                 <Arrow
                   color={getSectorColor(uid)}
                   data-placement={placement}
                   style={arrowProps.style}
-                />             
+                />
               </div>
             )}
           </Popper>,

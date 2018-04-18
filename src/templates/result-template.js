@@ -7,7 +7,7 @@ import {
 } from 'Components'
 
 const ResultTemplate = ({ data }) => {
-  const node = data.allPrismicDocument.edges[0].node
+  const node = data.prismicDocument
   return (
     <div>
     <Title data={node.data} />
@@ -20,12 +20,22 @@ const ResultTemplate = ({ data }) => {
 export default ResultTemplate
 
 export const query = graphql`
-  query ResultTemplateQuery {
-    allPrismicDocument(filter: {type: {eq: "result"}}) {
-      edges {
-        node {
-          ...TitleFragment
-          ...ImageFragment
+  query ResultTemplateQuery($slug: String!) {
+    prismicDocument(uid: {eq: $slug}) {
+      data {
+        title {
+          text
+        }
+        image {
+          url
+        }
+        body {
+          slice_type
+          primary {
+            header {
+              text
+            }
+          }
         }
       }
     }

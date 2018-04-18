@@ -29,6 +29,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           createPage({
             path,
             component: ResultTemplate,
+            context: {
+              slug: path
+            }
           })
         })
       })

@@ -16,18 +16,14 @@ export default Index
 
 export const query = graphql`
   query IndexQuery {
-    homepage: allPrismicDocument(filter: {type: {eq: "homepage"}}) {
-      edges {
-        node {
-          ...TitleFragment
-          ...CiteFragment
-          ...VideoFragment
-          ...IndexDescriptionsFragment
-          ...IndexButtonsFragment
-          ...HeaderFragment
-          ...FooterFragment
-        }
-      }
+    homepage: prismicDocument(type: {eq: "homepage"}) {
+      ...TitleFragment
+      ...CiteFragment
+      ...VideoFragment
+      ...IndexDescriptionsFragment
+      ...IndexButtonsFragment
+      ...HeaderFragment
+      ...FooterFragment
     }
     quotes: allPrismicDocument(filter: {type: {eq: "quote"}}) {
       edges {

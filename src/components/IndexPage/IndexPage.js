@@ -31,11 +31,11 @@ class IndexPage extends React.Component {
   }
 
   render() {
-    const node = this.props.data.homepage.edges[0].node
+    const node = this.props.data.homepage
     const quotes = this.props.data.quotes.edges
 
     return (
-      <main>        
+      <main>
         <SectionOne id='one'>
           <IndexTitle data={node.data}/>
           <ContentWrapper>

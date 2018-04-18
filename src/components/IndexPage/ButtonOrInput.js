@@ -15,7 +15,7 @@ export class ButtonOrInput extends React.Component {
     }
   }
 
-  namedButtons = (name) => this.state.buttons.filter(item => item.primary.name[0].text === name)
+  namedButtons = (name) => this.state.buttons.filter(item => item.primary.buttonname === name)
 
   componentDidMount() {
     this.setState({
@@ -96,9 +96,7 @@ export const query = graphql`
       body {
         slice_type
         primary {
-          name {
-            text
-          }
+          buttonname
           image {
             url
           }

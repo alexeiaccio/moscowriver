@@ -3,7 +3,7 @@ import { RoundButtonWithGif } from 'Components'
 
 export const SeeVideoButton = ({data, name}) => {
   const buttons = data.body.filter(item => item.slice_type === 'button')
-  const namedButtons = (name) => buttons.filter(item => item.primary.name[0].text === name)
+  const namedButtons = (name) => buttons.filter(item => item.primary.buttonname === name)
   const text = namedButtons(name)[0].primary.text[0].text
 
   return <RoundButtonWithGif

@@ -31,6 +31,7 @@ export const QoutesWrapper = styled.div`
   flex: 1 100%;
   justify-content: center;
   align-items: flex-start;
+  background: rgba(255,255,255,0);
 `
 
 export const Markers = styled.svg`
@@ -66,6 +67,7 @@ export const Tooltip = styled.div`
   transform: translateY(-${key(['space', 3])}px);
   box-shadow: 0px 4px 10px rgba(0,0,0,.25);
   cursor: pointer;
+  z-index: 7000;
   &::after {
     content: '';
     position: absolute;
@@ -107,4 +109,5 @@ export const Arrow = styled.div`
 export const Popover = styled.div`
   background-color: ${key('colors.white')};
   box-shadow: 0px 4px 10px rgba(0,0,0,.25);
+  z-index: 8000;
 `

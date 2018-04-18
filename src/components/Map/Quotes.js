@@ -15,7 +15,7 @@ class Quotes extends React.Component {
     super(props)
     this.state = {
       hover: false,
-      click: false,
+      click: props.node.uid === '162' ? true : false,
     }
   }
 
@@ -24,11 +24,17 @@ class Quotes extends React.Component {
   }
 
   handleMouseLeave = () => {
-    this.setState({ hover: false, click: false })
+    this.setState({ hover: false })
   }
 
   handleMouseDown = () => {
     this.setState({ click: true, hover: false })
+  }
+
+  handleMouseOut = () => {
+    setTimeout(() =>
+      this.setState({ click: false })
+    , 800)
   }
 
   render() {
@@ -85,7 +91,7 @@ class Quotes extends React.Component {
             {({ placement, ref, style, arrowProps }) => (
               <div ref={ref} style={style} data-placement={placement}
               onMouseEnter={this.handleMouseDown}
-              onMouseLeave={this.handleMouseLeave}
+              onMouseLeave={this.handleMouseOut}
               >
                 <Popover>
                   <Quote data={data} color={getSectorColor(uid)} />

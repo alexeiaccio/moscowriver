@@ -26,7 +26,7 @@ class Map extends React.Component {
     return (
       <MapWrapper>
         <MapBlock>
-          <GoogleMap
+          {/* <GoogleMap
             bootstrapURLKeys={{
               key: API_KEY,
               language: 'ru',
@@ -34,7 +34,7 @@ class Map extends React.Component {
             }}
             options={createMapOptions}
             defaultCenter={this.props.center}
-            defaultZoom={this.props.zoom} />
+            defaultZoom={this.props.zoom} /> */}
         </MapBlock>
       </MapWrapper>
     )

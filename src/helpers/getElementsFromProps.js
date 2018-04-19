@@ -19,4 +19,4 @@ const render = x =>
   )
 
 // getElements:: [ String ] -> React DOM
-export const getElements = map(render)
+export const getElementsFromProps = map(render)

@@ -12,7 +12,9 @@ class MapQuotes extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      qoutes: Array(this.props.data.length).fill(false),
+      qoutes: Array(this.props.data.length)
+        .fill(false)
+        .map((x, i) => i === 3 ? x = true : x = false),
       tooltips: Array(this.props.data.length).fill(false),
       mount: false,
     }
@@ -23,6 +25,8 @@ class MapQuotes extends React.Component {
   }
 
   handleMouseDown(id) {
+    console.log(id)
+
     const qoutesClick =
       [...this.state.qoutes[id]]
         .map(qoute => qoute = true)

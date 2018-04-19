@@ -1,4 +1,5 @@
 export { default as getParagraphsFromProps } from './getParagraphsFromProps'
+export { getElements } from './getElements'
 export { default as getStringFromProps } from './getStringFromProps'
 export { default as getImageFromProp } from './getImageFromProp'
 export { default as getHtml } from './getHtml'

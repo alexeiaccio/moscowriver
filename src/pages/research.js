@@ -1,23 +1,19 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import { s4 } from 'Helpers'
+import map from 'crocks/pointfree/map'
+import { s4, getElements } from 'Helpers'
 
 const ResearchPage = ({ data }) => {
   const sections = data.allPrismicDocument.edges
+  const thisSection = name => sections.filter(x => x.node.uid === name)
+  const nextsteps = thisSection('nextsteps')[0].node.data.body
+  const timeline = thisSection('timeline')[0].node.data.body
+  //console.log(timeline[0].items[0].text)
+
   return (
     <div style={{fontSize: '16px'}}>
-      <ul>
-      {sections.map(({node: {uid,data}}) => (
-        <li key={s4()} >
-        <h2>{uid}</h2>
-        <p>{JSON.stringify(data.body[0].primary)}</p>
-        <ul>{data.body[0].items.map(({text}) => (
-          <li key={s4()} >{text === null ? 'null' : JSON.stringify(text) }</li>
-        ))}</ul>
-        </li>
-      ))}
-      </ul>
-      <Link to="/">Go back to the homepage</Link>
+      <div> {getElements(nextsteps[0].items[0].text)} </div>
+      <div> {map(map(getElements), map(({text}) => text))(timeline[0].items)} </div>
     </div>
   )
 }

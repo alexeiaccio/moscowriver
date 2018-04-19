@@ -11,21 +11,6 @@ import {
 } from 'Styled'
 
 class Quotes extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      hover: false,
-    }
-  }
-
-  handleMouseEnter = () => {
-    this.setState({ hover: true })
-  }
-
-  handleMouseLeave = () => {
-    this.setState({ hover: false })
-  }
-
   render() {
     const { node } = this.props
     const {uid, data} = node
@@ -36,13 +21,13 @@ class Quotes extends React.Component {
           {({ ref }) => (
             <g
               ref={ref}
-              onMouseEnter={this.handleMouseEnter}
-              onMouseLeave={this.handleMouseLeave}
-              onMouseDown={() => this.props.onMouseDown()}
+              onMouseEnter={() => this.props.onMouseEnter()}
+              onMouseLeave={() => this.props.onMouseLeave()}
+              onClick={() => this.props.onMouseDown()}
               >
               <Sector
                 color={getSectorColor(uid)}
-                className={`sector ${this.state.click ? 'active' : ''}`}
+                className={`sector ${this.props.isQuote ? 'active' : ''}`}
                 >
                 <use href={`#${uid}a`} className='shade' />
                 <use href={`#${uid}b`} />
@@ -50,7 +35,7 @@ class Quotes extends React.Component {
             </g>
           )}
         </Reference>
-        {this.state.hover && ReactDOM.createPortal(
+        {this.props.isTooltip && ReactDOM.createPortal(
           <Popper
             placement='top'
             modifiers={{ preventOverflow: { enabled: true } }}
@@ -59,8 +44,8 @@ class Quotes extends React.Component {
             >
             {({ placement, ref, style, arrowProps }) => (
               <div ref={ref} style={style} data-placement={placement}
-              onMouseEnter={this.handleMouseEnter}
-              onMouseLeave={this.handleMouseLeave}
+              onMouseEnter={() => this.props.onMouseEnter()}
+              onMouseLeave={() => this.props.onMouseLeave()}
               >
                 <Tooltip color={getSectorColor(uid)}>
                   {title}
@@ -79,8 +64,8 @@ class Quotes extends React.Component {
             >
             {({ placement, ref, style, arrowProps }) => (
               <div ref={ref} style={style} data-placement={placement}
-              onMouseEnter={() => this.props.onMouseEnter()}
-              onMouseLeave={() => this.props.onMouseLeave()}
+              //onMouseEnter={() => this.props.onMouseDown()}
+              //onMouseLeave={() => this.props.onMouseOut()}
               >
                 <Popover>
                   <Quote data={data} color={getSectorColor(uid)} />

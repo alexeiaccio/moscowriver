@@ -2,6 +2,7 @@ export {
   MapWrapper,
   MapBlock,
   QoutesWrapper,
+  QoutesBack,
   Markers,
   Sector,
   Tooltip,

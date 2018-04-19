@@ -4,6 +4,7 @@ import { getSectorColor } from './getSectorColor'
 import Quotes from './Quotes'
 import {
   QoutesWrapper,
+  QoutesBack,
   Markers,
 } from 'Styled'
 
@@ -12,6 +13,7 @@ class MapQuotes extends React.Component {
     super(props)
     this.state = {
       qoutes: Array(this.props.data.length).fill(false),
+      tooltips: Array(this.props.data.length).fill(false),
       mount: false,
     }
   }
@@ -19,7 +21,6 @@ class MapQuotes extends React.Component {
   componentDidMount() {
     this.setState({ mount: true })
   }
-
 
   handleMouseDown(id) {
     const qoutesClick =
@@ -36,15 +37,26 @@ class MapQuotes extends React.Component {
         .concat(qoutesClick)
         .concat(qoutesUnclickAfter)
     this.setState({ qoutes: newState })
+    const tooltipsLeave = this.state.tooltips
+    tooltipsLeave[id] = false
+    this.setState({ tooltips: tooltipsLeave })
   }
 
   handleMouseEnter(id) {
-    const qoutesEnter = this.state.qoutes
-    qoutesEnter[id] = true
-    this.setState({ qoutes: qoutesEnter })
+    if(!this.state.qoutes.some((x) => x === true)) {
+      const tooltipsEnter = this.state.tooltips
+      tooltipsEnter[id] = true
+      this.setState({ tooltips: tooltipsEnter })
+    }
   }
 
   handleMouseLeave(id) {
+    const tooltipsLeave = this.state.tooltips
+    tooltipsLeave[id] = false
+    this.setState({ tooltips: tooltipsLeave })
+  }
+
+  handleMouseOut(id) {
     const qoutesLeave = this.state.qoutes
     qoutesLeave[id] = false
     setTimeout(() =>
@@ -52,10 +64,23 @@ class MapQuotes extends React.Component {
     , 800)
   }
 
+  handleQuotesClose(e) {
+    if(e.target.tagName !== 'use') {
+      const qoutesLeave =
+        this.state.qoutes.slice()
+          .map(qoute => qoute = false)
+      this.setState({ qoutes: qoutesLeave })
+    }
+  }
+
   render() {
     const { data } = this.props
     return (
-      <QoutesWrapper id='index-qoutes-wrapper'>
+      <QoutesWrapper
+        id='index-qoutes-wrapper'
+        onClick={(e) => this.handleQuotesClose(e)}
+        >
+        <QoutesBack />
         <Markers
           xmlns='http://www.w3.org/2000/svg'
           width='609' height='514'
@@ -67,7 +92,9 @@ class MapQuotes extends React.Component {
               node={node}
               onMouseEnter={() => this.handleMouseEnter(id)}
               onMouseLeave={() => this.handleMouseLeave(id)}
+              onMouseOut={() => this.handleMouseOut(id)}
               onMouseDown={() => this.handleMouseDown(id)}
+              isTooltip={this.state.tooltips[id]}
               isQuote={this.state.qoutes[id]}
               />
           ))}

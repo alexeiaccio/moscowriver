@@ -31,7 +31,12 @@ export const QoutesWrapper = styled.div`
   flex: 1 100%;
   justify-content: center;
   align-items: flex-start;
-  background: rgba(255,255,255,0);
+`
+
+export const QoutesBack = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
 `
 
 export const Markers = styled.svg`

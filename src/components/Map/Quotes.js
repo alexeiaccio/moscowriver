@@ -15,7 +15,6 @@ class Quotes extends React.Component {
     super(props)
     this.state = {
       hover: false,
-      click: props.node.uid === '162' ? true : false,
     }
   }
 
@@ -25,16 +24,6 @@ class Quotes extends React.Component {
 
   handleMouseLeave = () => {
     this.setState({ hover: false })
-  }
-
-  handleMouseDown = () => {
-    this.setState({ click: true, hover: false })
-  }
-
-  handleMouseOut = () => {
-    setTimeout(() =>
-      this.setState({ click: false })
-    , 800)
   }
 
   render() {
@@ -49,7 +38,7 @@ class Quotes extends React.Component {
               ref={ref}
               onMouseEnter={this.handleMouseEnter}
               onMouseLeave={this.handleMouseLeave}
-              onMouseDown={this.handleMouseDown}
+              onMouseDown={() => this.props.onMouseDown()}
               >
               <Sector
                 color={getSectorColor(uid)}
@@ -81,7 +70,7 @@ class Quotes extends React.Component {
           </Popper>,
           document.querySelector('#index-qoutes-wrapper')
         )}
-        {this.state.click && ReactDOM.createPortal(
+        {this.props.isQuote && ReactDOM.createPortal(
           <Popper
             placement='auto'
             modifiers={{ preventOverflow: { enabled: true } }}
@@ -90,8 +79,8 @@ class Quotes extends React.Component {
             >
             {({ placement, ref, style, arrowProps }) => (
               <div ref={ref} style={style} data-placement={placement}
-              onMouseEnter={this.handleMouseDown}
-              onMouseLeave={this.handleMouseOut}
+              onMouseEnter={() => this.props.onMouseEnter()}
+              onMouseLeave={() => this.props.onMouseLeave()}
               >
                 <Popover>
                   <Quote data={data} color={getSectorColor(uid)} />

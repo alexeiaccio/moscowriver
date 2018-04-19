@@ -10,11 +10,48 @@ import {
 class MapQuotes extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { mount: false }
+    this.state = {
+      qoutes: Array(this.props.data.length).fill(false),
+      mount: false,
+    }
   }
+
   componentDidMount() {
     this.setState({ mount: true })
   }
+
+
+  handleMouseDown(id) {
+    const qoutesClick =
+      [...this.state.qoutes[id]]
+        .map(qoute => qoute = true)
+    const qoutesUnclickBefore =
+      this.state.qoutes.slice(0, id)
+        .map(qoute => qoute = false)
+    const qoutesUnclickAfter =
+      this.state.qoutes.slice(id + 1)
+        .map(qoute => qoute = false)
+    const newState =
+      qoutesUnclickBefore
+        .concat(qoutesClick)
+        .concat(qoutesUnclickAfter)
+    this.setState({ qoutes: newState })
+  }
+
+  handleMouseEnter(id) {
+    const qoutesEnter = this.state.qoutes
+    qoutesEnter[id] = true
+    this.setState({ qoutes: qoutesEnter })
+  }
+
+  handleMouseLeave(id) {
+    const qoutesLeave = this.state.qoutes
+    qoutesLeave[id] = false
+    setTimeout(() =>
+      this.setState({ qoutes: qoutesLeave })
+    , 800)
+  }
+
   render() {
     const { data } = this.props
     return (
@@ -24,8 +61,15 @@ class MapQuotes extends React.Component {
           width='609' height='514'
           viewBox='0 0 609 514'
           >
-          {this.state.mount && data.map(({node}) => (
-            <Quotes key={node.uid} node={node}/>
+          {this.state.mount && data.map(({node}, id) => (
+            <Quotes
+              key={node.uid}
+              node={node}
+              onMouseEnter={() => this.handleMouseEnter(id)}
+              onMouseLeave={() => this.handleMouseLeave(id)}
+              onMouseDown={() => this.handleMouseDown(id)}
+              isQuote={this.state.qoutes[id]}
+              />
           ))}
         <SectorsDefs />
         </Markers>

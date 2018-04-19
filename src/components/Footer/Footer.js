@@ -1,11 +1,11 @@
 import React from 'react'
 import {StyledFooter, Email, Logo, Row} from 'Styled'
-import { getImageFromProp, s4} from 'Helpers'
+import { getImageFromProps, s4} from 'Helpers'
 import patternWaves from '../../assets/PatternWaves.svg'
 
 export default ({data}) => {
   const email = data.email.url
-  const logos = getImageFromProp(data.logos)
+  const logos = getImageFromProps(data.logos)
 
   return (
     <StyledFooter>

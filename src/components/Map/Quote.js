@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 
 const QuoteWrapper = styled.div`
-  width: 450px;
+  width: 540px;
   padding: 35px;
   padding-top: ${({image}) => image ? '25px' : '35px'};
   font-size: ${key(['fontSizes', 5])}px;

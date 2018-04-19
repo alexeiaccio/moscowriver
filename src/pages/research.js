@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'gatsby-link'
 import map from 'crocks/pointfree/map'
-import { s4, getElements } from 'Helpers'
+import { s4, getElementsFromProps } from 'Helpers'
 
 const ResearchPage = ({ data }) => {
   const sections = data.allPrismicDocument.edges
@@ -12,8 +12,8 @@ const ResearchPage = ({ data }) => {
 
   return (
     <div style={{fontSize: '16px'}}>
-      <div> {getElements(nextsteps[0].items[0].text)} </div>
-      <div> {map(map(getElements), map(({text}) => text))(timeline[0].items)} </div>
+      <div> {getElementsFromProps(nextsteps[0].items[0].text)} </div>
+      <div> {map(map(getElementsFromProps), map(({text}) => text))(timeline[0].items)} </div>
     </div>
   )
 }

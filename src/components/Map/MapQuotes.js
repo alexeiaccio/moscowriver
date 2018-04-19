@@ -25,21 +25,8 @@ class MapQuotes extends React.Component {
   }
 
   handleMouseDown(id) {
-    console.log(id)
-
-    const qoutesClick =
-      [...this.state.qoutes[id]]
-        .map(qoute => qoute = true)
-    const qoutesUnclickBefore =
-      this.state.qoutes.slice(0, id)
-        .map(qoute => qoute = false)
-    const qoutesUnclickAfter =
-      this.state.qoutes.slice(id + 1)
-        .map(qoute => qoute = false)
-    const newState =
-      qoutesUnclickBefore
-        .concat(qoutesClick)
-        .concat(qoutesUnclickAfter)
+    const newState =this.state.qoutes
+      .map((x, i) => i === id ? x = true : x = false)
     this.setState({ qoutes: newState })
     const tooltipsLeave = this.state.tooltips
     tooltipsLeave[id] = false

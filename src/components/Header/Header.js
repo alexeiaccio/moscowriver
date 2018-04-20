@@ -3,11 +3,11 @@ import { HeaderWrapper, StyledLink, Row } from 'Styled'
 import { WavedBack, Title } from 'Components'
 import { default as HeaderTitle } from './HeaderTitle'
 
-export default ({data}) => (
+export default ({data, layout}) => (
   <HeaderWrapper>
     <WavedBack />
     <Row>
-      <HeaderTitle data={data} />
+      <HeaderTitle data={data}/>
       <StyledLink to='/research/'>Исследование</StyledLink>
       <StyledLink to='/shelepikhinskaya-naberezhnaya/'>Результаты</StyledLink>
     </Row>

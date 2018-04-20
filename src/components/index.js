@@ -19,3 +19,4 @@ export { default as MapQuotes } from './Map/MapQuotes'
 export { WavedBack } from './Backs/WavedBack'
 
 export { default as IndexPage } from './IndexPage/IndexPage'
+export { default as ResearchPage } from './ResearchPage/ResearchPage'

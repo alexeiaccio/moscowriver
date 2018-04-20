@@ -2,44 +2,39 @@ import React from 'react'
 import Link from 'gatsby-link'
 import map from 'crocks/pointfree/map'
 import { s4, getElementsFromProps } from 'Helpers'
+import { ResearchPage } from 'Components'
 
-const ResearchPage = ({ data }) => {
-  const sections = data.allPrismicDocument.edges
+const Research = ({ data }) => {
+  const sections = data.researchparts.edges
   const thisSection = name => sections.filter(x => x.node.uid === name)
   const nextsteps = thisSection('nextsteps')[0].node.data.body
   const timeline = thisSection('timeline')[0].node.data.body
-  //console.log(timeline[0].items[0].text)
 
   return (
-    <div style={{fontSize: '16px'}}>
-      <div> {getElementsFromProps(nextsteps[0].items[0].text)} </div>
-      <div> {map(map(getElementsFromProps), map(({text}) => text))(timeline[0].items)} </div>
-    </div>
+    <ResearchPage data={sections} />
   )
 }
+/* <div> {getElementsFromProps(nextsteps[0].items[0].text)} </div>
+<div> {map(map(getElementsFromProps), map(({text}) => text))(timeline[0].items)} </div> */
 
-export default ResearchPage
+export default Research
 
 export const query = graphql`
   query ResearchPageQuery {
-    allPrismicDocument(filter: {type: {eq: "researchparts"}}) {
+    researchparts: allPrismicDocument(filter: {type: {eq: "researchparts"}}) {
       edges {
         node {
+          ...ResearchHeaderFragment
+          ...ResearchCiteFragment
           uid
           data {
             body {
               primary {
-                title {
-                  text
-                }
                 header {
                   text
                 }
                 video {
                   embed_url
-                }
-                cite {
-                  text
                 }
                 description {
                   text

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import {
   Header,
   WavePattern,
@@ -25,16 +25,12 @@ import { IndexDescriptions } from './IndexDescriptions'
 import { ButtonOrInput } from './ButtonOrInput'
 import { SeeVideoButton } from './SeeVideoButton'
 
-class IndexPage extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+export default ({data}) => {
+  const node = data.homepage
+  const quotes = data.quotes.edges
 
-  render() {
-    const node = this.props.data.homepage
-    const quotes = this.props.data.quotes.edges
-
-    return (
+  return (
+    <Fragment>
       <main>
         <SectionOne id='one'>
           <IndexTitle data={node.data}/>
@@ -55,11 +51,9 @@ class IndexPage extends React.Component {
           <IndexDescriptions data={node.data} />
           <ButtonOrInput data={node.data} name='follow' />
         </SectionThree>
-        <Header data={node.data} />
-        <Footer data={node.data} />
       </main>
-    )
-  }
+      <Header data={node.data} />
+      <Footer data={node.data} />
+    </Fragment>
+  )
 }
-
-export default IndexPage

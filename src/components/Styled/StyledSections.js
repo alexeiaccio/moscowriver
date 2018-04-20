@@ -14,6 +14,8 @@ const Section = styled.section`
   overflow: hidden;
 `
 
+export { Section }
+
 export const SectionOne = styled(Section)`
   background-color: ${key(['colors', 'gray', 3])};
 `
@@ -61,8 +63,8 @@ const shiftBack = keyframes`
 `
 
 export const Column = styled.div`
+  padding: 0px ${key(['space', 5])}px;
   &:first-child {
-    padding-right: ${key(['space', 5])}px;
     &> a {
       left: -100px;
       &> span {
@@ -77,7 +79,6 @@ export const Column = styled.div`
     }
   }
   &:last-child {
-    padding-left: ${key(['space', 5])}px;
     &> a {
       right: -100px;
       &> span {

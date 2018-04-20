@@ -8,5 +8,6 @@ export {
   getValue,
   getHead,
   getString,
-  getStringFirst
+  getStringFirst,
+  findSection
 } from './maybe'

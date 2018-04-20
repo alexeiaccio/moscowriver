@@ -7,6 +7,7 @@ const H1 = styled.h1`
   ${color}
   ${fontSize}
   ${lineHeight}
+  z-index: 1;
 `
 
 export default ({

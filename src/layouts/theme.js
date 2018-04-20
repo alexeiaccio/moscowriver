@@ -77,8 +77,8 @@ const fonts = {
 }
 
 const sizes = {
-  minWidth: '1100px',
-  width: '960px'
+  minWidth: '1200px',
+  width: '1040px'
 }
 
 const theme = {

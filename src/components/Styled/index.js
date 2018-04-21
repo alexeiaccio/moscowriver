@@ -21,6 +21,7 @@ export {
   TitleWrapper,
   HeaderWrapper,
   H3,
+  H2,
   StyledLink,
   Row,
 } from './StyledTitle'

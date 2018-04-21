@@ -10,13 +10,13 @@ const Section = styled.section`
   position: relative;
   width: 100%;
   min-width: ${key('sizes.minWidth')};
-  height: 100vh;
   overflow: hidden;
 `
 
 export { Section }
 
 export const SectionOne = styled(Section)`
+  height: 100vh;
   background-color: ${key(['colors', 'gray', 3])};
 `
 
@@ -26,6 +26,7 @@ export const ContentWrapper = styled.div`
 `
 
 export const SectionTwo = styled(Section)`
+  height: 100vh;
   justify-content: center;
   align-items: center;
   background-color: ${key(['colors', 'gray', 0])};

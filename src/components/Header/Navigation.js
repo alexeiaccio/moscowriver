@@ -10,7 +10,7 @@ const Navigation = styled.nav`
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: ${key(['space', 9])}px 0 ${key(['space', 5])}px;
+  padding: ${key(['space', 5])}px 0;
   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
 `
 

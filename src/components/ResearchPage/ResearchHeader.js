@@ -1,11 +1,33 @@
 import React from 'react'
-import { TitleWrapper, WaveWrapper, StyledLink, Row } from 'Styled'
+import { key } from 'styled-theme'
+import { BaseWrapper, WaveWrapper, StyledLink, Row } from 'Styled'
 import { WavePattern, Title } from 'Components'
 
-const Header = TitleWrapper.extend`
+const Header = BaseWrapper.extend`
   height: 100px;
   align-items: flex-start;
   padding-top: 20px;
+  & h1{
+    position: relative;
+    display: inline-flex;
+    z-index: 2000;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: calc(${key(['fontSizes', 0])}px * .18);
+      display: flex;
+      width: 100%;
+      height: calc(${key(['fontSizes', 0])}px * .24);
+      background-color: ${key('colors.black')};
+      transition: background-color .4s ease-in-out;
+      z-index: -1;
+    }
+  }
+  &:hover {
+    & h1::before {
+      background-color: ${key('colors.bright.blue')};
+    }
+  }
 `
 
 const Back = WaveWrapper.extend`
@@ -19,7 +41,7 @@ export default ({data, layout}) => (
     </Back>
     <Row>
       <StyledLink to='/'>На главную</StyledLink>
-      <Title color='white' fontSize={1} lineHeight='40px' data={data}/>
+      <Title color='white' fontSize={1} lineHeight={1} data={data}/>
       <StyledLink to='/shelepikhinskaya-naberezhnaya/'>Результаты</StyledLink>
     </Row>
   </Header>

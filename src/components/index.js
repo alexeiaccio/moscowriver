@@ -1,5 +1,6 @@
 export { default as Title } from './Title/Title'
 export { default as Header } from './Header/Header'
+export { default as Navigation } from './Header/Navigation'
 export { default as Footer } from './Footer/Footer'
 export { default as Cite } from './Cite/Cite'
 export { default as Image } from './Image/Image'

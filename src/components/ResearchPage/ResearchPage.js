@@ -26,8 +26,8 @@ const SectionOne = Section.extend`
   justify-content:  space-between;
   align-items: center;
   height: calc(100vh - 120px);
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAA0SURBVHgBTYyBCQAgEAKtFmuzr8ka7ZPSSDgEFRuAJIV0sQiGiucVV5OEHA7jK85XeuHBBmGQCsVtBlV2AAAAAElFTkSuQmCC) repeat, ${({image}) => 'url(' + image + ')'} no-repeat ${key('colors.black')};
-  background-size: 5px 5px, auto 105vh;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAzSURBVHgBpYxRDgAgCEKfq4N1s/Lkpc0P/dYNYcAQ4FBv+xPDNWgyvx4RurFSgRms/akHyzsJj/3feW8AAAAASUVORK5CYII=) repeat, ${({image}) => 'url(' + image + ')'} no-repeat ${key('colors.black')};
+  background-size: 6px 6px, auto 105vh;
 `
 
 export default ({data}) => {

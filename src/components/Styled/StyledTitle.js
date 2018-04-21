@@ -104,7 +104,6 @@ const HeaderWrapper = BaseWrapper.extend`
 
 const Row = styled.div`
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
   margin: 0 auto;

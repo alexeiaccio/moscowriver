@@ -39,6 +39,7 @@ const SectionOne = Section.extend`
 `
 
 const SectionRow = Row.extend`
+  flex-wrap: wrap;
   justify-content: center;
 `
 
@@ -126,9 +127,9 @@ export default ({data}) => {
                 { getParagraphsFromProps(paragraph.text) }
                 </SectionColumn>
               : <SectionColumn key={s4()}>
-                  <Link to={contextUrl(paragraph.text)} target='_blank'>
+                  <a href={contextUrl(paragraph.text)} target='_blank'>
                   { getParagraphsFromProps(paragraph.text) }
-                  </Link>
+                  </a>
                   <RoundButtonWithImage to={contextUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
                 </SectionColumn>
             )}            

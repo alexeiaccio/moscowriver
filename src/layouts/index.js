@@ -12,6 +12,7 @@ const TemplateWrapper = ({ children }) => (
       meta={[
         { name: 'description', content: 'Исследование «390 взглядов на Москву-реку»' },
         { name: 'keywords', content: 'Москва, река' },
+        { name: 'robots', content: 'all' }
       ]}
       />
     {baseStyles()}

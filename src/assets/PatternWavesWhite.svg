@@ -1,0 +1,27 @@
+<svg width="225" height="307" viewBox="0 0 225 307" xmlns="http://www.w3.org/2000/svg" style="display: inline-block;">
+  <style>
+    .classA {
+      fill: #FFFFFF;
+    }
+  </style>
+  <g id="Canvas">
+    <g id="WavePattern">
+      <use href="#path0_stroke" class="classA" style="transform: translateY(1px);"></use>
+      <use href="#path0_stroke" class="classA" style="transform: translateY(21px);"></use>
+      <use href="#path0_stroke" class="classA" style="transform: translateY(41px);"></use>
+      <use href="#path0_stroke" class="classA" style="transform: translateY(61px);"></use>
+      <use href="#path0_stroke" class="classA" style="transform: translateY(81px);"></use>
+      <use href="#path0_stroke" class="classA" style="transform: translateY(101px);"></use>
+      <use href="#path0_stroke" class="classA" style="transform: translateY(121px);"></use>
+      <use href="#path0_stroke" class="classA" style="transform: translateY(141px);"></use>
+      <use href="#path0_stroke" class="classA" style="transform: translateY(161px);"></use>
+      <use href="#path0_stroke" class="classA" style="transform: translateY(181px);"></use>
+      <use href="#path0_stroke" class="classA" style="transform: translateY(201px);"></use>
+      <use href="#path0_stroke" class="classA" style="transform: translateY(221px);"></use>
+      <use href="#path0_stroke" class="classA" style="transform: translateY(241px);"></use>
+    </g>
+  </g>
+  <defs>
+    <path id="path0_stroke" d="M 168.279 31.7203L 168.718 31.4818L 168.714 31.4729L 168.708 31.4642L 168.279 31.7203ZM 56.721 31.7203L 56.2916 31.4642L 56.2863 31.4729L 56.2815 31.4818L 56.721 31.7203ZM 112.5 0.5C 136.024 0.5 156.604 13.1235 167.85 31.9764L 168.708 31.4642C 157.29 12.3216 136.391 -0.5 112.5 -0.5L 112.5 0.5ZM 225 64.5C 200.535 64.5 179.626 51.58 168.718 31.4818L 167.84 31.9588C 178.922 52.3792 200.168 65.5 225 65.5L 225 64.5ZM 112.5 -0.5C 88.609 -0.5 67.7099 12.3216 56.2916 31.4642L 57.1504 31.9764C 68.396 13.1235 88.976 0.5 112.5 0.5L 112.5 -0.5ZM 0 65.5C 24.832 65.5 46.0782 52.3792 57.1604 31.9588L 56.2815 31.4818C 45.3742 51.58 24.4652 64.5 0 64.5L 0 65.5Z"></path>
+  </defs>
+</svg>

@@ -5,6 +5,7 @@ import { key } from 'styled-theme'
 import { DescriptionWrapper, Column, Row } from 'Styled'
 import { RoundButtonWithImage } from 'Components'
 import { s4, getParagraphsFromProps } from 'Helpers'
+import { log } from 'util';
 
 const StyledLink = styled(Link)`
   color: ${key('colors.text')};
@@ -16,6 +17,7 @@ export const IndexDescriptions = ({data}) => {
 
   return (
   <DescriptionWrapper>
+    {console.log(paragraphs)}
     <Row>
     {paragraphs.map(({primary}) =>{
       let to = primary.text[0].spans[0].data.url || '/' + primary.text[0].spans[0].data.uid

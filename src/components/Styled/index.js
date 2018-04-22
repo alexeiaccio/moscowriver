@@ -17,9 +17,11 @@ export {
   Logo,
 } from './StyledFooter'
 export {
+  BaseWrapper,
   TitleWrapper,
   HeaderWrapper,
   H3,
+  H2,
   StyledLink,
   Row,
 } from './StyledTitle'

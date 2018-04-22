@@ -76,6 +76,26 @@ const H3 = StyledLink.extend`
   }
 `
 
+const H2 = styled.h2`
+  position: relative;
+  display: inline-flex;
+  font-family: ${key('fonts.headers')};
+  font-size: ${key(['fontSizes', 1])}px;
+  font-weight: ${key('fontWeights.normal')};
+  color: ${({color}) => key('colors.' + color)};
+  z-index: 5;
+  &::after {
+    content: '';
+    position: absolute;
+    display: inline-flex;
+    width: 100%;
+    bottom: calc(${key(['fontSizes', 1])}px * .18);
+    height: calc(${key(['fontSizes', 1])}px * .45);
+    background-color: ${({shade}) => key('colors.' + shade)};
+    z-index: -1;
+  }
+`
+
 const HeaderWrapper = BaseWrapper.extend`
   display: flex;
   justify-content: center;
@@ -85,7 +105,6 @@ const HeaderWrapper = BaseWrapper.extend`
 
 const Row = styled.div`
   display: flex;
-  flex: wrap;
   justify-content: space-between;
   align-items: baseline;
   margin: 0 auto;
@@ -98,6 +117,7 @@ export {
   TitleWrapper,
   HeaderWrapper,
   H3,
+  H2,
   StyledLink,
   Row
 }

@@ -27,6 +27,7 @@ import {
 } from 'Helpers'
 import patternWaves from '../../assets/PatternWavesWhite.svg'
 import IconEye from '../../assets/IconEye.svg'
+import SmallWave from '../../assets/SmallWave.svg'
 
 import { default as Header } from './ResearchHeader'
 import { default as Cite } from './ResearchCite'
@@ -122,7 +123,75 @@ const SectionRiverColumn =  Column.extend`
       display: flex;
       max-width: 30%;
       padding: 0 ${key(['space', 3])}px 0 ${key(['space', 10])}px;
-      background:  url(${IconEye}) 0px 10px no-repeat;
+      background:  url(${IconEye}) 10px 10px no-repeat;
+    }
+  }
+`
+
+const Image = styled.div`
+  width:  450px;
+  height: 275px;
+  background: ${({url}) => 'url(' + url + ') center no-repeat'};
+  background-size:  cover;
+`
+
+const SectionGeoColumn =  Column.extend`
+  position: relative;
+  color: ${key('colors.text')};
+  padding-bottom: ${key(['space', 9])}px;
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  max-width: 100%;
+  & h3 { 
+    color: ${key('colors.blue')};
+    margin-bottom: ${key(['space', 3])}px;
+    font-size: ${key(['fontSizes', 1])}px;
+    line-height: ${key(['lineHeights', 1])};
+  }
+  & h4 { 
+    margin-bottom: ${key(['space', 3])}px;
+    font-size: ${key(['fontSizes', 2])}px;
+    line-height: ${key(['lineHeights', 2])};
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 15px;
+      right: 0px;
+      height: 10px;
+      width: 75px;
+      background: url(${SmallWave}) repeat-x;
+      background-size: auto 8px;
+      background-position: 0% 50%;
+    }
+  }
+  & .img {
+    top: ${key(['space', 9])}px;
+  }
+  &:first-of-type {
+    max-width: 720px;
+    padding-bottom: ${key(['space', 9])}px;
+    font-weight: ${key('fontWeights.medium')};
+  }
+  &:nth-of-type(2n)  {
+    & p {
+      float: right;
+      max-width: 45%;
+    }
+    & h4 {
+      padding-left: 55%;
+    }
+    & .img {
+      float: left;
+    }
+  }
+  &:nth-of-type(2n+3) {
+    & p {
+      float: left;
+      max-width: 45%;
+    }
+    & .img {
+      float: right;
     }
   }
 `
@@ -133,6 +202,10 @@ const SectionRiver = Section.extend`
   background-image: url(${patternWaves});
   background-repeat: repeat-x;
   background-position-y: calc(100% + 225px);
+`
+
+const SectionGeo = Section.extend`
+  padding: ${key(['space', 10])}px 0 ;
 `
 
 export default ({data}) => {
@@ -166,6 +239,7 @@ export default ({data}) => {
   const contextParagraphs = sections('context').chain(body).chain(head).chain(items).option([])
   const contextUrl = text => head(text).chain(url).option('/')
   const riverParagraphs = sections('river').chain(body).chain(head).chain(items).option([])
+  const geoParagraphs = sections('geography').chain(body).chain(head).chain(items).option([])
     
   console.log(
   )
@@ -198,7 +272,7 @@ export default ({data}) => {
             )}            
           </SectionRow>
         </SectionContext>
-        <SectionRiver>
+        <SectionRiver id={sectionsId('river')} >
           <Row>
             <SectionHeader color='text' shade='white' >
             { getStringFromProps(sectionsHeader('river')) }
@@ -212,6 +286,23 @@ export default ({data}) => {
             )}
           </SectionRiverRow>
         </SectionRiver>
+        <SectionGeo id={sectionsId('geography')}>
+          <Row>
+            <SectionHeader color='text' shade='bright.blue' >
+            { getStringFromProps(sectionsHeader('geography')) }
+            </SectionHeader>
+          </Row>
+          <SectionRow>
+          {geoParagraphs.map(paragraph  => 
+            <SectionGeoColumn key={s4()}>
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+              {(paragraph.image.url !== null) && 
+                <Image className='img' url={paragraph.image.url} />
+              }
+            </SectionGeoColumn>
+          )}
+          </SectionRow>
+        </SectionGeo>
         <div>
         { JSON.stringify(data) }
         </div>

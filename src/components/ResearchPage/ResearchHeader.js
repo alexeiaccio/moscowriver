@@ -31,12 +31,12 @@ const Header = BaseWrapper.extend`
 `
 
 const Back = WaveWrapper.extend`
-  transform: translateY(-140px);
+  transform: ${({move}) => 'translateY(' + move + 'px)'};
 `
 
-export default ({data, layout}) => (
+export default ({data, layout, move}) => (
   <Header>
-    <Back>
+    <Back move={move} >
       <WavePattern />
     </Back>
     <Row>

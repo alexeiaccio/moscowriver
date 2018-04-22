@@ -31,7 +31,7 @@ import SmallWave from '../../assets/SmallWave.svg'
 import Timeline from '../../assets/Timeline.svg'
 
 import { default as Header } from './ResearchHeader'
-import { default as Cite } from './ResearchCite'
+import { HeadCite, FootCite } from './ResearchCite'
 import { default as Description } from './ResearchDescription'
 
 const SectionOne = Section.extend`
@@ -291,6 +291,48 @@ const SectionGeoColumn =  Column.extend`
   }
 `
 
+const SectionCommandColumn =  Column.extend`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: ${key(['space', 9])}px;
+  color: ${key('colors.text')};
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  & h3 { 
+    margin-bottom: ${key(['space', 5])}px;
+    color: ${key('colors.text')};
+    font-size: ${key(['fontSizes', 2])}px;
+    line-height: ${key(['lineHeights', 2])};
+    text-align: center;
+  }
+  & figure {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  & .img {
+    height: 125px;
+    width: 125px;
+    margin-bottom: ${key(['space', 5])}px;
+    border-radius: 50%;
+    background-color: ${key('colors.silver')};
+  }
+  & span {
+    margin-bottom: ${key(['space', 2])}px;
+  }
+  &:nth-of-type(1) {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  &:nth-of-type(n+2) {
+    width: 25%;
+  }
+`
+
 const SectionTimelineColumn =  Column.extend`
   position: relative;
   color: ${key('colors.text')};
@@ -393,12 +435,25 @@ const SectionBlue = Section.extend`
 `
 
 const SectionGeo = Section.extend`
-  padding: ${key(['space', 10])}px 0;
+  padding: ${key(['space', 10])}px 0 ${key(['space', 5])}px;
 `
 
 const SectionTimeline = Section.extend`
-  padding: 0 0 ${key(['space', 10])}px 0;
+  padding: ${key(['space', 5])}px 0 ${key(['space', 10])}px 0;
   background: url(${Timeline}) center 85px no-repeat; 
+`
+
+const SectionCommand = Section.extend`
+  padding: ${key(['space', 10])}px 0;
+`
+
+const FootGradient = styled.nav`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150px;
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
 `
 
 export default ({data}) => {
@@ -421,7 +476,9 @@ export default ({data}) => {
 
   const pageTitle = sections('research').chain(body).chain(head).chain(title).option([])
   const pageCite = sections('research').chain(body).chain(head).chain(cite).option([])
+  const footCite = sections('foot').chain(body).chain(head).chain(cite).option([])
   const pageDescription = sections('research').chain(body).chain(head).chain(description).option([])
+  const footDescription = sections('foot').chain(body).chain(head).chain(description).option([])
   const pageBackImg = sections('research').chain(body).chain(second).chain(items).chain(head).chain(image).option([])
   const pageAnchors = data.map(edge => assoc('uid', uid(edge).option({}))({}))
   const pageHeaders = data.map(edge => body(edge).chain(head).chain(header).chain(head).option({}))
@@ -438,17 +495,18 @@ export default ({data}) => {
   const nextstepsParagraphs = sections('nextsteps').chain(body).chain(head).chain(items).option([])
   const projectmoscowParagraphs = sections('projectmoscow').chain(body).chain(head).chain(items).option([])
   const orchestraParagraphs = sections('orchestra').chain(body).chain(head).chain(items).option([])
+  const commandParagraphs = sections('command').chain(body).chain(head).chain(items).option([])
     
   console.log(
   )
 
   return (
     <Fragment>
-      <Header data={{title: pageTitle}} />
+      <Header data={{title: pageTitle}} move={-140} />
       <main>
         <SectionOne image={pageBackImg} >
-          <Cite color='blue' fontSize={1} data={{cite: pageCite}} />
-          <Description data={{ description: getParagraphsFromProps(pageDescription) }} />
+          <HeadCite color='blue' fontSize={1} data={{cite: pageCite}} />
+          <Description width={640} size={3} data={{ description: getParagraphsFromProps(pageDescription) }} />
           <Navigation data={ sort([4, 5, 3, 1, 2, 7, 6, 0], pageNav) } />
         </SectionOne>
         <SectionContext id={sectionsId('context')} >
@@ -557,7 +615,6 @@ export default ({data}) => {
           <SectionOrchestraRow>
           {orchestraParagraphs.map(paragraph  => 
             <SectionOrchestraColumn key={s4()}>
-              {console.log(paragraph.image.url)}
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
               {(paragraph.image.url !== null) && 
                 <Image className='img' url={paragraph.image.url} />
@@ -566,10 +623,31 @@ export default ({data}) => {
           )}
           </SectionOrchestraRow>
         </SectionGeo>
-        <div>
-        { JSON.stringify(data) }
-        </div>
+        <SectionCommand id={sectionsId('command')} >
+          <SectionRow>
+            <SectionHeader color='text' shade='bright.blue' >{ getStringFromProps(sectionsHeader('command')) }</SectionHeader>
+          </SectionRow>
+          <SectionRow>
+          {commandParagraphs.map(paragraph  => 
+            <SectionCommandColumn key={s4()}>
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+              {(paragraph.image.url !== null) && 
+                <figure>
+                  <Image className='img' url={paragraph.image.url} />
+                  <figcaption>{text(paragraph.textimage).option('')}</figcaption>
+                </figure>
+              }
+            </SectionCommandColumn>
+          )}           
+          </SectionRow>
+        </SectionCommand>
+        <SectionOne image={pageBackImg} >
+          <FootCite color='blue' fontSize={1} data={{cite: footCite}} />
+          <Description width={1040} size={4} data={{ description: getParagraphsFromProps(footDescription) }} />
+          <FootGradient />
+        </SectionOne>
       </main>
+      <Header data={{title: pageTitle}} move={50} />
     </Fragment>
   )
 }

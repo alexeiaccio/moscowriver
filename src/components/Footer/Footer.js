@@ -17,7 +17,7 @@ export default ({data}) => {
         <Logo key={s4()} src={logo.option(patternWaves)}/>
       )}
       </Row>
-      <Copyright color='white' >Разработка&ensp;<Accio color='white' /></Copyright>
+      <Copyright color='white' >Разработка&ensp;<Accio href='https://www.accio.pro/' target='_blank' color='white' /></Copyright>
     </StyledFooter>
   )
 }

@@ -8,7 +8,7 @@ const getElementsType = el => prismicElements[el]
 const render = ({text, type}) => 
 React.createElement(
   getElementsType(type),
-  Object.assign({}, { key: s4() }),
+  Object.assign({}, { key: s4(), className: `${type}` }),
   text
 )
 

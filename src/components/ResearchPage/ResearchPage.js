@@ -62,6 +62,11 @@ const SectionTimelineRow = Row.extend`
   width: 1070px;
 `
 
+const SectionNextRow = Row.extend`
+  flex-wrap: wrap;
+  width: 720px;
+`
+
 const SectionContext = Section.extend`
   padding: ${key(['space', 12])}px 0 ${key(['space', 14])}px;
 `
@@ -90,6 +95,16 @@ const SectionColumn =  Column.extend`
   }
 `
 
+const SectionNextColumn =  Column.extend`
+  color: ${key('colors.white')};
+  padding: 0 ${key(['space', 3])}px 0;
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  & p {
+    margin-bottom: ${key(['space', 9])}px;
+  }
+`
+
 const SectionRiverColumn =  Column.extend`
   color: ${key('colors.white')};
   padding-bottom: ${key(['space', 5])}px;
@@ -110,6 +125,14 @@ const SectionRiverColumn =  Column.extend`
   }
   & p {
     margin-bottom: ${key(['space', 5])}px;
+  }
+  &:nth-of-type(2) span {
+    display: inline-block;
+    padding-left: ${key(['space', 4])}px;
+    text-indent: -${key(['space', 4])}px;
+    &::before {
+      content: '— ';
+    }
   }
   &:nth-of-type(4) {
     padding-top: ${key(['space', 8])}px;
@@ -207,7 +230,6 @@ const SectionGeoColumn =  Column.extend`
 const SectionTimelineColumn =  Column.extend`
   position: relative;
   color: ${key('colors.text')};
-  padding-bottom: ${key(['space', 9])}px;
   font-size: ${key(['fontSizes', 5])}px;
   line-height: ${key(['lineHeights', 4])};
   max-width: 100%;
@@ -241,6 +263,7 @@ const SectionTimelineColumn =  Column.extend`
     }
   }
   &:nth-of-type(2) {
+      margin-top: 50px;
     &> * {
       max-width: 35%;
     }
@@ -271,8 +294,8 @@ const SectionTimelineColumn =  Column.extend`
   &:nth-of-type(3) {
     max-width: 720px;
     & h3 {
-      margin-top: 55px;
-      margin-bottom: 25px;
+      margin-top: 100px;
+      margin-bottom:35px;
       position: relative;
       display: inline-flex;
       font-family: ${key('fonts.headers')};
@@ -297,7 +320,7 @@ const SectionTimelineColumn =  Column.extend`
   }
 `
 
-const SectionRiver = Section.extend`
+const SectionBlue = Section.extend`
   padding: ${key(['space', 10])}px 0 ${key(['space', 12])}px;
   background-color: ${key('colors.blue')};
   background-image: url(${patternWaves});
@@ -347,6 +370,7 @@ export default ({data}) => {
   const riverParagraphs = sections('river').chain(body).chain(head).chain(items).option([])
   const geoParagraphs = sections('geography').chain(body).chain(head).chain(items).option([])
   const timelineParagraphs = sections('timeline').chain(body).chain(head).chain(items).option([])
+  const nextstepsParagraphs = sections('nextsteps').chain(body).chain(head).chain(items).option([])
     
   console.log(
   )
@@ -379,7 +403,7 @@ export default ({data}) => {
             )}            
           </SectionRow>
         </SectionContext>
-        <SectionRiver id={sectionsId('river')} >
+        <SectionBlue id={sectionsId('river')} >
           <Row>
             <SectionHeader color='text' shade='white' >
             { getStringFromProps(sectionsHeader('river')) }
@@ -392,7 +416,7 @@ export default ({data}) => {
              </SectionRiverColumn>
             )}
           </SectionRiverRow>
-        </SectionRiver>
+        </SectionBlue>
         <SectionGeo id={sectionsId('geography')}>
           <Row>
             <SectionHeader color='text' shade='bright.blue' >
@@ -424,6 +448,20 @@ export default ({data}) => {
           )}
           </SectionTimelineRow>
         </SectionTimeline>
+        <SectionBlue id={sectionsId('nextsteps')} >
+          <SectionNextRow>
+            <SectionHeader color='text' shade='white' >
+            { getStringFromProps(sectionsHeader('nextsteps')) }
+            </SectionHeader>
+          </SectionNextRow>
+          <SectionNextRow>
+          {nextstepsParagraphs.map(paragraph => 
+            <SectionNextColumn key={s4()}>
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+            </SectionNextColumn>
+          )}
+          </SectionNextRow>
+        </SectionBlue>
         <div>
         { JSON.stringify(data) }
         </div>

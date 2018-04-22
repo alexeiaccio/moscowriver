@@ -1,5 +1,5 @@
 import React from 'react'
-import {StyledFooter, Email, Logo, Row} from 'Styled'
+import {StyledFooter, Email, Logo, Row, Copyright, Accio} from 'Styled'
 import { getImageFromProps, s4} from 'Helpers'
 import patternWaves from '../../assets/PatternWaves.svg'
 
@@ -17,6 +17,7 @@ export default ({data}) => {
         <Logo key={s4()} src={logo.option(patternWaves)}/>
       )}
       </Row>
+      <Copyright color='white' >Разработка&ensp;<Accio color='white' /></Copyright>
     </StyledFooter>
   )
 }

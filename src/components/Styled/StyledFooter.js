@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { key } from 'styled-theme'
 import patternWaves from '../../assets/PatternWaves.svg'
+import AccioWhite from '../../assets/AccioWhite.svg'
+import AccioLogo from '../../assets/Accio.svg'
 
 export const StyledFooter = styled.footer`
   padding: ${key(['space', 9])}px;
@@ -31,4 +33,22 @@ export const Logo = styled.img`
   height: 42px;
   width: auto;
   padding-top: ${key(['space', 9])}px;
+`
+
+export const Copyright = styled.div`
+  margin-top: ${key(['space', 7])}px;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  color: ${({color}) => key('colors.' + color)};
+  font-size: ${key(['fontSizes', 6])}px;
+`
+
+export const Accio = styled.span`
+  display: inline-block;
+  height: 43px;
+  width: 131px;
+  background-image: url(${({color}) => color === 'white' ? AccioWhite : AccioLogo});
+  background-repeat: repeat;
+  background-position: center;
 `

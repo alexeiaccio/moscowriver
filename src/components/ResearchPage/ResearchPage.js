@@ -13,6 +13,8 @@ import {
   H2,
   Row,
   Column,
+  Copyright, 
+  Accio
 } from 'Styled'
 import { 
   Navigation,
@@ -640,6 +642,7 @@ export default ({data}) => {
             </SectionCommandColumn>
           )}           
           </SectionRow>
+          <Copyright color='text' >Разработка сайта&ensp;<Accio color='black' /></Copyright>
         </SectionCommand>
         <SectionOne image={pageBackImg} >
           <FootCite color='blue' fontSize={1} data={{cite: footCite}} />

@@ -17,7 +17,6 @@ export const IndexDescriptions = ({data}) => {
 
   return (
   <DescriptionWrapper>
-    {console.log(paragraphs)}
     <Row>
     {paragraphs.map(({primary}) =>{
       let to = primary.text[0].spans[0].data.url || '/' + primary.text[0].spans[0].data.uid

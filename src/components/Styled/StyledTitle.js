@@ -82,6 +82,7 @@ const H2 = styled.h2`
   font-family: ${key('fonts.headers')};
   font-size: ${key(['fontSizes', 1])}px;
   font-weight: ${key('fontWeights.normal')};
+  color: ${({color}) => key('colors.' + color)};
   z-index: 5;
   &::after {
     content: '';
@@ -90,7 +91,7 @@ const H2 = styled.h2`
     width: 100%;
     bottom: calc(${key(['fontSizes', 1])}px * .18);
     height: calc(${key(['fontSizes', 1])}px * .45);
-    background-color: ${({color}) => key('colors.' + color)};
+    background-color: ${({shade}) => key('colors.' + shade)};
     z-index: -1;
   }
 `

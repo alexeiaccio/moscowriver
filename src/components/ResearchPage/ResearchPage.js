@@ -25,6 +25,8 @@ import {
   getParagraphsFromProps,
   s4,
 } from 'Helpers'
+import patternWaves from '../../assets/PatternWavesWhite.svg'
+import IconEye from '../../assets/IconEye.svg'
 
 import { default as Header } from './ResearchHeader'
 import { default as Cite } from './ResearchCite'
@@ -41,6 +43,14 @@ const SectionOne = Section.extend`
 const SectionRow = Row.extend`
   flex-wrap: wrap;
   justify-content: center;
+  width: 1070px;
+`
+
+const SectionRiverRow = Row.extend`
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 1070px;
 `
 
 const SectionContext = Section.extend`
@@ -48,8 +58,7 @@ const SectionContext = Section.extend`
 `
 
 const SectionHeader = H2.extend`
-  margin: 0 ${key(['space', 5])}px;
-  margin-bottom: ${key(['space', 9])}px;
+  margin: 0 0 ${key(['space', 9])}px ${key(['space', 3])}px;
 `
 
 const SectionColumn =  Column.extend`
@@ -70,6 +79,60 @@ const SectionColumn =  Column.extend`
     bottom: ${key(['space', 13])}px;
     top: auto;
   }
+`
+
+const SectionRiverColumn =  Column.extend`
+  color: ${key('colors.white')};
+  padding-bottom: ${key(['space', 5])}px;
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  max-width: 45%;
+  & h3 { 
+    margin-bottom: ${key(['space', 3])}px;
+    font-size: ${key(['fontSizes', 3])}px;
+    line-height: ${key(['lineHeights', 3])};
+  }
+  & h4 { 
+    margin-bottom: ${key(['space', 5])}px;
+    padding-bottom: ${key(['space', 1])}px;
+    font-size: ${key(['fontSizes', 4])}px;
+    line-height: ${key(['lineHeights', 4])};
+    border-bottom: 1px solid ${key('colors.white')};
+  }
+  & p {
+    margin-bottom: ${key(['space', 5])}px;
+  }
+  &:nth-of-type(4) {
+    padding-top: ${key(['space', 8])}px;
+  }
+  &:nth-last-of-type(2) {
+    margin: 0 0 ${key(['space', 5])}px 0;
+    max-width: 720px;
+    font-weight: ${key('fontWeights.medium')};
+    & a {
+      color: ${key('colors.text')};
+      text-decoration: none;
+    }
+  }
+  &:last-child {
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    & span {
+      display: flex;
+      max-width: 30%;
+      padding: 0 ${key(['space', 3])}px 0 ${key(['space', 10])}px;
+      background:  url(${IconEye}) 0px 10px no-repeat;
+    }
+  }
+`
+
+const SectionRiver = Section.extend`
+  padding: ${key(['space', 10])}px 0 ${key(['space', 12])}px;
+  background-color: ${key('colors.blue')};
+  background-image: url(${patternWaves});
+  background-repeat: repeat-x;
+  background-position-y: calc(100% + 225px);
 `
 
 export default ({data}) => {
@@ -98,13 +161,13 @@ export default ({data}) => {
   const pageHeaders = data.map(edge => body(edge).chain(head).chain(header).chain(head).option({}))
   const pageNav = pageHeaders.map((header, i) => assign(header, pageAnchors[i])).filter(x => x.text)
   const sectionsId = x => sections(x).chain(uid).option('')
+  const sectionsHeader = name => sections(name).chain(body).chain(head).chain(header).option([])
   
-  const contextHeader = sections('context').chain(body).chain(head).chain(header).option([])
   const contextParagraphs = sections('context').chain(body).chain(head).chain(items).option([])
   const contextUrl = text => head(text).chain(url).option('/')
+  const riverParagraphs = sections('river').chain(body).chain(head).chain(items).option([])
     
   console.log(
-    sectionsId('context')
   )
 
   return (
@@ -118,7 +181,7 @@ export default ({data}) => {
         </SectionOne>
         <SectionContext id={sectionsId('context')} >
           <Row>
-            <SectionHeader color='bright.blue' >{ getStringFromProps(contextHeader) }</SectionHeader>
+            <SectionHeader color='text' shade='bright.blue' >{ getStringFromProps(sectionsHeader('context')) }</SectionHeader>
           </Row>
           <SectionRow>
             {contextParagraphs.map(paragraph =>
@@ -135,6 +198,20 @@ export default ({data}) => {
             )}            
           </SectionRow>
         </SectionContext>
+        <SectionRiver>
+          <Row>
+            <SectionHeader color='text' shade='white' >
+            { getStringFromProps(sectionsHeader('river')) }
+            </SectionHeader>
+          </Row>
+          <SectionRiverRow>
+            {riverParagraphs.map(paragraph => 
+             <SectionRiverColumn key={s4()}>
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+             </SectionRiverColumn>
+            )}
+          </SectionRiverRow>
+        </SectionRiver>
         <div>
         { JSON.stringify(data) }
         </div>

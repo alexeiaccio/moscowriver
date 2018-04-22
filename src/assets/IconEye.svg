@@ -1,0 +1,41 @@
+<svg width="42" height="27" viewBox="0 0 42 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Canvas" fill="none">
+    <g id="IconEye">
+      <g id="Ellipse 2">
+        <circle cx="12.5" cy="12.5" r="12.5" transform="translate(7.75684 1)" fill="white" />
+      </g>
+      <g id="Ellipse">
+        <path d="M 0 12.1622C 1.57656 5.25961 9.74936 0 19.5946 0C 29.4398 0 37.6126 5.25961 39.1892 12.1622" stroke-width="2" transform="matrix(-1 8.68199e-08 -8.80299e-08 -1 40.1895 26)"
+          stroke="#261A12" />
+      </g>
+      <g id="Ellipse_2">
+        <path d="M 0 12.1622C 1.57656 5.25961 9.74936 0 19.5946 0C 29.4398 0 37.6126 5.25961 39.1892 12.1622" stroke-width="2" transform="translate(1 1.67578)"
+          stroke="#261A12" />
+      </g>
+      <g id="Ellipse_3">
+        <path d="M 0 8.1081C 1.57656 3.50641 9.74936 0 19.5946 0C 29.4398 0 37.6126 3.50641 39.1892 8.1081" stroke-width="2" transform="matrix(1 -1.63965e-08 -2.53912e-08 1 1 5.72974)"
+          stroke="#261A12" />
+      </g>
+      <g id="Ellipse_4">
+        <path d="M 0 8.1081C 1.57656 3.50641 9.74936 0 19.5946 0C 29.4398 0 37.6126 3.50641 39.1892 8.1081" stroke-width="2" transform="matrix(-1 7.89271e-08 -5.13254e-08 -1 40.1895 21.946)"
+          stroke="#261A12" />
+      </g>
+      <g id="Ellipse 2_2">
+        <circle cx="8.10811" cy="8.10811" r="7.10811" stroke-width="2" transform="matrix(-1 8.74228e-08 -8.74228e-08 -1 28.7031 21.946)"
+          stroke="#261A12" />
+      </g>
+      <g id="Ellipse 2.1">
+        <g mask="url(#path7_ins)" transform="matrix(-1 8.74228e-08 -8.74228e-08 -1 24.6484 17.8918)">
+          <ellipse cx="4.05405" cy="4.05405" rx="4.05405" ry="4.05405" stroke-width="4" stroke="#261A12" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <defs>
+
+    <mask id="path7_ins" fill="white">
+      <ellipse cx="4.05405" cy="4.05405" rx="4.05405" ry="4.05405" />
+    </mask>
+
+  </defs>
+</svg>

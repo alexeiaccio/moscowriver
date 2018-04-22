@@ -15,6 +15,8 @@ export {
   StyledFooter,
   Email,
   Logo,
+  Copyright,
+  Accio
 } from './StyledFooter'
 export {
   BaseWrapper,

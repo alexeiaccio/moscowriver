@@ -67,12 +67,51 @@ const SectionNextRow = Row.extend`
   width: 720px;
 `
 
+const SectionOrchestraRow = Row.extend`
+  flex-wrap: wrap;
+`
+
 const SectionContext = Section.extend`
   padding: ${key(['space', 12])}px 0 ${key(['space', 14])}px;
 `
 
 const SectionHeader = H2.extend`
   margin: 0 0 ${key(['space', 9])}px ${key(['space', 3])}px;
+`
+
+const SectionOrchestraHeader = H2.extend`
+  margin: 0 0 ${key(['space', 9])}px ${key(['space', 5])}px;
+  &::before {
+    content: '';
+    position: absolute;
+    display: inline-flex;
+    width: 100vw;
+    left: -101vw;
+    bottom: calc(${key(['fontSizes', 1])}px * .18);
+    height: calc(${key(['fontSizes', 1])}px * .45);
+    background-color: ${key('colors.text')};
+    z-index: -1;
+  }
+  &::after {
+    width: 100vw;
+    right: -101vw;
+    background-color: ${key('colors.text')};
+  }
+`
+
+const SectionOrchestraColumn =  Column.extend`
+  color: ${key('colors.text')};
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  & p {
+    float: left;
+    max-width: 65%;
+  }
+  & .img {
+    width:  186px;
+    height: 43px;
+    float: right;
+  }
 `
 
 const SectionColumn =  Column.extend`
@@ -92,6 +131,31 @@ const SectionColumn =  Column.extend`
   &:last-child > a {
     bottom: ${key(['space', 13])}px;
     top: auto;
+  }
+`
+
+const SectionProjectColumn =  Column.extend`
+  padding: 0 ${key(['space', 3])}px 0;
+  color: ${key('colors.text')};
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  & a {
+    color: ${key('colors.text')};
+    text-decoration: none;
+  }
+  & p:nth-of-type(2) {
+    margin-top: ${key(['space', 9])}px;
+    font-weight: ${key('fontWeights.semibold')};
+  }
+  &:last-child > a {
+    bottom: ${key(['space', 11])}px;
+    top: auto;
+    & span {
+      transform: rotateZ(-90deg) translateY(20px);
+    }
+    &:hover > span {
+      transform: rotateZ(0) translate(20px, 0px);
+    }
   }
 `
 
@@ -160,8 +224,6 @@ const SectionRiverColumn =  Column.extend`
 `
 
 const Image = styled.div`
-  width:  450px;
-  height: 275px;
   background: ${({url}) => 'url(' + url + ') center no-repeat'};
   background-size:  cover;
 `
@@ -197,6 +259,8 @@ const SectionGeoColumn =  Column.extend`
     }
   }
   & .img {
+    width:  450px;
+    height: 275px;
     top: ${key(['space', 9])}px;
   }
   &:first-of-type {
@@ -365,12 +429,15 @@ export default ({data}) => {
   const sectionsId = x => sections(x).chain(uid).option('')
   const sectionsHeader = name => sections(name).chain(body).chain(head).chain(header).option([])
   
-  const contextParagraphs = sections('context').chain(body).chain(head).chain(items).option([])
   const contextUrl = text => head(text).chain(url).option('/')
+  const projectUrl = text => second(text).chain(url).option('/')
+  const contextParagraphs = sections('context').chain(body).chain(head).chain(items).option([])
   const riverParagraphs = sections('river').chain(body).chain(head).chain(items).option([])
   const geoParagraphs = sections('geography').chain(body).chain(head).chain(items).option([])
   const timelineParagraphs = sections('timeline').chain(body).chain(head).chain(items).option([])
   const nextstepsParagraphs = sections('nextsteps').chain(body).chain(head).chain(items).option([])
+  const projectmoscowParagraphs = sections('projectmoscow').chain(body).chain(head).chain(items).option([])
+  const orchestraParagraphs = sections('orchestra').chain(body).chain(head).chain(items).option([])
     
   console.log(
   )
@@ -462,6 +529,43 @@ export default ({data}) => {
           )}
           </SectionNextRow>
         </SectionBlue>
+        <SectionContext id={sectionsId('projectmoscow')} >
+          <SectionNextRow>
+            <SectionHeader color='text' shade='bright.blue' >{ getStringFromProps(sectionsHeader('projectmoscow')) }</SectionHeader>
+          </SectionNextRow>
+          <SectionNextRow>
+            {projectmoscowParagraphs.map(paragraph =>
+              paragraph.image.url === null 
+              ? <SectionProjectColumn key={s4()}>
+                { getParagraphsFromProps(paragraph.text) }
+                </SectionProjectColumn>
+              : <SectionProjectColumn key={s4()}>
+                  <a href={projectUrl(paragraph.text)} target='_blank'>
+                  { getParagraphsFromProps(paragraph.text) }
+                  </a>
+                  <RoundButtonWithImage to={projectUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
+                </SectionProjectColumn>
+            )}            
+          </SectionNextRow>
+        </SectionContext>
+        <SectionGeo id={sectionsId('orchestra')}>
+          <SectionOrchestraRow>
+            <SectionOrchestraHeader color='text' shade='bright.blue' >
+            { getStringFromProps(sectionsHeader('orchestra')) }
+            </SectionOrchestraHeader>
+          </SectionOrchestraRow>
+          <SectionOrchestraRow>
+          {orchestraParagraphs.map(paragraph  => 
+            <SectionOrchestraColumn key={s4()}>
+              {console.log(paragraph.image.url)}
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+              {(paragraph.image.url !== null) && 
+                <Image className='img' url={paragraph.image.url} />
+              }
+            </SectionOrchestraColumn>
+          )}
+          </SectionOrchestraRow>
+        </SectionGeo>
         <div>
         { JSON.stringify(data) }
         </div>

@@ -28,6 +28,7 @@ import {
 import patternWaves from '../../assets/PatternWavesWhite.svg'
 import IconEye from '../../assets/IconEye.svg'
 import SmallWave from '../../assets/SmallWave.svg'
+import Timeline from '../../assets/Timeline.svg'
 
 import { default as Header } from './ResearchHeader'
 import { default as Cite } from './ResearchCite'
@@ -48,6 +49,13 @@ const SectionRow = Row.extend`
 `
 
 const SectionRiverRow = Row.extend`
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  width: 1070px;
+`
+
+const SectionTimelineRow = Row.extend`
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
@@ -196,6 +204,99 @@ const SectionGeoColumn =  Column.extend`
   }
 `
 
+const SectionTimelineColumn =  Column.extend`
+  position: relative;
+  color: ${key('colors.text')};
+  padding-bottom: ${key(['space', 9])}px;
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  max-width: 100%;
+  & h3, h4 { 
+    color: ${key('colors.text')};
+    margin-bottom: ${key(['space', 3])}px;
+    font-size: ${key(['fontSizes', 2])}px;
+    line-height: ${key(['lineHeights', 2])};
+  }
+  &:nth-of-type(1) {
+    &> * {
+      max-width: 45%;
+    }
+    &> *:nth-child(1),
+    &> *:nth-child(2) {
+      text-align: right;
+    }
+    &> *:nth-child(3) {
+      margin-top: 80px;
+    }
+    &> *:nth-child(3),
+    &> *:nth-child(4) {
+      padding-left: 65%;
+    }
+    &> *:nth-child(5) {
+      margin-top: 105px;
+    }
+    &> *:nth-child(5),
+    &> *:nth-child(6) {
+      padding-left: 55%;
+    }
+  }
+  &:nth-of-type(2) {
+    &> * {
+      max-width: 35%;
+    }
+    &> *:nth-child(2) {
+      margin-top: 145px;
+    }
+    &> *:nth-child(2),
+    &> *:nth-child(3),
+    &> *:nth-child(6),
+    &> *:nth-child(7),
+    &> *:nth-child(10),
+    &> *:nth-child(11) {
+      padding-left: 55%;
+    }
+    &> *:nth-child(4) {
+      margin-top: 25px;
+    }
+    &> *:nth-child(6) {
+      margin-top: -150px;
+    }
+    &> *:nth-child(8) {
+      margin-top: -60px;
+    }
+    &> *:nth-child(10) {
+      margin-top: -105px;
+    }
+  }
+  &:nth-of-type(3) {
+    max-width: 720px;
+    & h3 {
+      margin-top: 55px;
+      margin-bottom: 25px;
+      position: relative;
+      display: inline-flex;
+      font-family: ${key('fonts.headers')};
+      font-size: ${key(['fontSizes', 1])}px;
+      font-weight: ${key('fontWeights.normal')};
+      color: ${({color}) => key('colors.' + color)};
+      z-index: 5;
+      &::after {
+        content: '';
+        position: absolute;
+        display: inline-flex;
+        width: 100%;
+        bottom: calc(${key(['fontSizes', 1])}px * .18);
+        height: calc(${key(['fontSizes', 1])}px * .45);
+        background-color: ${key('colors.bright.blue')};
+        z-index: -1;
+      }
+    }
+    & p {
+      font-weight: ${key('fontWeights.medium')};
+    }
+  }
+`
+
 const SectionRiver = Section.extend`
   padding: ${key(['space', 10])}px 0 ${key(['space', 12])}px;
   background-color: ${key('colors.blue')};
@@ -205,7 +306,12 @@ const SectionRiver = Section.extend`
 `
 
 const SectionGeo = Section.extend`
-  padding: ${key(['space', 10])}px 0 ;
+  padding: ${key(['space', 10])}px 0;
+`
+
+const SectionTimeline = Section.extend`
+  padding: 0 0 ${key(['space', 10])}px 0;
+  background: url(${Timeline}) center 85px no-repeat; 
 `
 
 export default ({data}) => {
@@ -240,6 +346,7 @@ export default ({data}) => {
   const contextUrl = text => head(text).chain(url).option('/')
   const riverParagraphs = sections('river').chain(body).chain(head).chain(items).option([])
   const geoParagraphs = sections('geography').chain(body).chain(head).chain(items).option([])
+  const timelineParagraphs = sections('timeline').chain(body).chain(head).chain(items).option([])
     
   console.log(
   )
@@ -303,6 +410,20 @@ export default ({data}) => {
           )}
           </SectionRow>
         </SectionGeo>
+        <SectionTimeline id={sectionsId('timeline')} >
+          <SectionTimelineRow>
+            <SectionHeader color='text' shade='bright.blue' >
+            { getStringFromProps(sectionsHeader('timeline')) }
+            </SectionHeader>
+          </SectionTimelineRow>
+          <SectionTimelineRow>
+          {timelineParagraphs.map(paragraph => 
+            <SectionTimelineColumn key={s4()}>
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+            </SectionTimelineColumn>
+          )}
+          </SectionTimelineRow>
+        </SectionTimeline>
         <div>
         { JSON.stringify(data) }
         </div>

@@ -44,7 +44,7 @@ export const Copyright = styled.div`
   font-size: ${key(['fontSizes', 6])}px;
 `
 
-export const Accio = styled.span`
+export const Accio = styled.a`
   display: inline-block;
   height: 43px;
   width: 131px;

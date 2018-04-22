@@ -642,7 +642,7 @@ export default ({data}) => {
             </SectionCommandColumn>
           )}           
           </SectionRow>
-          <Copyright color='text' >Разработка сайта&ensp;<Accio color='black' /></Copyright>
+          <Copyright color='text' >Разработка сайта&ensp;<Accio href='https://www.accio.pro/' target='_blank' color='black' /></Copyright>
         </SectionCommand>
         <SectionOne image={pageBackImg} >
           <FootCite color='blue' fontSize={1} data={{cite: footCite}} />

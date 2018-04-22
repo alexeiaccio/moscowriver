@@ -26,7 +26,7 @@ class WavePattern extends React.Component {
 
   timer = () => {
     const newWaves = [...this.state.waves]
-    newWaves.map(w => w.r = (w.r + 10) % 360)
+    newWaves.map(w => w.r += 10)
     this.setState({ waves: newWaves })
   }
 

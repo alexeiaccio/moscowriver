@@ -487,17 +487,8 @@ export default ({data}) => {
   const pageNav = pageHeaders.map((header, i) => assign(header, pageAnchors[i])).filter(x => x.text)
   const sectionsId = x => sections(x).chain(uid).option('')
   const sectionsHeader = name => sections(name).chain(body).chain(head).chain(header).option([])
-
-  const contextUrl = text => head(text).chain(url).option('/')
-  const projectUrl = text => second(text).chain(url).option('/')
-  const contextParagraphs = sections('context').chain(body).chain(head).chain(items).option([])
-  const riverParagraphs = sections('river').chain(body).chain(head).chain(items).option([])
-  const geoParagraphs = sections('geography').chain(body).chain(head).chain(items).option([])
-  const timelineParagraphs = sections('timeline').chain(body).chain(head).chain(items).option([])
-  const nextstepsParagraphs = sections('nextsteps').chain(body).chain(head).chain(items).option([])
-  const projectmoscowParagraphs = sections('projectmoscow').chain(body).chain(head).chain(items).option([])
-  const orchestraParagraphs = sections('orchestra').chain(body).chain(head).chain(items).option([])
-  const commandParagraphs = sections('command').chain(body).chain(head).chain(items).option([])
+  const sectionParagraphs = name => sections(name).chain(body).chain(head).chain(items).option([])
+  const sectionUrl = text => head(text).chain(url).option('/')
 
   console.log(
   )
@@ -509,23 +500,23 @@ export default ({data}) => {
         <SectionOne image={pageBackImg} >
           <HeadCite color='blue' fontSize={1} data={{cite: pageCite}} />
           <Description width={640} size={3} data={{ description: getParagraphsFromProps(pageDescription) }} />
-          <Navigation data={ sort([4, 5, 3, 1, 2, 7, 6, 0], pageNav) } />
+          <Navigation data={ sort([0,1,2,3,4,5,6,7], pageNav) } />
         </SectionOne>
         <SectionContext id={sectionsId('context')} >
           <Row>
             <SectionHeader color='text' shade='bright.blue' >{ getStringFromProps(sectionsHeader('context')) }</SectionHeader>
           </Row>
           <SectionRow>
-            {contextParagraphs.map(paragraph =>
+            {sectionParagraphs('context').map(paragraph =>
               paragraph.image.url === null
               ? <SectionColumn key={s4()}>
                 { getParagraphsFromProps(paragraph.text) }
                 </SectionColumn>
               : <SectionColumn key={s4()}>
-                  <Link to={contextUrl(paragraph.text)} target='_blank'>
+                  <Link to={sectionUrl(paragraph.text)} target='_blank'>
                   { getParagraphsFromProps(paragraph.text) }
                   </Link>
-                  <RoundButtonWithImage to={contextUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
+                  <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
                 </SectionColumn>
             )}
           </SectionRow>
@@ -537,7 +528,7 @@ export default ({data}) => {
             </SectionHeader>
           </Row>
           <SectionRiverRow>
-            {riverParagraphs.map(paragraph =>
+            {sectionParagraphs('river').map(paragraph =>
              <SectionRiverColumn key={s4()}>
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
              </SectionRiverColumn>
@@ -551,7 +542,7 @@ export default ({data}) => {
             </SectionHeader>
           </Row>
           <SectionRow>
-          {geoParagraphs.map(paragraph  =>
+          {sectionParagraphs('geography').map(paragraph  =>
             <SectionGeoColumn key={s4()}>
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
               {(paragraph.image.url !== null) &&
@@ -568,7 +559,7 @@ export default ({data}) => {
             </SectionHeader>
           </SectionTimelineRow>
           <SectionTimelineRow>
-          {timelineParagraphs.map(paragraph =>
+          {sectionParagraphs('timeline').map(paragraph =>
             <SectionTimelineColumn key={s4()}>
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
             </SectionTimelineColumn>
@@ -582,7 +573,7 @@ export default ({data}) => {
             </SectionHeader>
           </SectionNextRow>
           <SectionNextRow>
-          {nextstepsParagraphs.map(paragraph =>
+          {sectionParagraphs('nextsteps').map(paragraph =>
             <SectionNextColumn key={s4()}>
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
             </SectionNextColumn>
@@ -594,16 +585,16 @@ export default ({data}) => {
             <SectionHeader color='text' shade='bright.blue' >{ getStringFromProps(sectionsHeader('projectmoscow')) }</SectionHeader>
           </SectionNextRow>
           <SectionNextRow>
-            {projectmoscowParagraphs.map(paragraph =>
+            {sectionParagraphs('projectmoscow').map(paragraph =>
               paragraph.image.url === null
               ? <SectionProjectColumn key={s4()}>
                 { getParagraphsFromProps(paragraph.text) }
                 </SectionProjectColumn>
               : <SectionProjectColumn key={s4()}>
-                  <Link to={projectUrl(paragraph.text)} target='_blank'>
+                  <Link to={sectionUrl(paragraph.text)} target='_blank'>
                   { getParagraphsFromProps(paragraph.text) }
                   </Link>
-                  <RoundButtonWithImage to={projectUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
+                  <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
                 </SectionProjectColumn>
             )}
           </SectionNextRow>
@@ -615,7 +606,7 @@ export default ({data}) => {
             </SectionOrchestraHeader>
           </SectionOrchestraRow>
           <SectionOrchestraRow>
-          {orchestraParagraphs.map(paragraph  =>
+          {sectionParagraphs('orchestra').map(paragraph  =>
             <SectionOrchestraColumn key={s4()}>
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
               {(paragraph.image.url !== null) &&
@@ -630,7 +621,7 @@ export default ({data}) => {
             <SectionHeader color='text' shade='bright.blue' >{ getStringFromProps(sectionsHeader('command')) }</SectionHeader>
           </SectionRow>
           <SectionRow>
-          {commandParagraphs.map(paragraph  =>
+          {sectionParagraphs('command').map(paragraph  =>
             <SectionCommandColumn key={s4()}>
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
               {(paragraph.image.url !== null) &&

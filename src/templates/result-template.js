@@ -1,34 +1,27 @@
-import React from 'react'
-import Link from 'gatsby-link'
+import React, { Fragment } from 'react'
 
-import {
-  Header,
-  Image
-} from 'Components'
+import { ResultPage } from 'Components'
 
-const ResultTemplate = ({ data: { result, header } }) => {
-  return (
-    <div>
-    <Header data={header.data} />
-    <Image data={result.data} />
-    {JSON.stringify(result.data)}
-    <Link to="/">Go to Home</Link>
-    </div>
-  )
-}
+const ResultTemplate = ({ data }) =>
+  <Fragment>
+    <ResultPage data={data.result.data} />
+  </Fragment>
+
 
 export default ResultTemplate
 
 export const query = graphql`
   query ResultTemplateQuery($slug: String!) {
     result: prismicDocument(uid: {eq: $slug}) {
-      ...ImageFragment
       data {
         title {
           text
         }
         quote {
           text
+        }
+        image {
+          url
         }
         body {
           slice_type
@@ -60,9 +53,6 @@ export const query = graphql`
           }
         }
       }
-    }
-    header: prismicDocument(type: {eq: "homepage"}) {
-      ...HeaderFragment
     }
   }
 `

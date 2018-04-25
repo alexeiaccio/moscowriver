@@ -87,7 +87,7 @@ const H2 = styled.h2`
   &::after {
     content: '';
     position: absolute;
-    display: inline-flex;
+    display: block;
     width: 100%;
     bottom: calc(${key(['fontSizes', 1])}px * .18);
     height: calc(${key(['fontSizes', 1])}px * .45);

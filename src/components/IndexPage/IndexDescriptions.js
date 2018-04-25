@@ -1,9 +1,8 @@
 import React from 'react'
-import Link from 'gatsby-link'
 import styled from 'styled-components'
 import { key } from 'styled-theme'
 import { DescriptionWrapper, Column, Row } from 'Styled'
-import { RoundButtonWithImage } from 'Components'
+import { RoundButtonWithImage, Link } from 'Components'
 import { s4, getParagraphsFromProps } from 'Helpers'
 import { log } from 'util';
 

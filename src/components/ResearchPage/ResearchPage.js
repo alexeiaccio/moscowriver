@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import Link from 'gatsby-link'
 import propPath from 'crocks/Maybe/propPath'
 import Maybe from 'crocks/Maybe'
 import map from 'crocks/pointfree/map'
@@ -13,12 +12,13 @@ import {
   H2,
   Row,
   Column,
-  Copyright, 
+  Copyright,
   Accio
 } from 'Styled'
-import { 
+import {
   Navigation,
   RoundButtonWithImage,
+  Link,
 } from 'Components'
 import {
   findSection,
@@ -177,12 +177,12 @@ const SectionRiverColumn =  Column.extend`
   font-size: ${key(['fontSizes', 5])}px;
   line-height: ${key(['lineHeights', 4])};
   max-width: 45%;
-  & h3 { 
+  & h3 {
     margin-bottom: ${key(['space', 3])}px;
     font-size: ${key(['fontSizes', 3])}px;
     line-height: ${key(['lineHeights', 3])};
   }
-  & h4 { 
+  & h4 {
     margin-bottom: ${key(['space', 5])}px;
     padding-bottom: ${key(['space', 1])}px;
     font-size: ${key(['fontSizes', 4])}px;
@@ -237,13 +237,13 @@ const SectionGeoColumn =  Column.extend`
   font-size: ${key(['fontSizes', 5])}px;
   line-height: ${key(['lineHeights', 4])};
   max-width: 100%;
-  & h3 { 
+  & h3 {
     color: ${key('colors.blue')};
     margin-bottom: ${key(['space', 3])}px;
     font-size: ${key(['fontSizes', 1])}px;
     line-height: ${key(['lineHeights', 1])};
   }
-  & h4 { 
+  & h4 {
     margin-bottom: ${key(['space', 3])}px;
     font-size: ${key(['fontSizes', 2])}px;
     line-height: ${key(['lineHeights', 2])};
@@ -303,7 +303,7 @@ const SectionCommandColumn =  Column.extend`
   color: ${key('colors.text')};
   font-size: ${key(['fontSizes', 5])}px;
   line-height: ${key(['lineHeights', 4])};
-  & h3 { 
+  & h3 {
     margin-bottom: ${key(['space', 5])}px;
     color: ${key('colors.text')};
     font-size: ${key(['fontSizes', 2])}px;
@@ -341,7 +341,7 @@ const SectionTimelineColumn =  Column.extend`
   font-size: ${key(['fontSizes', 5])}px;
   line-height: ${key(['lineHeights', 4])};
   max-width: 100%;
-  & h3, h4 { 
+  & h3, h4 {
     color: ${key('colors.text')};
     margin-bottom: ${key(['space', 3])}px;
     font-size: ${key(['fontSizes', 2])}px;
@@ -442,7 +442,7 @@ const SectionGeo = Section.extend`
 
 const SectionTimeline = Section.extend`
   padding: ${key(['space', 5])}px 0 ${key(['space', 10])}px 0;
-  background: url(${Timeline}) center 85px no-repeat; 
+  background: url(${Timeline}) center 85px no-repeat;
 `
 
 const SectionCommand = Section.extend`
@@ -461,7 +461,7 @@ const FootGradient = styled.nav`
 export default ({data}) => {
   const sort = (order, xs) =>
     order.reduce((acc, x) => acc.concat([...xs[x]]), [])
-    
+
   const sections = findSection(data)
   const head = propPath([0])
   const second = propPath([1])
@@ -476,29 +476,22 @@ export default ({data}) => {
   const description = propPath(['primary', 'description'])
   const image = propPath(['image', 'url'])
 
+  const sectionsId = x => sections(x).chain(uid).option('')
+  const sectionsHeader = name => sections(name).chain(body).chain(head).chain(header).option([])
+  const sectionParagraphs = name => sections(name).chain(body).chain(head).chain(items).option([])
+  const sectionUrl = text => head(text).chain(url).option('/')
+
   const pageTitle = sections('research').chain(body).chain(head).chain(title).option([])
   const pageCite = sections('research').chain(body).chain(head).chain(cite).option([])
-  const footCite = sections('foot').chain(body).chain(head).chain(cite).option([])
   const pageDescription = sections('research').chain(body).chain(head).chain(description).option([])
-  const footDescription = sections('foot').chain(body).chain(head).chain(description).option([])
   const pageBackImg = sections('research').chain(body).chain(second).chain(items).chain(head).chain(image).option([])
+  const footDescription = sections('foot').chain(body).chain(head).chain(description).option([])
+  const footCite = sections('foot').chain(body).chain(head).chain(cite).option([])
   const pageAnchors = data.map(edge => assoc('uid', uid(edge).option({}))({}))
   const pageHeaders = data.map(edge => body(edge).chain(head).chain(header).chain(head).option({}))
   const pageNav = pageHeaders.map((header, i) => assign(header, pageAnchors[i])).filter(x => x.text)
-  const sectionsId = x => sections(x).chain(uid).option('')
-  const sectionsHeader = name => sections(name).chain(body).chain(head).chain(header).option([])
-  
-  const contextUrl = text => head(text).chain(url).option('/')
-  const projectUrl = text => second(text).chain(url).option('/')
-  const contextParagraphs = sections('context').chain(body).chain(head).chain(items).option([])
-  const riverParagraphs = sections('river').chain(body).chain(head).chain(items).option([])
-  const geoParagraphs = sections('geography').chain(body).chain(head).chain(items).option([])
-  const timelineParagraphs = sections('timeline').chain(body).chain(head).chain(items).option([])
-  const nextstepsParagraphs = sections('nextsteps').chain(body).chain(head).chain(items).option([])
-  const projectmoscowParagraphs = sections('projectmoscow').chain(body).chain(head).chain(items).option([])
-  const orchestraParagraphs = sections('orchestra').chain(body).chain(head).chain(items).option([])
-  const commandParagraphs = sections('command').chain(body).chain(head).chain(items).option([])
-    
+
+
   console.log(
   )
 
@@ -509,25 +502,25 @@ export default ({data}) => {
         <SectionOne image={pageBackImg} >
           <HeadCite color='blue' fontSize={1} data={{cite: pageCite}} />
           <Description width={640} size={3} data={{ description: getParagraphsFromProps(pageDescription) }} />
-          <Navigation data={ sort([4, 5, 3, 1, 2, 7, 6, 0], pageNav) } />
+          <Navigation data={ sort([5,6,4,2,3,7,0,1], pageNav) } />
         </SectionOne>
         <SectionContext id={sectionsId('context')} >
           <Row>
             <SectionHeader color='text' shade='bright.blue' >{ getStringFromProps(sectionsHeader('context')) }</SectionHeader>
           </Row>
           <SectionRow>
-            {contextParagraphs.map(paragraph =>
-              paragraph.image.url === null 
+            {sectionParagraphs('context').map(paragraph =>
+              paragraph.image.url === null
               ? <SectionColumn key={s4()}>
                 { getParagraphsFromProps(paragraph.text) }
                 </SectionColumn>
               : <SectionColumn key={s4()}>
-                  <a href={contextUrl(paragraph.text)} target='_blank'>
+                  <Link to={sectionUrl(paragraph.text)} target='_blank'>
                   { getParagraphsFromProps(paragraph.text) }
-                  </a>
-                  <RoundButtonWithImage to={contextUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
+                  </Link>
+                  <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
                 </SectionColumn>
-            )}            
+            )}
           </SectionRow>
         </SectionContext>
         <SectionBlue id={sectionsId('river')} >
@@ -537,7 +530,7 @@ export default ({data}) => {
             </SectionHeader>
           </Row>
           <SectionRiverRow>
-            {riverParagraphs.map(paragraph => 
+            {sectionParagraphs('river').map(paragraph =>
              <SectionRiverColumn key={s4()}>
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
              </SectionRiverColumn>
@@ -551,10 +544,10 @@ export default ({data}) => {
             </SectionHeader>
           </Row>
           <SectionRow>
-          {geoParagraphs.map(paragraph  => 
+          {sectionParagraphs('geography').map(paragraph  =>
             <SectionGeoColumn key={s4()}>
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-              {(paragraph.image.url !== null) && 
+              {(paragraph.image.url !== null) &&
                 <Image className='img' url={paragraph.image.url} />
               }
             </SectionGeoColumn>
@@ -568,7 +561,7 @@ export default ({data}) => {
             </SectionHeader>
           </SectionTimelineRow>
           <SectionTimelineRow>
-          {timelineParagraphs.map(paragraph => 
+          {sectionParagraphs('timeline').map(paragraph =>
             <SectionTimelineColumn key={s4()}>
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
             </SectionTimelineColumn>
@@ -582,7 +575,7 @@ export default ({data}) => {
             </SectionHeader>
           </SectionNextRow>
           <SectionNextRow>
-          {nextstepsParagraphs.map(paragraph => 
+          {sectionParagraphs('nextsteps').map(paragraph =>
             <SectionNextColumn key={s4()}>
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
             </SectionNextColumn>
@@ -594,18 +587,18 @@ export default ({data}) => {
             <SectionHeader color='text' shade='bright.blue' >{ getStringFromProps(sectionsHeader('projectmoscow')) }</SectionHeader>
           </SectionNextRow>
           <SectionNextRow>
-            {projectmoscowParagraphs.map(paragraph =>
-              paragraph.image.url === null 
+            {sectionParagraphs('projectmoscow').map(paragraph =>
+              paragraph.image.url === null
               ? <SectionProjectColumn key={s4()}>
                 { getParagraphsFromProps(paragraph.text) }
                 </SectionProjectColumn>
               : <SectionProjectColumn key={s4()}>
-                  <a href={projectUrl(paragraph.text)} target='_blank'>
+                  <Link to={sectionUrl(paragraph.text)} target='_blank'>
                   { getParagraphsFromProps(paragraph.text) }
-                  </a>
-                  <RoundButtonWithImage to={projectUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
+                  </Link>
+                  <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
                 </SectionProjectColumn>
-            )}            
+            )}
           </SectionNextRow>
         </SectionContext>
         <SectionGeo id={sectionsId('orchestra')}>
@@ -615,10 +608,10 @@ export default ({data}) => {
             </SectionOrchestraHeader>
           </SectionOrchestraRow>
           <SectionOrchestraRow>
-          {orchestraParagraphs.map(paragraph  => 
+          {sectionParagraphs('orchestra').map(paragraph  =>
             <SectionOrchestraColumn key={s4()}>
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-              {(paragraph.image.url !== null) && 
+              {(paragraph.image.url !== null) &&
                 <Image className='img' url={paragraph.image.url} />
               }
             </SectionOrchestraColumn>
@@ -630,17 +623,17 @@ export default ({data}) => {
             <SectionHeader color='text' shade='bright.blue' >{ getStringFromProps(sectionsHeader('command')) }</SectionHeader>
           </SectionRow>
           <SectionRow>
-          {commandParagraphs.map(paragraph  => 
+          {sectionParagraphs('command').map(paragraph  =>
             <SectionCommandColumn key={s4()}>
               <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-              {(paragraph.image.url !== null) && 
+              {(paragraph.image.url !== null) &&
                 <figure>
                   <Image className='img' url={paragraph.image.url} />
                   <figcaption>{text(paragraph.textimage).option('')}</figcaption>
                 </figure>
               }
             </SectionCommandColumn>
-          )}           
+          )}
           </SectionRow>
           <Copyright color='text' >Разработка сайта&ensp;<Accio href='https://www.accio.pro/' target='_blank' color='black' /></Copyright>
         </SectionCommand>

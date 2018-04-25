@@ -14,7 +14,7 @@ module.exports = {
       resolve: `gatsby-source-prismic`,
       options: {
         repositoryName: `mymoscowriverru`,
-        accessToken: process.env.PRISMIC_TOKEN,
+        accessToken: process.env.PRISMIC_TOKEN || 'MC5Xc1NrSWlRQUFDUUFoRF9s.AO-_ve-_ve-_vTt-b--_vWfvv73vv71i77-977-9DU1iDygm77-9OVYl77-9Iu-_vQzvv73vv70Q77-9',
       },
     },
     {

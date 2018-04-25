@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import Link from 'gatsby-link'
 import { key } from 'styled-theme'
+import Link from '../Link/Link'
 import ArrowIconWhite from '../../assets/ArrowIconWhite.svg'
 
 const RoundTemplate = styled(Link)`

@@ -36,12 +36,12 @@ const space = [
 
 // typographic scale
 const fontSizes = [
-  64, 34, 24, 21, 18, 16, 14, 12
+  44, 34, 24, 21, 18, 16, 14, 12
 ]
 
 // for any scale, either array or objects will work
 const lineHeights = [
-  '75px', '45px', '35px', '30px', '25px', '20px'
+  '55px', '45px', '35px', '30px', '25px', '20px'
 ]
 
 const fontWeights = {

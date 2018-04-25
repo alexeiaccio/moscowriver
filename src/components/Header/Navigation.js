@@ -34,11 +34,11 @@ const NavRow = Row.extend`
 `
 
 export default ({data}) => {
-  
+
   return (
     <Navigation>
       <NavRow>
-      {data.map(({text, uid}) => 
+      {data.map(({text, uid}) =>
         <NavLink key={ s4() } to={`#${uid}`}>{ text }</NavLink>
       )}
       </NavRow>

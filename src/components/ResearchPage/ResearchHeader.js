@@ -14,10 +14,10 @@ const Header = BaseWrapper.extend`
     &::before {
       content: '';
       position: absolute;
-      bottom: calc(${key(['fontSizes', 0])}px * .18);
+      bottom: calc(${key(['fontSizes', 0])}px * .27);
       display: flex;
       width: 100%;
-      height: calc(${key(['fontSizes', 0])}px * .24);
+      height: calc(${key(['fontSizes', 0])}px * .34);
       background-color: ${key('colors.black')};
       transition: background-color .4s ease-in-out;
       z-index: -1;

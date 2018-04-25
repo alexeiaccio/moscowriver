@@ -500,7 +500,7 @@ export default ({data}) => {
         <SectionOne image={pageBackImg} >
           <HeadCite color='blue' fontSize={1} data={{cite: pageCite}} />
           <Description width={640} size={3} data={{ description: getParagraphsFromProps(pageDescription) }} />
-          <Navigation data={ sort([0,1,2,3,4,5,6,7], pageNav) } />
+          <Navigation data={ sort([5,6,4,2,3,7,0,1], pageNav) } />
         </SectionOne>
         <SectionContext id={sectionsId('context')} >
           <Row>

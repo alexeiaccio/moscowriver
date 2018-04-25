@@ -476,19 +476,21 @@ export default ({data}) => {
   const description = propPath(['primary', 'description'])
   const image = propPath(['image', 'url'])
 
-  const pageTitle = sections('research').chain(body).chain(head).chain(title).option([])
-  const pageCite = sections('research').chain(body).chain(head).chain(cite).option([])
-  const footCite = sections('foot').chain(body).chain(head).chain(cite).option([])
-  const pageDescription = sections('research').chain(body).chain(head).chain(description).option([])
-  const footDescription = sections('foot').chain(body).chain(head).chain(description).option([])
-  const pageBackImg = sections('research').chain(body).chain(second).chain(items).chain(head).chain(image).option([])
-  const pageAnchors = data.map(edge => assoc('uid', uid(edge).option({}))({}))
-  const pageHeaders = data.map(edge => body(edge).chain(head).chain(header).chain(head).option({}))
-  const pageNav = pageHeaders.map((header, i) => assign(header, pageAnchors[i])).filter(x => x.text)
   const sectionsId = x => sections(x).chain(uid).option('')
   const sectionsHeader = name => sections(name).chain(body).chain(head).chain(header).option([])
   const sectionParagraphs = name => sections(name).chain(body).chain(head).chain(items).option([])
   const sectionUrl = text => head(text).chain(url).option('/')
+
+  const pageTitle = sections('research').chain(body).chain(head).chain(title).option([])
+  const pageCite = sections('research').chain(body).chain(head).chain(cite).option([])
+  const pageDescription = sections('research').chain(body).chain(head).chain(description).option([])
+  const pageBackImg = sections('research').chain(body).chain(second).chain(items).chain(head).chain(image).option([])
+  const footDescription = sections('foot').chain(body).chain(head).chain(description).option([])
+  const footCite = sections('foot').chain(body).chain(head).chain(cite).option([])
+  const pageAnchors = data.map(edge => assoc('uid', uid(edge).option({}))({}))
+  const pageHeaders = data.map(edge => body(edge).chain(head).chain(header).chain(head).option({}))
+  const pageNav = pageHeaders.map((header, i) => assign(header, pageAnchors[i])).filter(x => x.text)
+
 
   console.log(
   )

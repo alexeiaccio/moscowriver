@@ -25,6 +25,8 @@ import {
 } from 'Helpers'
 import { default as Header } from './ResultHeader'
 import ResultMap from './ResultMap'
+import ResultFunctions from './ResultFunctions'
+import patternWaves from '../../assets/PatternWavesWhite.svg'
 import SmallWave from '../../assets/SmallWave.svg'
 
 const SectionOne = Section.extend`
@@ -117,6 +119,15 @@ const SectionPast = Section.extend`
 
 const SectionPresent = Section.extend`
   padding: 0 0 ${key(['space', 5])}px;
+`
+
+const SectionFunctions = Section.extend`
+  margin: ${key(['space', 12])}px 0 0;
+  padding: ${key(['space', 10])}px 0 ${key(['space', 12])}px;
+  background-color: ${key(['colors', 'gray', 2])};
+  background-image: url(${patternWaves});
+  background-repeat: repeat-x;
+  background-position-y: calc(100% + 225px);
 `
 
 const SectionFuture = Section.extend`
@@ -375,6 +386,16 @@ export default ({data}) => {
           <ResultMap data={sectionParagraphs('maps')} />
         </SectionMapsRow>
       </SectionPresent>
+      <SectionFunctions id={sectionsId('functions')} >
+        <Row>
+          <SectionHeader color='text' shade='white' >
+          { getStringFromProps(sectionsHeader('functions')) }
+          </SectionHeader>
+        </Row>
+        <SectionRow>
+          <ResultFunctions data={sectionParagraphs('functions')} />
+        </SectionRow>
+      </SectionFunctions>
       <SectionFuture id={sectionsId('future')} >
         <SectionFurureRow>
           <SectionHeader color='text' shade='pink' >

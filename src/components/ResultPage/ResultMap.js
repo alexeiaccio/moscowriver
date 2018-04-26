@@ -11,7 +11,7 @@ import ArrowIconPink from '../../assets/ArrowIconPink.svg'
 const Column = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 500px;
   min-height: 500px;
 `
 
@@ -26,6 +26,7 @@ const H4 = styled.h4`
   padding: 0 ${key(['space', 5])}px;
   font-size: ${key(['fontSizes', 3])}px;
   line-height: ${key(['lineHeights', 3])};
+  color: ${({active}) => active ? key('colors.black') : key(['colors', 'gray', 1])};
   cursor: pointer;
   &::before {
     content: '';
@@ -78,6 +79,17 @@ const ListItem = styled.p`
   }
 `
 
+const Map = styled.div`
+  height: 500px;
+  width: 100%;
+  @media (min-width: 1200px) {
+    width: calc(50vw - 25px);
+    margin-left: calc(-50vw + 543px);
+  }
+  background: ${key(['colors', 'gray', 3])};
+  border: 1px solid ${key('colors.pink')};
+`
+
 class ResultMap extends Component {
   constructor(props) {
     super(props)
@@ -105,33 +117,38 @@ class ResultMap extends Component {
 
   render() {
     return (
-      <Column>
-        <Headers key={s4()}>
-        {this.props.data.map((paragraph, i) =>
-          <H4
-            key={s4()}
-            active={this.state.activeList === i}
-            onClick={() => this.changeList(i)}
-            >
-            { getStringFromProps(paragraph.header) }
-          </H4>
-        )}
-        </Headers>
-        {this.props.data.map((paragraph, i)  =>
-          this.state.activeList === i &&
-            <List key={s4()} >
-            {paragraph.list.map(({text}, j) =>
-              <ListItem
-                key={s4()}
-                active={this.state.items[i][j]}
-                onMouseOver={() => this.handleMouseOver(i, j)}
-                >
-                { text }
-              </ListItem>
-            )}
-            </List>
-        )}
-      </Column>
+      <Fragment>
+        <Column>
+          <Map />
+        </Column>
+        <Column>
+          <Headers key={s4()}>
+          {this.props.data.map((paragraph, i) =>
+            <H4
+              key={s4()}
+              active={this.state.activeList === i}
+              onClick={() => this.changeList(i)}
+              >
+              { getStringFromProps(paragraph.header) }
+            </H4>
+          )}
+          </Headers>
+          {this.props.data.map((paragraph, i)  =>
+            this.state.activeList === i &&
+              <List key={s4()} >
+              {paragraph.list.map(({text}, j) =>
+                <ListItem
+                  key={s4()}
+                  active={this.state.items[i][j]}
+                  onMouseOver={() => this.handleMouseOver(i, j)}
+                  >
+                  { text }
+                </ListItem>
+              )}
+              </List>
+          )}
+        </Column>
+      </Fragment>
     )
   }
 }

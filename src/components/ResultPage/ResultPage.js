@@ -84,7 +84,9 @@ const SectionRow = Row.extend`
 `
 
 const SectionMapsRow = Row.extend`
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
   width: 1070px;
 `
 
@@ -349,6 +351,16 @@ export default ({data}) => {
         </Row>
         <SectionMapsRow>
           <ResultMap data={sectionParagraphs('maps')} />
+        </SectionMapsRow>
+      </SectionPresent>
+      <SectionPresent id={sectionsId('project')} >
+        <Row>
+          <SectionSubHeader color='text' shade='pink' >
+          { getStringFromProps(sectionsHeader('project')) }
+          </SectionSubHeader>
+        </Row>
+        <SectionMapsRow>
+          <ResultMap data={sectionParagraphs('project')} />
         </SectionMapsRow>
       </SectionPresent>
      </main>

@@ -24,6 +24,7 @@ import {
   s4,
 } from 'Helpers'
 import { default as Header } from './ResultHeader'
+import ResultMap from './ResultMap'
 import SmallWave from '../../assets/SmallWave.svg'
 
 const SectionOne = Section.extend`
@@ -82,6 +83,11 @@ const SectionRow = Row.extend`
   width: 1070px;
 `
 
+const SectionMapsRow = Row.extend`
+  justify-content: flex-end;
+  width: 1070px;
+`
+
 const SectionPastRow = Row.extend`
   flex-wrap: wrap;
   width: 510px;
@@ -89,6 +95,13 @@ const SectionPastRow = Row.extend`
 
 const SectionHeader = H2.extend`
   margin: 0 0 ${key(['space', 9])}px ${key(['space', 3])}px;
+`
+
+const SectionSubHeader = styled.h3`
+  margin: 0 0 ${key(['space', 9])}px;
+  color: ${key('colors.pink')};
+  font-size: ${key(['fontSizes', 1])}px;
+  line-height: ${key(['lineHeights', 1])};
 `
 
 const SectionPast = Section.extend`
@@ -280,9 +293,6 @@ export default ({data}) => {
     assign({uid: primary.anchor}, {text: primary.sectionname}))
 
   console.log(
-    sectionsId('past'),
-    sectionsHeader('past'),
-    sectionParagraphs('past')
   )
   return (
     <Fragment>
@@ -299,7 +309,9 @@ export default ({data}) => {
       </SectionOne>
       <SectionPast id={sectionsId('past')} >
         <SectionPastRow>
-          <SectionHeader color='text' shade='pink' >{ getStringFromProps(sectionsHeader('past')) }</SectionHeader>
+          <SectionHeader color='text' shade='pink' >
+          { getStringFromProps(sectionsHeader('past')) }
+          </SectionHeader>
         </SectionPastRow>
         <SectionRow>
           {sectionParagraphs('past').map(paragraph  =>
@@ -314,7 +326,9 @@ export default ({data}) => {
       </SectionPast>
       <SectionPresent id={sectionsId('present')} >
         <Row>
-          <SectionHeader color='text' shade='pink' >{ getStringFromProps(sectionsHeader('present')) }</SectionHeader>
+          <SectionHeader color='text' shade='pink' >
+          { getStringFromProps(sectionsHeader('present')) }
+          </SectionHeader>
         </Row>
         <SectionRow>
           {sectionParagraphs('present').map(paragraph  =>
@@ -326,6 +340,16 @@ export default ({data}) => {
             </SectionPresentColumn>
           )}
           </SectionRow>
+      </SectionPresent>
+      <SectionPresent id={sectionsId('maps')} >
+        <Row>
+          <SectionSubHeader color='text' shade='pink' >
+          { getStringFromProps(sectionsHeader('maps')) }
+          </SectionSubHeader>
+        </Row>
+        <SectionMapsRow>
+          <ResultMap data={sectionParagraphs('maps')} />
+        </SectionMapsRow>
       </SectionPresent>
      </main>
     </Fragment>

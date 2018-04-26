@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 
 import {
+  getElementsFromProps,
   getStringFromProps,
   s4,
 } from 'Helpers'
@@ -103,30 +104,37 @@ class ResultFunctions extends Component {
   }
 
   render() {
+    const getTables = data => {
+      const tables = []
+      data.map((item, i) => {
+        if(item.header.length > 0) {
+          return tables.push(Object.assign({}, {header: item.header[0].text, rows: item.row}))
+        } else {
+          return tables[tables.length-1].rows = tables[tables.length-1].rows.concat(item.row)
+        }
+      })
+      return tables
+    }
+    const tables = getTables(this.props.data)
+
     return (
       <Fragment>
         <Column>
           <Headers key={s4()}>
-          {this.props.data.map((paragraph, i) =>
+          {tables.map((table, i) =>
             <H4
               key={s4()}
               active={this.state.activeList === i}
               onClick={() => this.changeList(i)}
               >
-              { getStringFromProps(paragraph.header) }
+              { table.header }
             </H4>
           )}
           </Headers>
-          {this.props.data.map((paragraph, i)  =>
+          {tables.map((table, i)  =>
             this.state.activeList === i &&
               <List key={s4()} >
-              {paragraph.row.map(({text}, j) =>
-                <ListItem
-                  key={s4()}
-                  >
-                  { text }
-                </ListItem>
-              )}
+              { getElementsFromProps(table.rows) }
               </List>
           )}
         </Column>

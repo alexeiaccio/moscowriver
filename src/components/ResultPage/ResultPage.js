@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
-import propPath from 'crocks/Maybe/propPath'
 import assign from 'crocks/helpers/assign'
+import find from 'crocks/Maybe/find'
+import propPath from 'crocks/Maybe/propPath'
 
 import {
   Cite,
@@ -23,6 +24,7 @@ import {
   s4,
 } from 'Helpers'
 import { default as Header } from './ResultHeader'
+import SmallWave from '../../assets/SmallWave.svg'
 
 const SectionOne = Section.extend`
   position: relative;
@@ -74,21 +76,164 @@ const QuoteWrapper = styled.div`
   text-align: center;
 `
 
+const SectionRow = Row.extend`
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 1070px;
+`
+
+const SectionPastRow = Row.extend`
+  flex-wrap: wrap;
+  width: 510px;
+`
+
+const SectionHeader = H2.extend`
+  margin: 0 0 ${key(['space', 9])}px ${key(['space', 3])}px;
+`
+
+const SectionPast = Section.extend`
+  padding: ${key(['space', 10])}px 0 ${key(['space', 5])}px;
+`
+
+const Image = styled.div`
+  background: ${({url}) => 'url(' + url + ') center no-repeat'};
+  background-size:  cover;
+`
+
+const SectionPastColumn =  Column.extend`
+  position: relative;
+  color: ${key('colors.text')};
+  padding-bottom: ${key(['space', 10])}px;
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  max-width: 100%;
+  & h3 {
+    color: ${key('colors.pink')};
+    font-size: ${key(['fontSizes', 1])}px;
+    line-height: ${key(['lineHeights', 1])};
+  }
+  & h4 {
+    margin-bottom: ${key(['space', 3])}px;
+    font-size: ${key(['fontSizes', 2])}px;
+    line-height: ${key(['lineHeights', 2])};
+  }
+  & p {
+    clear: both;
+    padding-bottom: ${key(['space', 2])}px;
+    &:first-of-type {
+      margin-top: ${key(['space', 5])}px;
+    }
+  }
+  & .img {
+    width:  450px;
+    height: 275px;
+    top: ${key(['space', 9])}px;
+  }
+  &:first-of-type {
+    max-width: 480px;
+    font-weight: ${key('fontWeights.medium')};
+    & h3 {
+      padding-bottom: ${key(['space', 9])}px;
+    }
+    & .img {
+      width: 570px;
+      height: 460px;
+      float: right;
+      @media (min-width: 1200px) {
+        margin-top: -${key(['space', 11])}px;
+        margin-right: calc(-50vw + 215px);
+      }
+      @media (min-width: 1200px) {
+        &::after {
+          content: '';
+          display: block;
+          width: 570px;
+          height: 460px;
+          position: absolute;
+          left: calc(-50vw + 215px);
+          background: ${({url}) => 'url(' + url + ') center no-repeat'};
+          background-size: cover;
+          transform: rotateY(180deg);
+          z-index: -1;
+        }
+      }
+    }
+  }
+  &:nth-of-type(2n) {
+    & p {
+      float: right;
+      max-width: 45%;
+    }
+    & h4 {
+      padding-left: 55%;
+    }
+    & .img {
+      float: left;
+      @media (min-width: 1200px) {
+        margin-left: calc(-50vw + 515px);
+      }
+    }
+  }
+  &:nth-of-type(2n+3) {
+    & p {
+      float: left;
+      max-width: 45%;
+    }
+    & .img {
+      float: right;
+      @media (min-width: 1200px) {
+        margin-right: calc(-50vw + 515px);
+      }
+    }
+  }
+  &:nth-of-type(2) p,
+  &:nth-of-type(6) p {
+    float: none;
+    max-width: 720px;
+  }
+  & span {
+    display: block;
+    float: right;
+    clear: both;
+    padding-bottom: ${key(['space', 2])}px;
+    padding-left: ${key(['space', 4])}px;
+    text-indent: -${key(['space', 4])}px;
+    &::before {
+      content: '— ';
+    }
+  }
+`
+
+
 export default ({data}) => {
+  const findSection = xs => name =>
+    find(x => x.primary.anchor === name, xs)
+
+  const sections = findSection(data.body)
+  const head = propPath([0])
   const body = propPath(['body'])
+  const anchor = propPath(['primary', 'anchor'])
+  const header = propPath(['primary', 'header'])
+  const items = propPath(['items'])
+
+  const sectionsId = name => sections(name).chain(anchor).option('Oops...')
+  const sectionsHeader = name => sections(name).chain(header).option([])
+  const sectionParagraphs = name => sections(name).chain(items).option([])
 
   const pageBody = body(data).option([])
   const pageNav = pageBody.map(({primary}, i) =>
     assign({uid: primary.anchor}, {text: primary.sectionname}))
 
   console.log(
-
+    sectionsId('past'),
+    sectionsHeader('past'),
+    sectionParagraphs('past')
   )
   return (
     <Fragment>
      <Header data={{title: [{ text: '390 взглядов на Москву-реку' }]}} move={-140} />
      <main>
-     <SectionOne image={data.image.url} >
+     <SectionOne id='header' image={data.image.url} >
         <TitleWrapper>
           <Title color='white' fontSize={0} lineHeight={0} data={data}/>
           <QuoteWrapper>
@@ -97,6 +242,21 @@ export default ({data}) => {
         </TitleWrapper>
         <Navigation data={ pageNav } />
       </SectionOne>
+      <SectionPast id={sectionsId('past')} >
+        <SectionPastRow>
+          <SectionHeader color='text' shade='pink' >{ getStringFromProps(sectionsHeader('past')) }</SectionHeader>
+        </SectionPastRow>
+        <SectionRow>
+          {sectionParagraphs('past').map(paragraph  =>
+            <SectionPastColumn key={s4()} url={paragraph.sectionimage.url} >
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+              {(paragraph.sectionimage.url !== null) &&
+                <Image className='img' url={paragraph.sectionimage.url} />
+              }
+            </SectionPastColumn>
+          )}
+          </SectionRow>
+      </SectionPast>
      </main>
     </Fragment>
   )

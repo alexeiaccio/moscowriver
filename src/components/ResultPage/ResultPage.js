@@ -95,6 +95,10 @@ const SectionPast = Section.extend`
   padding: ${key(['space', 10])}px 0 ${key(['space', 5])}px;
 `
 
+const SectionPresent = Section.extend`
+  padding: 0 0 ${key(['space', 5])}px;
+`
+
 const Image = styled.div`
   background: ${({url}) => 'url(' + url + ') center no-repeat'};
   background-size:  cover;
@@ -204,6 +208,57 @@ const SectionPastColumn =  Column.extend`
   }
 `
 
+const SectionPresentColumn =  Column.extend`
+  position: relative;
+  color: ${key('colors.text')};
+  padding-bottom: ${key(['space', 10])}px;
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  max-width: 100%;
+  & h3 {
+    margin-bottom: ${key(['space', 5])}px;
+    color: ${key('colors.pink')};
+    font-size: ${key(['fontSizes', 1])}px;
+    line-height: ${key(['lineHeights', 1])};
+  }
+  & p {
+    clear: both;
+    padding-bottom: ${key(['space', 2])}px;
+  }
+  & .img {
+    width:  450px;
+    height: 275px;
+    top: ${key(['space', 9])}px;
+  }
+  &:nth-of-type(2n) {
+    & p {
+      float: right;
+      max-width: 45%;
+    }
+    & h4 {
+      padding-left: 55%;
+    }
+    & .img {
+      float: left;
+      @media (min-width: 1200px) {
+        margin-left: calc(-50vw + 515px);
+      }
+    }
+  }
+  &:nth-of-type(2n+1) {
+    & p {
+      float: left;
+      max-width: 45%;
+    }
+    & .img {
+      float: right;
+      @media (min-width: 1200px) {
+        margin-right: calc(-50vw + 515px);
+      }
+    }
+  }
+`
+
 
 export default ({data}) => {
   const findSection = xs => name =>
@@ -257,6 +312,21 @@ export default ({data}) => {
           )}
           </SectionRow>
       </SectionPast>
+      <SectionPresent id={sectionsId('present')} >
+        <Row>
+          <SectionHeader color='text' shade='pink' >{ getStringFromProps(sectionsHeader('present')) }</SectionHeader>
+        </Row>
+        <SectionRow>
+          {sectionParagraphs('present').map(paragraph  =>
+            <SectionPresentColumn key={s4()} >
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+              {(paragraph.sectionimage.url !== null) &&
+                <Image className='img' url={paragraph.sectionimage.url} />
+              }
+            </SectionPresentColumn>
+          )}
+          </SectionRow>
+      </SectionPresent>
      </main>
     </Fragment>
   )

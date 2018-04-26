@@ -117,6 +117,36 @@ class ResultFunctions extends Component {
     }
     const tables = getTables(this.props.data)
 
+    const getTableContent = table => {
+      const res = []
+      const first = []
+      const second = []
+      const third = []
+      const fourth = []
+      let secondList, fourthList = false
+      table.rows.map((row, i) => {
+        if(row.type === 'paragraph') {
+          if (i === 0) {
+            secondList = true
+            first.push(<li key={s4()}>{row.text}</li>)
+          } else {
+            fourthList = true
+            third.push(<li key={s4()} />)
+          }
+        } else if(row.type === 'list-item') { 
+          !fourthList
+          ? second.push(<li key={s4()}>{row.text}</li>)
+          : fourth.push(<li key={s4()}>{row.text}</li>)
+        }
+      })
+      res.push(first)
+      res.push(second)
+      res.push(third)
+      res.push(fourth)
+      return res
+    }
+    console.log(tables.map((table, i)  => getTableContent(table)))    
+
     return (
       <Fragment>
         <Column>
@@ -134,7 +164,9 @@ class ResultFunctions extends Component {
           {tables.map((table, i)  =>
             this.state.activeList === i &&
               <List key={s4()} >
-              { getElementsFromProps(table.rows) }
+              {
+                getTableContent(table).map(x=> <ul  key={s4()}>{x}</ul>)
+              }
               </List>
           )}
         </Column>

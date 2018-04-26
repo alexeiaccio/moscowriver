@@ -95,6 +95,11 @@ const SectionPastRow = Row.extend`
   width: 510px;
 `
 
+const SectionFurureRow = Row.extend`
+  flex-direction: column;
+  width: 720px;
+`
+
 const SectionHeader = H2.extend`
   margin: 0 0 ${key(['space', 9])}px ${key(['space', 3])}px;
 `
@@ -112,6 +117,10 @@ const SectionPast = Section.extend`
 
 const SectionPresent = Section.extend`
   padding: 0 0 ${key(['space', 5])}px;
+`
+
+const SectionFuture = Section.extend`
+  padding: ${key(['space', 10])}px 0 ${key(['space', 12])}px;
 `
 
 const Image = styled.div`
@@ -274,6 +283,19 @@ const SectionPresentColumn =  Column.extend`
   }
 `
 
+const SectionFutureColumn =  Column.extend`
+  position: relative;
+  color: ${key('colors.text')};
+  padding: 0 ${key(['space', 3])}px ${key(['space', 10])}px;
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  max-width: 100%;
+  &:last-of-type {
+    padding: ${key(['space', 7])}px;
+    font-weight: ${key('fontWeights.medium')};
+    border: 10px solid ${key('colors.pink')};
+  }
+`
 
 export default ({data}) => {
   const findSection = xs => name =>
@@ -353,12 +375,26 @@ export default ({data}) => {
           <ResultMap data={sectionParagraphs('maps')} />
         </SectionMapsRow>
       </SectionPresent>
+      <SectionFuture id={sectionsId('future')} >
+        <SectionFurureRow>
+          <SectionHeader color='text' shade='pink' >
+          { getStringFromProps(sectionsHeader('future')) }
+          </SectionHeader>
+        </SectionFurureRow>
+        <SectionFurureRow>
+          {sectionParagraphs('future').map(paragraph  =>
+            <SectionFutureColumn key={s4()} >
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+            </SectionFutureColumn>
+          )}
+          </SectionFurureRow>
+      </SectionFuture>
       <SectionPresent id={sectionsId('project')} >
-        <Row>
+        <SectionFurureRow>
           <SectionSubHeader color='text' shade='pink' >
           { getStringFromProps(sectionsHeader('project')) }
           </SectionSubHeader>
-        </Row>
+        </SectionFurureRow>
         <SectionMapsRow>
           <ResultMap data={sectionParagraphs('project')} />
         </SectionMapsRow>

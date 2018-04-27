@@ -85,6 +85,10 @@ const SectionRow = Row.extend`
   width: 1070px;
 `
 
+const SectionFunctionsRow = Row.extend`
+  width: 1100px;
+`
+
 const SectionMapsRow = Row.extend`
   flex-direction: row;
   justify-content: space-between;
@@ -387,11 +391,11 @@ export default ({data}) => {
         </SectionMapsRow>
       </SectionPresent>
       <SectionFunctions id={sectionsId('functions')} >
-        <Row>
+        <SectionFunctionsRow>
           <SectionHeader color='text' shade='white' >
           { getStringFromProps(sectionsHeader('functions')) }
           </SectionHeader>
-        </Row>
+        </SectionFunctionsRow>
         <SectionRow>
           <ResultFunctions data={sectionParagraphs('functions')} />
         </SectionRow>

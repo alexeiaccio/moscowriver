@@ -25,7 +25,7 @@ const H4 = styled.h4`
   padding: 0 ${key(['space', 5])}px;
   font-size: ${key(['fontSizes', 3])}px;
   line-height: ${key(['lineHeights', 3])};
-  color: ${({active}) => active ? key('colors.black') : key(['colors', 'gray', 1])};
+  color: ${({active}) => active ? key('colors.white') : key(['colors', 'gray', 3])};
   cursor: pointer;
   &::before {
     content: '';
@@ -54,10 +54,24 @@ const H4 = styled.h4`
 const List = styled.div`
   display: flex;
   flex-wrap: wrap;
-  & ul {
+  &>* {
     width: 100%;
     max-width: 30%;
-    padding: 10px;
+    font-size: ${key(['fontSizes', 6])}px;
+    line-height: ${key(['lineHeights', 5])};
+    color: ${key('colors.white')};
+  }
+  & ul {
+    padding: ${key(['space', 5])}px ${key(['space', 3])}px ${key(['space', 5])}px 0;
+  }
+  & li {
+    padding-bottom: ${key(['space', 2])}px;
+  }
+  & .column-name {
+    padding: ${key(['space', 5])}px ${key(['space', 3])}px ${key(['space', 3])}px 0;
+    font-weight: ${key('fontWeights.light')};
+    color: ${key(['colors', 'gray', 3])};
+    border-bottom: 1px solid ${key(['colors', 'gray', 3])};
   }
 `
 
@@ -154,7 +168,6 @@ class ResultFunctions extends Component {
       res.push(fourth)
       return res
     }
-    console.log(tables.map((table, i)  => getTableContent(table)))
 
     return (
       <Fragment>
@@ -173,6 +186,9 @@ class ResultFunctions extends Component {
           {tables.map((table, i)  =>
             this.state.activeList === i &&
               <List key={s4()} >
+                <div className='column-name'>Кто пользуется?</div>
+                <div className='column-name'>Как пользуются территорией?</div>
+                <div className='column-name'>Как хотели бы пользоваться?</div>
               {
                 getTableContent(table).map(x=> <ul  key={s4()}>{x}</ul>)
               }

@@ -52,6 +52,13 @@ const H4 = styled.h4`
 `
 
 const List = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  & ul {
+    width: 100%;
+    max-width: 30%;
+    padding: 10px;
+  }
 `
 
 const ListItem = styled.p`
@@ -119,33 +126,35 @@ class ResultFunctions extends Component {
 
     const getTableContent = table => {
       const res = []
-      const first = []
-      const second = []
-      const third = []
-      const fourth = []
-      let secondList, fourthList = false
+      let second = []
+      let fourth = []
+      let isFirst,isSecond, isFourth = false
       table.rows.map((row, i) => {
         if(row.type === 'paragraph') {
-          if (i === 0) {
-            secondList = true
-            first.push(<li key={s4()}>{row.text}</li>)
+          if (isFirst || i === 0) {
+            isFirst = false
+            isSecond = true
+            fourth.length > 0 && res.push(fourth)
+            fourth = []
+            row.text.length > 0 && res.push(<li key={s4()}>{row.text}</li>)
           } else {
-            fourthList = true
-            third.push(<li key={s4()} />)
+            isFourth = true
+            res.push(second)
+            second = []
           }
-        } else if(row.type === 'list-item') { 
-          !fourthList
-          ? second.push(<li key={s4()}>{row.text}</li>)
-          : fourth.push(<li key={s4()}>{row.text}</li>)
+        } else if(row.type === 'list-item') {
+          if(!isFourth) {
+            second.push(<li key={s4()}>{row.text}</li>)
+          } else {
+            isFirst = true
+            fourth.push(<li key={s4()}>{row.text}</li>)
+          }
         }
       })
-      res.push(first)
-      res.push(second)
-      res.push(third)
       res.push(fourth)
       return res
     }
-    console.log(tables.map((table, i)  => getTableContent(table)))    
+    console.log(tables.map((table, i)  => getTableContent(table)))
 
     return (
       <Fragment>

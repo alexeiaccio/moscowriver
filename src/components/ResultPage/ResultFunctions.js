@@ -136,6 +136,7 @@ class ResultFunctions extends Component {
       })
       return tables
     }
+
     const tables = getTables(this.props.data)
 
     const getTableContent = table => {

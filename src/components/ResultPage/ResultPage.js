@@ -25,6 +25,7 @@ import {
 } from 'Helpers'
 import { default as Header } from './ResultHeader'
 import ResultMap from './ResultMap'
+import ResultAdditions from './ResultAdditions'
 import ResultFunctions from './ResultFunctions'
 import patternWaves from '../../assets/PatternWavesWhite.svg'
 import SmallWave from '../../assets/SmallWave.svg'
@@ -80,6 +81,13 @@ const QuoteWrapper = styled.div`
 `
 
 const SectionRow = Row.extend`
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 1070px;
+`
+
+const SectionAdditionsRow = Row.extend`
+  position: relative;
   flex-wrap: wrap;
   justify-content: center;
   width: 1070px;
@@ -582,6 +590,16 @@ export default ({data}) => {
           )}
         </SectionFurureRow>
       </SectionConcept>
+      <SectionPresent id={sectionsId('additions')} >
+        <SectionFunctionsRow>
+          <SectionHeader color='text' shade='pink' >
+          { getStringFromProps(sectionsHeader('additions')) }
+          </SectionHeader>
+        </SectionFunctionsRow>
+        <SectionAdditionsRow>
+          <ResultAdditions data={sectionParagraphs('additions')} />
+        </SectionAdditionsRow>
+      </SectionPresent>
      </main>
     </Fragment>
   )

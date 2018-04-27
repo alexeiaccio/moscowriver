@@ -270,7 +270,7 @@ const SectionGeoColumn =  Column.extend`
     padding-bottom: ${key(['space', 9])}px;
     font-weight: ${key('fontWeights.medium')};
   }
-  &:nth-of-type(2n)  {
+  &:nth-of-type(2n) {
     & p {
       float: right;
       max-width: 45%;
@@ -280,6 +280,9 @@ const SectionGeoColumn =  Column.extend`
     }
     & .img {
       float: left;
+      @media (min-width: 1200px) {
+        margin-left: calc(-50vw + 515px);
+      }
     }
   }
   &:nth-of-type(2n+3) {
@@ -289,6 +292,9 @@ const SectionGeoColumn =  Column.extend`
     }
     & .img {
       float: right;
+      @media (min-width: 1200px) {
+        margin-right: calc(-50vw + 515px);
+      }
     }
   }
 `
@@ -476,7 +482,7 @@ export default ({data}) => {
   const description = propPath(['primary', 'description'])
   const image = propPath(['image', 'url'])
 
-  const sectionsId = x => sections(x).chain(uid).option('')
+  const sectionsId = name => sections(name).chain(uid).option('')
   const sectionsHeader = name => sections(name).chain(body).chain(head).chain(header).option([])
   const sectionParagraphs = name => sections(name).chain(body).chain(head).chain(items).option([])
   const sectionUrl = text => head(text).chain(url).option('/')

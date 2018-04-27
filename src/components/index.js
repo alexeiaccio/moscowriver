@@ -22,3 +22,4 @@ export { WavedBack } from './Backs/WavedBack'
 
 export { default as IndexPage } from './IndexPage/IndexPage'
 export { default as ResearchPage } from './ResearchPage/ResearchPage'
+export { default as ResultPage } from './ResultPage/ResultPage'

@@ -14,8 +14,6 @@ const Research = ({ data }) => {
     <ResearchPage data={sections} />
   )
 }
-/* <div> {getElementsFromProps(nextsteps[0].items[0].text)} </div>
-<div> {map(map(getElementsFromProps), map(({text}) => text))(timeline[0].items)} </div> */
 
 export default Research
 

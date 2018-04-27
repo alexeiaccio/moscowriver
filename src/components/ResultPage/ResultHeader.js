@@ -40,23 +40,9 @@ export default ({data, layout, move}) => (
       <WavePattern />
     </Back>
     <Row>
-      <StyledLink to='/'>На главную</StyledLink>
       <Title color='white' fontSize={1} lineHeight={1} data={data}/>
-      <StyledLink to='/shelepikhinskaya-naberezhnaya/'>Результаты</StyledLink>
+      <StyledLink to='/'>На главную</StyledLink>
+      <StyledLink to='/research/'>Исследование</StyledLink>
     </Row>
   </Header>
 )
-
-export const query = graphql`
-  fragment ResearchHeaderFragment on PrismicDocument {
-    data {
-      body {
-        primary {
-          title {
-            text
-          }
-        }
-      }
-    }
-  }
-`

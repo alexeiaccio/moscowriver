@@ -27,6 +27,7 @@ import { default as Header } from './ResultHeader'
 import ResultMap from './ResultMap'
 import ResultAdditions from './ResultAdditions'
 import ResultFunctions from './ResultFunctions'
+import ResultForm from './ResultForm'
 import patternWaves from '../../assets/PatternWavesWhite.svg'
 import SmallWave from '../../assets/SmallWave.svg'
 
@@ -413,7 +414,7 @@ const SectionPierColumn =  Column.extend`
   }
 `
 
-export default ({data}) => {
+export default ({data: { data, uid }}) => {
   const findSection = xs => name =>
     find(x => x.primary.anchor === name, xs)
 
@@ -590,7 +591,17 @@ export default ({data}) => {
           )}
         </SectionFurureRow>
       </SectionConcept>
-      <SectionPresent id={sectionsId('additions')} >
+      <SectionFuture id={sectionsId('form')} >
+        <SectionFurureRow>
+          <SectionHeader color='text' shade='pink' >
+          { getStringFromProps(sectionsHeader('form')) }
+          </SectionHeader>
+        </SectionFurureRow>
+        <SectionFurureRow>
+          <ResultForm uid={uid} />
+        </SectionFurureRow>
+      </SectionFuture>
+      <SectionFuture id={sectionsId('additions')} >
         <SectionFunctionsRow>
           <SectionHeader color='text' shade='pink' >
           { getStringFromProps(sectionsHeader('additions')) }
@@ -599,7 +610,7 @@ export default ({data}) => {
         <SectionAdditionsRow>
           <ResultAdditions data={sectionParagraphs('additions')} />
         </SectionAdditionsRow>
-      </SectionPresent>
+      </SectionFuture>
      </main>
     </Fragment>
   )

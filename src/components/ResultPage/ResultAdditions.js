@@ -5,15 +5,15 @@ import { key } from 'styled-theme'
 import { s4 } from 'Helpers'
 
 const Image = styled.div`
-  position: ${({active}) => active ? 'absolute' : 'relative'};
   top: 0;
   left: 0;
-  height: ${({active}) => active ? '100%' : '300px'};
-  width: ${({active}) => active ? '100%' : '25%'};
   background: ${({url}) => 'url(' + url + ') center no-repeat'};
   background-size:  cover;
   transition: all .4s ease-in-out;
-  cursor: pointer;
+  position: ${({active}) => active ? 'absolute' : 'relative'};
+  width: ${({active}) => active ? '100%' : '25%'};
+  height: ${({active}) => active ? '100%' : '300px'};
+  cursor: ${({active}) => active ? 'zoom-out' : 'zoom-in'};
   z-index: ${({active}) => active ? 1000 : 0};
 `
 
@@ -32,8 +32,6 @@ class ResultAdditions extends Component {
   }
 
   render() {
-    console.log(this.state.images)
-
     return (
       <Fragment>
       {this.props.data.map((image, i)  =>

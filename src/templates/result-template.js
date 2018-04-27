@@ -4,7 +4,7 @@ import { ResultPage } from 'Components'
 
 const ResultTemplate = ({ data }) =>
   <Fragment>
-    <ResultPage data={data.result.data} />
+    <ResultPage data={data.result} />
   </Fragment>
 
 
@@ -13,6 +13,7 @@ export default ResultTemplate
 export const query = graphql`
   query ResultTemplateQuery($slug: String!) {
     result: prismicDocument(uid: {eq: $slug}) {
+      uid
       data {
         title {
           text

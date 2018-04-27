@@ -121,6 +121,10 @@ const SectionPast = Section.extend`
   padding: ${key(['space', 10])}px 0 ${key(['space', 5])}px;
 `
 
+const SectionPier = Section.extend`
+  padding: ${key(['space', 10])}px 0 0;
+`
+
 const SectionPresent = Section.extend`
   padding: 0 0 ${key(['space', 5])}px;
 `
@@ -129,6 +133,15 @@ const SectionFunctions = Section.extend`
   margin: ${key(['space', 12])}px 0 0;
   padding: ${key(['space', 10])}px 0 ${key(['space', 12])}px;
   background-color: ${key(['colors', 'gray', 2])};
+  background-image: url(${patternWaves});
+  background-repeat: repeat-x;
+  background-position-y: calc(100% + 225px);
+`
+
+const SectionConcept = Section.extend`
+  margin: 0 0 ${key(['space', 10])}px 0 ;
+  padding: ${key(['space', 12])}px 0;
+  background-color: ${key('colors.pink')};
   background-image: url(${patternWaves});
   background-repeat: repeat-x;
   background-position-y: calc(100% + 225px);
@@ -162,6 +175,7 @@ const SectionPastColumn =  Column.extend`
   }
   & p {
     clear: both;
+    width: 100%;
     padding-bottom: ${key(['space', 2])}px;
     &:first-of-type {
       margin-top: ${key(['space', 5])}px;
@@ -262,6 +276,7 @@ const SectionPresentColumn =  Column.extend`
   }
   & p {
     clear: both;
+    width: 100%;
     padding-bottom: ${key(['space', 2])}px;
   }
   & .img {
@@ -309,6 +324,84 @@ const SectionFutureColumn =  Column.extend`
     padding: ${key(['space', 7])}px;
     font-weight: ${key('fontWeights.medium')};
     border: 10px solid ${key('colors.pink')};
+  }
+`
+
+const SectionConceptColumn =  Column.extend`
+  position: relative;
+  color: ${key('colors.white')};
+  padding: 0 ${key(['space', 2])}px ${key(['space', 11])}px;
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  max-width: 100%;
+`
+
+const SectionPierColumn =  Column.extend`
+  position: relative;
+  color: ${key('colors.text')};
+  padding-bottom: ${key(['space', 10])}px;
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  max-width: 100%;
+  & h3 {
+    margin-bottom: ${key(['space', 5])}px;
+    color: ${key('colors.pink')};
+    font-size: ${key(['fontSizes', 1])}px;
+    line-height: ${key(['lineHeights', 1])};
+  }
+  & h4 {
+    margin-bottom: ${key(['space', 3])}px;
+    color: ${key('colors.text')};
+    font-size: ${key(['fontSizes', 3])}px;
+    line-height: ${key(['lineHeights', 3])};
+  }
+  & p {
+    clear: both;
+    width: 100%;
+    padding-bottom: ${key(['space', 2])}px;
+  }
+  & .img {
+    width:  450px;
+    height: 320px;
+    top: ${key(['space', 9])}px;
+  }
+  &:nth-of-type(2n) {
+    & p {
+      float: right;
+      max-width: 45%;
+    }
+    & h4 {
+      padding-left: 55%;
+    }
+    & .img {
+      float: left;
+      width: 650px;
+      height: 600px;
+      @media (min-width: 1200px) {
+        margin-left: calc(-50vw + 515px);
+      }
+    }
+  }
+  &:nth-of-type(2n+1) {
+    & p {
+      float: left;
+      max-width: 45%;
+    }
+    & .img {
+      float: right;
+      @media (min-width: 1200px) {
+        margin-right: calc(-50vw + 515px);
+      }
+    }
+  }
+  &:last-of-type .img {
+    width: 1070px;
+    height: 600px;
+    @media (min-width: 1200px) {
+      width: 100vw;
+      height: 900px;
+      margin-right: calc(-50vw + 530px);
+    }
   }
 `
 
@@ -424,6 +517,71 @@ export default ({data}) => {
           <ResultMap data={sectionParagraphs('project')} />
         </SectionMapsRow>
       </SectionPresent>
+      <SectionPier id={sectionsId('pier')} >
+        <Row>
+          <SectionHeader color='text' shade='pink' >
+          { getStringFromProps(sectionsHeader('pier')) }
+          </SectionHeader>
+        </Row>
+        <SectionRow>
+          {sectionParagraphs('pier').map(paragraph  =>
+            <SectionPierColumn key={s4()} >
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+              {(paragraph.sectionimage.url !== null) &&
+                <Image className='img' url={paragraph.sectionimage.url} />
+              }
+            </SectionPierColumn>
+          )}
+          </SectionRow>
+      </SectionPier>
+      <SectionPresent id={sectionsId('port')} >
+        <Row>
+          <SectionHeader color='text' shade='pink' >
+          { getStringFromProps(sectionsHeader('port')) }
+          </SectionHeader>
+        </Row>
+        <SectionRow>
+          {sectionParagraphs('port').map(paragraph  =>
+            <SectionPierColumn key={s4()} >
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+              {(paragraph.sectionimage.url !== null) &&
+                <Image className='img' url={paragraph.sectionimage.url} />
+              }
+            </SectionPierColumn>
+          )}
+          </SectionRow>
+      </SectionPresent>
+      <SectionPresent id={sectionsId('embankment')} >
+        <Row>
+          <SectionHeader color='text' shade='pink' >
+          { getStringFromProps(sectionsHeader('embankment')) }
+          </SectionHeader>
+        </Row>
+        <SectionRow>
+          {sectionParagraphs('embankment').map(paragraph  =>
+            <SectionPierColumn key={s4()} >
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+              {(paragraph.sectionimage.url !== null) &&
+                <Image className='img' url={paragraph.sectionimage.url} />
+              }
+            </SectionPierColumn>
+          )}
+          </SectionRow>
+      </SectionPresent>
+      <SectionConcept id={sectionsId('concept')} >
+        <SectionFurureRow>
+          <SectionHeader color='text' shade='white' >
+          { getStringFromProps(sectionsHeader('concept')) }
+          </SectionHeader>
+        </SectionFurureRow>
+        <SectionFurureRow>
+          {sectionParagraphs('concept').map(paragraph  =>
+            <SectionConceptColumn key={s4()} >
+              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+            </SectionConceptColumn>
+          )}
+        </SectionFurureRow>
+      </SectionConcept>
      </main>
     </Fragment>
   )

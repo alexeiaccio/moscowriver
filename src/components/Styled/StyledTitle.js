@@ -89,7 +89,7 @@ const H2 = styled.h2`
     position: absolute;
     display: block;
     width: 100%;
-    bottom: calc(${key(['fontSizes', 1])}px * .18);
+    bottom: calc(${key(['fontSizes', 1])}px * .21);
     height: calc(${key(['fontSizes', 1])}px * .45);
     background-color: ${({shade}) => key('colors.' + shade)};
     z-index: -1;

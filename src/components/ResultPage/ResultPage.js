@@ -9,6 +9,9 @@ import {
   Cite,
   Title,
   Navigation,
+  RoundButtonTop,
+  Link,
+  RoundButtonWithImage,
 } from 'Components'
 import {
   Section,
@@ -118,6 +121,9 @@ const SectionFurureRow = Row.extend`
 const SectionHeader = H2.extend`
   margin: 0 0 ${key(['space', 9])}px ${key(['space', 3])}px;
 `
+const SectionWhatNextHeader = H2.extend`
+  margin: 0 0 ${key(['space', 9])}px ${key(['space', 5])}px;
+`
 
 const SectionSubHeader = styled.h3`
   margin: 0 0 ${key(['space', 9])}px;
@@ -158,6 +164,11 @@ const SectionConcept = Section.extend`
 
 const SectionFuture = Section.extend`
   padding: ${key(['space', 10])}px 0 ${key(['space', 12])}px;
+`
+
+const SectionWhatNext = Section.extend`
+  padding: ${key(['space', 5])}px 0 ${key(['space', 14])}px;
+  position: relative;
 `
 
 const Image = styled.div`
@@ -414,17 +425,42 @@ const SectionPierColumn =  Column.extend`
   }
 `
 
+const SectionColumn =  Column.extend`
+  color: ${key('colors.text')};
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  max-width: 45%;
+  & h3 {
+    margin-top: ${key(['space', 9])}px;
+    margin-bottom: ${key(['space', 3])}px;
+    font-size: ${key(['fontSizes', 2])}px;
+    line-height: ${key(['lineHeights', 2])};
+    color: ${key('colors.pink')};
+  }
+  & a {
+    top: ${key(['space', 12])}px;
+    color: ${key('colors.text')};
+    text-decoration: none;
+  }
+  &:last-of-type {
+    text-align: right;
+  }
+`
+
 export default ({data: { data, uid }}) => {
   const findSection = xs => name =>
     find(x => x.primary.anchor === name, xs)
 
   const sections = findSection(data.body)
   const head = propPath([0])
+  const second = propPath([1])
   const body = propPath(['body'])
   const anchor = propPath(['primary', 'anchor'])
   const header = propPath(['primary', 'header'])
   const items = propPath(['items'])
+  const url = propPath(['spans', 0, 'data', 'url'])
 
+  const sectionUrl = text => second(text).chain(url).option('/')
   const sectionsId = name => sections(name).chain(anchor).option('Oops...')
   const sectionsHeader = name => sections(name).chain(header).option([])
   const sectionParagraphs = name => sections(name).chain(items).option([])
@@ -436,181 +472,201 @@ export default ({data: { data, uid }}) => {
   console.log(
   )
   return (
-    <Fragment>
-     <Header data={{title: [{ text: '390 взглядов на Москву-реку' }]}} move={-140} />
+    <Fragment >
+     <Header id='header' data={{title: [{ text: '390 взглядов на Москву-реку' }]}} move={-140} />
      <main>
-     <SectionOne id='header' image={data.image.url} >
-        <TitleWrapper>
-          <Title color='white' fontSize={0} lineHeight={0} data={data}/>
-          <QuoteWrapper>
-            <Cite color='pink' fontSize={1} data={{cite: data.quote}} />
-          </QuoteWrapper>
-        </TitleWrapper>
-        <Navigation data={ pageNav } />
-      </SectionOne>
-      <SectionPast id={sectionsId('past')} >
-        <SectionPastRow>
-          <SectionHeader color='text' shade='pink' >
-          { getStringFromProps(sectionsHeader('past')) }
-          </SectionHeader>
-        </SectionPastRow>
-        <SectionRow>
-          {sectionParagraphs('past').map(paragraph  =>
-            <SectionPastColumn key={s4()} url={paragraph.sectionimage.url} >
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-              {(paragraph.sectionimage.url !== null) &&
-                <Image className='img' url={paragraph.sectionimage.url} />
-              }
-            </SectionPastColumn>
-          )}
+      <SectionOne image={data.image.url} >
+          <TitleWrapper>
+            <Title color='white' fontSize={0} lineHeight={0} data={data}/>
+            <QuoteWrapper>
+              <Cite color='pink' fontSize={1} data={{cite: data.quote}} />
+            </QuoteWrapper>
+          </TitleWrapper>
+          <Navigation data={ pageNav } />
+        </SectionOne>
+        <SectionPast id={sectionsId('past')} >
+          <SectionPastRow>
+            <SectionHeader color='text' shade='pink' >
+            { getStringFromProps(sectionsHeader('past')) }
+            </SectionHeader>
+          </SectionPastRow>
+          <SectionRow>
+            {sectionParagraphs('past').map(paragraph  =>
+              <SectionPastColumn key={s4()} url={paragraph.sectionimage.url} >
+                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                {(paragraph.sectionimage.url !== null) &&
+                  <Image className='img' url={paragraph.sectionimage.url} />
+                }
+              </SectionPastColumn>
+            )}
+            </SectionRow>
+        </SectionPast>
+        <SectionPresent id={sectionsId('present')} >
+          <Row>
+            <SectionHeader color='text' shade='pink' >
+            { getStringFromProps(sectionsHeader('present')) }
+            </SectionHeader>
+          </Row>
+          <SectionRow>
+            {sectionParagraphs('present').map(paragraph  =>
+              <SectionPresentColumn key={s4()} >
+                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                {(paragraph.sectionimage.url !== null) &&
+                  <Image className='img' url={paragraph.sectionimage.url} />
+                }
+              </SectionPresentColumn>
+            )}
+            </SectionRow>
+        </SectionPresent>
+        <SectionPresent id={sectionsId('maps')} >
+          <Row>
+            <SectionSubHeader color='text' shade='pink' >
+            { getStringFromProps(sectionsHeader('maps')) }
+            </SectionSubHeader>
+          </Row>
+          <SectionMapsRow>
+            <ResultMap data={sectionParagraphs('maps')} />
+          </SectionMapsRow>
+        </SectionPresent>
+        <SectionFunctions id={sectionsId('functions')} >
+          <SectionFunctionsRow>
+            <SectionHeader color='text' shade='white' >
+            { getStringFromProps(sectionsHeader('functions')) }
+            </SectionHeader>
+          </SectionFunctionsRow>
+          <SectionRow>
+            <ResultFunctions data={sectionParagraphs('functions')} />
           </SectionRow>
-      </SectionPast>
-      <SectionPresent id={sectionsId('present')} >
-        <Row>
-          <SectionHeader color='text' shade='pink' >
-          { getStringFromProps(sectionsHeader('present')) }
-          </SectionHeader>
-        </Row>
-        <SectionRow>
-          {sectionParagraphs('present').map(paragraph  =>
-            <SectionPresentColumn key={s4()} >
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-              {(paragraph.sectionimage.url !== null) &&
-                <Image className='img' url={paragraph.sectionimage.url} />
-              }
-            </SectionPresentColumn>
-          )}
-          </SectionRow>
-      </SectionPresent>
-      <SectionPresent id={sectionsId('maps')} >
-        <Row>
-          <SectionSubHeader color='text' shade='pink' >
-          { getStringFromProps(sectionsHeader('maps')) }
-          </SectionSubHeader>
-        </Row>
-        <SectionMapsRow>
-          <ResultMap data={sectionParagraphs('maps')} />
-        </SectionMapsRow>
-      </SectionPresent>
-      <SectionFunctions id={sectionsId('functions')} >
-        <SectionFunctionsRow>
-          <SectionHeader color='text' shade='white' >
-          { getStringFromProps(sectionsHeader('functions')) }
-          </SectionHeader>
-        </SectionFunctionsRow>
-        <SectionRow>
-          <ResultFunctions data={sectionParagraphs('functions')} />
-        </SectionRow>
-      </SectionFunctions>
-      <SectionFuture id={sectionsId('future')} >
-        <SectionFurureRow>
-          <SectionHeader color='text' shade='pink' >
-          { getStringFromProps(sectionsHeader('future')) }
-          </SectionHeader>
-        </SectionFurureRow>
-        <SectionFurureRow>
-          {sectionParagraphs('future').map(paragraph  =>
-            <SectionFutureColumn key={s4()} >
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-            </SectionFutureColumn>
-          )}
+        </SectionFunctions>
+        <SectionFuture id={sectionsId('future')} >
+          <SectionFurureRow>
+            <SectionHeader color='text' shade='pink' >
+            { getStringFromProps(sectionsHeader('future')) }
+            </SectionHeader>
           </SectionFurureRow>
-      </SectionFuture>
-      <SectionPresent id={sectionsId('project')} >
-        <SectionFurureRow>
-          <SectionSubHeader color='text' shade='pink' >
-          { getStringFromProps(sectionsHeader('project')) }
-          </SectionSubHeader>
-        </SectionFurureRow>
-        <SectionMapsRow>
-          <ResultMap data={sectionParagraphs('project')} />
-        </SectionMapsRow>
-      </SectionPresent>
-      <SectionPier id={sectionsId('pier')} >
-        <Row>
-          <SectionHeader color='text' shade='pink' >
-          { getStringFromProps(sectionsHeader('pier')) }
-          </SectionHeader>
-        </Row>
-        <SectionRow>
-          {sectionParagraphs('pier').map(paragraph  =>
-            <SectionPierColumn key={s4()} >
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-              {(paragraph.sectionimage.url !== null) &&
-                <Image className='img' url={paragraph.sectionimage.url} />
-              }
-            </SectionPierColumn>
-          )}
+          <SectionFurureRow>
+            {sectionParagraphs('future').map(paragraph  =>
+              <SectionFutureColumn key={s4()} >
+                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+              </SectionFutureColumn>
+            )}
+            </SectionFurureRow>
+        </SectionFuture>
+        <SectionPresent id={sectionsId('project')} >
+          <SectionFurureRow>
+            <SectionSubHeader color='text' shade='pink' >
+            { getStringFromProps(sectionsHeader('project')) }
+            </SectionSubHeader>
+          </SectionFurureRow>
+          <SectionMapsRow>
+            <ResultMap data={sectionParagraphs('project')} />
+          </SectionMapsRow>
+        </SectionPresent>
+        <SectionPier id={sectionsId('pier')} >
+          <Row>
+            <SectionHeader color='text' shade='pink' >
+            { getStringFromProps(sectionsHeader('pier')) }
+            </SectionHeader>
+          </Row>
+          <SectionRow>
+            {sectionParagraphs('pier').map(paragraph  =>
+              <SectionPierColumn key={s4()} >
+                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                {(paragraph.sectionimage.url !== null) &&
+                  <Image className='img' url={paragraph.sectionimage.url} />
+                }
+              </SectionPierColumn>
+            )}
+            </SectionRow>
+        </SectionPier>
+        <SectionPresent id={sectionsId('port')} >
+          <Row>
+            <SectionHeader color='text' shade='pink' >
+            { getStringFromProps(sectionsHeader('port')) }
+            </SectionHeader>
+          </Row>
+          <SectionRow>
+            {sectionParagraphs('port').map(paragraph  =>
+              <SectionPierColumn key={s4()} >
+                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                {(paragraph.sectionimage.url !== null) &&
+                  <Image className='img' url={paragraph.sectionimage.url} />
+                }
+              </SectionPierColumn>
+            )}
+            </SectionRow>
+        </SectionPresent>
+        <SectionPresent id={sectionsId('embankment')} >
+          <Row>
+            <SectionHeader color='text' shade='pink' >
+            { getStringFromProps(sectionsHeader('embankment')) }
+            </SectionHeader>
+          </Row>
+          <SectionRow>
+            {sectionParagraphs('embankment').map(paragraph  =>
+              <SectionPierColumn key={s4()} >
+                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                {(paragraph.sectionimage.url !== null) &&
+                  <Image className='img' url={paragraph.sectionimage.url} />
+                }
+              </SectionPierColumn>
+            )}
+            </SectionRow>
+        </SectionPresent>
+        <SectionConcept id={sectionsId('concept')} >
+          <SectionFurureRow>
+            <SectionHeader color='text' shade='white' >
+            { getStringFromProps(sectionsHeader('concept')) }
+            </SectionHeader>
+          </SectionFurureRow>
+          <SectionFurureRow>
+            {sectionParagraphs('concept').map(paragraph  =>
+              <SectionConceptColumn key={s4()} >
+                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+              </SectionConceptColumn>
+            )}
+          </SectionFurureRow>
+        </SectionConcept>
+        <SectionFuture id={sectionsId('form')} >
+          <SectionFurureRow>
+            <SectionHeader color='text' shade='pink' >
+            { getStringFromProps(sectionsHeader('form')) }
+            </SectionHeader>
+          </SectionFurureRow>
+          <SectionFurureRow>
+            <ResultForm uid={uid} />
+          </SectionFurureRow>
+        </SectionFuture>
+        <SectionFuture id={sectionsId('additions')} >
+          <SectionFunctionsRow>
+            <SectionHeader color='text' shade='pink' >
+            { getStringFromProps(sectionsHeader('additions')) }
+            </SectionHeader>
+          </SectionFunctionsRow>
+          <SectionAdditionsRow>
+            <ResultAdditions data={sectionParagraphs('additions')} />
+          </SectionAdditionsRow>
+        </SectionFuture>
+        <SectionWhatNext id={sectionsId('whatnext')} >
+          <Row>
+            <SectionWhatNextHeader color='text' shade='pink' >
+            { getStringFromProps(sectionsHeader('whatnext')) }
+            </SectionWhatNextHeader>
+          </Row>
+          <SectionRow>
+            {sectionParagraphs('whatnext').map(paragraph =>
+              paragraph.sectionimage.url &&
+                <SectionColumn key={s4()}>
+                  <Link to={sectionUrl(paragraph.text)} target='_blank'>
+                  { getElementsFromProps(paragraph.text) }
+                  </Link>
+                  {console.log(sectionUrl(paragraph.text))}
+                  <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.sectionimage.url} text='' />
+                </SectionColumn>
+            )}
           </SectionRow>
-      </SectionPier>
-      <SectionPresent id={sectionsId('port')} >
-        <Row>
-          <SectionHeader color='text' shade='pink' >
-          { getStringFromProps(sectionsHeader('port')) }
-          </SectionHeader>
-        </Row>
-        <SectionRow>
-          {sectionParagraphs('port').map(paragraph  =>
-            <SectionPierColumn key={s4()} >
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-              {(paragraph.sectionimage.url !== null) &&
-                <Image className='img' url={paragraph.sectionimage.url} />
-              }
-            </SectionPierColumn>
-          )}
-          </SectionRow>
-      </SectionPresent>
-      <SectionPresent id={sectionsId('embankment')} >
-        <Row>
-          <SectionHeader color='text' shade='pink' >
-          { getStringFromProps(sectionsHeader('embankment')) }
-          </SectionHeader>
-        </Row>
-        <SectionRow>
-          {sectionParagraphs('embankment').map(paragraph  =>
-            <SectionPierColumn key={s4()} >
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-              {(paragraph.sectionimage.url !== null) &&
-                <Image className='img' url={paragraph.sectionimage.url} />
-              }
-            </SectionPierColumn>
-          )}
-          </SectionRow>
-      </SectionPresent>
-      <SectionConcept id={sectionsId('concept')} >
-        <SectionFurureRow>
-          <SectionHeader color='text' shade='white' >
-          { getStringFromProps(sectionsHeader('concept')) }
-          </SectionHeader>
-        </SectionFurureRow>
-        <SectionFurureRow>
-          {sectionParagraphs('concept').map(paragraph  =>
-            <SectionConceptColumn key={s4()} >
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-            </SectionConceptColumn>
-          )}
-        </SectionFurureRow>
-      </SectionConcept>
-      <SectionFuture id={sectionsId('form')} >
-        <SectionFurureRow>
-          <SectionHeader color='text' shade='pink' >
-          { getStringFromProps(sectionsHeader('form')) }
-          </SectionHeader>
-        </SectionFurureRow>
-        <SectionFurureRow>
-          <ResultForm uid={uid} />
-        </SectionFurureRow>
-      </SectionFuture>
-      <SectionFuture id={sectionsId('additions')} >
-        <SectionFunctionsRow>
-          <SectionHeader color='text' shade='pink' >
-          { getStringFromProps(sectionsHeader('additions')) }
-          </SectionHeader>
-        </SectionFunctionsRow>
-        <SectionAdditionsRow>
-          <ResultAdditions data={sectionParagraphs('additions')} />
-        </SectionAdditionsRow>
-      </SectionFuture>
+          <RoundButtonTop to='#header' color={'colors.white'} />
+        </SectionWhatNext>
      </main>
     </Fragment>
   )

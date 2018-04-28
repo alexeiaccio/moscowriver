@@ -12,7 +12,7 @@ const Image = styled.div`
   transition: all .4s ease-in-out;
   position: ${({active}) => active ? 'absolute' : 'relative'};
   width: ${({active}) => active ? '100%' : '25%'};
-  height: ${({active}) => active ? '100%' : '300px'};
+  height: ${({active}) => active ? '100%' : '200px'};
   cursor: ${({active}) => active ? 'zoom-out' : 'zoom-in'};
   z-index: ${({active}) => active ? 1000 : 0};
 `

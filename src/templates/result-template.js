@@ -43,6 +43,11 @@ export const query = graphql`
             text {
               type
               text
+              spans {
+                data {
+                  url
+                }
+              }
             }
             list {
               text

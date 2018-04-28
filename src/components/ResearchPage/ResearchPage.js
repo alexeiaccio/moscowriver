@@ -89,8 +89,8 @@ const SectionOrchestraHeader = H2.extend`
     display: inline-flex;
     width: 100vw;
     left: -101vw;
-    bottom: calc(${key(['fontSizes', 1])}px * .18);
-    height: calc(${key(['fontSizes', 1])}px * .45);
+    bottom: calc(${key(['fontSizes', 1])}px * .21);
+    height: calc(${key(['fontSizes', 1])}px * .43);
     background-color: ${key('colors.text')};
     z-index: -1;
   }
@@ -353,23 +353,25 @@ const SectionTimelineColumn =  Column.extend`
     font-size: ${key(['fontSizes', 2])}px;
     line-height: ${key(['lineHeights', 2])};
   }
+  & h3, h4 {
+    max-height: 70px;
+  }
   &:nth-of-type(1) {
     &> * {
       max-width: 45%;
+    }
+    & p {
+      height: 130px;
     }
     &> *:nth-child(1),
     &> *:nth-child(2) {
       text-align: right;
     }
     &> *:nth-child(3) {
-      margin-top: 80px;
     }
     &> *:nth-child(3),
     &> *:nth-child(4) {
       padding-left: 65%;
-    }
-    &> *:nth-child(5) {
-      margin-top: 105px;
     }
     &> *:nth-child(5),
     &> *:nth-child(6) {
@@ -377,12 +379,17 @@ const SectionTimelineColumn =  Column.extend`
     }
   }
   &:nth-of-type(2) {
-      margin-top: 50px;
     &> * {
       max-width: 35%;
     }
+    & p {
+      height: 92px;
+    }
     &> *:nth-child(2) {
-      margin-top: 145px;
+      margin-top: 140px;
+    }
+    &> *:nth-child(3) {
+      height: 130px;
     }
     &> *:nth-child(2),
     &> *:nth-child(3),
@@ -392,23 +399,11 @@ const SectionTimelineColumn =  Column.extend`
     &> *:nth-child(11) {
       padding-left: 55%;
     }
-    &> *:nth-child(4) {
-      margin-top: 25px;
-    }
-    &> *:nth-child(6) {
-      margin-top: -150px;
-    }
-    &> *:nth-child(8) {
-      margin-top: -60px;
-    }
-    &> *:nth-child(10) {
-      margin-top: -105px;
-    }
   }
   &:nth-of-type(3) {
     max-width: 720px;
     & h3 {
-      margin-top: 100px;
+      margin-top: 185px;
       margin-bottom:35px;
       position: relative;
       display: inline-flex;
@@ -422,8 +417,8 @@ const SectionTimelineColumn =  Column.extend`
         position: absolute;
         display: inline-flex;
         width: 100%;
-        bottom: calc(${key(['fontSizes', 1])}px * .18);
-        height: calc(${key(['fontSizes', 1])}px * .45);
+        bottom: calc(${key(['fontSizes', 1])}px * .21);
+        height: calc(${key(['fontSizes', 1])}px * .43);
         background-color: ${key('colors.bright.blue')};
         z-index: -1;
       }
@@ -447,8 +442,8 @@ const SectionGeo = Section.extend`
 `
 
 const SectionTimeline = Section.extend`
-  padding: ${key(['space', 5])}px 0 ${key(['space', 10])}px 0;
-  background: url(${Timeline}) center 85px no-repeat;
+  padding: ${key(['space', 5])}px 0 ${key(['space', 12])}px 0;
+  background: url(${Timeline}) center 110px no-repeat;
 `
 
 const SectionCommand = Section.extend`

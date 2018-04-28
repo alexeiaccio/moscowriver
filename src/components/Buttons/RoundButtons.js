@@ -29,6 +29,16 @@ const ButtonBack = styled(ButtonTemplate)`
   }
 `
 
+const ButtonTop = styled(ButtonTemplate)`
+  top: auto;
+  bottom: -50px;
+  background-image: url(${ArrowIconBlue});
+  background-position: center 15px;
+  &:hover {
+    bottom: -25px;
+  }
+`
+
 const ButtonForward = styled(ButtonTemplate)`
   top: auto;
   bottom: -50px;
@@ -47,10 +57,15 @@ const ButtonForward = styled(ButtonTemplate)`
 `
 
 export const RoundButtonBack = ({to, color}) => (
-    <ButtonBack to={to} color={color} />
+  <ButtonBack to={to} color={color} />
 )
+
+export const RoundButtonTop = ({to, color}) => (
+  <ButtonTop to={to} color={color} />
+)
+
 export const RoundButtonForward = ({to, color, text}) => (
-    <ButtonForward to={to} color={color}>
-      <ButtonText>{text}</ButtonText>
-    </ButtonForward>
+  <ButtonForward to={to} color={color}>
+    <ButtonText>{text}</ButtonText>
+  </ButtonForward>
 )

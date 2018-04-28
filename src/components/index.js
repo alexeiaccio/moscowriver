@@ -13,7 +13,8 @@ export {
 } from './Buttons/RoundButtonWithImage'
 export {
   RoundButtonBack,
-  RoundButtonForward
+  RoundButtonTop,
+  RoundButtonForward,
 } from './Buttons/RoundButtons'
 
 export { default as Map } from './Map/Map'

@@ -1,40 +1,52 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { Fragment } from 'react'
+import styled, { keyframes } from 'styled-components'
+import { key } from 'styled-theme'
+import {
+  Header,
+  Footer,
+} from 'Components'
+import {
+  H2,
+  SectionThree,
+} from 'Styled'
 
-import { Link } from 'Components'
-
-const Round = styled(Link)`
-  color: red;
+const Paragraph =  styled.div`
+  color: ${key('colors.text')};
+  padding-top: ${key(['space', 3])}px;
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
 `
 
-const RoundButton = Round.extend`
-  position: relative;
-  display: block;
-  padding: 10px;
-`
+export default ({ data }) => {
+  const node = data.homepage.data
+  const where = location.search.replace('?', '')
 
-export const ButtonShade = styled.p`
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  transition: all .4s ease-in-out;
-  background-color: rgba(0,0,0,.5);
-`
+  return (
+    <Fragment>
+      <Header data={node} />
+      <main>
+        <SectionThree id='three'>
+          <H2>Спасибо!</H2>
+          <Paragraph>
+          { where === 'subscribe' &&
+            'Что подписались на обновления нашего сайта!'
+          }
+          { where === 'result' &&
+            'Что оставили свой отзыв!'
+          }
+          </Paragraph>
+        </SectionThree>
+      </main>
+      <Footer data={node} />
+    </Fragment>
+  )
+}
 
-export default () => (
-  <div>
-    <h1 id='top' >Спасибо!</h1>
-    <p>Вы подписались на обновления нашего сайта!</p>
-    <Link to='/'>
-      Внутри сайта
-    </Link>
-    <Round to='#top'>
-      По странице
-    </Round>
-    <RoundButton to='https://www.accio.pro'>
-      <ButtonShade />
-      Внешняя ссылка
-    </RoundButton>
-  </div>
-)
+export const query = graphql`
+  query ThanksQuery {
+    homepage: prismicDocument(type: {eq: "homepage"}) {
+      ...HeaderFragment
+      ...FooterFragment
+    }
+  }
+`

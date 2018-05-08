@@ -125,7 +125,7 @@ export class ResultForm extends React.Component {
         name={`Result-page-form-${this.props.uid}`}
         onSubmit={this.handleSubmit}
         method='post'
-        action={this.state.submit ? '/thanks/' : null}
+        action={this.state.submit ? '/thanks?result' : null}
         data-netlify='true'
         data-netlify-honeypot='bot-field'
         style={{position: 'relative'}}>

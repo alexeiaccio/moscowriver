@@ -17,8 +17,9 @@ const BaseWrapper = styled.div`
 const TitleWrapper = BaseWrapper.extend`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   & h1{
+    margin-top: ${key(['space', 1])}px;
     position: relative;
     display: inline-flex;
     z-index: 2000;

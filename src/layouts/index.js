@@ -9,14 +9,20 @@ import favicon from './favicon.png'
 const TemplateWrapper = ({ children }) => (
   <div>
     <Helmet
-      title="390 взглядов на Москву-реку"
+      title='390 взглядов на Москву-реку'
       meta={[
         { name: 'description', content: 'Исследование «390 взглядов на Москву-реку»' },
         { name: 'keywords', content: 'Москва, река' },
-        { name: 'robots', content: 'all' }
+        { name: 'robots', content: 'all' },
+        { name: 'apple-mobile-web-app-title', content: '390 взглядов на Москву-реку' }
       ]}
-      link={favicon}
-      />
+      links={[{
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: { favicon },
+      }]}
+    />
     {baseStyles()}
     <ThemeProvider theme={theme}>
       {children()}

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, Component } from 'react'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 import {
@@ -17,30 +17,45 @@ const Paragraph =  styled.div`
   line-height: ${key(['lineHeights', 4])};
 `
 
-export default ({ data }) => {
-  const node = data.homepage.data
-  const where = location.search.replace('?', '')
+class ThanksPage extends Component {
+  constructor(props) {
+    super(props)
+    this.state={
+      data: props.data.homepage.data,
+      where: ''
+    }
+  }
 
-  return (
-    <Fragment>
-      <Header data={node} />
-      <main>
-        <SectionThree id='three'>
-          <H2>Спасибо!</H2>
-          <Paragraph>
-          { where === 'subscribe' &&
-            'Что подписались на обновления нашего сайта!'
-          }
-          { where === 'result' &&
-            'Что оставили свой отзыв!'
-          }
-          </Paragraph>
-        </SectionThree>
-      </main>
-      <Footer data={node} />
-    </Fragment>
-  )
+  componentDidMount = () => {
+    this.setState({
+      where: window.location.search.replace('?', '')
+    })
+  }
+
+  render() {
+    return (
+      <Fragment>
+        <Header data={this.state.data} />
+        <main>
+          <SectionThree id='three'>
+            <H2>Спасибо!</H2>
+            <Paragraph>
+            { this.state.where === 'subscribe' &&
+              'Что подписались на обновления нашего сайта!'
+            }
+            { this.state.where === 'result' &&
+              'Что оставили свой отзыв!'
+            }
+            </Paragraph>
+          </SectionThree>
+        </main>
+        <Footer data={this.state.data} />
+      </Fragment>
+    )
+  }
 }
+
+export default ThanksPage
 
 export const query = graphql`
   query ThanksQuery {

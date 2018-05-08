@@ -7,7 +7,6 @@ import {
   s4,
 } from 'Helpers'
 import ArrowIconPink from '../../assets/ArrowIconPink.svg'
-import MapsBack from './maps_01_back.png'
 import MapsMarks from './MapsMarks'
 
 const Column = styled.div`
@@ -87,15 +86,13 @@ const Map = styled.div`
   align-items: center;
   height: 500px;
   width: 100%;
+  position: relative;
   overflow: hidden;
   @media (min-width: 1200px) {
     width: calc(50vw - 25px);
     margin-left: calc(-50vw + 543px);
   }
-  background: url(${MapsBack}) 50% 50% no-repeat ${key(['colors', 'gray', 3])};
-  @media (max-width: 1199px) {
-    background-position-x: 60%;
-  }
+  background-color: ${key(['colors', 'gray', 3])};
   border: 1px solid ${key('colors.pink')};
 `
 

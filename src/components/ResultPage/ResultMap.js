@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { key } from 'styled-theme'
 
 import {
@@ -7,6 +7,8 @@ import {
   s4,
 } from 'Helpers'
 import ArrowIconPink from '../../assets/ArrowIconPink.svg'
+import MapsBack from './maps_01_back.png'
+import MapsMarks from './MapsMarks'
 
 const Column = styled.div`
   display: flex;
@@ -80,13 +82,20 @@ const ListItem = styled.p`
 `
 
 const Map = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 500px;
   width: 100%;
+  overflow: hidden;
   @media (min-width: 1200px) {
     width: calc(50vw - 25px);
     margin-left: calc(-50vw + 543px);
   }
-  background: ${key(['colors', 'gray', 3])};
+  background: url(${MapsBack}) 50% 50% no-repeat ${key(['colors', 'gray', 3])};
+  @media (max-width: 1199px) {
+    background-position-x: 60%;
+  }
   border: 1px solid ${key('colors.pink')};
 `
 
@@ -119,7 +128,9 @@ class ResultMap extends Component {
     return (
       <Fragment>
         <Column>
-          <Map />
+          <Map>
+            <MapsMarks state={this.state} />
+          </Map>
         </Column>
         <Column>
           <Headers key={s4()}>

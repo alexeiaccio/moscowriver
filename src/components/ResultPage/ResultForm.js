@@ -22,7 +22,7 @@ const Input = styled.input`
   border: 5px solid ${key('colors.pink')};
   border-radius: 25px;
   transition: all .6s ease-in-out;
-  color: ${key(['colors', 'gray', 1])};
+  color:${key('colors.text')};
   outline: none !important;
 `
 
@@ -30,6 +30,7 @@ const Textarea = styled.textarea`
   max-width: 100%;
   flex: 1;
   padding: ${key(['space', 2])}px ${key(['space', 5])}px;
+  font-family: ${key('fonts.base')};
   font-size: ${key(['fontSizes', 3])}px;
   line-height: ${key(['lineHeights', 3])};
   font-weight: ${key('fontWeights.medium')};
@@ -38,7 +39,7 @@ const Textarea = styled.textarea`
   border: 5px solid ${key('colors.pink')};
   border-radius: 25px;
   transition: all .6s ease-in-out;
-  color: ${key(['colors', 'gray', 1])};
+  color: ${key('colors.text')};
   outline: none !important;
 `
 
@@ -125,7 +126,7 @@ export class ResultForm extends React.Component {
         name={`Result-page-form-${this.props.uid}`}
         onSubmit={this.handleSubmit}
         method='post'
-        action={this.state.submit ? '/thanks/' : null}
+        action={this.state.submit ? '/thanks?result' : null}
         data-netlify='true'
         data-netlify-honeypot='bot-field'
         style={{position: 'relative'}}>

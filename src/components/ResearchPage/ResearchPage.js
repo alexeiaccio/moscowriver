@@ -248,17 +248,6 @@ const SectionGeoColumn =  Column.extend`
     font-size: ${key(['fontSizes', 2])}px;
     line-height: ${key(['lineHeights', 2])};
     position: relative;
-    &::after {
-      content: '';
-      position: absolute;
-      top: 15px;
-      right: 0px;
-      height: 10px;
-      width: 75px;
-      background: url(${SmallWave}) repeat-x;
-      background-size: auto 8px;
-      background-position: 0% 50%;
-    }
   }
   & .img {
     width:  450px;
@@ -281,7 +270,7 @@ const SectionGeoColumn =  Column.extend`
     & .img {
       float: left;
       @media (min-width: 1200px) {
-        margin-left: calc(-50vw + 515px);
+        margin-left: -50px;
       }
     }
   }
@@ -293,7 +282,7 @@ const SectionGeoColumn =  Column.extend`
     & .img {
       float: right;
       @media (min-width: 1200px) {
-        margin-right: calc(-50vw + 515px);
+        margin-right: -50px;
       }
     }
   }

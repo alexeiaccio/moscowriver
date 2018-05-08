@@ -61,7 +61,7 @@ export class ButtonOrInput extends React.Component {
         name='SubscriptionForm'
         onSubmit={this.handleSubmit}
         method='post'
-        action={this.state.submit ? '/thanks/' : null}
+        action={this.state.submit ? '/thanks?subscribe' : null}
         data-netlify='true'
         data-netlify-honeypot='bot-field'
         style={{position: 'relative'}}>

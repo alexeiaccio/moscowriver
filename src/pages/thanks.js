@@ -1,40 +1,67 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { Fragment, Component } from 'react'
+import styled, { keyframes } from 'styled-components'
+import { key } from 'styled-theme'
+import {
+  Header,
+  Footer,
+} from 'Components'
+import {
+  H2,
+  SectionThree,
+} from 'Styled'
 
-import { Link } from 'Components'
-
-const Round = styled(Link)`
-  color: red;
+const Paragraph =  styled.div`
+  color: ${key('colors.text')};
+  padding-top: ${key(['space', 3])}px;
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
 `
 
-const RoundButton = Round.extend`
-  position: relative;
-  display: block;
-  padding: 10px;
-`
+class ThanksPage extends Component {
+  constructor(props) {
+    super(props)
+    this.state={
+      data: props.data.homepage.data,
+      where: ''
+    }
+  }
 
-export const ButtonShade = styled.p`
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  transition: all .4s ease-in-out;
-  background-color: rgba(0,0,0,.5);
-`
+  componentDidMount = () => {
+    this.setState({
+      where: window.location.search.replace('?', '')
+    })
+  }
 
-export default () => (
-  <div>
-    <h1 id='top' >Спасибо!</h1>
-    <p>Вы подписались на обновления нашего сайта!</p>
-    <Link to='/'>
-      Внутри сайта
-    </Link>
-    <Round to='#top'>
-      По странице
-    </Round>
-    <RoundButton to='https://www.accio.pro'>
-      <ButtonShade />
-      Внешняя ссылка
-    </RoundButton>
-  </div>
-)
+  render() {
+    return (
+      <Fragment>
+        <Header data={this.state.data} />
+        <main>
+          <SectionThree id='three'>
+            <H2>Спасибо!</H2>
+            <Paragraph>
+            { this.state.where === 'subscribe' &&
+              'Что подписались на обновления нашего сайта!'
+            }
+            { this.state.where === 'result' &&
+              'Что оставили свой отзыв!'
+            }
+            </Paragraph>
+          </SectionThree>
+        </main>
+        <Footer data={this.state.data} />
+      </Fragment>
+    )
+  }
+}
+
+export default ThanksPage
+
+export const query = graphql`
+  query ThanksQuery {
+    homepage: prismicDocument(type: {eq: "homepage"}) {
+      ...HeaderFragment
+      ...FooterFragment
+    }
+  }
+`

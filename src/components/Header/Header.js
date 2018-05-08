@@ -11,6 +11,5 @@ export default ({data, layout}) => (
       <StyledLink to='/research/'>Исследование</StyledLink>
       <StyledLink to='/shelepikhinskaya-naberezhnaya/'>Результаты</StyledLink>
     </Row>
-
   </HeaderWrapper>
 )

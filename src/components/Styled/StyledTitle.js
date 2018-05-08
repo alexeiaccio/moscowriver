@@ -15,15 +15,18 @@ const BaseWrapper = styled.div`
 `
 
 const TitleWrapper = BaseWrapper.extend`
-  text-align: center;
-  &> h1{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  & h1{
+    margin-top: ${key(['space', 1])}px;
     position: relative;
     display: inline-flex;
     z-index: 2000;
     &::before {
       content: '';
       position: absolute;
-      bottom: calc(${key(['fontSizes', 0])}px * .20);
+      bottom: calc(${key(['fontSizes', 0])}px * .31);
       display: flex;
       width: 100%;
       height: calc(${key(['fontSizes', 0])}px * .44);
@@ -33,7 +36,7 @@ const TitleWrapper = BaseWrapper.extend`
     }
   }
   &:hover {
-    &> h1::before {
+    & h1::before {
       background-color: ${key('colors.bright.blue')};
     }
   }

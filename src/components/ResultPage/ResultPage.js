@@ -247,7 +247,7 @@ const SectionPastColumn =  Column.extend`
     & .img {
       float: left;
       @media (min-width: 1200px) {
-        margin-left: calc(-50vw + 515px);
+        margin-left: -50px;
       }
     }
   }
@@ -259,7 +259,7 @@ const SectionPastColumn =  Column.extend`
     & .img {
       float: right;
       @media (min-width: 1200px) {
-        margin-right: calc(-50vw + 515px);
+        margin-right: -50px;
       }
     }
   }
@@ -315,7 +315,7 @@ const SectionPresentColumn =  Column.extend`
     & .img {
       float: left;
       @media (min-width: 1200px) {
-        margin-left: calc(-50vw + 515px);
+        margin-left: -50px;
       }
     }
   }
@@ -327,7 +327,7 @@ const SectionPresentColumn =  Column.extend`
     & .img {
       float: right;
       @media (min-width: 1200px) {
-        margin-right: calc(-50vw + 515px);
+        margin-right: -50px;
       }
     }
   }

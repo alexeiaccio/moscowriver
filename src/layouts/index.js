@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 import baseStyles from './base-styles'
 import { ThemeProvider } from 'styled-components'
 import theme from './theme'
+import favicon from './favicon.png'
 
 const TemplateWrapper = ({ children }) => (
   <div>
@@ -14,6 +15,7 @@ const TemplateWrapper = ({ children }) => (
         { name: 'keywords', content: 'Москва, река' },
         { name: 'robots', content: 'all' }
       ]}
+      link={favicon}
       />
     {baseStyles()}
     <ThemeProvider theme={theme}>

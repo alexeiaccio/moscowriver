@@ -5,6 +5,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: '390 взглядов на Москву-реку',
+    siteUrl: 'https://moscowriver-stage.accio.pro',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

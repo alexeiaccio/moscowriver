@@ -16,13 +16,9 @@ const TemplateWrapper = ({ children }) => (
         { name: 'robots', content: 'all' },
         { name: 'apple-mobile-web-app-title', content: '390 взглядов на Москву-реку' }
       ]}
-      links={[{
-        rel: 'icon',
-        type: 'image/png',
-        sizes: '16x16',
-        href: { favicon },
-      }]}
-    />
+    >
+      <link rel="icon" type="image/png" sizes="16x16" href={favicon} />
+    </Helmet>
     {baseStyles()}
     <ThemeProvider theme={theme}>
       {children()}

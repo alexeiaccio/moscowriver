@@ -71,7 +71,7 @@ const MapsMarks = ({state, uid}) => {
               </g>
               {/* back */}
               <path id="mark_1-10" d="M464 82L379 182.25L382 183.5L466.5 84L464 82ZM248.5 0L235.5 92H241L253.5 0H248.5ZM0 114L62 104L63.5 108L0 118V114Z"
-                transform="translate(59 72)" stroke="#000" strokeWidth={state.items[1][10] ? 10 : 0} />
+                transform="translate(59 72)" stroke="#000" strokeWidth={state.items[1][10] ? 5 : 2} />
               <g id="mark_1-2">
                 <circle id="Ellipse" cx="12.5" cy="12.5" r="12.5" transform="translate(510 271)" fill={state.items[1][2] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][2] ? 10 : 0} />
                 <text id="3" transform="translate(519.286 276.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"

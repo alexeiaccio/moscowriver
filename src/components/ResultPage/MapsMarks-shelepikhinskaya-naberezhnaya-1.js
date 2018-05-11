@@ -2,8 +2,6 @@ import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import { key } from 'styled-theme'
 
-import MapsBack from './maps_01_back.png'
-
 const Svg = styled.svg`
   min-width: 702px;
   height: 500px;
@@ -14,13 +12,14 @@ const Svg = styled.svg`
   transition: all .2s ease-in-out;
   transform: ${({second}) => second ? 'scale(1.4) translate(80px, 70px)' : 'scale(1.4) translate(-80px, -70px)'};
 `
+
 const Map = styled.div`
   width: 100%;
   height: 500px;
   position: absolute;
   top: 0;
   left: 0;
-  background: url(${MapsBack}) 50% 50% no-repeat ${key(['colors', 'gray', 3])};
+  background: ${({back}) => 'url(' + back + ') 50% 50% no-repeat'};
   background-size: cover;
   @media (max-width: 1199px) {
     width: 1000px;
@@ -31,11 +30,12 @@ const Map = styled.div`
   transform: ${({second}) => second ? 'scale(1.4) translate(80px, 70px)' : 'scale(1.4) translate(-80px, -70px)'};
 `
 
-const MapsMarks = ({state}) => {
+const MapsMarks = ({state, uid}) => {
+  const MapsBack = require(`./maps-${uid}.png`)
 
   return (
     <Fragment>
-    <Map second={state.items[0][6] || state.items[1][3] ? true : false} />
+      <Map back={MapsBack} second={state.items[0][6] || state.items[1][3] ? true : false} />
       <Svg
         second={state.items[0][6] || state.items[1][3] ? true : false}
         viewBox="0 0 702 500" version="1.1" xmlns="http://www.w3.org/2000/svg"

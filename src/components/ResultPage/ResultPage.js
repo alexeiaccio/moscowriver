@@ -525,7 +525,7 @@ export default ({data: { data, uid }}) => {
             </SectionSubHeader>
           </Row>
           <SectionMapsRow>
-            <ResultMap data={sectionParagraphs('maps')} />
+            <ResultMap uid={uid} map={1} data={sectionParagraphs('maps')} />
           </SectionMapsRow>
         </SectionPresent>
         <SectionFunctions id={sectionsId('functions')} >
@@ -559,7 +559,7 @@ export default ({data: { data, uid }}) => {
             </SectionSubHeader>
           </SectionFurureRow>
           <SectionMapsRow>
-            <ResultMap data={sectionParagraphs('project')} />
+            <ResultMap uid={uid} map={2} data={sectionParagraphs('project')} />
           </SectionMapsRow>
         </SectionPresent>
         <SectionPier id={sectionsId('pier')} >

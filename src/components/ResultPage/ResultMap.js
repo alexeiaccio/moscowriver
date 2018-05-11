@@ -7,7 +7,6 @@ import {
   s4,
 } from 'Helpers'
 import ArrowIconPink from '../../assets/ArrowIconPink.svg'
-import MapsMarks from './MapsMarks'
 
 const Column = styled.div`
   display: flex;
@@ -122,11 +121,14 @@ class ResultMap extends Component {
   }
 
   render() {
+    const { uid, map } = this.props
+    const MapsMarks = require(`./MapsMarks-${uid}-${map}`)
+
     return (
       <Fragment>
         <Column>
           <Map>
-            <MapsMarks state={this.state} />
+            <MapsMarks state={this.state} uid={uid} />
           </Map>
         </Column>
         <Column>

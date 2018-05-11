@@ -491,7 +491,7 @@ export default ({data}) => {
       <main>
         <SectionOne image={pageBackImg} >
           <HeadCite color='blue' fontSize={1} data={{cite: pageCite}} />
-          <Description width={640} size={3} data={{ description: getParagraphsFromProps(pageDescription) }} />
+          <Description width={640} size={3} data={{description: pageDescription}} />
           <Navigation data={ sort([5,6,4,2,3,7,0,1], pageNav) } />
         </SectionOne>
         <SectionContext id={sectionsId('context')} >
@@ -629,7 +629,7 @@ export default ({data}) => {
         </SectionCommand>
         <SectionOne image={pageBackImg} >
           <FootCite color='blue' fontSize={1} data={{cite: footCite}} />
-          <Description width={1040} size={4} data={{ description: getParagraphsFromProps(footDescription) }} />
+          <Description width={1040} size={4} data={{description: footDescription}} />
           <FootGradient />
         </SectionOne>
       </main>

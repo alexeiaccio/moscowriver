@@ -32,6 +32,11 @@ const Map = styled.div`
 
 const MapsMarks = ({state, uid}) => {
   const MapsBack = require(`./maps-${uid}.png`)
+  const getActive = (active) =>
+    state.items[active]
+      .map((item, i) => item && i)
+      .filter(item => item)
+      .join()
 
   return (
     <Fragment>
@@ -67,6 +72,8 @@ const MapsMarks = ({state, uid}) => {
               <path id="mark_2-2" d="M 94.5 190.5L 79 196L 59 135L 46.5 96.5L 73.5 83M 35.5 78L 23 38.5L 0 0" transform="translate(516.5 238.5)" stroke="#3095BF" strokeWidth={state.items[2][2] ? 10 : 2} />
               <path id="mark_2-1" d="M 79.5 204.5L 63.5 147.5L 50.5 116L 38.5 97L 43 93.5L 50.5 111.5M 35 77.5L 22 38L 0 0" transform="translate(515 241)" stroke="#53B36C" strokeWidth={state.items[2][1] ? 10 : 2} />
               <path id="mark_2-0" d="M 103.5 56L 76.5 67.5L 106.461 148L 94.461 154L 91.6915 145.5L 67.1915 156L 59 128.5L 49.5 100L 42 81.5L 37 81.5L 22.5 37.5L 0 0" transform="translate(511.5 240.5)" stroke="#EB5A59" strokeWidth={state.items[2][0] ? 10 : 2} />
+              {/* Active */}
+              <use xlinkHref={`#mark_2-${ getActive(2) || 0 }`} />
             </g>
           }
           {state.activeList === 1 &&
@@ -90,6 +97,8 @@ const MapsMarks = ({state, uid}) => {
               <path id="mark_0-2" d="M 7.58683 0L 0 3.68102L 4.33533 14.1654L 12.2834 10.1228L 7.58683 0Z" transform="translate(580.877 427.373)" fill="#000000" stroke="#000000" strokeWidth={state.items[0][2] ? 10 : 0} />
               <path id="mark_0-4" d="M 13.5933 0L 0 9.04179L 8.15911 22.6443L 21.7655 15.1843L 13.5933 0Z" transform="matrix(0.877177 -0.480168 0.479654 0.877458 449.877 186.824)" fill="#F0C41B" stroke="#F0C41B" strokeWidth={state.items[0][4] ? 10 : 0} />
               <path id="mark_0-5" d="M 9.45455 0L 0 4.2L 4.36364 14L 13.8182 10.85L 16 4.2L 9.45455 0Z" transform="translate(567.877 383.373)" fill="#F0C41B" stroke="#F0C41B" strokeWidth={state.items[0][5] ? 10 : 0} />
+              {/* Active */}
+              <use xlinkHref={`#mark_0-${ getActive(0) || 0 }`} />
             </g>
           }
         </g>

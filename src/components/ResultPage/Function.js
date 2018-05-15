@@ -26,33 +26,37 @@ const Arrow = styled.span`
   border-radius: 50%;
   background-color: ${({color}) => key('colors.' + color)};
   box-shadow: 0px 4px 10px rgba(0,0,0,.25);
+  cursor: pointer;
   &[data-placement*='top'] {
-    left: calc(50% - 25px/2);
-    bottom: -15px;
+    left: calc(50% - 15px/2);
+    bottom: 10px;
   }
   &[data-placement*='bottom'] {
-    left: calc(50% - 25px/2);
-    top: -15px;
+    left: calc(50% - 15px/2);
+    top: 10px;
   }
   &[data-placement*='left'] {
-    top: calc(50% - 25px/2);
-    right: -15px;
+    top: calc(50% - 15px/2);
+    right: 10px;
   }
   &[data-placement*='right'] {
-    top: calc(50% - 25px/2);
-    left: -15px;
+    top: calc(50% - 15px/2);
+    left: 10px;
   }
 `
 
 const Mark = styled.span`
-  content: '';
-  display: inline-flex;
-  width: ${key(['space', 7])}px;
-  height: ${key(['space', 7])}px;
-  border-radius: 50%;
-  margin-right: ${key(['space', 2])}px;
-  background-color: ${key('colors.yellow')};
-  cursor: pointer;
+  & > span {
+    display: inline-flex;
+    position: relative;
+    width: ${key(['space', 7])}px;
+    height: ${key(['space', 7])}px;
+    border-radius: 50%;
+    margin-right: ${key(['space', 2])}px;
+    margin-bottom: ${key(['space', 2])}px;
+    background-color: ${key('colors.yellow')};
+    cursor: pointer;
+  }
 `
 
 class Function extends React.Component {
@@ -75,40 +79,40 @@ class Function extends React.Component {
     const text = this.props.data
 
     return (
-      <Manager>
-        <Reference>
+      <Mark>
+        <Manager>
+          <Reference>
           {({ ref }) => (
-            <Mark
+            <span
               ref={ref}
               onMouseOver={() => this.handleMouseEnter()}
               onMouseLeave={() => this.handleMouseLeave()}
-            />
+            ></span>
           )}
-        </Reference>
-        {this.state.isTooltip &&
-          <Popper
-            placement='top'
-            modifiers={{ preventOverflow: { enabled: true } }}
-            eventsEnabled={true}
-            positionFixed={true}
-          >
-          {({ placement, ref, style, arrowProps }) => (
-            <div ref={ref} style={style} data-placement={placement}
-              onMouseOver={() => this.handleMouseEnter()}
+          </Reference>
+          {this.state.isTooltip &&
+            <Popper
+              placement='top'
+              modifiers={{ preventOverflow: { enabled: true } }}
+              eventsEnabled={true}
+              positionFixed={true}
             >
-              <Tooltip color="text">
-                {text}
-              </Tooltip>
-              <Arrow
-                color="text"
-                data-placement={placement}
-                style={arrowProps.style}
-              />
-            </div>
-          )}
-          </Popper>
-        }
-      </Manager>
+            {({ placement, ref, style, arrowProps }) => (
+              <div ref={ref} style={style} data-placement={placement}>
+                <Tooltip color="text">
+                  {text}
+                </Tooltip>
+                <Arrow
+                  color="text"
+                  data-placement={placement}
+                  style={arrowProps.style}
+                />
+              </div>
+            )}
+            </Popper>
+          }
+        </Manager>
+      </Mark>
     )
   }
 }

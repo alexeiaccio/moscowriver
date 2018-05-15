@@ -156,7 +156,7 @@ class ResultFunctions extends Component {
             isSecond = true
             fourth.length > 0 && res.push(fourth)
             fourth = []
-            row.text.length > 0 && res.push(<p key={s4()}>{row.text}</p>)
+            row.text.length > 1 && res.push(<p key={s4()}>{row.text}</p>)
           } else {
             isFourth = true
             res.push(second)
@@ -164,10 +164,10 @@ class ResultFunctions extends Component {
           }
         } else if(row.type === 'list-item') {
           if(!isFourth) {
-            second.push(<Functions key={s4()} data={row.text} />)
+            row.text.length > 1 && second.push(<Functions key={s4()} data={row.text} />)
           } else {
             isFirst = true
-            fourth.push(<Functions key={s4()} data={row.text} />)
+            row.text.length > 1 && fourth.push(<Functions key={s4()} data={row.text} />)
           }
         }
       })

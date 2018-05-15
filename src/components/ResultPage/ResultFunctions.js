@@ -8,6 +8,7 @@ import {
   s4,
 } from 'Helpers'
 import ArrowIconPink from '../../assets/ArrowIconPink.svg'
+import Functions from './Function'
 
 const Column = styled.div`
   display: flex;
@@ -61,10 +62,10 @@ const List = styled.div`
     line-height: ${key(['lineHeights', 5])};
     color: ${key('colors.white')};
   }
-  & ul {
+  & div {
     padding: ${key(['space', 5])}px ${key(['space', 3])}px ${key(['space', 5])}px 0;
   }
-  & li {
+  & p {
     padding-bottom: ${key(['space', 2])}px;
   }
   & .column-name {
@@ -151,7 +152,7 @@ class ResultFunctions extends Component {
             isSecond = true
             fourth.length > 0 && res.push(fourth)
             fourth = []
-            row.text.length > 0 && res.push(<li key={s4()}>{row.text}</li>)
+            row.text.length > 0 && res.push(<p key={s4()}>{row.text}</p>)
           } else {
             isFourth = true
             res.push(second)
@@ -159,10 +160,14 @@ class ResultFunctions extends Component {
           }
         } else if(row.type === 'list-item') {
           if(!isFourth) {
-            second.push(<li key={s4()}>{row.text}</li>)
+            row.text.length > 1
+              ? second.push(<Functions key={s4()} data={row.text} />)
+              : second.push(<p key={s4()}> </p>)
           } else {
             isFirst = true
-            fourth.push(<li key={s4()}>{row.text}</li>)
+            row.text.length > 1
+              ? fourth.push(<Functions key={s4()} data={row.text} />)
+              : fourth.push(<p key={s4()}> </p>)
           }
         }
       })
@@ -191,7 +196,7 @@ class ResultFunctions extends Component {
                 <div className='column-name'>Как пользуются территорией?</div>
                 <div className='column-name'>Как хотели бы пользоваться?</div>
               {
-                getTableContent(table).map(x=> <ul  key={s4()}>{x}</ul>)
+                getTableContent(table).map(x=> <div  key={s4()}>{x}</div>)
               }
               </List>
           )}

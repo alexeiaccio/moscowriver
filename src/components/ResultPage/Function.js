@@ -4,6 +4,27 @@ import { Manager, Reference, Popper } from 'react-popper'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 
+import IconBoat from '../../assets/IconBoat.svg'
+import IconBook from '../../assets/IconBook.svg'
+import IconBottle from '../../assets/IconBottle.svg'
+import IconCinema from '../../assets/IconCinema.svg'
+import IconDance from '../../assets/IconDance.svg'
+import IconDog from '../../assets/IconDog.svg'
+import IconEat from '../../assets/IconEat.svg'
+import IconFish from '../../assets/IconFish.svg'
+import IconGang from '../../assets/IconGang.svg'
+import IconPiss from '../../assets/IconPiss.svg'
+import IconPram from '../../assets/IconPram.svg'
+import IconRun from '../../assets/IconRun.svg'
+import IconSkate from '../../assets/IconSkate.svg'
+import IconSky from '../../assets/IconSky.svg'
+import IconSport from '../../assets/IconSport.svg'
+import IconSwim from '../../assets/IconSwim.svg'
+import IconTree from '../../assets/IconTree.svg'
+import IconVelo from '../../assets/IconVelo.svg'
+import IconWalk from '../../assets/IconWalk.svg'
+import IconWalking from '../../assets/IconWalking.svg'
+
 const Tooltip = styled.span`
   display: block;
   position: relative;
@@ -54,7 +75,10 @@ const Mark = styled.span`
     border-radius: 50%;
     margin-right: ${key(['space', 2])}px;
     margin-bottom: ${key(['space', 2])}px;
-    background-color: ${key('colors.yellow')};
+    background-image: url(${({icon}) => icon});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: ${({color}) => key('colors.' + color)};
     cursor: pointer;
   }
 `
@@ -75,11 +99,109 @@ class Function extends React.Component {
     this.state.isTooltip && this.setState({ isTooltip: false })
   }
 
+  getColor = (text) => {
+    switch (true) {
+      case text.toLowerCase().includes('транс'):
+      case text.toLowerCase().includes('дорож'):
+      case text.toLowerCase().includes('марш'):
+        return 'yellow'
+        break
+      case text.toLowerCase().includes('зон'):
+      case text.toLowerCase().includes('обор'):
+      case text.toLowerCase().includes('кин'):
+      case text.toLowerCase().includes('лек'):
+      case text.toLowerCase().includes('бесед'):
+      case text.toLowerCase().includes('площ'):
+      case text.toLowerCase().includes('прок'):
+      case text.toLowerCase().includes('встр'):
+        return 'green'
+        break
+      default: return 'pink'
+    }
+  }
+
+  getIcon = (text) => {
+    switch (true) {
+      case text.toLowerCase().includes('речн'):
+        return IconBoat
+        break
+      case text.toLowerCase().includes('чте'):
+      case text.toLowerCase().includes('лек'):
+        return IconBook
+        break
+      case text.toLowerCase().includes('спирт'):
+        return IconBottle
+        break
+      case text.toLowerCase().includes('посв'):
+      case text.toLowerCase().includes('рожд'):
+        return IconDance
+        break
+      case text.toLowerCase().includes('соб'):
+      case text.toLowerCase().includes('выг'):
+      case text.toLowerCase().includes('кинолог'):
+        return IconDog
+        break
+      case text.toLowerCase().includes('кино'):
+        return IconCinema
+        break
+      case text.toLowerCase().includes('шаш'):
+        return IconEat
+        break
+      case text.toLowerCase().includes('рыб'):
+      case text.toLowerCase().includes('лов'):
+        return IconFish
+        break
+      case text.toLowerCase().includes('комп'):
+      case text.toLowerCase().includes('встр'):
+      case text.toLowerCase().includes('драк'):
+        return IconGang
+        break
+      case text.toLowerCase().includes('туал'):
+        return IconPiss
+        break
+      case text.toLowerCase().includes('дет'):
+        return IconPram
+        break
+      case text.toLowerCase().includes('бег'):
+      case text.toLowerCase().includes('беж'):
+        return IconRun
+        break
+      case text.toLowerCase().includes('скейт'):
+        return IconSkate
+        break
+      case text.toLowerCase().includes('лыж'):
+        return IconSky
+        break
+      case text.toLowerCase().includes('физ'):
+      case text.toLowerCase().includes('турн'):
+        return IconSport
+        break
+      case text.toLowerCase().includes('куп'):
+        return IconSwim
+        break
+      case text.toLowerCase().includes('дер'):
+      case text.toLowerCase().includes('субб'):
+      case text.toLowerCase().includes('био'):
+        return IconTree
+        break
+      case text.toLowerCase().includes('вел'):
+        return IconVelo
+        break
+      case text.toLowerCase().includes('ход'):
+        return IconWalking
+        break
+      default: return IconWalk
+    }
+  }
+
   render() {
     const text = this.props.data
 
     return (
-      <Mark>
+      <Mark
+        icon={this.getIcon(text)}
+        color={this.getColor(text)}
+      >
         <Manager>
           <Reference>
           {({ ref }) => (

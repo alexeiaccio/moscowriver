@@ -52,10 +52,6 @@ const H4 = styled.h4`
   }
 `
 
-const TooltipWrapper = styled.div`
-  position: relative;
-`
-
 const List = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -156,7 +152,7 @@ class ResultFunctions extends Component {
             isSecond = true
             fourth.length > 0 && res.push(fourth)
             fourth = []
-            row.text.length > 1 && res.push(<p key={s4()}>{row.text}</p>)
+            row.text.length > 0 && res.push(<p key={s4()}>{row.text}</p>)
           } else {
             isFourth = true
             res.push(second)
@@ -164,10 +160,14 @@ class ResultFunctions extends Component {
           }
         } else if(row.type === 'list-item') {
           if(!isFourth) {
-            row.text.length > 1 && second.push(<Functions key={s4()} data={row.text} />)
+            row.text.length > 1
+              ? second.push(<Functions key={s4()} data={row.text} />)
+              : second.push(<p key={s4()}> </p>)
           } else {
             isFirst = true
-            row.text.length > 1 && fourth.push(<Functions key={s4()} data={row.text} />)
+            row.text.length > 1
+              ? fourth.push(<Functions key={s4()} data={row.text} />)
+              : fourth.push(<p key={s4()}> </p>)
           }
         }
       })
@@ -189,19 +189,17 @@ class ResultFunctions extends Component {
             </H4>
           )}
           </Headers>
-          <TooltipWrapper id='result-tooltip-wrapper'>
-            {tables.map((table, i)  =>
-              this.state.activeList === i &&
-                <List key={s4()} >
-                  <div className='column-name'>Кто пользуется?</div>
-                  <div className='column-name'>Как пользуются территорией?</div>
-                  <div className='column-name'>Как хотели бы пользоваться?</div>
-                {
-                  getTableContent(table).map(x=> <div  key={s4()}>{x}</div>)
-                }
-                </List>
-            )}
-          </TooltipWrapper>
+          {tables.map((table, i)  =>
+            this.state.activeList === i &&
+              <List key={s4()} >
+                <div className='column-name'>Кто пользуется?</div>
+                <div className='column-name'>Как пользуются территорией?</div>
+                <div className='column-name'>Как хотели бы пользоваться?</div>
+              {
+                getTableContent(table).map(x=> <div  key={s4()}>{x}</div>)
+              }
+              </List>
+          )}
         </Column>
       </Fragment>
     )

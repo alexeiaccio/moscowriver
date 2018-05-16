@@ -33,14 +33,8 @@ export class ButtonOrInput extends React.Component {
         value: this.state.value === this.namedButtons(this.props.name)[0].primary.text[0].text ? '' : this.state.value
       })
       event.target.removeEventListener('mousedown', this.handleMouseDown)
-      event.target.removeEventListener('touchstart', this.handleTouchStart)
       event.target.focus()
     }
-  }
-
-  handleTouchStart = (event) => {
-    event.preventDefault()
-    this.handleMouseDown()
   }
 
   handleChange = (event) => {
@@ -82,7 +76,6 @@ export class ButtonOrInput extends React.Component {
         </p>
         <InputMorph
           onMouseDown={this.handleMouseDown}
-          onTouchStart={this.handleTouchStart}
           onChange={this.handleChange}
           type={this.state.type}
           name='email'

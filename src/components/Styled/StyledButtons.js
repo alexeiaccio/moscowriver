@@ -64,9 +64,14 @@ export const InputMorph = styled.input`
   font-size: ${key(['fontSizes', 3])}px;
   line-height: ${key(['lineHeights', 3])};
   font-weight: ${key('fontWeights.medium')};
-  background-color: ${props => props.button ? key('colors.bright.blue') : key('colors.white')};
-  color: ${props => props.button ? key('colors.white') : key('colors.black')};
-  border: 5px solid ${key('colors.bright.blue')};
+  background-color: ${key('colors.white')};
+  background-color: ${({button}) => button && key('colors.bright.blue')};
+  background-color: ${({success}) => success && key('colors.bright.green')};
+  text-align: ${({success}) => success && 'center'};
+  color: ${key('colors.black')};
+  color: ${({button}) => button && key('colors.white')};
+  color: ${({success}) => success && key('colors.white')};
+  border: 5px solid ${({success}) => success ? key('colors.bright.green') : key('colors.bright.blue')};
   border-radius: ${props => props.button ? '2px' : '50px'};
   outline: none !important;
   transition: all .6s ease-in-out;

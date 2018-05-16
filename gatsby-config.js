@@ -1,82 +1,51 @@
-const config = require("./gatsby-site-config");
-
-const pathPrefix = config.pathPrefix === "/" ? "" : config.pathPrefix;
+require('dotenv').config({
+  path: '.env.${process.env.NODE_ENV}'
+})
 
 module.exports = {
-  pathPrefix: config.pathPrefix,
   siteMetadata: {
-    siteUrl: config.siteUrl + pathPrefix,
-    rssMetadata: {
-      site_url: config.siteUrl + pathPrefix,
-      feed_url: config.siteUrl + pathPrefix + config.siteRss,
-      title: config.siteTitle,
-      description: config.siteDescription,
-      image_url: `${config.siteUrl + pathPrefix}/logos/logo-512.png`,
-      author: config.userName,
-      copyright: config.copyright,
-    },
+    title: '390 взглядов на Москву-реку',
+    siteUrl: 'https://moscowriver-stage.accio.pro',
   },
   plugins: [
-    "gatsby-plugin-react-helmet",
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-react-next',
     {
-      resolve: "gatsby-source-filesystem",
+      resolve: 'gatsby-source-prismic',
       options: {
-        name: "posts",
-        path: `${__dirname}/content`,
+        repositoryName: 'mymoscowriverru',
+        accessToken: process.env.PRISMIC_TOKEN || 'MC5Xc1NrSWlRQUFDUUFoRF9s.AO-_ve-_ve-_vTt-b--_vWfvv73vv71i77-977-9DU1iDygm77-9OVYl77-9Iu-_vQzvv73vv70Q77-9',
       },
     },
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: 'gatsby-plugin-google-fonts',
       options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              maxWidth: 1590,
-              linkImagesToOriginal: false,
-            },
-          },
-          {
-            resolve: "gatsby-remark-responsive-iframe",
-          },          
-          "gatsby-remark-autolink-headers",
-          "gatsby-remark-copy-linked-files",
-        ],
-      },
+        fonts: [
+          'podkova\:400,500,600,700',
+          'montserrat\:400,500,600,700'
+        ]
+      }
     },
     {
-      resolve: "gatsby-plugin-nprogress",
+      resolve: 'gatsby-plugin-sitemap',
       options: {
-        color: "#c62828",
-      },
+        exclude: [
+          'thanks'
+        ]
+      }
     },
-    "gatsby-plugin-sharp",
-    "gatsby-plugin-catch-links",
-    "gatsby-plugin-sitemap",
     {
-      resolve: "gatsby-plugin-manifest",
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        name: config.siteTitle,
-        short_name: config.siteTitle,
-        description: config.siteDescription,
-        start_url: config.pathPrefix,
-        background_color: "#e0e0e0",
-        theme_color: "#c62828",
+        name: "GatsbyJS",
+        short_name: "GatsbyJS",
+        start_url: "/",
+        background_color: "#f7f0eb",
+        theme_color: "#a2466c",
         display: "minimal-ui",
-        icons: [
-          {
-            src: "/logos/logo-192x192.png",
-            sizes: "192x192",
-            type: "image/png",
-          },
-          {
-            src: "/logos/logo-512x512.png",
-            sizes: "512x512",
-            type: "image/png",
-          },
-        ],
+        icon: "src/assets/favicon.png",
       },
     },
-    "gatsby-plugin-offline",
   ],
-};
+}

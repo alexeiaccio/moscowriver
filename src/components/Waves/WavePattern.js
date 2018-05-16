@@ -46,7 +46,7 @@ class WavePattern extends React.Component {
               <Motion key={i} defaultStyle={{t: t, r: r}} style={{t: t, r: spring(r + i)}}>
               {({t, r}) =>
                 <use
-                  href="#path0_stroke"
+                  xlinkHref="#path0_stroke"
                   className='classA'
                   style={{transform: `translateY(${t}px) rotateX(${r}deg)`}} />}
               </Motion>

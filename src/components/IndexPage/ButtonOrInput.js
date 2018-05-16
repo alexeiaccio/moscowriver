@@ -33,6 +33,7 @@ export class ButtonOrInput extends React.Component {
         value: this.state.value === this.namedButtons(this.props.name)[0].primary.text[0].text ? '' : this.state.value
       })
       event.target.removeEventListener('mousedown', this.handleMouseDown)
+      event.target.removeEventListener('touchstart', this.handleTouchStart)
       event.target.focus()
     }
   }

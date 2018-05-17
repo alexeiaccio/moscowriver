@@ -47,7 +47,7 @@ const MapsMarks = ({state, uid}) => {
       >
         <g id="Canvas" fill="none">
           {state.activeList === 2 &&
-            <g id="maps_2">
+            <g id="maps_2" strokeLinecap="round">
               <path id="mark_2-7" d="M 81.5 207.5L 75 185.5L 73 181.5L 70.5 172.5L 64.5 143.5L 55.5 122.5L 42 97.5L 36.5 84.5L 21.5 38L 0 0" transform="translate(511.5 242.5)" stroke="#C4549A" strokeWidth={state.items[2][7] ? 10 : 2} />
               <g id="mark_2-6" transform="translate(583 411)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[2][6] ? 10 : 0} >
                 <path d="M 6 21.1845L 12.6504 19L 14.1292 23.5018L 7.47875 25.6863L 6 21.1845Z" />

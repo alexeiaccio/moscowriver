@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 import ArrowIconWhite from '../../assets/ArrowIconWhite.svg'
 
@@ -84,6 +84,18 @@ const SubmitButton = styled.button`
   }
 `
 
+const appear = keyframes`
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
 const Success = styled.div`
   display: flex;
   justify-content: center;
@@ -100,7 +112,7 @@ const Success = styled.div`
   background-color: ${key('colors.bright.green')};
   color: ${key('colors.white')};
   border-radius: 2px;
-  transition: all .6s ease-in-out;
+  animation: ${appear} .8s ease-in-out;
 `
 
 export class ResultForm extends React.Component {

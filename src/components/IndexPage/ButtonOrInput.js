@@ -85,7 +85,7 @@ export class ButtonOrInput extends React.Component {
           value={this.state.value}
           placeholder={this.state.button ? '' : 'Напиши свой email'}
           required
-          minLength={8}
+          minLength={7}
         />
         <SubmitButton type='submit' submit={this.state.submit ? true : false} />
       </form>

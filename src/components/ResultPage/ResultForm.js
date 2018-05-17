@@ -137,7 +137,7 @@ export class ResultForm extends React.Component {
     if (document.getElementsByName('bot-field')[0].value.length === 0) {
       console.log('An email was submitted: ' + this.state.value)
 
-      fetch(`${process.env.SLS || 'https://r16wz2qmr9.execute-api.us-east-1.amazonaws.com/dev'}/feedback?name=${this.state.name}&email=${this.state.email}&message=${this.state.message}`, {mode: 'no-cors'})
+      fetch(`${process.env.SLS || 'https://r16wz2qmr9.execute-api.us-east-1.amazonaws.com/dev'}/feedback?page=${this.props.uid}&name=${this.state.name}&email=${this.state.email}&message=${this.state.message}`, {mode: 'no-cors'})
         .then(response => console.log('parsed json', response))
         .catch(error => console.log('parsing failed', error))
 

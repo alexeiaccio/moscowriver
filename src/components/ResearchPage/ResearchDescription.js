@@ -58,11 +58,8 @@ const Description = styled.div`
   }
 `
 
-export default ({width, size, data: { description }}) => {
-  const descriptionText = description.map(item => Object.assign({}, item, { type: 'paragraph' }))
-
-  return (
+export default ({width, size, data: { description }}) => (
   <Description width={width} size={size} >
-  { RichText.render(descriptionText, linkResolver) }
+  { RichText.render(description, linkResolver) }
   </Description>
-)}
+)

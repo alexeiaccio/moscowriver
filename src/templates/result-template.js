@@ -1,9 +1,17 @@
 import React, { Fragment } from 'react'
+import Helmet from 'react-helmet'
 
 import { ResultPage } from 'Components'
 
 const ResultTemplate = ({ data }) =>
   <Fragment>
+      <Helmet
+        title={data.result.data.seotitle}
+        meta={[
+          { name: 'description', content: data.result.data.seodescription },
+          { name: 'keywords', content: data.result.data.seokeywords },
+        ]}
+      />
     <ResultPage data={data.result} />
   </Fragment>
 
@@ -15,6 +23,9 @@ export const query = graphql`
     result: prismicDocument(uid: {eq: $slug}) {
       uid
       data {
+        seotitle
+        seodescription
+        seokeywords
         title {
           text
         }

@@ -1,17 +1,32 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Link from 'gatsby-link'
+import Helmet from 'react-helmet'
 import map from 'crocks/pointfree/map'
-import { s4, getElementsFromProps } from 'Helpers'
+import { findSection, s4, getElementsFromProps } from 'Helpers'
+
 import { ResearchPage } from 'Components'
 
 const Research = ({ data }) => {
   const sections = data.researchparts.edges
-  const thisSection = name => sections.filter(x => x.node.uid === name)
-  const nextsteps = thisSection('nextsteps')[0].node.data.body
-  const timeline = thisSection('timeline')[0].node.data.body
+  const find = findSection(sections)
+  const research = find('research').option({})
+  const {
+    seotitle,
+    seodescription,
+    seokeywords,
+  } = research.node.data
 
   return (
-    <ResearchPage data={sections} />
+    <Fragment>
+      <Helmet
+        title={seotitle}
+        meta={[
+          { name: 'description', content: seodescription },
+          { name: 'keywords', content: seokeywords },
+        ]}
+      />
+      <ResearchPage data={sections} />
+    </Fragment>
   )
 }
 
@@ -26,6 +41,9 @@ export const query = graphql`
           ...ResearchCiteFragment
           uid
           data {
+            seotitle
+            seodescription
+            seokeywords
             body {
               primary {
                 header {
@@ -35,6 +53,7 @@ export const query = graphql`
                   embed_url
                 }
                 description {
+                  type
                   text
                   spans {
                     start

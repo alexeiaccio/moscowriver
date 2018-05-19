@@ -81,7 +81,7 @@ const ListItem = styled.p`
 
 const Map = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   height: 500px;
   width: 100%;
@@ -122,7 +122,7 @@ class ResultMap extends Component {
 
   render() {
     const { uid, map } = this.props
-    const MapsMarks = require(`./MapsMarks-${uid}-${map}`)
+    const MapsMarks = require(`./maps/MapsMarks-${uid}-${map}`)
 
     return (
       <Fragment>

@@ -398,7 +398,7 @@ const SectionPierColumn =  Column.extend`
       width: 650px;
       height: 600px;
       @media (min-width: 1200px) {
-        margin-left: calc(-50vw + 515px);
+        margin-left: -150px;
       }
     }
   }
@@ -410,7 +410,7 @@ const SectionPierColumn =  Column.extend`
     & .img {
       float: right;
       @media (min-width: 1200px) {
-        margin-right: calc(-50vw + 515px);
+        margin-right: -50px;
       }
     }
   }

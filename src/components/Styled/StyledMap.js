@@ -8,7 +8,7 @@ export const MapBlock = styled.div`
   flex: 0 0 auto;
   margin-top: calc(50vh - 977px);
   transform: scale(.55);
-  background: url(${MapBack});
+  ${'' /* background: url(${MapBack}); */}
   & div {
     background-color: rgba(255,255,255,0) !important;
   }

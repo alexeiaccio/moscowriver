@@ -7,27 +7,21 @@ const Svg = styled.svg`
   height: 500px;
   z-index: 1;
   @media (max-width: 1199px) {
-    margin-left: -100px;
+    margin-left: -110px;
   }
   transition: all .2s ease-in-out;
-  transform: ${({second}) => second ? 'scale(1.4) translate(80px, 70px)' : 'scale(1.4) translate(-80px, -70px)'};
+  transform: ${({second}) => second ? 'scale(1.4) translate(95px, 70px)' : 'scale(1.4) translate(-75px, -70px)'};
 `
 
 const Map = styled.div`
-  width: 100%;
-  height: 500px;
+  width: 1400px;
+  height: 700px;
   position: absolute;
-  top: 0;
-  left: 0;
-  background: ${({back}) => 'url(' + back + ') 50% 50% no-repeat'};
-  background-size: cover;
-  @media (max-width: 1199px) {
-    width: 1000px;
-    background-position-x: 60%;
-    left: -300px;
-  }
+  top: -130px;
+  right: -470px;
+  background: ${({back}) => 'url(' + back + ') no-repeat'};
   transition: all .2s ease-in-out;
-  transform: ${({second}) => second ? 'scale(1.4) translate(80px, 70px)' : 'scale(1.4) translate(-80px, -70px)'};
+  transform: ${({second}) => second ? 'translate(10px, 130px)' : 'translate(-225px, -70px)'};
 `
 
 const MapsMarks = ({state, uid}) => {
@@ -77,7 +71,7 @@ const MapsMarks = ({state, uid}) => {
             </g>
           }
           {state.activeList === 1 &&
-            <g id="maps_1">
+            <g id="maps_1" transform="translate(5 0)">
               <g id="mark_1-4" transform="translate(517 272)" fill="#EB5A59" stroke="#EB5A59" strokeWidth={state.items[1][4] ? 10 : 0} >
                 <path d="M 65.8704 135.717C 65.8704 139.859 62.5149 143.217 58.3756 143.217C 54.2364 143.217 50.8809 139.859 50.8809 135.717C 50.8809 131.575 54.2364 128.217 58.3756 128.217C 62.5149 128.217 65.8704 131.575 65.8704 135.717Z" />
                 <path d="M 14.9896 7.5C 14.9896 11.6421 11.634 15 7.49478 15C 3.35553 15 0 11.6421 0 7.5C 0 3.35786 3.35553 0 7.49478 0C 11.634 0 14.9896 3.35786 14.9896 7.5Z" />

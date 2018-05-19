@@ -11,24 +11,18 @@ const Svg = styled.svg`
     margin-left: -100px;
   }
   transition: all .2s ease-in-out;
-  transform: ${({second}) => second ? 'scale(1.4) translate(50px, 70px)' : 'scale(1.4) translate(-80px, -70px)'};
+  transform: ${({second}) => second ? 'scale(1.4) translate(150px, 75px)' : 'scale(1.4) translate(-80px, -70px)'};
 `
 
 const Map = styled.div`
-  width: 100%;
-  height: 500px;
+  width: 1400px;
+  height: 700px;
   position: absolute;
-  top: 0;
-  left: 0;
-  background: ${({back}) => 'url(' + back + ') 50% 50% no-repeat'};
-  background-size: cover;
-  @media (max-width: 1199px) {
-    width: 1000px;
-    background-position-x: 60%;
-    left: -300px;
-  }
+  top: -130px;
+  right: -470px;
+  background: ${({back}) => 'url(' + back + ') no-repeat'};
   transition: all .2s ease-in-out;
-  transform: ${({second}) => second ? 'scale(1.4) translate(50px, 70px)' : 'scale(1.4) translate(-80px, -70px)'};
+  transform: ${({second}) => second ? 'translate(90px, 130px)' : 'translate(-230px, -70px)'};
 `
 
 const MapsMarks = ({state, uid}) => {

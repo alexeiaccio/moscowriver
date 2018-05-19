@@ -7,11 +7,12 @@ const Svg = styled.svg`
   min-width: 702px;
   height: 500px;
   z-index: 1;
+  transition: all .2s ease-in-out;
+  transform: ${({second}) => second ? 'scale(1.4) translate(100px, 75px)' : 'scale(1.4) translate(-80px, -70px)'};
   @media (max-width: 1199px) {
     margin-left: -100px;
+    transform: ${({second}) => second ? 'scale(1.4) translate(150px, 75px)' : 'scale(1.4) translate(-80px, -70px)'};
   }
-  transition: all .2s ease-in-out;
-  transform: ${({second}) => second ? 'scale(1.4) translate(150px, 75px)' : 'scale(1.4) translate(-80px, -70px)'};
 `
 
 const Map = styled.div`
@@ -22,7 +23,10 @@ const Map = styled.div`
   right: -470px;
   background: ${({back}) => 'url(' + back + ') no-repeat'};
   transition: all .2s ease-in-out;
-  transform: ${({second}) => second ? 'translate(90px, 130px)' : 'translate(-230px, -70px)'};
+  transform: ${({second}) => second ? 'translate(25px, 130px)' : 'translate(-230px, -70px)'};
+  @media (max-width: 1199px) {    
+    transform: ${({second}) => second ? 'translate(90px, 130px)' : 'translate(-230px, -70px)'};
+  }
 `
 
 const MapsMarks = ({state, uid}) => {

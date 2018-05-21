@@ -672,8 +672,8 @@ export default ({data}) => {
           </Lazy>
         </SectionCommand>
         <SectionOne image={pageBackImg} >
-          <FootGradient reversed />
           <FootCite color='blue' fontSize={1} data={{cite: footCite}} />
+          <Description width={1040} size={4} data={{description: footDescription}} />
           <FootGradient />
         </SectionOne>
       </main>

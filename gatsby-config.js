@@ -19,15 +19,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-fonts',
-      options: {
-        fonts: [
-          'podkova\:400,500,600,700',
-          'montserrat\:400,500,600,700'
-        ]
-      }
-    },
-    {
       resolve: 'gatsby-plugin-sitemap',
       options: {
         exclude: [

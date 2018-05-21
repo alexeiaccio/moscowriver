@@ -629,7 +629,6 @@ export default ({data}) => {
         </SectionCommand>
         <SectionOne image={pageBackImg} >
           <FootCite color='blue' fontSize={1} data={{cite: footCite}} />
-          <Description width={1040} size={4} data={{description: footDescription}} />
           <FootGradient />
         </SectionOne>
       </main>

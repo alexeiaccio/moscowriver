@@ -7,6 +7,7 @@ import assoc from 'crocks/helpers/assoc'
 import assign from 'crocks/helpers/assign'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
+
 import {
   Section,
   H2,
@@ -19,6 +20,7 @@ import {
   Navigation,
   RoundButtonWithImage,
   Link,
+  Lazy,
 } from 'Components'
 import {
   findSection,
@@ -445,7 +447,7 @@ const FootGradient = styled.nav`
   align-items: center;
   width: 100%;
   height: 150px;
-  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+  background: linear-gradient(${({reversed}) => reversed ? 180 : 0}deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
 `
 
 export default ({data}) => {
@@ -496,11 +498,16 @@ export default ({data}) => {
         </SectionOne>
         <SectionContext id={sectionsId('context')} >
           <Row>
-            <SectionHeader color='text' shade='bright.blue' >{ getStringFromProps(sectionsHeader('context')) }</SectionHeader>
+            <Lazy height={50}>
+              <SectionHeader color='text' shade='bright.blue' >
+              { getStringFromProps(sectionsHeader('context')) }
+              </SectionHeader>
+            </Lazy>
           </Row>
           <SectionRow>
             {sectionParagraphs('context').map(paragraph =>
-              paragraph.image.url === null
+              <Lazy height={600}>
+              {paragraph.image.url === null
               ? <SectionColumn key={s4()}>
                 { getParagraphsFromProps(paragraph.text) }
                 </SectionColumn>
@@ -510,75 +517,98 @@ export default ({data}) => {
                   </Link>
                   <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
                 </SectionColumn>
+              }
+              </Lazy>
             )}
           </SectionRow>
         </SectionContext>
         <SectionBlue id={sectionsId('river')} >
           <Row>
-            <SectionHeader color='text' shade='white' >
-            { getStringFromProps(sectionsHeader('river')) }
-            </SectionHeader>
+            <Lazy height={50}>
+              <SectionHeader color='text' shade='white' >
+              { getStringFromProps(sectionsHeader('river')) }
+              </SectionHeader>
+            </Lazy>
           </Row>
-          <SectionRiverRow>
-            {sectionParagraphs('river').map(paragraph =>
-             <SectionRiverColumn key={s4()}>
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-             </SectionRiverColumn>
-            )}
-          </SectionRiverRow>
+          <Lazy height={600}>
+            <SectionRiverRow>
+              {sectionParagraphs('river').map(paragraph =>
+                  <SectionRiverColumn key={s4()}>
+                    <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                  </SectionRiverColumn>
+              )}
+            </SectionRiverRow>
+          </Lazy>
         </SectionBlue>
         <SectionGeo id={sectionsId('geography')}>
           <Row>
-            <SectionHeader color='text' shade='bright.blue' >
-            { getStringFromProps(sectionsHeader('geography')) }
-            </SectionHeader>
+            <Lazy height={50}>
+              <SectionHeader color='text' shade='bright.blue' >
+              { getStringFromProps(sectionsHeader('geography')) }
+              </SectionHeader>
+            </Lazy>
           </Row>
           <SectionRow>
           {sectionParagraphs('geography').map(paragraph  =>
-            <SectionGeoColumn key={s4()}>
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-              {(paragraph.image.url !== null) &&
-                <Image className='img' url={paragraph.image.url} />
-              }
-            </SectionGeoColumn>
+            <Lazy height={600}>
+              <SectionGeoColumn key={s4()}>
+                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                {(paragraph.image.url !== null) &&
+                  <Image className='img' url={paragraph.image.url} />
+                }
+              </SectionGeoColumn>
+            </Lazy>
           )}
           </SectionRow>
         </SectionGeo>
         <SectionTimeline id={sectionsId('timeline')} >
           <SectionTimelineRow>
-            <SectionHeader color='text' shade='bright.blue' >
-            { getStringFromProps(sectionsHeader('timeline')) }
-            </SectionHeader>
+            <Lazy height={50}>
+              <SectionHeader color='text' shade='bright.blue' >
+              { getStringFromProps(sectionsHeader('timeline')) }
+              </SectionHeader>
+            </Lazy>
           </SectionTimelineRow>
           <SectionTimelineRow>
           {sectionParagraphs('timeline').map(paragraph =>
-            <SectionTimelineColumn key={s4()}>
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-            </SectionTimelineColumn>
+            <Lazy height={600}>
+              <SectionTimelineColumn key={s4()}>
+                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+              </SectionTimelineColumn>
+            </Lazy>
           )}
           </SectionTimelineRow>
         </SectionTimeline>
         <SectionBlue id={sectionsId('nextsteps')} >
           <SectionNextRow>
-            <SectionHeader color='text' shade='white' >
-            { getStringFromProps(sectionsHeader('nextsteps')) }
-            </SectionHeader>
+            <Lazy height={50}>
+              <SectionHeader color='text' shade='white' >
+              { getStringFromProps(sectionsHeader('nextsteps')) }
+              </SectionHeader>
+            </Lazy>
           </SectionNextRow>
           <SectionNextRow>
           {sectionParagraphs('nextsteps').map(paragraph =>
-            <SectionNextColumn key={s4()}>
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-            </SectionNextColumn>
+            <Lazy height={600}>
+              <SectionNextColumn key={s4()}>
+                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+              </SectionNextColumn>
+            </Lazy>
           )}
           </SectionNextRow>
         </SectionBlue>
         <SectionContext id={sectionsId('projectmoscow')} >
           <SectionNextRow>
-            <SectionHeader color='text' shade='bright.blue' >{ getStringFromProps(sectionsHeader('projectmoscow')) }</SectionHeader>
+            <Lazy height={50}>
+              <SectionHeader color='text' shade='bright.blue' >
+              { getStringFromProps(sectionsHeader('projectmoscow')) }
+              </SectionHeader>
+            </Lazy>
           </SectionNextRow>
           <SectionNextRow>
             {sectionParagraphs('projectmoscow').map(paragraph =>
-              paragraph.image.url === null
+              <Lazy height={600}>
+              {paragraph.image.url === null
               ? <SectionProjectColumn key={s4()}>
                 { getParagraphsFromProps(paragraph.text) }
                 </SectionProjectColumn>
@@ -588,46 +618,61 @@ export default ({data}) => {
                   </Link>
                   <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
                 </SectionProjectColumn>
+              }
+              </Lazy>
             )}
           </SectionNextRow>
         </SectionContext>
         <SectionGeo id={sectionsId('orchestra')}>
           <SectionOrchestraRow>
-            <SectionOrchestraHeader color='text' shade='bright.blue' >
-            { getStringFromProps(sectionsHeader('orchestra')) }
-            </SectionOrchestraHeader>
+            <Lazy height={50}>
+              <SectionOrchestraHeader color='text' shade='bright.blue' >
+              { getStringFromProps(sectionsHeader('orchestra')) }
+              </SectionOrchestraHeader>
+            </Lazy>
           </SectionOrchestraRow>
           <SectionOrchestraRow>
           {sectionParagraphs('orchestra').map(paragraph  =>
-            <SectionOrchestraColumn key={s4()}>
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-              {(paragraph.image.url !== null) &&
-                <Image className='img' url={paragraph.image.url} />
-              }
-            </SectionOrchestraColumn>
+            <Lazy height={600}>
+              <SectionOrchestraColumn key={s4()}>
+                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                {(paragraph.image.url !== null) &&
+                  <Image className='img' url={paragraph.image.url} />
+                }
+              </SectionOrchestraColumn>
+            </Lazy>
           )}
           </SectionOrchestraRow>
         </SectionGeo>
         <SectionCommand id={sectionsId('command')} >
           <SectionRow>
-            <SectionHeader color='text' shade='bright.blue' >{ getStringFromProps(sectionsHeader('command')) }</SectionHeader>
+            <Lazy height={50}>
+              <SectionHeader color='text' shade='bright.blue' >
+              { getStringFromProps(sectionsHeader('command')) }
+              </SectionHeader>
+            </Lazy>
           </SectionRow>
           <SectionRow>
           {sectionParagraphs('command').map(paragraph  =>
-            <SectionCommandColumn key={s4()}>
-              <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-              {(paragraph.image.url !== null) &&
-                <figure>
-                  <Image className='img' url={paragraph.image.url} />
-                  <figcaption>{text(paragraph.textimage).option('')}</figcaption>
-                </figure>
-              }
-            </SectionCommandColumn>
+            <Lazy height={600}>
+              <SectionCommandColumn key={s4()}>
+                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                {(paragraph.image.url !== null) &&
+                  <figure>
+                    <Image className='img' url={paragraph.image.url} />
+                    <figcaption>{text(paragraph.textimage).option('')}</figcaption>
+                  </figure>
+                }
+              </SectionCommandColumn>
+            </Lazy>
           )}
           </SectionRow>
-          <Copyright color='text' >Разработка сайта&ensp;<Accio href='https://www.accio.pro/' target='_blank' color='black' /></Copyright>
+          <Lazy height={50}>
+            <Copyright color='text' >Разработка сайта&ensp;<Accio href='https://www.accio.pro/' target='_blank' color='black' /></Copyright>
+          </Lazy>
         </SectionCommand>
         <SectionOne image={pageBackImg} >
+          <FootGradient reversed />
           <FootCite color='blue' fontSize={1} data={{cite: footCite}} />
           <FootGradient />
         </SectionOne>

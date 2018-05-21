@@ -248,7 +248,6 @@ const SectionGeoColumn =  Column.extend`
   & h4 {
     margin-bottom: ${key(['space', 3])}px;
     font-size: ${key(['fontSizes', 2])}px;
-    line-height: ${key(['lineHeights', 2])};
     position: relative;
   }
   & .img {
@@ -304,7 +303,6 @@ const SectionCommandColumn =  Column.extend`
     margin-bottom: ${key(['space', 5])}px;
     color: ${key('colors.text')};
     font-size: ${key(['fontSizes', 2])}px;
-    line-height: ${key(['lineHeights', 2])};
     text-align: center;
   }
   & figure {
@@ -402,6 +400,7 @@ const SectionTimelineColumn =  Column.extend`
       font-size: ${key(['fontSizes', 1])}px;
       font-weight: ${key('fontWeights.normal')};
       color: ${({color}) => key('colors.' + color)};
+      line-height: ${key(['lineHeights', 2])};
       z-index: 5;
       &::after {
         content: '';
@@ -652,9 +651,9 @@ export default ({data}) => {
               </SectionHeader>
             </Lazy>
           </SectionRow>
-          <SectionRow>
-          {sectionParagraphs('command').map(paragraph  =>
-            <Lazy height={600}>
+          <Lazy height={600}>
+            <SectionRow>
+            {sectionParagraphs('command').map(paragraph  =>
               <SectionCommandColumn key={s4()}>
                 <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                 {(paragraph.image.url !== null) &&
@@ -664,9 +663,9 @@ export default ({data}) => {
                   </figure>
                 }
               </SectionCommandColumn>
-            </Lazy>
-          )}
-          </SectionRow>
+            )}
+            </SectionRow>
+          </Lazy>
           <Lazy height={50}>
             <Copyright color='text' >Разработка сайта&ensp;<Accio href='https://www.accio.pro/' target='_blank' color='black' /></Copyright>
           </Lazy>

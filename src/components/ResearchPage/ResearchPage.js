@@ -77,14 +77,17 @@ const SectionOrchestraRow = Row.extend`
 
 const SectionContext = Section.extend`
   padding: ${key(['space', 12])}px 0 ${key(['space', 14])}px;
+  line-height: ${key(['lineHeights', 2])};
 `
 
 const SectionHeader = H2.extend`
   margin: 0 0 ${key(['space', 9])}px ${key(['space', 3])}px;
+  line-height: ${key(['lineHeights', 2])};
 `
 
 const SectionOrchestraHeader = H2.extend`
   margin: 0 0 ${key(['space', 9])}px ${key(['space', 5])}px;
+  line-height: ${key(['lineHeights', 2])};
   &::before {
     content: '';
     position: absolute;

@@ -120,9 +120,11 @@ const SectionFurureRow = Row.extend`
 
 const SectionHeader = H2.extend`
   margin: 0 0 ${key(['space', 9])}px ${key(['space', 3])}px;
+  line-height: ${key(['lineHeights', 2])};
 `
 const SectionWhatNextHeader = H2.extend`
   margin: 0 0 ${key(['space', 9])}px ${key(['space', 5])}px;
+  line-height: ${key(['lineHeights', 2])};
 `
 
 const SectionSubHeader = styled.h3`
@@ -130,6 +132,7 @@ const SectionSubHeader = styled.h3`
   color: ${key('colors.pink')};
   font-size: ${key(['fontSizes', 1])}px;
   line-height: ${key(['lineHeights', 1])};
+  line-height: ${key(['lineHeights', 2])};
 `
 
 const SectionPast = Section.extend`
@@ -602,6 +605,7 @@ export default ({data: { data, uid }}) => {
               </SectionHeader>
             </Row>
             <SectionRow>
+            line-height: ${key(['lineHeights', 2])};
               {sectionParagraphs('port').map(paragraph  =>
                 <SectionPierColumn key={s4()} >
                   <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />

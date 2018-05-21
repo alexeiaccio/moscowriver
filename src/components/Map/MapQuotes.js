@@ -115,7 +115,6 @@ export const query = graphql`
           link {
             uid
           }
-          placeholder
         }
       }
     }

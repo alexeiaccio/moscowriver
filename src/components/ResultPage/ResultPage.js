@@ -12,6 +12,7 @@ import {
   RoundButtonTop,
   Link,
   RoundButtonWithImage,
+  Lazy,
 } from 'Components'
 import {
   Section,
@@ -490,52 +491,64 @@ export default ({data: { data, uid }}) => {
         </SectionOne>
         {sectionsHeader('past').length &&
           <SectionPast id={sectionsId('past')} >
-            <SectionPastRow>
-              <SectionHeader color='text' shade='pink' >
-              { getStringFromProps(sectionsHeader('past')) }
-              </SectionHeader>
-            </SectionPastRow>
+            <Lazy height={50}>
+              <SectionPastRow>
+                <SectionHeader color='text' shade='pink' >
+                { getStringFromProps(sectionsHeader('past')) }
+                </SectionHeader>
+              </SectionPastRow>
+            </Lazy>
             <SectionRow>
               {sectionParagraphs('past').map(paragraph  =>
-                <SectionPastColumn key={s4()} url={paragraph.sectionimage.url} >
-                  <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-                  {(paragraph.sectionimage.url !== null) &&
-                    <Image className='img' url={paragraph.sectionimage.url} />
-                  }
-                </SectionPastColumn>
+                <Lazy height={600}>
+                  <SectionPastColumn key={s4()} url={paragraph.sectionimage.url} >
+                    <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                    {(paragraph.sectionimage.url !== null) &&
+                      <Image className='img' url={paragraph.sectionimage.url} />
+                    }
+                  </SectionPastColumn>
+                </Lazy>
               )}
-              </SectionRow>
+            </SectionRow>
           </SectionPast>
         }
         {sectionsHeader('present').length &&
           <SectionPresent id={sectionsId('present')} >
-            <Row>
-              <SectionHeader color='text' shade='pink' >
-              { getStringFromProps(sectionsHeader('present')) }
-              </SectionHeader>
-            </Row>
-            <SectionRow>
+            <Lazy height={50}>
+              <Row>
+                <SectionHeader color='text' shade='pink' >
+                { getStringFromProps(sectionsHeader('present')) }
+                </SectionHeader>
+              </Row>
+            </Lazy>
+              <SectionRow>
               {sectionParagraphs('present').map(paragraph  =>
-                <SectionPresentColumn key={s4()} >
-                  <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-                  {(paragraph.sectionimage.url !== null) &&
-                    <Image className='img' url={paragraph.sectionimage.url} />
-                  }
-                </SectionPresentColumn>
+                <Lazy height={600}>
+                  <SectionPresentColumn key={s4()} >
+                    <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                    {(paragraph.sectionimage.url !== null) &&
+                      <Image className='img' url={paragraph.sectionimage.url} />
+                    }
+                  </SectionPresentColumn>
+                </Lazy>
               )}
               </SectionRow>
           </SectionPresent>
         }
         {sectionsHeader('maps').length &&
           <SectionPresent id={sectionsId('maps')} >
-            <Row>
-              <SectionSubHeader color='text' shade='pink' >
-              { getStringFromProps(sectionsHeader('maps')) }
-              </SectionSubHeader>
-            </Row>
-            <SectionMapsRow>
-              <ResultMap uid={uid} map={1} data={sectionParagraphs('maps')} />
-            </SectionMapsRow>
+            <Lazy height={50}>
+              <Row>
+                <SectionSubHeader color='text' shade='pink' >
+                { getStringFromProps(sectionsHeader('maps')) }
+                </SectionSubHeader>
+              </Row>
+            </Lazy>
+            <Lazy height={600}>
+              <SectionMapsRow>
+                <ResultMap uid={uid} map={1} data={sectionParagraphs('maps')} />
+              </SectionMapsRow>
+            </Lazy>
           </SectionPresent>
         }
         {sectionsHeader('functions').length &&
@@ -552,149 +565,184 @@ export default ({data: { data, uid }}) => {
         }
         {sectionsHeader('future').length &&
           <SectionFuture id={sectionsId('future')} >
-            <SectionFurureRow>
-              <SectionHeader color='text' shade='pink' >
-              { getStringFromProps(sectionsHeader('future')) }
-              </SectionHeader>
-            </SectionFurureRow>
+            <Lazy height={50}>
+              <SectionFurureRow>
+                <SectionHeader color='text' shade='pink' >
+                { getStringFromProps(sectionsHeader('future')) }
+                </SectionHeader>
+              </SectionFurureRow>
+            </Lazy>
             <SectionFurureRow>
               {sectionParagraphs('future').map(paragraph  =>
-                <SectionFutureColumn key={s4()} >
-                  <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-                </SectionFutureColumn>
+                <Lazy height={600}>
+                  <SectionFutureColumn key={s4()} >
+                    <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                  </SectionFutureColumn>
+                </Lazy>
               )}
               </SectionFurureRow>
           </SectionFuture>
         }
         {sectionsHeader('project').length &&
           <SectionPresent id={sectionsId('project')} >
-            <SectionFurureRow>
-              <SectionSubHeader color='text' shade='pink' >
-              { getStringFromProps(sectionsHeader('project')) }
-              </SectionSubHeader>
-            </SectionFurureRow>
-            <SectionMapsRow>
-              <ResultMap uid={uid} map={2} data={sectionParagraphs('project')} />
-            </SectionMapsRow>
+            <Lazy height={50}>
+              <SectionFurureRow>
+                <SectionSubHeader color='text' shade='pink' >
+                { getStringFromProps(sectionsHeader('project')) }
+                </SectionSubHeader>
+              </SectionFurureRow>
+            </Lazy>
+            <Lazy height={600}>
+              <SectionMapsRow>
+                <ResultMap uid={uid} map={2} data={sectionParagraphs('project')} />
+              </SectionMapsRow>
+            </Lazy>
           </SectionPresent>
         }
         {sectionsHeader('pier').length &&
           <SectionPier id={sectionsId('pier')} >
-            <Row>
-              <SectionHeader color='text' shade='pink' >
-              { getStringFromProps(sectionsHeader('pier')) }
-              </SectionHeader>
-            </Row>
+            <Lazy height={50}>
+              <Row>
+                <SectionHeader color='text' shade='pink' >
+                { getStringFromProps(sectionsHeader('pier')) }
+                </SectionHeader>
+              </Row>
+            </Lazy>
             <SectionRow>
               {sectionParagraphs('pier').map(paragraph  =>
-                <SectionPierColumn key={s4()} >
-                  <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-                  {(paragraph.sectionimage.url !== null) &&
-                    <Image className='img' url={paragraph.sectionimage.url} />
-                  }
-                </SectionPierColumn>
+                <Lazy height={600}>
+                  <SectionPierColumn key={s4()} >
+                    <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                    {(paragraph.sectionimage.url !== null) &&
+                      <Image className='img' url={paragraph.sectionimage.url} />
+                    }
+                  </SectionPierColumn>
+                </Lazy>
               )}
               </SectionRow>
           </SectionPier>
         }
         {sectionsHeader('port').length &&
           <SectionPresent id={sectionsId('port')} >
-            <Row>
-              <SectionHeader color='text' shade='pink' >
-              { getStringFromProps(sectionsHeader('port')) }
-              </SectionHeader>
-            </Row>
+            <Lazy height={50}>
+              <Row>
+                <SectionHeader color='text' shade='pink' >
+                { getStringFromProps(sectionsHeader('port')) }
+                </SectionHeader>
+              </Row>
+            </Lazy>
             <SectionRow>
-            line-height: ${key(['lineHeights', 2])};
-              {sectionParagraphs('port').map(paragraph  =>
+            {sectionParagraphs('port').map(paragraph  =>
+              <Lazy height={600}>
                 <SectionPierColumn key={s4()} >
                   <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                   {(paragraph.sectionimage.url !== null) &&
                     <Image className='img' url={paragraph.sectionimage.url} />
                   }
                 </SectionPierColumn>
-              )}
-              </SectionRow>
+              </Lazy>
+            )}
+            </SectionRow>
           </SectionPresent>
         }
         {sectionsHeader('embankment').length &&
           <SectionPresent id={sectionsId('embankment')} >
-            <Row>
-              <SectionHeader color='text' shade='pink' >
-              { getStringFromProps(sectionsHeader('embankment')) }
-              </SectionHeader>
-            </Row>
+            <Lazy height={50}>
+              <Row>
+                <SectionHeader color='text' shade='pink' >
+                { getStringFromProps(sectionsHeader('embankment')) }
+                </SectionHeader>
+              </Row>
+            </Lazy>
             <SectionRow>
               {sectionParagraphs('embankment').map(paragraph  =>
-                <SectionPierColumn key={s4()} >
-                  <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-                  {(paragraph.sectionimage.url !== null) &&
-                    <Image className='img' url={paragraph.sectionimage.url} />
-                  }
-                </SectionPierColumn>
+                <Lazy height={600}>
+                  <SectionPierColumn key={s4()} >
+                    <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                    {(paragraph.sectionimage.url !== null) &&
+                      <Image className='img' url={paragraph.sectionimage.url} />
+                    }
+                  </SectionPierColumn>
+                </Lazy>
               )}
               </SectionRow>
           </SectionPresent>
         }
         {sectionsHeader('concept').length &&
           <SectionConcept id={sectionsId('concept')} >
-            <SectionFurureRow>
-              <SectionHeader color='text' shade='white' >
-              { getStringFromProps(sectionsHeader('concept')) }
-              </SectionHeader>
-            </SectionFurureRow>
+            <Lazy height={50}>
+              <SectionFurureRow>
+                <SectionHeader color='text' shade='white' >
+                { getStringFromProps(sectionsHeader('concept')) }
+                </SectionHeader>
+              </SectionFurureRow>
+            </Lazy>
             <SectionFurureRow>
               {sectionParagraphs('concept').map(paragraph  =>
-                <SectionConceptColumn key={s4()} >
-                  <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
-                </SectionConceptColumn>
+                <Lazy height={600}>
+                  <SectionConceptColumn key={s4()} >
+                    <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                  </SectionConceptColumn>
+                </Lazy>
               )}
             </SectionFurureRow>
           </SectionConcept>
         }
         {sectionsHeader('form').length &&
           <SectionFuture id={sectionsId('form')} >
-            <SectionFurureRow>
-              <SectionHeader color='text' shade='pink' >
-              { getStringFromProps(sectionsHeader('form')) }
-              </SectionHeader>
-            </SectionFurureRow>
-            <SectionFurureRow>
-              <ResultForm uid={uid} />
-            </SectionFurureRow>
+            <Lazy height={50}>
+              <SectionFurureRow>
+                <SectionHeader color='text' shade='pink' >
+                { getStringFromProps(sectionsHeader('form')) }
+                </SectionHeader>
+              </SectionFurureRow>
+            </Lazy>
+            <Lazy height={600}>
+              <SectionFurureRow>
+                <ResultForm uid={uid} />
+              </SectionFurureRow>
+            </Lazy>
           </SectionFuture>
         }
         {sectionsHeader('additions').length &&
           <SectionFuture id={sectionsId('additions')} >
-            <SectionFunctionsRow>
-              <SectionHeader color='text' shade='pink' >
-              { getStringFromProps(sectionsHeader('additions')) }
-              </SectionHeader>
-            </SectionFunctionsRow>
-            <SectionAdditionsRow>
-              <ResultAdditions data={sectionParagraphs('additions')} />
-            </SectionAdditionsRow>
+            <Lazy height={50}>
+              <SectionFunctionsRow>
+                <SectionHeader color='text' shade='pink' >
+                { getStringFromProps(sectionsHeader('additions')) }
+                </SectionHeader>
+              </SectionFunctionsRow>
+            </Lazy>
+            <Lazy height={600}>
+              <SectionAdditionsRow>
+                <ResultAdditions data={sectionParagraphs('additions')} />
+              </SectionAdditionsRow>
+            </Lazy>
           </SectionFuture>
         }
         {sectionsHeader('whatnext').length &&
           <SectionWhatNext id={sectionsId('whatnext')} >
-            <Row>
-              <SectionWhatNextHeader color='text' shade='pink' >
-              { getStringFromProps(sectionsHeader('whatnext')) }
-              </SectionWhatNextHeader>
-            </Row>
-            <SectionRow>
-              {sectionParagraphs('whatnext').map(paragraph =>
-                paragraph.sectionimage.url &&
-                  <SectionColumn key={s4()}>
-                    <Link to={sectionUrl(paragraph.text)} target='_blank'>
-                    { getElementsFromProps(paragraph.text) }
-                    </Link>
-                    <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.sectionimage.url} text='' />
-                  </SectionColumn>
-              )}
-            </SectionRow>
-            <RoundButtonTop to='#header' color={'colors.white'} />
+            <Lazy height={600}>
+              <Row>
+                <SectionWhatNextHeader color='text' shade='pink' >
+                { getStringFromProps(sectionsHeader('whatnext')) }
+                </SectionWhatNextHeader>
+              </Row>
+            </Lazy>
+            <Lazy height={600}>
+              <SectionRow>
+                {sectionParagraphs('whatnext').map(paragraph =>
+                  paragraph.sectionimage.url &&
+                    <SectionColumn key={s4()}>
+                      <Link to={sectionUrl(paragraph.text)} target='_blank'>
+                      { getElementsFromProps(paragraph.text) }
+                      </Link>
+                      <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.sectionimage.url} text='' />
+                    </SectionColumn>
+                )}
+              </SectionRow>
+              <RoundButtonTop to='#header' color={'colors.white'} />
+            </Lazy>
           </SectionWhatNext>
         }
      </main>

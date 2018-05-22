@@ -11,6 +11,7 @@ const RoundTemplate = styled(Link)`
   overflow: hidden;
   text-decoration: none;
   transition: all .4s ease-in-out;
+  z-index: 3000;
 `
 
 export const RoundButton = RoundTemplate.extend`
@@ -19,6 +20,11 @@ export const RoundButton = RoundTemplate.extend`
   &:hover > p {
     background-color: rgba(0,0,0,.15);
   }
+`
+
+export const RoundButtonMiddle = RoundTemplate.extend`
+  width: 150px;
+  height: 150px;
 `
 
 export const RoundButtonSmall = RoundTemplate.extend`
@@ -32,6 +38,16 @@ export const ButtonBack = styled.div`
   display: block;
   width: 225px;
   height: 225px;
+  background-size: cover;
+  background-repeat: no-repeat;
+`
+
+export const RoundButtonMiddleBack = styled.div`
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 150px;
+  height: 150px;
   background-size: cover;
   background-repeat: no-repeat;
 `

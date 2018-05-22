@@ -13,11 +13,11 @@ export default ({data}) => {
         Напишите нам: <a href={email} target='_blank'>{ email.replace('mailto:', '') }</a>
       </Email>
       <Row>
-      {logos.map(logo =>
-        <Logo key={s4()} src={logo.option(patternWaves)}/>
+      {logos.map((logo, i) =>
+        <Logo key={s4()} href={i === 0 ? 'http://orchestra-design.com/' : 'http://meganom.moscow/'} src={logo.option(patternWaves)} target='_blank' rel='noreferrer' />
       )}
       </Row>
-      <Copyright color='white' >Разработка&ensp;<Accio href='https://www.accio.pro/' target='_blank' color='white' /></Copyright>
+      <Copyright color='white' >Разработка&ensp;<Accio href='http://www.accio.pro/' target='_blank' rel='noreferrer' color='white' /></Copyright>
     </StyledFooter>
   )
 }

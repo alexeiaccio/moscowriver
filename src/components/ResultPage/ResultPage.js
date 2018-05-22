@@ -57,7 +57,7 @@ const SectionOne = Section.extend`
 `
 
 const TitleWrapper = styled.div`
-  padding: ${key(['space', 12])}px 0;
+  padding: ${key(['space', 12])}px 0 0;
   display: flex;
   flex-direction: column;
   justify-content:  space-between;
@@ -65,6 +65,7 @@ const TitleWrapper = styled.div`
   &> h1{
     position: relative;
     display: inline-flex;
+    flex: 0 0 auto;
     z-index: 2000;
     &::before {
       content: '';

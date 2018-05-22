@@ -39,6 +39,8 @@ export {
  export {
   RoundButton,
   RoundButtonSmall,
+  RoundButtonMiddle,
+  RoundButtonMiddleBack,
   ButtonBack,
   ButtonShade,
   ButtonText,

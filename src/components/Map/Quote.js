@@ -4,11 +4,11 @@ import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 
 const QuoteWrapper = styled.div`
-  width: 540px;
-  padding: 35px;
-  padding-top: ${({image}) => image ? '25px' : '35px'};
-  font-size: ${key(['fontSizes', 5])}px;
-  line-height: ${key(['lineHeights', 3])};
+  width: 460px;
+  padding: 25px;
+  padding-top: ${({image}) => image ? '15px' : '25px'};
+  font-size: ${key(['fontSizes', 6])}px;
+  line-height: ${key(['lineHeights', 5])};
   border: 10px solid ${({color}) => key('colors.' + color)};
   border-top: ${({image}) => image ? 0 : ''};
 `
@@ -16,7 +16,8 @@ const QuoteWrapper = styled.div`
 const Quote = styled.p`
   position:  relative;
   padding-left: 25px;
-  margin-top: ${({image}) => image ? '0px' : '15px'};
+  margin-top: ${({image}) => image ? '0px' : '10px'};
+  z-index: 9000;
   &::before {
     content: '—';
     display: block;
@@ -32,16 +33,16 @@ const QouteHeader = styled.h4`
   margin-left: 25px;
   color: ${({color}) => key('colors.' + color)};
   font-weight: ${key('fontWeights.medium')};
-  font-size: ${key(['fontSizes', 3])}px;
-  line-height: ${key(['lineHeights', 3])};
+  font-size: ${key(['fontSizes', 4])}px;
+  line-height: ${key(['lineHeights', 4])};
   z-index: 5000;
   &::after {
     content: '';
     position: absolute;
-    bottom: calc(${key(['fontSizes', 3])}px * .45);
+    bottom: calc(${key(['fontSizes', 4])}px * .37);
     display: flex;
     width: 100%;
-    height: calc(${key(['fontSizes', 3])}px * .45);
+    height: calc(${key(['fontSizes', 4])}px * .48);
     background-color: ${({shade}) => key('colors.' + shade)};
     transition: background-color .4s ease-in-out;
     opacity: .5;
@@ -52,7 +53,7 @@ const QouteHeader = styled.h4`
 const QouteImageHeader = styled.div`
   position: relative;
   width: 100%;
-  height: 150px;
+  height: 100px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -61,7 +62,7 @@ const QouteImageHeader = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   &> h4 {
-    margin-left: 70px;
+    margin-left: 55px;
   }
   &::after {
     content: '';
@@ -77,7 +78,7 @@ const Button = styled.a`
   margin: 25px 25px 0;
   color: ${key('colors.white')};
   font-weight: ${key('fontWeights.medium')};
-  padding: ${key(['space', 2])}px ${key(['space', 4])}px;
+  padding: ${key(['space', 2])}px ${key(['space', 3])}px;
   background-color: ${({color}) => key('colors.' + color)};
   text-decoration: none;
   border-radius: ${key(['radii', 1])}px;

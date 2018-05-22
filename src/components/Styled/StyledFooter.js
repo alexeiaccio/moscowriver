@@ -5,7 +5,7 @@ import AccioWhite from '../../assets/AccioWhite.svg'
 import AccioLogo from '../../assets/Accio.svg'
 
 export const StyledFooter = styled.footer`
-  padding: ${key(['space', 9])}px;
+  padding: ${key(['space', 7])}px;
   height: 170px;
   background-color: ${key('colors.violet')};
   background-image: url(${patternWaves});
@@ -29,10 +29,15 @@ export const Email = styled.div`
   }
 `
 
-export const Logo = styled.img`
-  height: 42px;
-  width: auto;
-  padding-top: ${key(['space', 9])}px;
+export const Logo = styled.a`
+  display: inline-block;
+  height: 35px;
+  width: 200px;
+  margin-top: ${key(['space', 9])}px;
+  background-image: url(${({ src }) => src});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 `
 
 export const Copyright = styled.div`
@@ -46,9 +51,10 @@ export const Copyright = styled.div`
 
 export const Accio = styled.a`
   display: inline-block;
-  height: 43px;
-  width: 131px;
+  height: 35px;
+  width: 115px;
   background-image: url(${({color}) => color === 'white' ? AccioWhite : AccioLogo});
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   background-position: center;
+  background-size: contain;
 `

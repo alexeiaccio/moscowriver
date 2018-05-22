@@ -43,7 +43,8 @@ const SectionOne = Section.extend`
   align-items: center;
   height: calc(100vh - 120px);
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAzSURBVHgBpYxRDgAgCEKfq4N1s/Lkpc0P/dYNYcAQ4FBv+xPDNWgyvx4RurFSgRms/akHyzsJj/3feW8AAAAASUVORK5CYII=) repeat, ${({image}) => 'url(' + image + ')'} no-repeat ${key('colors.black')};
-  background-size: 6px 6px, auto 105vh;
+  background-size: 6px 6px, cover;
+  background-position: center;
 `
 
 const SectionRow = Row.extend`
@@ -670,7 +671,7 @@ export default ({data}) => {
             </SectionRow>
           </Lazy>
           <Lazy height={50}>
-            <Copyright color='text' >Разработка сайта&ensp;<Accio href='https://www.accio.pro/' target='_blank' color='black' /></Copyright>
+            <Copyright color='text' >Разработка сайта&ensp;<Accio href='http://www.accio.pro/' target='_blank' rel='noreferrer' color='black' /></Copyright>
           </Lazy>
         </SectionCommand>
         <SectionOne image={pageBackImg} >

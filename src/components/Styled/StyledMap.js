@@ -8,7 +8,8 @@ export const MapBlock = styled.div`
   flex: 0 0 auto;
   margin-top: calc(50vh - 977px);
   transform: scale(.55);
-  ${'' /* background: url(${MapBack}); */}
+  background: url(${MapBack});
+  background-size: 3500px 2000px;
   & div {
     background-color: rgba(255,255,255,0) !important;
   }
@@ -40,9 +41,10 @@ export const QoutesBack = styled.div`
 `
 
 export const Markers = styled.svg`
-  margin-top: calc(50vh - 380px);
+  margin-top: calc(50vh - 360px);
   margin-left: -34px;
   transform: scale(1.1);
+  z-index: 0;
 `
 
 export const Sector = styled.g`
@@ -72,7 +74,7 @@ export const Tooltip = styled.div`
   transform: translateY(-${key(['space', 3])}px);
   box-shadow: 0px 4px 10px rgba(0,0,0,.25);
   cursor: pointer;
-  z-index: 7000;
+  z-index: 5000;
   &::after {
     content: '';
     position: absolute;

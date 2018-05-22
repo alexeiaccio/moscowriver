@@ -355,7 +355,22 @@ const SectionFutureColumn =  Column.extend`
 const SectionConceptColumn =  Column.extend`
   position: relative;
   color: ${key('colors.white')};
-  padding: 0 ${key(['space', 2])}px ${key(['space', 11])}px;
+  padding: 0 ${key(['space', 2])}px ${key(['space', 10])}px;
+  font-size: ${key(['fontSizes', 5])}px;
+  line-height: ${key(['lineHeights', 4])};
+  max-width: 100%;
+  & h4 {
+    font-family: 'Montserrat';
+    font-size: ${key(['fontSizes', 2])}px;
+    line-height: ${key(['lineHeights', 1])};
+    font-weight: ${key('fontWeights.medium')};
+  }
+`
+
+const SectionFormColumn =  Column.extend`
+  position: relative;
+  color: ${key('colors.text')};
+  padding: 0 ${key(['space', 2])}px ${key(['space', 9])}px;
   font-size: ${key(['fontSizes', 5])}px;
   line-height: ${key(['lineHeights', 4])};
   max-width: 100%;
@@ -474,9 +489,6 @@ export default ({data: { data, uid }}) => {
   const pageNav = pageBody.map(({primary}, i) =>
     assign({uid: primary.anchor}, {text: primary.sectionname}))
 
-  console.log(
-    pageNav
-  )
   return (
     <Fragment >
      <Header id='header' data={{title: [{ text: '390 взглядов на Москву-реку' }]}} move={-140} />
@@ -696,6 +708,15 @@ export default ({data: { data, uid }}) => {
                 <SectionHeader color='text' shade='pink' >
                 { getStringFromProps(sectionsHeader('form')) }
                 </SectionHeader>
+              </SectionFurureRow>
+            </Lazy>
+            <Lazy height={600}>
+              <SectionFurureRow>
+              {sectionParagraphs('form').map(paragraph  =>
+                <SectionFormColumn key={s4()} >
+                  <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                </SectionFormColumn>
+              )}
               </SectionFurureRow>
             </Lazy>
             <Lazy height={600}>

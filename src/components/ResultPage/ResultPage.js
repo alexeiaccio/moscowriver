@@ -4,6 +4,13 @@ import { key } from 'styled-theme'
 import assign from 'crocks/helpers/assign'
 import find from 'crocks/Maybe/find'
 import propPath from 'crocks/Maybe/propPath'
+import { RichText } from 'prismic-reactjs'
+
+const linkResolver = doc => (
+	doc.type !== 'homepage'
+	? `#${doc.uid}`
+	: '/'
+)
 
 import {
   Cite,
@@ -496,6 +503,8 @@ export default ({data: { data, uid }}) => {
       assign({uid: primary.anchor}, {text: primary.sectionname})
     )
 
+    console.log(pageBody)
+
   return (
     <Fragment >
      <Header id='header' data={{title: [{ text: '390 взглядов на Москву-реку' }]}} move={-140} />
@@ -509,6 +518,17 @@ export default ({data: { data, uid }}) => {
           </TitleWrapper>
           <Navigation data={ pageNav } />
         </SectionOne>
+        {pageBody.map(section => {
+          switch(section.primary.sectiontype) {
+            case 'mirrored-image': return (
+              <div key={s4()} id={section.primary.anchor || null}>
+              { section.items.map(item => RichText.render(item.text, linkResolver)) }
+              </div>
+            )
+            break
+            return null
+          }
+        })}
         {sectionsHeader('past').length &&
           <SectionPast id={sectionsId('past')} >
             <Lazy height={50}>
@@ -766,7 +786,7 @@ export default ({data: { data, uid }}) => {
                       <Link to={sectionUid(paragraph.text)}>
                       { getElementsFromProps(paragraph.text) }
                       </Link>
-                      <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.sectionimage.url} text='' />
+                      <RoundButtonWithImage to={sectionUid(paragraph.text)} url={paragraph.sectionimage.url} text='' />
                     </SectionColumn>
                 )}
               </SectionRow>

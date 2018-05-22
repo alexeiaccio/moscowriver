@@ -38,6 +38,7 @@ export const query = graphql`
         body {
           slice_type
           primary {
+            sectiontype
             anchor
             sectionname
             header {

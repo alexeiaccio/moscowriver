@@ -57,6 +57,7 @@ export const query = graphql`
               spans {
                 data {
                   url
+                  uid
                 }
               }
             }

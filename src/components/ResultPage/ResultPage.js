@@ -479,8 +479,10 @@ export default ({data: { data, uid }}) => {
   const header = propPath(['primary', 'header'])
   const items = propPath(['items'])
   const url = propPath(['spans', 0, 'data', 'url'])
+  const getUid = propPath(['spans', 0, 'data', 'uid'])
 
   const sectionUrl = text => second(text).chain(url).option('/')
+  const sectionUid = text => second(text).chain(getUid).option('/')
   const sectionsId = name => sections(name).chain(anchor).option('Oops...')
   const sectionsHeader = name => sections(name).chain(header).option([])
   const sectionParagraphs = name => sections(name).chain(items).option([])
@@ -493,9 +495,6 @@ export default ({data: { data, uid }}) => {
     ).map(({primary}) =>
       assign({uid: primary.anchor}, {text: primary.sectionname})
     )
-
-    console.log(pageNav)
-
 
   return (
     <Fragment >
@@ -521,11 +520,11 @@ export default ({data: { data, uid }}) => {
             </Lazy>
             <SectionRow>
               {sectionParagraphs('past').map(paragraph  =>
-                <Lazy height={600}>
+                <Lazy key={s4()} height={600}>
                   <SectionPastColumn key={s4()} url={paragraph.sectionimage.url} >
                     <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                     {(paragraph.sectionimage.url !== null) &&
-                      <Image className='img' url={paragraph.sectionimage.url} />
+                      <Image key={s4()} className='img' url={paragraph.sectionimage.url} />
                     }
                   </SectionPastColumn>
                 </Lazy>
@@ -544,7 +543,7 @@ export default ({data: { data, uid }}) => {
             </Lazy>
               <SectionRow>
               {sectionParagraphs('present').map(paragraph  =>
-                <Lazy height={600}>
+                <Lazy key={s4()} height={600}>
                   <SectionPresentColumn key={s4()} >
                     <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                     {(paragraph.sectionimage.url !== null) &&
@@ -595,7 +594,7 @@ export default ({data: { data, uid }}) => {
             </Lazy>
             <SectionFurureRow>
               {sectionParagraphs('future').map(paragraph  =>
-                <Lazy height={600}>
+                <Lazy key={s4()} height={600}>
                   <SectionFutureColumn key={s4()} >
                     <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                   </SectionFutureColumn>
@@ -631,7 +630,7 @@ export default ({data: { data, uid }}) => {
             </Lazy>
             <SectionRow>
               {sectionParagraphs('pier').map(paragraph  =>
-                <Lazy height={600}>
+                <Lazy key={s4()} height={600}>
                   <SectionPierColumn key={s4()} >
                     <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                     {(paragraph.sectionimage.url !== null) &&
@@ -654,7 +653,7 @@ export default ({data: { data, uid }}) => {
             </Lazy>
             <SectionRow>
             {sectionParagraphs('port').map(paragraph  =>
-              <Lazy height={600}>
+              <Lazy key={s4()} height={600}>
                 <SectionPierColumn key={s4()} >
                   <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                   {(paragraph.sectionimage.url !== null) &&
@@ -677,7 +676,7 @@ export default ({data: { data, uid }}) => {
             </Lazy>
             <SectionRow>
               {sectionParagraphs('embankment').map(paragraph  =>
-                <Lazy height={600}>
+                <Lazy key={s4()} height={600}>
                   <SectionPierColumn key={s4()} >
                     <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                     {(paragraph.sectionimage.url !== null) &&
@@ -700,7 +699,7 @@ export default ({data: { data, uid }}) => {
             </Lazy>
             <SectionFurureRow>
               {sectionParagraphs('concept').map(paragraph  =>
-                <Lazy height={600}>
+                <Lazy key={s4()} height={600}>
                   <SectionConceptColumn key={s4()} >
                     <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                   </SectionConceptColumn>
@@ -764,7 +763,7 @@ export default ({data: { data, uid }}) => {
                 {sectionParagraphs('whatnext').map(paragraph =>
                   paragraph.sectionimage.url &&
                     <SectionColumn key={s4()}>
-                      <Link to={sectionUrl(paragraph.text)} target='_blank'>
+                      <Link to={sectionUid(paragraph.text)}>
                       { getElementsFromProps(paragraph.text) }
                       </Link>
                       <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.sectionimage.url} text='' />

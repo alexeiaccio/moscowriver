@@ -486,8 +486,16 @@ export default ({data: { data, uid }}) => {
   const sectionParagraphs = name => sections(name).chain(items).option([])
 
   const pageBody = body(data).option([])
-  const pageNav = pageBody.map(({primary}, i) =>
-    assign({uid: primary.anchor}, {text: primary.sectionname}))
+  const pageNav = pageBody.filter(({primary}) =>
+      primary.sectionname !== null &&
+      primary.sectionname.length > 3 &&
+        primary
+    ).map(({primary}) =>
+      assign({uid: primary.anchor}, {text: primary.sectionname})
+    )
+
+    console.log(pageNav)
+
 
   return (
     <Fragment >

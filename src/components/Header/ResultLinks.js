@@ -11,7 +11,6 @@ const Wrapper = styled.div`
   position: relative;
 `
 
-
 const Menu = styled.div`
   max-width: 370px;
   padding: ${key(['space', 2])}px ${key(['space', 3])}px;
@@ -37,7 +36,7 @@ const Menu = styled.div`
 const StyledLink = styled.div`
   position: relative;
   color: ${key('colors.white')};
-  font-size: ${key(['fontSizes', 3])}px;
+  font-size: ${key(['fontSizes', 4])}px;
   font-family: ${key('fonts.base')};
   font-weight: ${key('fontWeights.normal')};
   text-decoration: none;
@@ -46,8 +45,8 @@ const StyledLink = styled.div`
     content: '';
     position: absolute;
     display: flex;
-    bottom: calc(${key(['fontSizes', 3])}px * .15);
-    height: calc(${key(['fontSizes', 3])}px * .5);
+    bottom: calc(${key(['fontSizes', 4])}px * .15);
+    height: calc(${key(['fontSizes', 4])}px * .55);
     width: 100%;
     background-color: ${key('colors.black')};
     transition: background-color .4s ease-in-out;
@@ -61,19 +60,21 @@ const StyledLink = styled.div`
 const MenuLink = styled(Link)`
   position: relative;
   display: inline-flex;
+  align-items: center;
   color: ${key('colors.white')};
   font-size: ${key(['fontSizes', 6])}px;
   font-family: ${key('fonts.base')};
   font-weight: ${key('fontWeights.normal')};
-  line-height: ${key(['lineHeights', 2])};
+  height: 35px;
+  line-height: 1;
   text-decoration: none;
   z-index: 2000;
   &::after {
     content: '';
     position: absolute;
     display: flex;
-    bottom: 13px;
-    height: calc(${key(['fontSizes', 5])}px * .5);
+    bottom: 12px;
+    height: 8px;
     width: 100%;
     background-color: ${key('colors.black')};
     transition: background-color .4s ease-in-out;
@@ -92,12 +93,20 @@ class ResultLinks extends Component {
     }
   }
 
-  handleMouseEnter = () => {
-    !this.state.isMenu && this.setState({ isMenu: true })
+  hideMenu = () => {
+    this.state.isMenu && this.setState({ isMenu: false })
   }
 
-  handleMouseLeave = () => {
-    this.state.isMenu && this.setState({ isMenu: false })
+  componentDidMount = () => {
+    document.getElementById('menu-wrapper').addEventListener('click', this.hideMenu())
+  }
+
+  componentWillUnmount = () => {
+    document.getElementById('menu-wrapper').removeEventListener('click', this.hideMenu())
+  }
+
+  handleMouseClick = () => {
+    !this.state.isMenu ? this.setState({ isMenu: true }) : this.setState({ isMenu: false })
   }
 
   render() {
@@ -111,8 +120,7 @@ class ResultLinks extends Component {
           {({ ref }) => (
             <div
               ref={ref}
-              onClick={() => this.handleMouseEnter()}
-              //onMouseLeave={() => this.handleMouseLeave()}
+              onClick={() => this.handleMouseClick()}
             >
               <StyledLink>Результаты</StyledLink>
             </div>

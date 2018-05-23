@@ -7,7 +7,7 @@ import theme from './theme'
 import favicon from './favicon.png'
 
 const TemplateWrapper = ({ children }) => (
-  <div>
+  <div id='menu-wrapper'>
     <Helmet
       defaultTitle='390 взглядов на Москву-реку'
       titleTemplate='390 взглядов на Москву-реку | %s'

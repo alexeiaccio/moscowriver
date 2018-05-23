@@ -21,6 +21,7 @@ import {
   RoundButtonWithImage,
   Link,
   Lazy,
+  ResultLinks,
 } from 'Components'
 import {
   findSection,
@@ -453,7 +454,7 @@ const FootGradient = styled.nav`
   background: linear-gradient(${({reversed}) => reversed ? 180 : 0}deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
 `
 
-export default ({data}) => {
+export default ({data, results}) => {
   const sort = (order, xs) =>
     order.reduce((acc, x) => acc.concat([...xs[x]]), [])
 
@@ -492,7 +493,7 @@ export default ({data}) => {
 
   return (
     <Fragment>
-      <Header data={{title: pageTitle}} move={-140} />
+      <Header data={{title: pageTitle}} {...{results}} move={-140} />
       <main>
         <SectionOne image={pageBackImg} >
           <HeadCite color='blue' fontSize={1} data={{cite: pageCite}} />
@@ -509,7 +510,7 @@ export default ({data}) => {
           </Row>
           <SectionRow>
             {sectionParagraphs('context').map(paragraph =>
-              <Lazy height={600}>
+              <Lazy key={s4()} height={600}>
               {paragraph.image.url === null
               ? <SectionColumn key={s4()}>
                 { getParagraphsFromProps(paragraph.text) }
@@ -553,7 +554,7 @@ export default ({data}) => {
           </Row>
           <SectionRow>
           {sectionParagraphs('geography').map(paragraph  =>
-            <Lazy height={600}>
+            <Lazy key={s4()} height={600}>
               <SectionGeoColumn key={s4()}>
                 <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                 {(paragraph.image.url !== null) &&
@@ -574,7 +575,7 @@ export default ({data}) => {
           </SectionTimelineRow>
           <SectionTimelineRow>
           {sectionParagraphs('timeline').map(paragraph =>
-            <Lazy height={600}>
+            <Lazy key={s4()} height={600}>
               <SectionTimelineColumn key={s4()}>
                 <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
               </SectionTimelineColumn>
@@ -592,7 +593,7 @@ export default ({data}) => {
           </SectionNextRow>
           <SectionNextRow>
           {sectionParagraphs('nextsteps').map(paragraph =>
-            <Lazy height={600}>
+            <Lazy key={s4()} height={600}>
               <SectionNextColumn key={s4()}>
                 <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
               </SectionNextColumn>
@@ -610,7 +611,7 @@ export default ({data}) => {
           </SectionNextRow>
           <SectionNextRow>
             {sectionParagraphs('projectmoscow').map(paragraph =>
-              <Lazy height={600}>
+              <Lazy key={s4()} height={600}>
               {paragraph.image.url === null
               ? <SectionProjectColumn key={s4()}>
                 { getParagraphsFromProps(paragraph.text) }
@@ -636,7 +637,7 @@ export default ({data}) => {
           </SectionOrchestraRow>
           <SectionOrchestraRow>
           {sectionParagraphs('orchestra').map(paragraph  =>
-            <Lazy height={600}>
+            <Lazy key={s4()} height={600}>
               <SectionOrchestraColumn key={s4()}>
                 <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                 {(paragraph.image.url !== null) &&
@@ -655,7 +656,7 @@ export default ({data}) => {
               </SectionHeader>
             </Lazy>
           </SectionRow>
-          <Lazy height={600}>
+          <Lazy key={s4()} height={600}>
             <SectionRow>
             {sectionParagraphs('command').map(paragraph  =>
               <SectionCommandColumn key={s4()}>
@@ -670,7 +671,7 @@ export default ({data}) => {
             )}
             </SectionRow>
           </Lazy>
-          <Lazy height={50}>
+          <Lazy key={s4()} height={50}>
             <Copyright color='text' >Разработка сайта&ensp;<Accio href='http://www.accio.pro/' target='_blank' rel='noreferrer' color='black' /></Copyright>
           </Lazy>
         </SectionCommand>
@@ -680,7 +681,7 @@ export default ({data}) => {
           <FootGradient />
         </SectionOne>
       </main>
-      <Header data={{title: pageTitle}} move={50} />
+      <Header data={{title: pageTitle}} {...{results}} move={50} />
     </Fragment>
   )
 }

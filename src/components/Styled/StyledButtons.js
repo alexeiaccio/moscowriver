@@ -90,7 +90,7 @@ export const InputMorph = styled.input`
   border: 5px solid ${({success}) => success ? key('colors.bright.green') : key('colors.bright.blue')};
   border-radius: ${props => props.button ? '2px' : '50px'};
   outline: none !important;
-  transition: all .6s ease-in-out;
+  transition: all .4s ease-in-out;
   cursor: ${props => props.button ? 'pointer' : 'default'};
   &::placeholder {
     color: ${key(['colors', 'gray', 1])};

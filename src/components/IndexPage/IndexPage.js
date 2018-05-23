@@ -32,7 +32,7 @@ export default ({ data }) => {
 
   return (
     <Fragment>
-      <main id='menu-wrapper'>
+      <main>
         <SectionOne id='one'>
           <IndexTitle data={node.data} results={results}/>
           <ContentWrapper>

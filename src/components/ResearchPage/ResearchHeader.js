@@ -1,7 +1,7 @@
 import React from 'react'
 import { key } from 'styled-theme'
 import { BaseWrapper, WaveWrapper, StyledLink, Row } from 'Styled'
-import { WavePattern, Title } from 'Components'
+import { WavePattern, Title, ResultLinks } from 'Components'
 
 const Header = BaseWrapper.extend`
   height: 100px;
@@ -34,7 +34,7 @@ const Back = WaveWrapper.extend`
   transform: ${({move}) => 'translateY(' + move + 'px)'};
 `
 
-export default ({data, layout, move}) => (
+export default ({data, results, layout, move}) => (
   <Header>
     <Back move={move} >
       <WavePattern />
@@ -42,7 +42,7 @@ export default ({data, layout, move}) => (
     <Row>
       <StyledLink to='/'>На главную</StyledLink>
       <Title color='white' fontSize={1} lineHeight={1} data={data}/>
-      <StyledLink to='/shelepikhinskaya-naberezhnaya/'>Результаты</StyledLink>
+      <ResultLinks {...{results}} />
     </Row>
   </Header>
 )

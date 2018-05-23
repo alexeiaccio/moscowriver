@@ -8,6 +8,7 @@ import { ResearchPage } from 'Components'
 
 const Research = ({ data }) => {
   const sections = data.researchparts.edges
+  const results = data.result.edges
   const find = findSection(sections)
   const research = find('research').option({})
   const {
@@ -25,7 +26,7 @@ const Research = ({ data }) => {
           { name: 'keywords', content: seokeywords },
         ]}
       />
-      <ResearchPage data={sections} />
+      <ResearchPage data={sections} {...{results}} />
     </Fragment>
   )
 }
@@ -83,6 +84,18 @@ export const query = graphql`
                   text
                 }
               }
+            }
+          }
+        }
+      }
+    }
+    result: allPrismicDocument(filter: {type: {eq: "result"}}) {
+      edges {
+        node {
+          uid
+          data {
+            title {
+              text
             }
           }
         }

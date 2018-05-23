@@ -1,7 +1,26 @@
 import React, { Fragment } from 'react'
+import { RichText } from 'prismic-reactjs'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
+
+import { Lazy } from 'Components'
+import {
+  ResultSection,
+  SectionRowCenteredWide,
+  SectionHeader,
+  SectionBlock,
+} from 'Styled'
+import { linkResolver, s4 } from 'Helpers'
 import ArrowIconWhite from '../../assets/ArrowIconWhite.svg'
+
+const TextSection = ResultSection.extend`
+  padding-bottom: ${key(['space', 12])}px;
+`
+
+const TextBlock = SectionBlock.extend`
+  padding-bottom: ${key(['space', 9])}px;
+  font-weight: ${key('fontWeights.medium')};
+`
 
 const Form = styled.form`
   display: flex;
@@ -158,61 +177,82 @@ export class ResultForm extends React.Component {
   }
 
   render() {
+    const { uid, section } = this.props
+    const { primary, items } = section
+
     return (
-      <Fragment>
-        <Form
-          name={`Result-page-form-${this.props.uid}`}
-          onSubmit={this.handlePost}
-          style={{position: 'relative'}}
-        >
-          <p hidden>
-            <label>
-              Don’t fill this out: <input name='bot-field' />
-            </label>
-          </p>
-          <Input
-            onChange={this.handleChange}
-            type='text'
-            name='name'
-            id='name'
-            value={this.state.name}
-            placeholder={'Ваше имя'}
-            required
-            minLength={2}
-            success={this.state.success}
-          />
-          <Input
-            onChange={this.handleChange}
-            type='email'
-            name='email'
-            id='email'
-            value={this.state.email}
-            placeholder={'Ваш email'}
-            required
-            minLength={7}
-            success={this.state.success}
-          />
-          <Textarea
-            onChange={this.handleChange}
-            name='message'
-            id='message'
-            value={this.state.message}
-            placeholder={'Ваш комментарий'}
-            required
-            minLength={10}
-            rows='3'
-            success={this.state.success}
-          />
-          <SubmitButton
-            type='submit'
-            submit={this.state.submit ? true : false}
-            success={this.state.success}
-          />
-        {this.state.success &&
-          <Success>Спасибо за ваш отзыв!</Success>
-        }
-        </Form>
-      </Fragment>
+      <TextSection id={primary.anchor || null} >
+        <SectionRowCenteredWide>
+          <Lazy height={50}>
+            <SectionHeader color='text' shade='pink' >
+            { RichText.asText(primary.header) }
+            </SectionHeader>
+          </Lazy>
+          <Lazy height={300}>
+          {items.map(item =>
+            <TextBlock key={s4()} >
+            { RichText.render(item.text, linkResolver) }
+            </TextBlock>
+          )}
+          </Lazy>
+        </SectionRowCenteredWide>
+        <SectionRowCenteredWide>
+          <Lazy height={300}>
+            <Form
+              name={`Result-page-form-${this.props.uid}`}
+              onSubmit={this.handlePost}
+              style={{position: 'relative'}}
+            >
+              <p hidden>
+                <label>
+                  Don’t fill this out: <input name='bot-field' />
+                </label>
+              </p>
+              <Input
+                onChange={this.handleChange}
+                type='text'
+                name='name'
+                id='name'
+                value={this.state.name}
+                placeholder={'Ваше имя'}
+                required
+                minLength={2}
+                success={this.state.success}
+              />
+              <Input
+                onChange={this.handleChange}
+                type='email'
+                name='email'
+                id='email'
+                value={this.state.email}
+                placeholder={'Ваш email'}
+                required
+                minLength={7}
+                success={this.state.success}
+              />
+              <Textarea
+                onChange={this.handleChange}
+                name='message'
+                id='message'
+                value={this.state.message}
+                placeholder={'Ваш комментарий'}
+                required
+                minLength={10}
+                rows='3'
+                success={this.state.success}
+              />
+              <SubmitButton
+                type='submit'
+                submit={this.state.submit ? true : false}
+                success={this.state.success}
+              />
+            {this.state.success &&
+              <Success>Спасибо за ваш отзыв!</Success>
+            }
+            </Form>
+          </Lazy>
+        </SectionRowCenteredWide>
+      </TextSection>
     )
   }
 }

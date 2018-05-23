@@ -42,11 +42,13 @@ export const query = graphql`
             anchor
             sectionname
             header {
+              type
               text
             }
           }
           items {
             header {
+              type
               text
             }
             sectionimage {
@@ -63,6 +65,7 @@ export const query = graphql`
               }
             }
             list {
+              type
               text
             }
             row {

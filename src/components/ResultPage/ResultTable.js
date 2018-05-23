@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { RichText } from 'prismic-reactjs'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 
@@ -7,8 +8,29 @@ import {
   getStringFromProps,
   s4,
 } from 'Helpers'
+import { Lazy } from 'Components'
+import {
+  Row,
+  Section,
+  ResultSection,
+  SectionHeader,
+} from 'Styled'
 import ArrowIconPink from '../../assets/ArrowIconPink.svg'
+import patternWaves from '../../assets/PatternWavesWhite.svg'
 import Functions from './Function'
+
+const TableSection = Section.extend`
+  margin: ${key(['space', 9])}px 0 ${key(['space', 10])}px;
+  padding: ${key(['space', 10])}px 0 ${key(['space', 12])}px;
+  background-color: ${key(['colors', 'gray', 2])};
+  background-image: url(${patternWaves});
+  background-repeat: repeat-x;
+  background-position-y: calc(100% + 225px);
+`
+
+const TableRow = Row.extend`
+  width: 1100px;
+`
 
 const Column = styled.div`
   display: flex;
@@ -138,7 +160,9 @@ class ResultFunctions extends Component {
       return tables
     }
 
-    const tables = getTables(this.props.data)
+    const { section } = this.props
+    const { primary, items } = section
+    const tables = getTables(items)
 
     const getTableContent = table => {
       const res = []
@@ -161,13 +185,13 @@ class ResultFunctions extends Component {
         } else if(row.type === 'list-item') {
           if(!isFourth) {
             row.text.length > 1
-              ? second.push(<Functions key={s4()} data={row.text} />)
-              : second.push(<p key={s4()}> </p>)
+            ? second.push(<Functions key={s4()} data={row.text} />)
+            : second.push(<p key={s4()}> </p>)
           } else {
             isFirst = true
             row.text.length > 1
-              ? fourth.push(<Functions key={s4()} data={row.text} />)
-              : fourth.push(<p key={s4()}> </p>)
+            ? fourth.push(<Functions key={s4()} data={row.text} />)
+            : fourth.push(<p key={s4()}> </p>)
           }
         }
       })
@@ -175,33 +199,45 @@ class ResultFunctions extends Component {
       return res
     }
 
+
     return (
-      <Fragment>
-        <Column>
-          <Headers key={s4()}>
-          {tables.map((table, i) =>
-            <H4
-              key={s4()}
-              active={this.state.activeList === i}
-              onClick={() => this.changeList(i)}
-              >
-              { table.header }
-            </H4>
-          )}
-          </Headers>
-          {tables.map((table, i)  =>
-            this.state.activeList === i &&
-              <List key={s4()} >
-                <div className='column-name'>Кто пользуется?</div>
-                <div className='column-name'>Как пользуются территорией?</div>
-                <div className='column-name'>Как хотели бы пользоваться?</div>
-              {
-                getTableContent(table).map(x=> <div  key={s4()}>{x}</div>)
-              }
-              </List>
-          )}
-        </Column>
-      </Fragment>
+      <TableSection id={primary.anchor || null} >
+        <Lazy height={50}>
+          <TableRow>
+            <SectionHeader color='text' shade='white' >
+            { RichText.asText(primary.header) }
+            </SectionHeader>
+          </TableRow>
+        </Lazy>
+        <Lazy height={600}>
+          <TableRow>
+            <Column>
+              <Headers key={s4()}>
+              {tables.map((table, i) =>
+                <H4
+                  key={s4()}
+                  active={this.state.activeList === i}
+                  onClick={() => this.changeList(i)}
+                  >
+                  { table.header }
+                </H4>
+              )}
+              </Headers>
+              {tables.map((table, i)  =>
+                this.state.activeList === i &&
+                  <List key={s4()} >
+                    <div className='column-name'>Кто пользуется?</div>
+                    <div className='column-name'>Как пользуются территорией?</div>
+                    <div className='column-name'>Как хотели бы пользоваться?</div>
+                  {
+                    getTableContent(table).map(x=> <div  key={s4()}>{x}</div>)
+                  }
+                  </List>
+              )}
+            </Column>
+          </TableRow>
+        </Lazy>
+      </TableSection>
     )
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { RichText } from 'prismic-reactjs'
 import styled from 'styled-components'
 import { key } from 'styled-theme'
 
@@ -6,7 +7,24 @@ import {
   getStringFromProps,
   s4,
 } from 'Helpers'
+import { Lazy } from 'Components'
+import {
+  Row,
+  ResultSection,
+  SectionHeader,
+} from 'Styled'
 import ArrowIconPink from '../../assets/ArrowIconPink.svg'
+
+const MapSection = ResultSection.extend`
+  padding-bottom: ${key(['space', 10])}px;
+`
+
+const SectionMapsRow = Row.extend`
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 1070px;
+`
 
 const Column = styled.div`
   display: flex;
@@ -100,7 +118,7 @@ class ResultMap extends Component {
     super(props)
     this.state = {
       activeList: 0,
-      items: this.props.data.map(item => Array(item.list.length).fill(false))
+      items: this.props.section.items.map(item => Array(item.list.length).fill(false))
     }
   }
 
@@ -121,44 +139,56 @@ class ResultMap extends Component {
   }
 
   render() {
-    const { uid, map } = this.props
+    const { uid, map, section } = this.props
+    const { primary, items } = section
     const MapsMarks = require(`./maps/MapsMarks-${uid}-${map}`)
 
     return (
-      <Fragment>
-        <Column>
-          <Map>
-            <MapsMarks state={this.state} uid={uid} />
-          </Map>
-        </Column>
-        <Column>
-          <Headers key={s4()}>
-          {this.props.data.map((paragraph, i) =>
-            <H4
-              key={s4()}
-              active={this.state.activeList === i}
-              onClick={() => this.changeList(i)}
-              >
-              { getStringFromProps(paragraph.header) }
-            </H4>
-          )}
-          </Headers>
-          {this.props.data.map((paragraph, i)  =>
-            this.state.activeList === i &&
-              <List key={s4()} >
-              {paragraph.list.map(({text}, j) =>
-                <ListItem
+      <MapSection id={primary.anchor || null} >
+        <Lazy height={50}>
+          <Row>
+            <SectionHeader color='text' shade='pink' >
+            { RichText.asText(primary.header) }
+            </SectionHeader>
+          </Row>
+        </Lazy>
+        <Lazy height={600}>
+          <SectionMapsRow>
+            <Column>
+              <Map>
+                <MapsMarks state={this.state} uid={uid} />
+              </Map>
+            </Column>
+            <Column>
+              <Headers key={s4()}>
+              {items.map((paragraph, i) =>
+                <H4
                   key={s4()}
-                  active={this.state.items[i][j]}
-                  onMouseOver={() => this.handleMouseOver(i, j)}
+                  active={this.state.activeList === i}
+                  onClick={() => this.changeList(i)}
                   >
-                  { text }
-                </ListItem>
+                  { getStringFromProps(paragraph.header) }
+                </H4>
               )}
-              </List>
-          )}
-        </Column>
-      </Fragment>
+              </Headers>
+              {items.map((paragraph, i)  =>
+                this.state.activeList === i &&
+                  <List key={s4()} >
+                  {paragraph.list.map(({text}, j) =>
+                    <ListItem
+                      key={s4()}
+                      active={this.state.items[i][j]}
+                      onMouseOver={() => this.handleMouseOver(i, j)}
+                      >
+                      { text }
+                    </ListItem>
+                  )}
+                  </List>
+              )}
+            </Column>
+          </SectionMapsRow>
+        </Lazy>
+      </MapSection>
     )
   }
 }

@@ -6,7 +6,8 @@ export { default as Cite } from './Cite/Cite'
 export { default as Image } from './Image/Image'
 export { default as WavePattern } from './Waves/WavePattern'
 export { default as Video } from './Video/Video'
-export { default as Link } from './Link/Link'
+export { Link } from './Link/Link'
+export { default as ResultLinks } from './Header/ResultLinks'
 export {
   RoundButtonWithImage,
   RoundButtonWithGif

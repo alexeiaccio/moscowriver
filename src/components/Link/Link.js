@@ -1,7 +1,7 @@
 import React from 'react'
 import GatsbyLink from 'gatsby-link'
 
-const Link = ({ children, to, ...other }) => {
+export const Link = ({ children, to, ...other }) => {
   const internal = /^\/(?!\/)/.test(to)
   if (internal) {
     return (
@@ -17,4 +17,3 @@ const Link = ({ children, to, ...other }) => {
   )
 }
 
-export default Link

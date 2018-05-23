@@ -25,15 +25,16 @@ import { IndexDescriptions } from './IndexDescriptions'
 import { ButtonOrInput } from './ButtonOrInput'
 import { SeeVideoButton } from './SeeVideoButton'
 
-export default ({data}) => {
+export default ({ data }) => {
   const node = data.homepage
   const quotes = data.quotes.edges
+  const results = data.result.edges
 
   return (
     <Fragment>
-      <main>
+      <main id='menu-wrapper'>
         <SectionOne id='one'>
-          <IndexTitle data={node.data}/>
+          <IndexTitle data={node.data} results={results}/>
           <ContentWrapper>
             <Map />
             <IndexCite data={node.data}/>
@@ -52,7 +53,7 @@ export default ({data}) => {
           <ButtonOrInput data={node.data} name='follow' />
         </SectionThree>
       </main>
-      <Header data={node.data} />
+      <Header data={node.data} results={results}/>
       <Footer data={node.data} />
     </Fragment>
   )

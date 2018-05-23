@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { Manager, Reference, Popper } from 'react-popper'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'

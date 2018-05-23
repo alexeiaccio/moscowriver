@@ -1,15 +1,19 @@
 import React from 'react'
+
 import { HeaderWrapper, StyledLink, Row } from 'Styled'
 import { WavedBack, Title } from 'Components'
-import { default as HeaderTitle } from './HeaderTitle'
 
-export default ({data, layout}) => (
+import { default as HeaderTitle } from './HeaderTitle'
+import ResultLinks from './ResultLinks'
+
+export default ({data, layout, results}) => {
+  return (
   <HeaderWrapper>
     <WavedBack />
     <Row>
-      <HeaderTitle data={data}/>
+      <HeaderTitle {...{data}}/>
       <StyledLink to='/research/'>Исследование</StyledLink>
-      <StyledLink to='/shelepikhinskaya-naberezhnaya/'>Результаты</StyledLink>
+      <ResultLinks {...{results}} />
     </Row>
   </HeaderWrapper>
-)
+)}

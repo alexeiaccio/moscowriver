@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import propPath from 'crocks/Maybe/propPath'
 import { RichText } from 'prismic-reactjs'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
@@ -48,15 +49,19 @@ const SectionColumn =  Column.extend`
 
 export const ResultLinks = ({ section }) => {
   const { primary, items } = section
+  const header = propPath(['primary', 'header'])
+  const getHeader = header(section).option([{text: ''}])
 
   return (
     <Lazy height={600}>
       <LinkSection id={primary.anchor || null} >
-        <SectionRow>
-          <SectionHeader color='text' shade='pink' >
-          { RichText.asText(primary.header) }
-          </SectionHeader>
-        </SectionRow>
+        {getHeader.length &&
+          <SectionRow>
+            <SectionHeader color='text' shade='pink' >
+            { RichText.asText(primary.header) }
+            </SectionHeader>
+          </SectionRow>
+        }
         <Row>
         {items.map(item =>
           item.sectionimage.url &&

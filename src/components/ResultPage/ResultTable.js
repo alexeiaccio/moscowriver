@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import propPath from 'crocks/Maybe/propPath'
 import { RichText } from 'prismic-reactjs'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
@@ -199,16 +200,20 @@ class ResultFunctions extends Component {
       return res
     }
 
+    const header = propPath(['primary', 'header'])
+    const getHeader = header(section).option([{text: ''}])
 
     return (
       <TableSection id={primary.anchor || null} >
-        <Lazy height={50}>
-          <TableRow>
-            <SectionHeader color='text' shade='white' >
-            { RichText.asText(primary.header) }
-            </SectionHeader>
-          </TableRow>
-        </Lazy>
+        {getHeader.length &&
+          <Lazy height={50}>
+            <TableRow>
+              <SectionHeader color='text' shade='white' >
+              { RichText.asText(primary.header) }
+              </SectionHeader>
+            </TableRow>
+          </Lazy>
+        }
         <Lazy height={600}>
           <TableRow>
             <Column>

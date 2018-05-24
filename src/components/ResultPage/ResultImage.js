@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import propPath from 'crocks/Maybe/propPath'
 import { RichText } from 'prismic-reactjs'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
@@ -63,10 +64,12 @@ const SectionImageBlock = SectionBlock.extend`
 
 export const ResultImage = ({ section }) => {
   const { primary, items } = section
+  const header = propPath(['primary', 'header'])
+  const getHeader = header(section).option([{text: ''}])
 
   return (
     <ResultSection id={primary.anchor || null} >
-    {primary.header[0].text.length &&
+    {getHeader.length &&
       <Lazy height={50}>
         <Row>
           <SectionHeader color='text' shade='pink' >

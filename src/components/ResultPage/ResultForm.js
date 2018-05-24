@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import propPath from 'crocks/Maybe/propPath'
 import { RichText } from 'prismic-reactjs'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
@@ -180,21 +181,25 @@ export class ResultForm extends React.Component {
   render() {
     const { uid, section } = this.props
     const { primary, items } = section
+    const header = propPath(['primary', 'header'])
+    const getHeader = header(section).option([{text: ''}])
 
     return (
       <TextSection id={primary.anchor || null} >
-        <SectionRowCenteredWide>
-          <Lazy height={50}>
-            <SectionHeader color='text' shade='pink' >
-            { RichText.asText(primary.header) }
-            </SectionHeader>
-          </Lazy>
-          {items.map(item =>
-            <TextBlock key={s4()} >
-            { RichText.render(item.text, linkResolver) }
-            </TextBlock>
-          )}
-        </SectionRowCenteredWide>
+        {getHeader.length &&
+          <SectionRowCenteredWide>
+            <Lazy height={50}>
+              <SectionHeader color='text' shade='pink' >
+              { RichText.asText(primary.header) }
+              </SectionHeader>
+            </Lazy>
+            {items.map(item =>
+              <TextBlock key={s4()} >
+              { RichText.render(item.text, linkResolver) }
+              </TextBlock>
+            )}
+          </SectionRowCenteredWide>
+        }
         <SectionRowCenteredWide>
           <Lazy height={300}>
             <Form

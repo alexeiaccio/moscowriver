@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import propPath from 'crocks/Maybe/propPath'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 
@@ -53,16 +54,20 @@ class ResultAdditions extends Component {
   render() {
     const { section } = this.props
     const { primary, items } = section
+    const header = propPath(['primary', 'header'])
+    const getHeader = header(section).option([{text: ''}])
 
     return (
       <ResultSection id={primary.anchor || null} >
-        <Lazy height={600}>
-          <WideRow>
-            <SectionHeader color='text' shade='pink' >
-            { RichText.asText(primary.header) }
-            </SectionHeader>
-          </WideRow>
-        </Lazy>
+        {getHeader.length &&
+          <Lazy height={600}>
+            <WideRow>
+              <SectionHeader color='text' shade='pink' >
+              { RichText.asText(primary.header) }
+              </SectionHeader>
+            </WideRow>
+          </Lazy>
+        }
         <Lazy height={600}>
           <GalleryRow active={this.state.images.indexOf(true) >= 0} >
           {items.map((image, i)  =>

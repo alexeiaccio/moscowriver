@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import propPath from 'crocks/Maybe/propPath'
 import { RichText } from 'prismic-reactjs'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
@@ -36,16 +37,20 @@ const TextBlock = SectionBlock.extend`
 
 export const ResultColoredBack = ({ section }) => {
   const { primary, items } = section
+  const header = propPath(['primary', 'header'])
+  const getHeader = header(section).option([{text: ''}])
 
   return (
     <ColoredBackSection id={primary.anchor || null} >
-      <SectionRowCenteredWide>
-        <Lazy height={50}>
-          <SectionHeader color='text' shade='white' >
-          { RichText.asText(primary.header) }
-          </SectionHeader>
-        </Lazy>
-      </SectionRowCenteredWide>
+      {getHeader.length &&
+        <SectionRowCenteredWide>
+          <Lazy height={50}>
+            <SectionHeader color='text' shade='white' >
+            { RichText.asText(primary.header) }
+            </SectionHeader>
+          </Lazy>
+        </SectionRowCenteredWide>
+      }
       <SectionRowCenteredWide>
         {items.map(item =>
           <Lazy key={s4()} height={300}>

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import propPath from 'crocks/Maybe/propPath'
 import { RichText } from 'prismic-reactjs'
 import styled from 'styled-components'
 import { key } from 'styled-theme'
@@ -142,16 +143,20 @@ class ResultMap extends Component {
     const { uid, map, section } = this.props
     const { primary, items } = section
     const MapsMarks = require(`./maps/MapsMarks-${uid}-${map}`)
+    const header = propPath(['primary', 'header'])
+    const getHeader = header(section).option([{text: ''}])
 
     return (
       <MapSection id={primary.anchor || null} >
-        <Lazy height={50}>
-          <Row>
-            <SectionHeader color='text' shade='pink' >
-            { RichText.asText(primary.header) }
-            </SectionHeader>
-          </Row>
-        </Lazy>
+        {getHeader.length &&
+          <Lazy height={50}>
+            <Row>
+              <SectionHeader color='text' shade='pink' >
+              { RichText.asText(primary.header) }
+              </SectionHeader>
+            </Row>
+          </Lazy>
+        }
         <Lazy height={600}>
           <SectionMapsRow>
             <Column>

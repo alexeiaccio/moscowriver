@@ -3,17 +3,22 @@ import Helmet from 'react-helmet'
 
 import { ResultPage } from 'Components'
 
-const ResultTemplate = ({ data }) =>
-  <Fragment>
-      <Helmet
-        title={data.result.data.seotitle}
-        meta={[
-          { name: 'description', content: data.result.data.seodescription },
-          { name: 'keywords', content: data.result.data.seokeywords },
-        ]}
-      />
-    <ResultPage data={data.result} />
-  </Fragment>
+const ResultTemplate = ({ data }) => {
+  const results = data.results.edges
+
+  return (
+    <Fragment>
+        <Helmet
+          title={data.result.data.seotitle}
+          meta={[
+            { name: 'description', content: data.result.data.seodescription },
+            { name: 'keywords', content: data.result.data.seokeywords },
+          ]}
+        />
+      <ResultPage data={data.result} {...{results}} />
+    </Fragment>
+  )
+}
 
 
 export default ResultTemplate
@@ -70,6 +75,18 @@ export const query = graphql`
             }
             row {
               type
+              text
+            }
+          }
+        }
+      }
+    }
+    results: allPrismicDocument(filter: {type: {eq: "result"}}) {
+      edges {
+        node {
+          uid
+          data {
+            title {
               text
             }
           }

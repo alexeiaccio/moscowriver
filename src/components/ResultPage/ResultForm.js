@@ -23,6 +23,7 @@ const TextBlock = SectionBlock.extend`
 `
 
 const Form = styled.form`
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -188,13 +189,11 @@ export class ResultForm extends React.Component {
             { RichText.asText(primary.header) }
             </SectionHeader>
           </Lazy>
-          <Lazy height={300}>
           {items.map(item =>
             <TextBlock key={s4()} >
             { RichText.render(item.text, linkResolver) }
             </TextBlock>
           )}
-          </Lazy>
         </SectionRowCenteredWide>
         <SectionRowCenteredWide>
           <Lazy height={300}>

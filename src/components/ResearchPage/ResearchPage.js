@@ -487,10 +487,6 @@ export default ({data, results}) => {
   const pageHeaders = data.map(edge => body(edge).chain(head).chain(header).chain(head).option({}))
   const pageNav = pageHeaders.map((header, i) => assign(header, pageAnchors[i])).filter(x => x.text)
 
-
-  console.log(
-  )
-
   return (
     <Fragment>
       <Header data={{title: pageTitle}} {...{results}} move={-140} />

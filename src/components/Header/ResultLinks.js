@@ -93,17 +93,15 @@ class ResultLinks extends Component {
     }
   }
 
-  hideMenu = () => {
-    this.state.isMenu && this.setState({ isMenu: false })
-  }
-
   componentDidMount = () => {
-    document.getElementById('menu-wrapper').addEventListener('click', this.hideMenu())
+    document.getElementById('menu-wrapper').addEventListener('click',
+      () => this.state.isMenu && this.setState({ isMenu: false })
+    )
   }
 
-  componentWillUnmount = () => {
+  /* componentWillUnmount = () => {
     document.getElementById('menu-wrapper').removeEventListener('click', this.hideMenu())
-  }
+  } */
 
   handleMouseClick = () => {
     !this.state.isMenu ? this.setState({ isMenu: true }) : this.setState({ isMenu: false })

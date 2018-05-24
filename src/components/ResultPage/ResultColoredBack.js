@@ -23,9 +23,11 @@ const ColoredBackSection = Section.extend`
 `
 
 const TextBlock = SectionBlock.extend`
+  flex-direction: column;
   color: ${key('colors.white')};
   font-weight: ${key('fontWeights.medium')};
-  & h4 {
+  & h3, h4 {
+    color: ${key('colors.white')};
     font-family: ${key('fonts.base')};
     font-size: ${key(['fontSizes', 2])}px;
     line-height: ${key(['lineHeights', 1])};
@@ -43,6 +45,8 @@ export const ResultColoredBack = ({ section }) => {
           { RichText.asText(primary.header) }
           </SectionHeader>
         </Lazy>
+      </SectionRowCenteredWide>
+      <SectionRowCenteredWide>
         {items.map(item =>
           <Lazy key={s4()} height={300}>
             <TextBlock key={s4()} >

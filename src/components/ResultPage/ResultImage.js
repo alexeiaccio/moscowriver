@@ -25,7 +25,7 @@ const SectionImageBlock = SectionBlock.extend`
   }
   &.odd div,
   &.even div {
-    max-width: 45%;
+    width: 45%;
   }
   &.text div {
     max-width: 720px;

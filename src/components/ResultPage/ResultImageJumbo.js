@@ -29,7 +29,8 @@ const SectionImageBlock = SectionBlock.extend`
     width:  450px;
     height: 320px;
   }
-  & .sectionimage.jumbo {
+  &.even .sectionimage.jumbo,
+  &.odd .sectionimage.jumbo {
     width: 150%;
     max-width: 1340px;
     height: 900px;
@@ -51,7 +52,8 @@ const SectionImageBlock = SectionBlock.extend`
     &.even .sectionimage {
       margin-left: -150px;
     }
-    & .sectionimage.jumbo {
+    &.even .sectionimage.jumbo,
+    &.odd .sectionimage.jumbo {
       margin-right: -150px;
       margin-left: -150px;
     }
@@ -97,7 +99,7 @@ export const ResultImageJumbo = ({ section }) => {
                 <SectionImage
                   key={s4()}
                   className={
-                    item.text.map(x => x.type).indexOf('paragraph') >= 0
+                    item.text.filter(x => x.text && x.text.length > 0).length > 0
                       ? 'sectionimage' : 'sectionimage jumbo'
                   }
                   url={item.sectionimage.url}

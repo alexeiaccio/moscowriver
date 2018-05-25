@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import propPath from 'crocks/Maybe/propPath'
 import ReactDOM from 'react-dom'
 import { Manager, Reference, Popper } from 'react-popper'
 import styled, { withComponent } from 'styled-components'
@@ -110,7 +111,8 @@ class ResultLinks extends Component {
   }
 
   render() {
-    const { results } = this.props
+    const safeResults = propPath(['results'])
+    const results = safeResults(this.props).option([])
     const resultItems = results.map(result => result.node)
 
     return (

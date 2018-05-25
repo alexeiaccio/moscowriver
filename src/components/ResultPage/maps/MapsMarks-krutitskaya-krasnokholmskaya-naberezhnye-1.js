@@ -3,25 +3,21 @@ import styled from 'styled-components'
 import { key } from 'styled-theme'
 
 const Svg = styled.svg`
-  min-width: 702px;
+  min-width: 650px;
   height: 500px;
   z-index: 1;
   @media (max-width: 1199px) {
     margin-left: -110px;
   }
-  transition: all .2s ease-in-out;
-  transform: ${({second}) => second ? 'scale(1.4) translate(95px, 70px)' : 'scale(1.4) translate(-75px, -70px)'};
 `
 
 const Map = styled.div`
-  width: 1400px;
-  height: 700px;
+  width: 650px;
+  height: 500px;
   position: absolute;
-  top: -130px;
-  right: -470px;
-  background: ${({back}) => 'url(' + back + ') no-repeat'};
-  transition: all .2s ease-in-out;
-  transform: ${({second}) => second ? 'translate(10px, 130px)' : 'translate(-225px, -70px)'};
+  top: 0;
+  right: 0;
+  background: url(${({back}) =>  back}) no-repeat;
 `
 
 const MapsMarks = ({state, uid}) => {
@@ -34,63 +30,72 @@ const MapsMarks = ({state, uid}) => {
 
   return (
     <Fragment>
-      <Map back={MapsBack} second={state.items[0][6] || state.items[1][3] ? true : false} />
+      <Map back={MapsBack} />
       <Svg
-        second={state.items[0][6] || state.items[1][3] ? true : false}
-        viewBox="0 0 702 500" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        width="650" height="500" viewBox="0 0 650 500" fill="none" xmlns="http://www.w3.org/2000/svg"
       >
-        <g id="Canvas" fill="none">
+        <g id="maps_01">
           {state.activeList === 2 &&
             <g id="maps_2" strokeLinecap="round">
-              <path id="mark_2-7" d="M 81.5 207.5L 75 185.5L 73 181.5L 70.5 172.5L 64.5 143.5L 55.5 122.5L 42 97.5L 36.5 84.5L 21.5 38L 0 0" transform="translate(511.5 242.5)" stroke="#C4549A" strokeWidth={state.items[2][7] ? 10 : 2} />
-              <g id="mark_2-6" transform="translate(583 411)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[2][6] ? 10 : 0} >
-                <path d="M 6 21.1845L 12.6504 19L 14.1292 23.5018L 7.47875 25.6863L 6 21.1845Z" />
-                <path d="M 0 2.18452L 6.6504 0L 8.12916 4.50181L 1.47875 6.68633L 0 2.18452Z" />
+              <path id="mark_2-0" d="M153.5 0L100.5 17.5L44.5 38.5L26.5 47.5L0 26M157 9L100.5 31L64.5 44.5L74.5 63.5V82L72 94L84.5 99.5L89 108.5V124L72 131.5"
+                transform="translate(324 169)" stroke="#945BA4" strokeWidth={state.items[2][0] ? 8 : 2} />
+              <path id="mark_2-1" d="M0 0L9.5 25L24.5 29L55.5 71V90L84.5 135L103.5 176.5L110 173L116.5 206.5L119.5 237V270L110 282.5L98.5 305L76 331.5"
+                transform="translate(292 129.5)" stroke="#53B36C" strokeWidth={state.items[2][1] ? 8 : 2} />
+              <path id="mark_2-2" d="M35.4238 58.9284L1.17332 10.1332C0.529318 9.21572 0.764998 7.94819 1.69574 7.32352L10.9908 1.08507C11.8906 0.481152 13.1077 0.703737 13.7355 1.58703L48.5772 50.6062C49.2497 51.5523 48.9782 52.8703 47.9865 53.4736L38.1003 59.4881C37.2 60.0357 36.0292 59.791 35.4238 58.9284Z"
+                transform="translate(314 141)" stroke="#F0C41B" strokeWidth={state.items[2][2] ? 8 : 2} />
+              <path id="mark_2-3" d="M0 0L19.5 43.5L65 91L94 129.5L120 188.5C123.167 203 129.3 233.9 128.5 241.5C127.7 249.1 128.5 264.333 126 276L130.5 291L111 343"
+                transform="translate(278 124.5)" stroke="#F0C41B" strokeWidth={state.items[2][3] ? 8 : 2} />
+              <path id="mark_2-4" d="M124.5 98.5L110 70.5L91 77L70 28L52 0L0 39V50L10.5 64.5" transform="translate(302.5 227)" stroke="#C4549A"
+                strokeWidth={state.items[2][4] ? 8 : 2} />
+              <path id="mark_2-5" d="M0 0L24.5 48.5L73 96L103 148.5L117.5 182.5L128 237.5V274.5L113.5 302.5L88.5 333M117.5 343.5L136.5 289L144.5 269L189.5 243M119.5 139.5L130 144.5L134.5 152V163.5L119.5 170.5L98.5 126.5L82.5 102L111 89.5"
+                transform="translate(276 126.5)" stroke="#F05A5A" strokeWidth={state.items[2][5] ? 8 : 2} />
+              <g id="mark_2-6" transform="translate(281 114)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[2][6] ? 8 : 2}>
+                <path d="M9.30957 0L14.7865 13.9644L5.47693 17.6156L0 3.65129L9.30957 0Z" />
+                <path d="M59 101.693L71.2238 92.9997L77.0195 101.149L64.7957 109.843L59 101.693Z" />
+                <path d="M106.335 186.971L120.608 182.356L123.684 191.871L109.412 196.486L106.335 186.971Z" />
               </g>
-              <g id="mark_2-5" transform="translate(517 248.5)" fill="#00BDF2" stroke="#00BDF2" strokeWidth={state.items[2][5] ? 10 : 0} >
-                <path d="M 50.0004 118.685L 56.6508 116.501L 58.1296 121.002L 51.4792 123.187L 50.0004 118.685Z" />
-                <path d="M 22.3498 56.185L 29.0002 54.0005L 30.479 58.5023L 23.8286 60.6868L 22.3498 56.185Z" />
-                <path d="M 0 3.5L 6 0L 8.5 4L 2.34984 7.68535L 0 3.5Z"/>
-                <path d="M 35.5 71.5L 39 70.5L 41 76L 37.5 77L 35.5 71.5Z" />
-                <path d="M 40.5 84L 44 83L 46 88.5L 42.5 89.5L 40.5 84Z" />
+              <g id="mark_2-7" transform="translate(294 160)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[2][7] ? 8 : 2}>
+                <path d="M105.043 240L119.727 243.065L117.684 252.854L103 249.789L105.043 240Z" />
+                <path d="M56.9697 66.9381L70.0788 59.6475L74.9392 68.3868L61.8301 75.6774L56.9697 66.9381Z" />
+                <path d="M0 7.29062L13.109 0L17.9694 8.73936L4.86041 16.03L0 7.29062Z" />
               </g>
-              <g id="mark_2-4" transform="translate(518 239)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[2][4] ? 10 : 0} >
-                <path d="M 28 74.5C 28 75.8807 26.8807 77 25.5 77C 24.1193 77 23 75.8807 23 74.5C 23 73.1193 24.1193 72 25.5 72C 26.8807 72 28 73.1193 28 74.5Z" />
-                <path d="M 68 78.5C 68 79.8807 66.8807 81 65.5 81C 64.1193 81 63 79.8807 63 78.5C 63 77.1193 64.1193 76 65.5 76C 66.8807 76 68 77.1193 68 78.5Z" />
-                <path d="M 35 59C 35 60.3807 33.8807 61.5 32.5 61.5C 31.1193 61.5 30 60.3807 30 59C 30 57.6193 31.1193 56.5 32.5 56.5C 33.8807 56.5 35 57.6193 35 59Z" />
-                <path d="M 65.5 70.5C 65.5 71.8807 64.3807 73 63 73C 61.6193 73 60.5 71.8807 60.5 70.5C 60.5 69.1193 61.6193 68 63 68C 64.3807 68 65.5 69.1193 65.5 70.5Z" />
-                <path d="M 7.5 21C 7.5 22.3807 6.38071 23.5 5 23.5C 3.61929 23.5 2.5 22.3807 2.5 21C 2.5 19.6193 3.61929 18.5 5 18.5C 6.38071 18.5 7.5 19.6193 7.5 21Z" />
-                <path d="M 5 2.5C 5 3.88071 3.88071 5 2.5 5C 1.11929 5 0 3.88071 0 2.5C 0 1.11929 1.11929 0 2.5 0C 3.88071 0 5 1.11929 5 2.5Z" />
-              </g>
-              <path id="mark_2-3" d="M 27 0L 0 9L 33.6957 102L 17.1957 111L 19.5 117.5" transform="translate(590 299)" stroke="#F0C41B" strokeWidth={state.items[2][3] ? 10 : 2} />
-              <path id="mark_2-2" d="M 94.5 190.5L 79 196L 59 135L 46.5 96.5L 73.5 83M 35.5 78L 23 38.5L 0 0" transform="translate(516.5 238.5)" stroke="#3095BF" strokeWidth={state.items[2][2] ? 10 : 2} />
-              <path id="mark_2-1" d="M 79.5 204.5L 63.5 147.5L 50.5 116L 38.5 97L 43 93.5L 50.5 111.5M 35 77.5L 22 38L 0 0" transform="translate(515 241)" stroke="#53B36C" strokeWidth={state.items[2][1] ? 10 : 2} />
-              <path id="mark_2-0" d="M 103.5 56L 76.5 67.5L 106.461 148L 94.461 154L 91.6915 145.5L 67.1915 156L 59 128.5L 49.5 100L 42 81.5L 37 81.5L 22.5 37.5L 0 0" transform="translate(511.5 240.5)" stroke="#EB5A59" strokeWidth={state.items[2][0] ? 10 : 2} />
               {/* Active */}
               <use xlinkHref={`#mark_2-${ getActive(2) || 0 }`} />
             </g>
           }
           {state.activeList === 1 &&
-            <g id="maps_1" transform="translate(5 0)">
-              <g id="mark_1-4" transform="translate(517 272)" fill="#EB5A59" stroke="#EB5A59" strokeWidth={state.items[1][4] ? 10 : 0} >
-                <path d="M 65.8704 135.717C 65.8704 139.859 62.5149 143.217 58.3756 143.217C 54.2364 143.217 50.8809 139.859 50.8809 135.717C 50.8809 131.575 54.2364 128.217 58.3756 128.217C 62.5149 128.217 65.8704 131.575 65.8704 135.717Z" />
-                <path d="M 14.9896 7.5C 14.9896 11.6421 11.634 15 7.49478 15C 3.35553 15 0 11.6421 0 7.5C 0 3.35786 3.35553 0 7.49478 0C 11.634 0 14.9896 3.35786 14.9896 7.5Z" />
-              </g>
-                <ellipse id="mark_1-3" cx="7.49478" cy="7.5" rx="7.49478" ry="7.5" transform="translate(191.878 46.373)" fill="#EB5A59" stroke="#EB5A59" strokeWidth={state.items[1][3] ? 10 : 0} />
-                <ellipse id="mark_1-2" cx="7.49478" cy="7.5" rx="7.49478" ry="7.5" transform="translate(588 372)" fill="#EB5A59" stroke="#EB5A59" strokeWidth={state.items[1][2] ? 10 : 0} />
-                <ellipse id="mark_1-1" cx="7.49478" cy="7.5" rx="7.49478" ry="7.5" transform="translate(528.863 305.497)" fill="#EB5A59" stroke="#EB5A59" strokeWidth={state.items[1][1] ? 10 : 0} />
-                <ellipse id="mark_1-0" cx="7.49478" cy="7.5" rx="7.49478" ry="7.5" transform="translate(536 228)" fill="#EB5A59" stroke="#EB5A59" strokeWidth={state.items[1][0] ? 10 : 0} />
+            <g id="maps_1">
+              <path id="mark_1-0" d="M0 4.28544L6.07077 0L22.4973 22.8546H30.4565L38.9565 14.458L42.4565 18.958L76.7764 66.958V73.5627L61.7782 81.4189L58.2072 78.9192L56.7788 81.4189C51.8984 77.8479 39.1381 66.4207 27.1396 49.28C15.141 32.1392 4.04713 12.1416 0 4.28544Z"
+                transform="translate(284.043 125.542)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[1][0] ? 10 : 0} />
+              <path id="mark_1-1" d="M0 6.5L1.5 0L19.5 20L14 21L0 6.5Z" transform="translate(315.5 190)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[1][1] ? 10 : 0} />
+              <path id="mark_1-2" d="M29.5 32.5H4L0 20.5L5.5 0H18L19 7.5L32.5 9V30L29.5 32.5Z" transform="translate(381.5 246)" fill="#F0C41B" stroke="#F0C41B" strokeWidth={state.items[1][2] ? 10 : 0}
+              />
+              <path id="mark_1-3" d="M0 0C2.33333 8.16667 7.2 26.6 8 35C8.8 43.4 10.3333 58.5 11 65L14 68.5L12 75.5V93.5" transform="translate(400.5 300.5)"
+                stroke="#C4549A" strokeLinecap="round" strokeWidth={state.items[1][3] ? 10 : 2} />
+              <path id="mark_1-4" d="M31.5 4L40.5 0L37 22L25 63.5L15.5 72.5L0 54.5L23 24.5L31.5 4Z" transform="translate(366 402)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[1][4] ? 10 : 0}
+              />
+              {/* Active */}
+              <use xlinkHref={`#mark_1-${ getActive(1) || 0 }`} />
             </g>
           }
           {state.activeList === 0 &&
             <g id="maps_0">
-              <path id="mark_0-0" d="M 45.6057 119.986C 34.853 104.418 29.6619 85.8838 24.8417 65.867C 19.3692 43.462 9.50106 23.6204 0 3.25376L 6.83464 0C 10.9481 6.74854 17.3117 17.7149 22.0083 30.0069C 26.7049 42.2989 31.3448 54.5909 35.7369 71.5828C 39.3253 85.4655 48.0704 107.013 51.9944 116.051L 45.6057 119.986Z" transform="translate(552.014 339.565)" fill="#945BA4" stroke="#945BA4" strokeWidth={state.items[0][0] ? 10 : 0} />
-              <path id="mark_0-1" d="M 31.8875 78.493C 21.8763 52.5453 14.0898 26.5976 0 3.61529L 5.78044 0C 12.5243 10.0023 26.8068 33.1161 29.9861 45.5527C 33.1653 57.9893 38.2954 77.4878 40.4631 85.6824L 36.3465 89.2977C 34.8065 85.7393 33.3122 82.1429 31.8875 78.493Z" transform="translate(508.631 238.978)" fill="#C4549A" stroke="#C4549A" strokeWidth={state.items[0][1] ? 10 : 0} />
-              <path id="mark_0-6" d="M 2.30324 33.5005L 0 17.3705C 13.271 14.3596 45.3409 7.24084 67.4519 2.85348C 95.0908 -2.63073 124.046 0.595276 158.594 5.75688C 186.233 9.88616 232.846 39.3073 252.698 53.5017L 250.395 57.3729C 237.418 50.4247 231.565 47.4201 215.541 39.6547C 204.717 34.4094 189.511 26.2882 179.323 22.8547C 147.736 12.2089 115.491 11.5637 89.8262 13.1767C 69.2945 14.4671 22.9227 27.2636 2.30324 33.5005Z" transform="matrix(1 9.90373e-05 -9.88996e-05 1 77.0068 40)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[0][6] ? 10 : 0} />
-              <path id="mark_0-3" d="M 11.9222 0L 0 5.78447L 4.33533 16.2688L 16.6188 10.1228L 11.9222 0Z" transform="translate(545.12 325.381)" fill="#000000" stroke="#000000" strokeWidth={state.items[0][3] ? 10 : 0} />
-              <path id="mark_0-2" d="M 7.58683 0L 0 3.68102L 4.33533 14.1654L 12.2834 10.1228L 7.58683 0Z" transform="translate(580.877 427.373)" fill="#000000" stroke="#000000" strokeWidth={state.items[0][2] ? 10 : 0} />
-              <path id="mark_0-4" d="M 13.5933 0L 0 9.04179L 8.15911 22.6443L 21.7655 15.1843L 13.5933 0Z" transform="matrix(0.877177 -0.480168 0.479654 0.877458 449.877 186.824)" fill="#F0C41B" stroke="#F0C41B" strokeWidth={state.items[0][4] ? 10 : 0} />
-              <path id="mark_0-5" d="M 9.45455 0L 0 4.2L 4.36364 14L 13.8182 10.85L 16 4.2L 9.45455 0Z" transform="translate(567.877 383.373)" fill="#F0C41B" stroke="#F0C41B" strokeWidth={state.items[0][5] ? 10 : 0} />
+              <path id="mark_0-0" d="M10.7132 44.2799L0 7.85611L5.71376 0C10.118 21.0689 22.771 77.2291 41.4237 116.057C58.9216 152.481 90.7034 182.835 105.344 194.262L98.9167 200.69L86.7753 186.049H83.5614L69.6345 170.336V167.48C68.3252 166.408 63.8495 162.266 56.4219 154.267C47.1373 144.268 37.8527 125.342 29.6394 103.916C23.0688 86.7751 15.7125 64.3969 12.8557 55.3504L8.57055 52.1365L10.7132 44.2799Z"
+                transform="translate(246.548 23.4121)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[0][0] ? 10 : 0}  />
+              <path id="mark_0-1" fill-rule="evenodd" clip-rule="evenodd" d="M0 23.2113L6.07077 18.9259L22.4973 41.7805L43.209 29.9962L34.2816 5.71349L43.209 0L50.7081 16.7836L56.7788 14.2839L61.7782 29.9962V41.7805L67.4918 60.3497L81.7758 76.062L89.2748 97.8451L81.7758 100.345L76.7764 92.4886L61.7782 100.345L58.2072 97.8451L56.7788 100.345C51.8984 96.7738 39.1381 85.3466 27.1396 68.2058C15.141 51.0651 4.04713 31.0675 0 23.2113ZM67.0662 90.9578C65.7068 91.8137 63.9144 91.4469 63.0006 90.1258L33.4566 47.4155C32.5266 46.071 32.8443 44.2295 34.1709 43.2742L38.2446 40.3412C39.6009 39.3647 41.4937 39.6848 42.4535 41.053L72.4658 83.8365C73.451 85.2409 73.06 87.184 71.6083 88.098L67.0662 90.9578Z"
+                transform="translate(284.043 106.616)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[0][1] ? 10 : 0}  />
+              <path id="mark_0-4" d="M5.74208 33.0575L0 10.3561L20.7118 0L24.997 19.6405H50.7082L53.9221 31.4247L74.9909 27.8537L81.4187 60.7066H36.4242L19.4708 63.6461L5.74208 33.0575Z"
+                transform="translate(374.033 230.173)" fill="#C4549A" stroke="#C4549A" strokeWidth={state.items[0][4] ? 10 : 0}  />
+              <path id="mark_0-2" d="M16.1841 183.589L0 167.405C3.76776 163.58 13.7118 151.837 23.346 135.459C32.9802 119.08 36.0724 99.5713 36.4142 91.8639H44.5412C43.8552 86.1931 44.5412 72.8364 42.989 53.6099C41.6211 36.6669 35.7398 13.1496 31.8624 3.54027L46.0235 0C48.3837 10.2839 53.4075 33.6838 54.6213 45.0127C55.8351 56.3416 58.1616 85.1358 59.1731 98.1169L50.0695 105.197C43.4947 110.254 39.9544 128.968 36.4142 139.083C33.5819 147.175 30.1765 163.022 27.3106 174.485L16.1841 183.589Z"
+                transform="translate(363.414 292.998)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[0][2] ? 10 : 0}  />
+              <path id="mark_0-3" d="M23.3628 40.9456C19.8944 32.275 6.34242 12.284 0 3.37232L5.78056 0C7.38625 2.72969 11.9464 10.2122 17.3416 18.3049C22.7367 26.3977 36.7705 56.1994 43.113 70.0887C45.2807 76.2706 50.2423 91.6693 52.7472 103.808C55.2521 115.947 55.7177 143.87 55.6375 156.315H49.6161C49.2147 148.366 48.0265 127.99 46.485 110.071C44.5581 87.6711 27.6983 51.7837 23.3628 40.9456Z"
+                transform="translate(350.631 226.38)" fill="#945BA4" stroke="#945BA4" strokeWidth={state.items[0][3] ? 10 : 0}  />
+              <rect id="mark_0-7" width="18.9838" height="17.4953" transform="translate(352.616 211.399) rotate(55.5043)" fill="#F0C41B" stroke="#F0C41B" strokeWidth={state.items[0][7] ? 10 : 0}
+              />
+              <rect id="mark_0-5" width="16.13" height="62.4884" transform="translate(392.291 399.967) rotate(31.3421)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[0][5] ? 10 : 0}
+              />
+              <path id="mark_0-6" d="M0 6.5L1.5 0L19.5 20L14 21L0 6.5Z" transform="translate(315.5 190)" fill="#C4549A" stroke="#C4549A" strokeWidth={state.items[0][6] ? 10 : 0}
+              />
               {/* Active */}
               <use xlinkHref={`#mark_0-${ getActive(0) || 0 }`} />
             </g>

@@ -21,7 +21,7 @@ const Map = styled.div`
   position: absolute;
   top: -130px;
   right: -470px;
-  background: ${({back}) => 'url(' + back + ') no-repeat'};
+  background: url(${({back}) =>  back}) no-repeat;
   transition: all .2s ease-in-out;
   transform: ${({second}) => second ? 'translate(25px, 130px)' : 'translate(-230px, -70px)'};
   @media (max-width: 1199px) {

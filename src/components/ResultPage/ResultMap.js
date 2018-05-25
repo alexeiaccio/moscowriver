@@ -107,8 +107,8 @@ const Map = styled.div`
   position: relative;
   overflow: hidden;
   @media (min-width: 1200px) {
-    width: calc(50vw - 25px);
-    margin-left: calc(-50vw + 543px);
+    width: 650px;
+    margin-left: -150px;
   }
   background-color: ${key(['colors', 'gray', 3])};
   border: 1px solid ${key('colors.pink')};

@@ -201,11 +201,13 @@ class ResultFunctions extends Component {
     }
 
     const header = propPath(['primary', 'header'])
-    const getHeader = header(section).option([{text: ''}])
+    const head = propPath([0])
+    const text = propPath(['text'])
+    const getHeader = header(section).chain(head).chain(text).option('')
 
     return (
       <TableSection id={primary.anchor || null} >
-        {getHeader[0].text.length &&
+        {getHeader.length > 0 &&
           <Lazy height={50}>
             <TableRow>
               <SectionHeader color='text' shade='white' >

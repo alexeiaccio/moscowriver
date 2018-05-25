@@ -38,11 +38,13 @@ const TextBlock = SectionBlock.extend`
 export const ResultColoredBack = ({ section }) => {
   const { primary, items } = section
   const header = propPath(['primary', 'header'])
-  const getHeader = header(section).option([{text: ''}])
+  const head = propPath([0])
+  const text = propPath(['text'])
+  const getHeader = header(section).chain(head).chain(text).option('')
 
   return (
     <ColoredBackSection id={primary.anchor || null} >
-      {getHeader[0].text.length &&
+      {getHeader.length > 0 &&
         <SectionRowCenteredWide>
           <Lazy height={50}>
             <SectionHeader color='text' shade='white' >

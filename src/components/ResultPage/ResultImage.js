@@ -65,11 +65,13 @@ const SectionImageBlock = SectionBlock.extend`
 export const ResultImage = ({ section }) => {
   const { primary, items } = section
   const header = propPath(['primary', 'header'])
-  const getHeader = header(section).option([{text: ''}])
+  const head = propPath([0])
+  const text = propPath(['text'])
+  const getHeader = header(section).chain(head).chain(text).option('')
 
   return (
     <ResultSection id={primary.anchor || null} >
-    {getHeader[0].text.length &&
+    {getHeader.length > 0 &&
       <Lazy height={50}>
         <Row>
           <SectionHeader color='text' shade='pink' >

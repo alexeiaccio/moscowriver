@@ -30,12 +30,14 @@ const TextBlock = SectionBlock.extend`
 export const ResultText = ({ section }) => {
   const { primary, items } = section
   const header = propPath(['primary', 'header'])
-  const getHeader = header(section).option([{text: ''}])
+  const head = propPath([0])
+  const text = propPath(['text'])
+  const getHeader = header(section).chain(head).chain(text).option('')
 
   return (
     <TextSection id={primary.anchor || null} >
       <SectionRowCenteredWide>
-      {getHeader[0].text.length &&
+      {getHeader.length > 0 &&
         <Lazy height={50}>
           <SectionHeader color='text' shade='pink' >
           { RichText.asText(primary.header) }

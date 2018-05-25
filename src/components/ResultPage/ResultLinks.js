@@ -50,12 +50,14 @@ const SectionColumn =  Column.extend`
 export const ResultLinks = ({ section }) => {
   const { primary, items } = section
   const header = propPath(['primary', 'header'])
-  const getHeader = header(section).option([{text: ''}])
+  const head = propPath([0])
+  const text = propPath(['text'])
+  const getHeader = header(section).chain(head).chain(text).option('')
 
   return (
     <Lazy height={600}>
       <LinkSection id={primary.anchor || null} >
-        {getHeader[0].text.length &&
+        {getHeader.length > 0 &&
           <SectionRow>
             <SectionHeader color='text' shade='pink' >
             { RichText.asText(primary.header) }

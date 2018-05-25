@@ -186,7 +186,7 @@ export class ResultForm extends React.Component {
 
     return (
       <TextSection id={primary.anchor || null} >
-        {getHeader.length &&
+        {getHeader[0].text.length &&
           <SectionRowCenteredWide>
             <Lazy height={50}>
               <SectionHeader color='text' shade='pink' >

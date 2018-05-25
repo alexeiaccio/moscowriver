@@ -148,7 +148,7 @@ class ResultMap extends Component {
 
     return (
       <MapSection id={primary.anchor || null} >
-        {getHeader.length &&
+        {getHeader[0].text.length &&
           <Lazy height={50}>
             <Row>
               <SectionHeader color='text' shade='pink' >

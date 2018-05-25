@@ -59,7 +59,7 @@ class ResultAdditions extends Component {
 
     return (
       <ResultSection id={primary.anchor || null} >
-        {getHeader.length &&
+        {getHeader[0].text.length &&
           <Lazy height={600}>
             <WideRow>
               <SectionHeader color='text' shade='pink' >

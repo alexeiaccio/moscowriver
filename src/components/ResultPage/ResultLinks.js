@@ -55,7 +55,7 @@ export const ResultLinks = ({ section }) => {
   return (
     <Lazy height={600}>
       <LinkSection id={primary.anchor || null} >
-        {getHeader.length &&
+        {getHeader[0].text.length &&
           <SectionRow>
             <SectionHeader color='text' shade='pink' >
             { RichText.asText(primary.header) }

@@ -54,24 +54,26 @@ export const ResultMirroredImage = ({ section }) => {
     <ResultSection id={primary.anchor || null} >
       <Lazy height={770}>
         <SectionRowCentered>
-          {getHeader.length &&
-            <MirroredImageHeader color='text' shade='pink' >
-            { RichText.asText(primary.header) }
-            </MirroredImageHeader>
-          }
-          {items.map(item =>
-            <MirroredImageBlock key={s4()} >
+        {getHeader.length &&
+          <MirroredImageHeader color='text' shade='pink' >
+          { RichText.asText(primary.header) }
+          </MirroredImageHeader>
+        }
+        <SectionRowCentered>
+        </SectionRowCentered>
+        {items.map(item =>
+          <MirroredImageBlock key={s4()} >
+            <Fragment key={s4()}>
+            { RichText.render(item.text, linkResolver) }
+            {(item.sectionimage.url !== null) &&
               <Fragment key={s4()}>
-              { RichText.render(item.text, linkResolver) }
-              {(item.sectionimage.url !== null) &&
-                <Fragment key={s4()}>
-                  <SectionImage key={s4()} className='sectionimage' url={item.sectionimage.url} />
-                  <SectionImage key={s4()} className='sectionimage mirroredimage' url={item.sectionimage.url} />
-                </Fragment>
-              }
+                <SectionImage key={s4()} className='sectionimage' url={item.sectionimage.url} />
+                <SectionImage key={s4()} className='sectionimage mirroredimage' url={item.sectionimage.url} />
               </Fragment>
-            </MirroredImageBlock>
-          )}
+            }
+            </Fragment>
+          </MirroredImageBlock>
+        )}
         </SectionRowCentered>
       </Lazy>
     </ResultSection>

@@ -40,7 +40,7 @@ export const SectionBlock = styled.div`
   padding-bottom: ${key(['space', 10])}px;
   font-size: ${key(['fontSizes', 5])}px;
   line-height: ${key(['lineHeights', 4])};
-  max-width: 100%;
+  width: 100%;
   & h3 {
     color: ${key('colors.pink')};
     font-size: ${key(['fontSizes', 1])}px;

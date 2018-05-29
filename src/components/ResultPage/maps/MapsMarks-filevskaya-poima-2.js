@@ -2,35 +2,33 @@ import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import { key } from 'styled-theme'
 
-
 const Svg = styled.svg`
-  min-width: 702px;
+  min-width: 650px;
   height: 500px;
   z-index: 1;
-  transition: all .2s ease-in-out;
-  transform: ${({second}) => second ? 'scale(1.4) translate(100px, 75px)' : 'scale(1.4) translate(-80px, -70px)'};
   @media (max-width: 1199px) {
-    margin-left: -100px;
-    transform: ${({second}) => second ? 'scale(1.4) translate(150px, 75px)' : 'scale(1.4) translate(-80px, -70px)'};
+    margin-left: -110px;
+    transform: ${({second}) => second && 'translateX(140px)'};
   }
+  transition: all .2s ease-in-out;
 `
 
 const Map = styled.div`
-  width: 1400px;
-  height: 700px;
+  width: 650px;
+  height: 500px;
   position: absolute;
-  top: -130px;
-  right: -470px;
-  background: ${({back}) => 'url(' + back + ') no-repeat'};
+  top: 0;
+  right: 0;
+  background: url(${({back}) =>  back}) no-repeat;
   transition: all .2s ease-in-out;
-  transform: ${({second}) => second ? 'translate(25px, 130px)' : 'translate(-230px, -70px)'};
-  @media (max-width: 1199px) {    
-    transform: ${({second}) => second ? 'translate(90px, 130px)' : 'translate(-230px, -70px)'};
+  @media (max-width: 1199px) {
+    transform: ${({second}) => second && 'translateX(140px)'};
   }
 `
 
 const MapsMarks = ({state, uid}) => {
   const MapsBack = require(`./maps-${uid}.png`)
+  const MapsBackBack = require(`./maps-${uid}-back.png`)
   const getActive = (active) =>
   state.items[active]
     .map((item, i) => item && i)
@@ -38,130 +36,121 @@ const MapsMarks = ({state, uid}) => {
     .join()
   return (
     <Fragment>
-      <Map back={MapsBack} second={state.items[0][3] || state.items[1][6] || state.items[1][7] || state.items[1][8] || state.items[1][9] || state.items[1][10] ? true : false} />
+      <Map back={MapsBack} second={state.items[0][2] || state.items[1][7] || state.items[1][8] || state.items[1][9] || state.items[1][10] ? true : false} />
       <Svg
-        second={state.items[0][3] || state.items[1][6] || state.items[1][7] || state.items[1][8] || state.items[1][9] || state.items[1][10] ? true : false}
-        viewBox="0 0 702 500" version="1.1" xmlns="http://www.w3.org/2000/svg"
+        second={state.items[0][2] || state.items[1][7] || state.items[1][8] || state.items[1][9] || state.items[1][10] ? true : false}
+        width="650" height="500" viewBox="0 0 650 500"  version="1.1" xmlns="http://www.w3.org/2000/svg"
       >
+        <defs>
+          <pattern id="img1" patternUnits="userSpaceOnUse" width="100%" height="100%">
+            <image xlinkHref={MapsBackBack} x="0" y="0" width="100%" height="100%" />
+          </pattern>
+        </defs>
         <g id="Canvas" fill="none">
           {state.activeList === 1 &&
             <g id="maps_1">
               {/* back */}
-              <g>
-                <path id="mark_2_1b-6" d="M27.3846 51.5L12.8846 15.5L6.98892 0L0 2.5L1.38461 10.5L4.88461 18.5V22.5L8.88461 30L12.8846 43.5V51.5L16.3846 56.5L27.3846 51.5Z"
-                  transform="translate(579.115 403)" fill="#F05A5A" />
-                <g id="mark_2_1b-5" transform="translate(509.5 237)">
-                  <path d="M39.5 98.5L45 107L50 119L56.5 127L62 142.654L66.9049 140.5L51.5 100L47 98.5L45 96L39.5 98.5Z" fill="#53B36C" />
-                  <path d="M69.6154 168.5L76.6043 166L71.7547 153.25L67.1924 154.5L69.6154 168.5Z" fill="#53B36C" />
-                </g>
-                <path id="mark_2_1b-4" d="M0 3L5 15L7.19232 14L11.7546 12.75L6.90491 0L2 2.15384L0 3Z" transform="translate(569.5 377.5)" fill="#F0C41B"
-                />
-                <path id="mark_2_1b-3" d="M37.5 93.5L42.5 91.5C39.5 76.5 36 59.5 29.5 43.5C26.1034 35.1392 13.6667 10.6667 6.5 0L0 3.5C3.33333 9.16667 10.7 21.6 13.5 26C17 31.5 23.5 46 27 56C29.8 64 35.1667 84.3333 37.5 93.5Z"
-                  transform="translate(509.5 237)" fill="#53B36C" />
-                <path id="mark_2_1b-2" d="M31.5 35.7902L38 32.2902C33.3333 26.1235 21.2 11.9905 10 4.7905C8.27621 3.68235 5.88285 2.03885 3 0L0 4.07591C7.10353 8.95872 13.7985 13.8638 16 15.7902C19.1373 18.5353 23.2798 24.3956 26.7894 29.3605C28.6044 31.9281 30.2502 34.2562 31.5 35.7902Z"
-                  transform="translate(478 204.71)" fill="#EB5A59" />
-                <path id="mark_2_1b-1" fillRule="evenodd" clipRule="evenodd" d="M16 15.2857L19 11.2098C14.729 8.18922 9.38363 4.30087 3.54956 0L0 5C4.12146 7.32301 10.1971 11.2969 16 15.2857Z"
-                  transform="translate(462 193.5)" fill="#F0C41B" />
-                <path id="mark_2_1b-0" d="M342 121.833L311 93.8333C299.167 84.8333 273.8 66.0333 267 62.8333C260.2 59.6333 231.833 45.8333 218.5 39.3333L217 34.8333C204.5 26.8333 176.4 10.3333 164 8.33333C148.5 5.83333 123.5 -2.66667 98.5 0.833333C78.5 3.63333 24.5 12.9998 0 17.333L3 34.333C3 34.333 12 33.833 17.5 31.833C23 29.833 72.8 16.933 82 15.333C88.1667 14.1663 102.5 11.833 110.5 11.833C120.5 11.833 154.5 14.833 168.5 20.833C179.7 25.633 211.167 40.833 225.5 47.833L242 55.833L249 56.833L250.5 60.833L255 64.833V68.333L267 76.333L269.5 73.833C278.667 79.1663 299 92.433 307 102.833C317 115.833 320 122.833 327 128.333C337 135.933 369.833 153.833 385 161.833L388.55 156.833C372.736 145.175 353.331 130.486 342 121.833Z"
-                  transform="translate(77 36.667)" fill="#53B36C" />
-                <path id="mark_2_1b-7" fillRule="evenodd" clipRule="evenodd" d="M16 15.2857L19 11.2098C14.729 8.18922 9.38363 4.30087 3.54956 0L0 5C4.12146 7.32301 10.1971 11.2969 16 15.2857Z"
-                  transform="translate(399 163)" fill="#F0C41B" />
-                <path id="mark_2_1b-8" fillRule="evenodd" clipRule="evenodd" d="M16 15.2857L19 11.2098C14.729 8.18922 9.38363 4.30087 3.54956 0L0 5C4.12146 7.32301 10.1971 11.2969 16 15.2857Z"
-                  transform="translate(329 100)" fill="#F0C41B" />
-                <path id="mark_2_1b-9" fillRule="evenodd" clipRule="evenodd" d="M16 15.2857L19 11.2098C14.729 8.18922 9.38363 4.30087 3.54956 0L0 5C4.12146 7.32301 10.1971 11.2969 16 15.2857Z"
-                  transform="translate(92 65.1943) rotate(-48.3352)" fill="#F0C41B" />
-              </g>
+              <rect fill="url(#img1)" width="100%" height="100%"/>
               {/* back */}
-              <path id="mark_2_1-10" d="M464 82L379 182.25L382 183.5L466.5 84L464 82ZM248.5 0L235.5 92H241L253.5 0H248.5ZM0 114L62 104L63.5 108L0 118V114Z"
-                transform="translate(59 72)" stroke="#000" strokeWidth={state.items[1][10] ? 5 : 2} />
-              <g id="mark_2_1-2">
-                <circle id="Ellipse" cx="12.5" cy="12.5" r="12.5" transform="translate(510 271)" fill={state.items[1][2] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][2] ? 10 : 0} />
-                <text id="3" transform="translate(519.286 276.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">3</tspan>
-                </text>
-                <circle id="Ellipse_2" cx="12.5" cy="12.5" r="12.5" transform="translate(539 348)" fill={state.items[1][2] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][2] ? 10 : 0} />
-                <text id="3_2" transform="translate(548.286 353.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">3</tspan>
+              <g id="mark_1-0">
+                <circle id="Ellipse" cx="12.5" cy="12.5" r="12.5" transform="translate(568 400)"  fill={state.items[1][0] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][0] ? 10 : 0} />
+                <text id="1" transform="translate(568 400)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="10.2793" y="16.802">1</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-1">
-                <circle id="Ellipse_3" cx="12.5" cy="12.5" r="12.5" transform="translate(550 377)" fill={state.items[1][1] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][1] ? 10 : 0} />
-                <text id="2" transform="translate(559.286 382.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">2</tspan>
+              <g id="mark_1-1">
+                <circle id="Ellipse_2" cx="12.5" cy="12.5" r="12.5" transform="translate(511 322)"  fill={state.items[1][1] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][1] ? 10 : 0} />
+                <text id="2" transform="translate(511 322)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="9.05469" y="16.802">2</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-3">
-                <circle id="Ellipse_4" cx="12.5" cy="12.5" r="12.5" transform="translate(462 174)" fill={state.items[1][3] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][3] ? 10 : 0} />
-                <text id="4" transform="translate(471.286 179.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">4</tspan>
+              <g id="mark_1-2">
+                <circle id="Ellipse_3" cx="12.5" cy="12.5" r="12.5" transform="translate(540 279)"  fill={state.items[1][2] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][2] ? 10 : 0} />
+                <text id="3" transform="translate(540 279)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="9.06641" y="16.802">3</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-4">
-                <circle id="Ellipse_5" cx="12.5" cy="12.5" r="12.5" transform="translate(389 170)" fill={state.items[1][4] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][4] ? 10 : 0} />
-                <text id="5" transform="translate(398.286 175.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">5</tspan>
+              <g id="mark_1-3">
+                <circle id="Ellipse_4" cx="12.5" cy="12.5" r="12.5" transform="translate(502 214)"  fill={state.items[1][3] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][3] ? 10 : 0} />
+                <text id="4" transform="translate(502 214)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="8.48633" y="16.802">4</tspan>
+                </text>
+                <circle id="Ellipse_5" cx="12.5" cy="12.5" r="12.5" transform="translate(382 130)"  fill={state.items[1][3] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][3] ? 10 : 0} />
+                <text id="4_2" transform="translate(382 130)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="8.48633" y="16.802">4</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-5">
-                <circle id="Ellipse_6" cx="12.5" cy="12.5" r="12.5" transform="translate(422 146)" fill={state.items[1][5] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][5] ? 10 : 0} />
-                <text id="6" transform="translate(431.286 151.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">6</tspan>
+              <g id="mark_1-4">
+                <circle id="Ellipse_6" cx="12.5" cy="12.5" r="12.5" transform="translate(416 156)"  fill={state.items[1][4] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][4] ? 10 : 0} />
+                <text id="5" transform="translate(416 156)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="9.05469" y="16.802">5</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-6">
-                <circle id="Ellipse_7" cx="12.5" cy="12.5" r="12.5" transform="translate(393 127)" fill={state.items[1][6] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][6] ? 10 : 0} />
-                <text id="7" transform="translate(402.286 132.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">7</tspan>
+              <g id="mark_1-5">
+                <circle id="Ellipse_7" cx="12.5" cy="12.5" r="12.5" transform="translate(347 97)"  fill={state.items[1][5] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][5] ? 10 : 0} />
+                <text id="6" transform="translate(347 97)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="8.79688" y="16.802">6</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-7">
-                <circle id="Ellipse_8" cx="12.5" cy="12.5" r="12.5" transform="translate(319 106)" fill={state.items[1][7] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][7] ? 10 : 0} />
-                <text id="8" transform="translate(328.286 111.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">8</tspan>
+              <g id="mark_1-6">
+                <circle id="Ellipse_8" cx="12.5" cy="12.5" r="12.5" transform="translate(310 87)"  fill={state.items[1][6] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][6] ? 10 : 0} />
+                <text id="7" transform="translate(310 87)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="8.91406" y="16.802">7</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-8">
-                <circle id="Ellipse_9" cx="12.5" cy="12.5" r="12.5" transform="translate(207 45)" fill={state.items[1][8] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][8] ? 10 : 0} />
-                <text id="9" transform="translate(216.286 50.7139)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">9</tspan>
+              <g id="mark_1-7">
+                <circle id="Ellipse_9" cx="12.5" cy="12.5" r="12.5" transform="translate(138 25)"  fill={state.items[1][7] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][7] ? 10 : 0} />
+                <text id="8" transform="translate(138 25)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="8.63867" y="16.802">8</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-9">
-                <circle id="Ellipse_10" cx="12.5" cy="12.5" r="12.5" transform="translate(95 63)" fill={state.items[1][9] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][9] ? 10 : 0} />
-                <text id="10" transform="translate(102 68.7139)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">10</tspan>
+              <g id="mark_1-8">
+                <circle id="Ellipse_10" cx="12.5" cy="12.5" r="12.5" transform="translate(47 108)"  fill={state.items[1][8] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][8] ? 10 : 0} />
+                <text id="9" transform="translate(47 108)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="8.79688" y="16.802">9</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-0">
-                <circle id="Ellipse_11" cx="12.5" cy="12.5" r="12.5" transform="translate(568 423)" fill={state.items[1][0] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][0] ? 10 : 0} />
-                <text id="1" transform="translate(577.286 428.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">1</tspan>
+              <g id="mark_1-9">
+                <circle id="Ellipse_11" cx="12.5" cy="12.5" r="12.5" transform="translate(19 289)"  fill={state.items[1][9] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[1][9] ? 10 : 0} />
+                <text id="10" transform="translate(19 289)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="6.27734" y="16.802">10</tspan>
                 </text>
+              </g>
+              <g id="mark_1-10" strokeWidth={state.items[1][10] ? 8 : 2} >
+                <path id="Vector_323" d="M75.7877 -0.329295L75.4786 -0.68244L75.1066 -0.396344C74.7478 -0.120375 74.3973 0.158937 74.0471 0.437938C73.4305 0.929252 72.8151 1.41961 72.1577 1.88906L72.1241 1.9131L72.0948 1.94236C72.0492 1.98795 72.0023 2.02394 71.9261 2.08109L71.9194 2.08609C71.8528 2.13603 71.7629 2.20341 71.6705 2.29286L66.2072 6.72162L66.2043 6.72404L64.3153 8.27936L62.4263 9.83467L62.4246 9.83605L57.6142 13.8316L49.8455 19.9713L39.998 27.3739L39.9963 27.3752L27.1067 37.1515L27.1052 37.1527L10.7367 49.6672L10.734 49.6693L5.92542 53.2935C5.92478 53.2939 5.92415 53.2944 5.92352 53.2949C4.21301 54.559 2.50335 55.8967 0.868651 57.2339L0.855598 57.2446L0.843295 57.2561L-0.341936 58.3671L-0.686095 58.6896L-0.384077 59.052L0.727093 60.3851L1.05958 60.784L1.44562 60.4367C2.91448 59.115 4.45904 57.8647 6.00701 56.6856L6.01048 56.6829L10.3015 53.3543L16.6667 48.6924L16.6668 48.6925L16.6771 48.6845L22.2309 44.3904L22.2329 44.3889L29.49 38.8362L29.4906 38.8357L36.6755 33.3555L36.6823 33.3504L36.6889 33.345C38.3006 32.0266 39.988 30.8527 41.6938 29.6662C42.1518 29.3529 42.615 29.0442 43.081 28.7335C44.0237 28.1052 44.9779 27.4691 45.9237 26.7726C47.3944 25.7434 48.8662 24.7869 50.3461 23.8251C50.3472 23.8244 50.3482 23.8238 50.3492 23.8231L53.3433 21.9384L56.3389 20.0526C57.8315 19.1571 59.2477 18.1883 60.6497 17.2292L60.6559 17.2249L60.656 17.225L60.6642 17.2192L62.9976 15.5527L65.3295 13.8875L65.3311 13.8863L65.3395 13.8804C67.1082 12.6278 68.8999 11.359 70.5459 9.93847L75.4282 6.01867L75.8204 5.70377L75.5032 5.31344L74.6175 4.22369C75.4658 3.51991 76.3624 2.82379 77.2577 2.18441L77.7069 1.86361L77.3434 1.44822L75.7877 -0.329295Z"
+                  transform="translate(445.47 177.014)" fill="white" stroke="#67696B" />
+                <path id="Vector_324" d="M76.7555 2.09816L77.1725 1.7739L76.8258 1.37532L75.3443 -0.328125L75.0273 -0.692544L74.6521 -0.388408L72.3463 1.48082L71.3527 0.274611L71.0402 -0.10475L70.6555 0.201177L67.3961 2.79337L67.3935 2.79547L62.8007 6.49861L62.7911 6.50629L62.782 6.51443L58.041 10.736L58.0334 10.7427L58.0262 10.7498L51.523 17.0299C49.961 18.2951 48.4755 19.6322 47.0675 20.9658C47.067 20.9662 47.0666 20.9667 47.0661 20.9671L43.7422 24.0688L38.7954 28.3502L31.9926 33.673L31.9899 33.6751L24.2145 39.6721L24.2144 39.672L24.2057 39.679C22.2856 41.2295 20.3686 42.7037 18.38 44.1028L18.3799 44.1027L18.3705 44.1097L18.3659 44.1131C16.6656 45.3696 14.9537 46.6346 13.3146 47.9754C11.3203 49.6 9.32555 51.1512 7.256 52.703L7.25382 52.7047C5.10107 54.3375 3.02177 55.9709 0.942005 57.6789L0.92311 57.6944L0.905819 57.7117C0.554517 58.0629 0.128623 58.4183 -0.320053 58.7921L-0.715283 59.1214L-0.374884 59.5071L0.736287 60.7661L1.05497 61.1272L1.42775 60.8223C1.72915 60.5758 2.02188 60.3269 2.31376 60.0787C2.83992 59.6313 3.36333 59.1863 3.9298 58.7616L3.92982 58.7616L3.93426 58.7582L21.7847 45.0584L21.7871 45.0566L39.8597 31.3567L39.8598 31.3567L48.4529 24.8391L48.4529 24.8392L48.46 24.8336L58.905 16.6127L58.905 16.6127L58.9104 16.6083L66.3172 10.61L66.3182 10.6092L73.9473 4.46282L73.9473 4.46287L73.9537 4.4576L74.8426 3.71697L74.8487 3.71186L74.8546 3.70657C75.5205 3.11483 76.1027 2.60578 76.7555 2.09816Z"
+                  transform="translate(443.988 174.865)" fill="white" stroke="#67696B" />
+                <path id="Vector_325" d="M-0.5 2.07376V2.57545L0.00169067 2.57375L65.7089 2.35157L66.2072 2.34989V1.85158V4.52044e-06V-0.502255L65.705 -0.49999L-0.00225427 -0.203743L-0.5 -0.201499V0.296252V2.07376Z"
+                  transform="translate(4.70508 355.8)" fill="white" stroke="#67696B" />
+                <path id="Vector_326" d="M0 -0.5H-0.5V0V2.74037V3.24037H0H74.8175H75.3175V2.74037V0V-0.5H74.8175H0Z" transform="matrix(0.957233 -0.289361 0.29024 0.956967 -18.9106 171.101)"
+                  fill="white" stroke="#67696B" />
+                <path id="Vector_327" d="M-0.0687702 -0.124934L-0.558021 -0.0569962L-0.496049 0.433046L13.3566 109.972L13.4183 110.461L13.9078 110.406L16.5746 110.11L17.0791 110.054L17.0154 109.55L3.16287 -0.0626899L3.0994 -0.564867L2.59804 -0.495248L-0.0687702 -0.124934Z"
+                  transform="translate(281.017 21.334)" fill="white" stroke="#67696B" />
               </g>
             </g>
           }
           {state.activeList === 0 &&
             <g id="maps_0">
-              <path id="mark_2-0-0" d="M8 0L0 3V7L4 14.5L8 28V36L11.5 41L22.5 36L8 0Z" transform="translate(584 418.5)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[0][0] ? 10 : 0}/>
-              <path id="mark_2-0-1" d="M5.5 11L0 2.5L5.5 0L7.5 2.5L12 4L43 85.5L35 88.5L31.5 80.5L27 54.5L23.5 49.5L17 31L10.5 23L5.5 11Z"
-                transform="translate(549 333)" fill="#EFC319" stroke="#EFC319" strokeWidth={state.items[0][1] ? 10 : 0}/>
-              <path id="mark_2-0-2" d="M37.5 93.5L42.5 91.5C39.5 76.5 36 59.5 29.5 43.5C26.1034 35.1392 13.6667 10.6667 6.5 0L0 3.5C3.33333 9.16667 10.7 21.6 13.5 26C17 31.5 23.5 46 27 56C29.8 64 35.1667 84.3333 37.5 93.5Z"
-                transform="translate(509.5 237)" fill="#C4549A" stroke="#C4549A" strokeWidth={state.items[0][2] ? 10 : 0}/>
-              <path id="mark_2-0-3" d="M439 200.333L432.5 203.833C428.833 199.333 421.76 187.998 417 183.833C413 180.333 394.167 167 385 161.833C369.833 153.833 337 135.933 327 128.333C320 122.833 317 115.833 307 102.833C299 92.433 278.667 79.1663 269.5 73.833L267 76.333L255 68.333V64.833L250.5 60.833L249 56.833L242 55.833L225.5 47.833C211.167 40.833 179.7 25.633 168.5 20.833C154.5 14.833 120.5 11.833 110.5 11.833C102.5 11.833 88.1667 14.1663 82 15.333C72.8 16.933 23 29.833 17.5 31.833C12 33.833 3 34.333 3 34.333L0 17.333C24.5 12.9998 78.5 3.63333 98.5 0.833333C123.5 -2.66667 148.5 5.83333 164 8.33333C176.4 10.3333 204.5 26.8333 217 34.8333L218.5 39.3333C231.833 45.8333 260.2 59.6333 267 62.8333C273.8 66.0333 299.167 84.8333 311 93.8333L342 121.833C360.333 135.833 399.8 165.633 411 172.833C422.2 180.033 434.333 194.167 439 200.333Z"
-                transform="translate(77 36.667)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[0][3] ? 10 : 0}/>
+              <path id="mark_0-0" d="M96.5 68.27C86.5 62.77 35 26.77 29 21.77C25.3016 18.688 17.6138 11.0466 7.34171 0.836609L6.5 0L2.5 3.26997L0 20.27C42.5 48.77 130.5 109.57 142.5 124.77C154.5 139.97 164.5 181.103 168 199.77L178 194.77L175 188.77C175.833 188.77 177.6 187.47 178 182.27C178.5 175.77 163.5 133.77 152.5 115.27C141.5 96.77 106.5 73.77 96.5 68.27Z"
+                transform="translate(366.5 140.73)" fill="#F0C41B" stroke="#F0C41B" strokeWidth={state.items[0][0] ? 10 : 0} />
+              <path id="mark_0-1" d="M16.2209 27C3.22086 42.5 0.720861 77 0.220861 84.5C0.0492074 87.0748 -0.00581411 106.868 0.000476898 132.5H9.19957C9.35794 103.892 9.91735 77.6627 11.2209 65C14.7209 31 41.9691 17.1228 59.7209 13.5C84.2209 8.5 118.221 10 136.721 12C159.952 14.7877 179.837 25.8865 194.721 37.7238C211.872 51.3639 222.382 65.9846 223.721 70C225.721 76 218.554 85.1667 214.721 89L250.721 113.5C272.888 115.167 317.921 118.9 320.721 120.5C323.521 122.1 326.888 125.5 328.221 127L332.221 123.73C326.024 117.571 318.925 110.521 311.221 103C290.221 82.5 243.721 49 226.221 39C208.721 29 165.721 9.5 153.721 6C141.721 2.5 126.221 0 89.2209 0C52.2209 0 29.2209 11.5 16.2209 27Z"
+                transform="translate(40.7793 17)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[0][1] ? 10 : 0} />
+              <path id="mark_0-2" d="M0 204.5H18.5L17.5 91C17.1437 68.8199 16.7969 32.8429 16.9787 0H7.77962C7.78799 34.0976 7.90486 78.5275 8 106.5C8.66667 110.667 10 119.7 10 122.5C10 125.3 8.66667 135.333 8 140V163.5L0 204.5Z"
+                transform="translate(33 149.5)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[0][2] ? 10 : 0} />
               {/* Active */}
-              <use xlinkHref={`#mark_2-0-${ getActive(0) || 0 }`} />
+              <use xlinkHref={`#mark_0-${ getActive(0) || 0 }`} />
             </g>
           }
         </g>

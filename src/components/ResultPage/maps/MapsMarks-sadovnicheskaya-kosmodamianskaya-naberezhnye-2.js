@@ -49,7 +49,7 @@ const MapsMarks = ({state, uid}) => {
           {state.activeList === 1 &&
             <g id="maps_1">
               {/* back */}
-              <rect fill="url(#img1)" width="100%" height="100%" transform="translate(3, -15)"/>
+              <rect fill="url(#img1)" width="100%" height="100%" transform="translate(3 -15)"/>
               {/* back */}
               <g id="mark_1-8">
                 <path id="Vector" d="M4.4669e-06 19.6165L1.90284 19.9825L5.04981 0.292782L3.00062 2.23377e-06L4.4669e-06 19.6165Z" transform="translate(243.628 210.551) rotate(60.3916)"

@@ -512,10 +512,14 @@ export default ({data, results}) => {
                 { getParagraphsFromProps(paragraph.text) }
                 </SectionColumn>
               : <SectionColumn key={s4()}>
-                  <Link to={sectionUrl(paragraph.text)} target='_blank'>
+                  <Link to={sectionUrl(paragraph.text)} target="_blank" rel="noopener">
                   { getParagraphsFromProps(paragraph.text) }
                   </Link>
-                  <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
+                  <RoundButtonWithImage
+                    to={sectionUrl(paragraph.text)}
+                    url={paragraph.image.url}
+                    text={getStringFromProps(paragraph.textimage)}
+                  />
                 </SectionColumn>
               }
               </Lazy>

@@ -109,7 +109,7 @@ export default ({ data, color }) => {
         </Quote>
       {data.body.length > 0 &&
         (data.body[0].primary.link !== null ?
-          <Button color={color} href={`/${data.body[0].primary.link.uid}/`} target='_blank'>
+          <Button color={color} href={`/${data.body[0].primary.link.uid}/`} target="_blank" rel="noopener">
             Подробнее
           </Button>
         : <Button color='silver' disabled>

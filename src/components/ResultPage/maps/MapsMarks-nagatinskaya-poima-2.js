@@ -33,8 +33,7 @@ const MapsMarks = ({state, uid}) => {
   return (
     <Fragment>
       <Map back={MapsBack} />
-      <Svg width="650" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg"
-      >
+      <Svg width="650" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="img1" patternUnits="userSpaceOnUse" width="100%" height="100%">
             <image xlinkHref={MapsBackBack} x="0" y="0" width="675" height="525" />

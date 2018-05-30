@@ -40,8 +40,8 @@ const ButtonIcon = styled.div`
   background-position: center 25px;
 `
 
-export const RoundButtonWithGif = ({to, url, text, icon}) =>
-  <RoundButtonGif to={to} target="_blank" rel="noopener" >
+export const RoundButtonWithGif = ({to, url, text, icon, ...other }) =>
+  <RoundButtonGif to={to} {...other} >
     <RoundButtonMiddleBack style={{backgroundImage: `url(${url})`}} />
     <ButtonShade />
     <ButtonIcon url={icon} />

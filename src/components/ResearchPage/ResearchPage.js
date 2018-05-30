@@ -397,7 +397,7 @@ const SectionTimelineColumn =  Column.extend`
   &:nth-of-type(3) {
     max-width: 720px;
     & h3 {
-      margin-top: 185px;
+      margin-top: 190px;
       margin-bottom:35px;
       position: relative;
       display: inline-flex;
@@ -496,36 +496,37 @@ export default ({data, results}) => {
           <Description width={640} size={3} data={{description: pageDescription}} />
           <Navigation data={ sort([5,6,4,2,3,7,0,1], pageNav) } />
         </SectionOne>
-        <SectionContext id={sectionsId('context')} >
-          <Row>
-            <Lazy height={50}>
-              <SectionHeader color='text' shade='bright.blue' >
-              { getStringFromProps(sectionsHeader('context')) }
-              </SectionHeader>
-            </Lazy>
-          </Row>
-          <SectionRow>
-            {sectionParagraphs('context').map(paragraph =>
-              <Lazy key={s4()} height={600}>
-              {paragraph.image.url === null
-              ? <SectionColumn key={s4()}>
-                { getParagraphsFromProps(paragraph.text) }
-                </SectionColumn>
-              : <SectionColumn key={s4()}>
-                  <Link to={sectionUrl(paragraph.text)} target="_blank" rel="noopener">
+        <Lazy height={800}>
+          <SectionContext id={sectionsId('context')} >
+            <Row>
+                <SectionHeader color='text' shade='bright.blue' >
+                { getStringFromProps(sectionsHeader('context')) }
+                </SectionHeader>
+            </Row>
+            <SectionRow>
+              {sectionParagraphs('context').map(paragraph =>
+                <Fragment key={s4()} >
+                {paragraph.image.url === null
+                ? <SectionColumn key={s4()}>
                   { getParagraphsFromProps(paragraph.text) }
-                  </Link>
-                  <RoundButtonWithImage
-                    to={sectionUrl(paragraph.text)}
-                    url={paragraph.image.url}
-                    text={getStringFromProps(paragraph.textimage)}
-                  />
-                </SectionColumn>
-              }
-              </Lazy>
-            )}
-          </SectionRow>
-        </SectionContext>
+                  </SectionColumn>
+                : <SectionColumn key={s4()}>
+                    <Link to={sectionUrl(paragraph.text)} target="_blank" rel="noopener">
+                    { getParagraphsFromProps(paragraph.text) }
+                    </Link>
+                    <RoundButtonWithImage
+                      to={sectionUrl(paragraph.text)}
+                      url={paragraph.image.url}
+                      text={getStringFromProps(paragraph.textimage)}
+                      target="_blank" rel="noopener"
+                    />
+                  </SectionColumn>
+                }
+                </Fragment>
+              )}
+            </SectionRow>
+          </SectionContext>
+        </Lazy>
         <SectionBlue id={sectionsId('river')} >
           <Row>
             <Lazy height={50}>
@@ -601,32 +602,32 @@ export default ({data, results}) => {
           )}
           </SectionNextRow>
         </SectionBlue>
-        <SectionContext id={sectionsId('projectmoscow')} >
-          <SectionNextRow>
-            <Lazy height={50}>
-              <SectionHeader color='text' shade='bright.blue' >
-              { getStringFromProps(sectionsHeader('projectmoscow')) }
-              </SectionHeader>
-            </Lazy>
-          </SectionNextRow>
-          <SectionNextRow>
-            {sectionParagraphs('projectmoscow').map(paragraph =>
-              <Lazy key={s4()} height={600}>
-              {paragraph.image.url === null
-              ? <SectionProjectColumn key={s4()}>
-                { getParagraphsFromProps(paragraph.text) }
-                </SectionProjectColumn>
-              : <SectionProjectColumn key={s4()}>
-                  <Link to={sectionUrl(paragraph.text)} target='_blank'>
+        <Lazy height={800}>
+          <SectionContext id={sectionsId('projectmoscow')} >
+            <SectionNextRow>
+                <SectionHeader color='text' shade='bright.blue' >
+                { getStringFromProps(sectionsHeader('projectmoscow')) }
+                </SectionHeader>
+            </SectionNextRow>
+            <SectionNextRow>
+              {sectionParagraphs('projectmoscow').map(paragraph =>
+                <Fragment key={s4()} >
+                {paragraph.image.url === null
+                ? <SectionProjectColumn key={s4()}>
                   { getParagraphsFromProps(paragraph.text) }
-                  </Link>
-                  <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
-                </SectionProjectColumn>
-              }
-              </Lazy>
-            )}
-          </SectionNextRow>
-        </SectionContext>
+                  </SectionProjectColumn>
+                : <SectionProjectColumn key={s4()}>
+                    <Link to={sectionUrl(paragraph.text)} target='_blank'>
+                    { getParagraphsFromProps(paragraph.text) }
+                    </Link>
+                    <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
+                  </SectionProjectColumn>
+                }
+                </Fragment>
+              )}
+            </SectionNextRow>
+          </SectionContext>
+        </Lazy>
         <SectionGeo id={sectionsId('orchestra')}>
           <SectionOrchestraRow>
             <Lazy height={50}>

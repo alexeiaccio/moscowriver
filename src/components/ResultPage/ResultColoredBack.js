@@ -16,7 +16,7 @@ import patternWaves from '../../assets/PatternWavesWhite.svg'
 
 const ColoredBackSection = Section.extend`
   margin: ${key(['space', 9])}px 0 ${key(['space', 10])}px;
-  padding: ${key(['space', 10])}px 0 ${key(['space', 12])}px;
+  padding: ${key(['space', 10])}px 0;
   background-color: ${key('colors.pink')};
   background-image: url(${patternWaves});
   background-repeat: repeat-x;
@@ -53,7 +53,7 @@ export const ResultColoredBack = ({ section }) => {
           </Lazy>
         </SectionRowCenteredWide>
       }
-      <SectionRowCenteredWide>
+      <SectionRowCenteredWide style={{textAlign: 'center'}} >
         {items.map(item =>
           <Lazy key={s4()} height={300}>
             <TextBlock key={s4()} >

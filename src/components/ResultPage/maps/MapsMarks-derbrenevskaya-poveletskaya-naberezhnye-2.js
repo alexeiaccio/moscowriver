@@ -2,35 +2,29 @@ import React, { Component, Fragment } from 'react'
 import styled from 'styled-components'
 import { key } from 'styled-theme'
 
-
 const Svg = styled.svg`
-  min-width: 702px;
+  min-width: 650px;
   height: 500px;
   z-index: 1;
-  transition: all .2s ease-in-out;
-  transform: ${({second}) => second ? 'scale(1.4) translate(100px, 75px)' : 'scale(1.4) translate(-80px, -70px)'};
   @media (max-width: 1199px) {
-    margin-left: -100px;
-    transform: ${({second}) => second ? 'scale(1.4) translate(150px, 75px)' : 'scale(1.4) translate(-80px, -70px)'};
+    margin-left: -110px;
   }
+  transition: all .2s ease-in-out;
 `
 
 const Map = styled.div`
-  width: 1400px;
-  height: 700px;
+  width: 650px;
+  height: 500px;
   position: absolute;
-  top: -130px;
-  right: -470px;
-  background: ${({back}) => 'url(' + back + ') no-repeat'};
+  top: 0;
+  right: 0;
+  background: url(${({back}) =>  back}) no-repeat;
   transition: all .2s ease-in-out;
-  transform: ${({second}) => second ? 'translate(25px, 130px)' : 'translate(-230px, -70px)'};
-  @media (max-width: 1199px) {
-    transform: ${({second}) => second ? 'translate(90px, 130px)' : 'translate(-230px, -70px)'};
-  }
 `
 
 const MapsMarks = ({state, uid}) => {
   const MapsBack = require(`./maps-${uid}.png`)
+  const MapsBackBack = require(`./maps-${uid}-back.png`)
   const getActive = (active) =>
   state.items[active]
     .map((item, i) => item && i)
@@ -38,115 +32,71 @@ const MapsMarks = ({state, uid}) => {
     .join()
   return (
     <Fragment>
-      <Map back={MapsBack} second={state.items[0][6] || state.items[0][7] || state.items[0][8] || state.items[0][9] || state.items[0][10] ? true : false} />
-      <Svg
-        second={state.items[0][6] || state.items[0][7] || state.items[0][8] || state.items[0][9] || state.items[0][10] ? true : false}
-        viewBox="0 0 702 500" version="1.1" xmlns="http://www.w3.org/2000/svg"
-      >
+      <Map back={MapsBack}/>
+      <Svg width="650" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="img1" patternUnits="userSpaceOnUse" width="100%" height="100%">
+            <image xlinkHref={MapsBackBack} x="0" y="0" width="650" height="500" />
+          </pattern>
+        </defs>
         <g id="Canvas" fill="none">
           {state.activeList === 0 &&
             <g id="maps_1">
               {/* back */}
-              <g>
-                <path id="mark_2_1b-6" d="M27.3846 51.5L12.8846 15.5L6.98892 0L0 2.5L1.38461 10.5L4.88461 18.5V22.5L8.88461 30L12.8846 43.5V51.5L16.3846 56.5L27.3846 51.5Z"
-                  transform="translate(579.115 403)" fill="#F05A5A" />
-                <g id="mark_2_1b-5" transform="translate(509.5 237)">
-                  <path d="M39.5 98.5L45 107L50 119L56.5 127L62 142.654L66.9049 140.5L51.5 100L47 98.5L45 96L39.5 98.5Z" fill="#53B36C" />
-                  <path d="M69.6154 168.5L76.6043 166L71.7547 153.25L67.1924 154.5L69.6154 168.5Z" fill="#53B36C" />
-                </g>
-                <path id="mark_2_1b-4" d="M0 3L5 15L7.19232 14L11.7546 12.75L6.90491 0L2 2.15384L0 3Z" transform="translate(569.5 377.5)" fill="#F0C41B"
-                />
-                <path id="mark_2_1b-3" d="M37.5 93.5L42.5 91.5C39.5 76.5 36 59.5 29.5 43.5C26.1034 35.1392 13.6667 10.6667 6.5 0L0 3.5C3.33333 9.16667 10.7 21.6 13.5 26C17 31.5 23.5 46 27 56C29.8 64 35.1667 84.3333 37.5 93.5Z"
-                  transform="translate(509.5 237)" fill="#53B36C" />
-                <path id="mark_2_1b-2" d="M31.5 35.7902L38 32.2902C33.3333 26.1235 21.2 11.9905 10 4.7905C8.27621 3.68235 5.88285 2.03885 3 0L0 4.07591C7.10353 8.95872 13.7985 13.8638 16 15.7902C19.1373 18.5353 23.2798 24.3956 26.7894 29.3605C28.6044 31.9281 30.2502 34.2562 31.5 35.7902Z"
-                  transform="translate(478 204.71)" fill="#EB5A59" />
-                <path id="mark_2_1b-1" fillRule="evenodd" clipRule="evenodd" d="M16 15.2857L19 11.2098C14.729 8.18922 9.38363 4.30087 3.54956 0L0 5C4.12146 7.32301 10.1971 11.2969 16 15.2857Z"
-                  transform="translate(462 193.5)" fill="#F0C41B" />
-                <path id="mark_2_1b-0" d="M342 121.833L311 93.8333C299.167 84.8333 273.8 66.0333 267 62.8333C260.2 59.6333 231.833 45.8333 218.5 39.3333L217 34.8333C204.5 26.8333 176.4 10.3333 164 8.33333C148.5 5.83333 123.5 -2.66667 98.5 0.833333C78.5 3.63333 24.5 12.9998 0 17.333L3 34.333C3 34.333 12 33.833 17.5 31.833C23 29.833 72.8 16.933 82 15.333C88.1667 14.1663 102.5 11.833 110.5 11.833C120.5 11.833 154.5 14.833 168.5 20.833C179.7 25.633 211.167 40.833 225.5 47.833L242 55.833L249 56.833L250.5 60.833L255 64.833V68.333L267 76.333L269.5 73.833C278.667 79.1663 299 92.433 307 102.833C317 115.833 320 122.833 327 128.333C337 135.933 369.833 153.833 385 161.833L388.55 156.833C372.736 145.175 353.331 130.486 342 121.833Z"
-                  transform="translate(77 36.667)" fill="#53B36C" />
-                <path id="mark_2_1b-7" fillRule="evenodd" clipRule="evenodd" d="M16 15.2857L19 11.2098C14.729 8.18922 9.38363 4.30087 3.54956 0L0 5C4.12146 7.32301 10.1971 11.2969 16 15.2857Z"
-                  transform="translate(399 163)" fill="#F0C41B" />
-                <path id="mark_2_1b-8" fillRule="evenodd" clipRule="evenodd" d="M16 15.2857L19 11.2098C14.729 8.18922 9.38363 4.30087 3.54956 0L0 5C4.12146 7.32301 10.1971 11.2969 16 15.2857Z"
-                  transform="translate(329 100)" fill="#F0C41B" />
-                <path id="mark_2_1b-9" fillRule="evenodd" clipRule="evenodd" d="M16 15.2857L19 11.2098C14.729 8.18922 9.38363 4.30087 3.54956 0L0 5C4.12146 7.32301 10.1971 11.2969 16 15.2857Z"
-                  transform="translate(92 65.1943) rotate(-48.3352)" fill="#F0C41B" />
-              </g>
+              <rect fill="url(#img1)" width="100%" height="100%"/>
               {/* back */}
-              <path id="mark_2_1-10" d="M464 82L379 182.25L382 183.5L466.5 84L464 82ZM248.5 0L235.5 92H241L253.5 0H248.5ZM0 114L62 104L63.5 108L0 118V114Z"
-                transform="translate(59 72)" stroke="#000" strokeWidth={state.items[0][10] ? 5 : 2} />
-              <g id="mark_2_1-2">
-                <circle id="Ellipse" cx="12.5" cy="12.5" r="12.5" transform="translate(510 271)" fill={state.items[0][2] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][2] ? 10 : 0} />
-                <text id="3" transform="translate(519.286 276.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">3</tspan>
-                </text>
-                <circle id="Ellipse_2" cx="12.5" cy="12.5" r="12.5" transform="translate(539 348)" fill={state.items[0][2] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][2] ? 10 : 0} />
-                <text id="3_2" transform="translate(548.286 353.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">3</tspan>
+              <g id="mark_1-0">
+                <circle id="Ellipse" cx="12.5" cy="12.5" r="12.5" transform="translate(329 24)" fill={state.items[0][0] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][0] ? 10 : 0} />
+                <text id="1" transform="translate(329 24)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="10.2793" y="16.802">1</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-1">
-                <circle id="Ellipse_3" cx="12.5" cy="12.5" r="12.5" transform="translate(550 377)" fill={state.items[0][1] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][1] ? 10 : 0} />
-                <text id="2" transform="translate(559.286 382.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">2</tspan>
+              <g id="mark_1-1">
+                <circle id="Ellipse_2" cx="12.5" cy="12.5" r="12.5" transform="translate(373 106)" fill={state.items[0][1] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][1] ? 10 : 0} />
+                <text id="2" transform="translate(373 106)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="9.05469" y="16.802">2</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-3">
-                <circle id="Ellipse_4" cx="12.5" cy="12.5" r="12.5" transform="translate(462 174)" fill={state.items[0][3] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][3] ? 10 : 0} />
-                <text id="4" transform="translate(471.286 179.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">4</tspan>
+              <g id="mark_1-2">
+                <path id="Vector" d="M1.5 7.5L0 1L3.5 0L5 6.5L1.5 7.5Z" transform="translate(422 157)" fill="#979797" stroke="#979797" strokeWidth={state.items[0][2] ? 8 : 0} />
+                <circle id="Ellipse_3" cx="12.5" cy="12.5" r="12.5" transform="translate(431 163)" fill={state.items[0][2] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][2] ? 10 : 0} />
+                <text id="3" transform="translate(431 163)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="9.06641" y="16.802">3</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-4">
-                <circle id="Ellipse_5" cx="12.5" cy="12.5" r="12.5" transform="translate(389 170)" fill={state.items[0][4] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][4] ? 10 : 0} />
-                <text id="5" transform="translate(398.286 175.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">5</tspan>
+              <g id="mark_1-3">
+                <path id="Vector_2" d="M7.5 0L0 13.5L4 16L11.5 2.5L7.5 0Z" transform="translate(408 242.5)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[0][3] ? 8 : 0} />
+                <circle id="Ellipse_4" cx="12.5" cy="12.5" r="12.5" transform="translate(421 232)" fill={state.items[0][3] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][3] ? 10 : 0} />
+                <text id="4" transform="translate(421 232)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="8.48633" y="16.802">4</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-5">
-                <circle id="Ellipse_6" cx="12.5" cy="12.5" r="12.5" transform="translate(422 146)" fill={state.items[0][5] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][5] ? 10 : 0} />
-                <text id="6" transform="translate(431.286 151.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">6</tspan>
+              <g id="mark_1-4">
+                <circle id="Ellipse_5" cx="12.5" cy="12.5" r="12.5" transform="translate(378 291)" fill={state.items[0][4] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][4] ? 10 : 0} />
+                <text id="5" transform="translate(378 291)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="9.05469" y="16.802">5</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-6">
-                <circle id="Ellipse_7" cx="12.5" cy="12.5" r="12.5" transform="translate(393 127)" fill={state.items[0][6] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][6] ? 10 : 0} />
-                <text id="7" transform="translate(402.286 132.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">7</tspan>
+              <g id="mark_1-5">
+                <path id="Vector_3" d="M5.5 0L0 4L2.5 5L6.5 2L5.5 0Z" transform="translate(350 301.5)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[0][5] ? 8 : 0} />
+                <circle id="Ellipse_6" cx="12.5" cy="12.5" r="12.5" transform="translate(321 291)" fill={state.items[0][5] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][5] ? 10 : 0} />
+                <text id="6" transform="translate(321 291)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="8.79688" y="16.802">6</tspan>
                 </text>
               </g>
-              <g id="mark_2_1-7">
-                <circle id="Ellipse_8" cx="12.5" cy="12.5" r="12.5" transform="translate(319 106)" fill={state.items[0][7] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][7] ? 10 : 0} />
-                <text id="8" transform="translate(328.286 111.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">8</tspan>
-                </text>
-              </g>
-              <g id="mark_2_1-8">
-                <circle id="Ellipse_9" cx="12.5" cy="12.5" r="12.5" transform="translate(207 45)" fill={state.items[0][8] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][8] ? 10 : 0} />
-                <text id="9" transform="translate(216.286 50.7139)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">9</tspan>
-                </text>
-              </g>
-              <g id="mark_2_1-9">
-                <circle id="Ellipse_10" cx="12.5" cy="12.5" r="12.5" transform="translate(95 63)" fill={state.items[0][9] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][9] ? 10 : 0} />
-                <text id="10" transform="translate(102 68.7139)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">10</tspan>
-                </text>
-              </g>
-              <g id="mark_2_1-0">
-                <circle id="Ellipse_11" cx="12.5" cy="12.5" r="12.5" transform="translate(568 423)" fill={state.items[0][0] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][0] ? 10 : 0} />
-                <text id="1" transform="translate(577.286 428.714)" fill="white" space="preserve" style={{whiteSpace: 'pre'}} fontFamily="Montserrat"
-                  fontStyle="Medium" fontSize="11.4286" fontWeight="500" letterSpacing="0em">
-                  <tspan x="0" y="11.24">1</tspan>
+              <g id="mark_1-6">
+                <path id="Vector_4" d="M0 0.461538L4.5 17.9615L11 16.4615L9 8.96094L4.5 9.96094L3.5 5.46094L5.5 4.96094L4.5 1.46154L2.5 1.96154L2 0L0 0.461538Z"
+                  transform="translate(281.5 468.539)" fill="#979797" stroke="#979797" strokeWidth={state.items[0][6] ? 8 : 0} />
+                <circle id="Ellipse_7" cx="12.5" cy="12.5" r="12.5" transform="translate(289 448)" fill={state.items[0][6] ? '#F05A5A' : '#000'} stroke="#F05A5A" strokeWidth={state.items[0][6] ? 10 : 0} />
+                <text id="7" transform="translate(289 448)" fill="white" xmlSpace="preserve" fontFamily="Montserrat"
+                  fontStyle="Medium" fontSize="12" fontWeight="500" letterSpacing="0em">
+                  <tspan x="8.91406" y="16.802">7</tspan>
                 </text>
               </g>
             </g>

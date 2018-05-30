@@ -32,7 +32,7 @@ const MapsMarks = ({state, uid}) => {
     .join()
   return (
     <Fragment>
-      <Map back={MapsBack} second={state.items[0][6] || state.items[0][7] || state.items[0][8] || state.items[0][9] || state.items[0][10] ? true : false} />
+      <Map back={MapsBack} />
       <Svg width="650" height="500" version="1.1" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="img1" patternUnits="userSpaceOnUse" width="100%" height="100%">

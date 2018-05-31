@@ -124,7 +124,7 @@ class ResultLinks extends Component {
               ref={ref}
               onClick={() => this.handleMouseClick()}
             >
-              <StyledLink>Результаты</StyledLink>
+              <StyledLink>О набережных</StyledLink>
             </div>
           )}
           </Reference>

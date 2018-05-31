@@ -7,7 +7,7 @@ export const IndexTitle = ({data, results}) => {
   <TitleWrapper>
     <WavedBack />
     <Row>
-      <StyledLink to='/research/'>Исследование</StyledLink>
+      <StyledLink to='/research/'>О проекте</StyledLink>
       <Title color='white' fontSize={0} lineHeight={0} data={data} />
       <ResultLinks {...{results}} />
     </Row>

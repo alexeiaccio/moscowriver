@@ -12,7 +12,7 @@ export default ({data, layout, results}) => {
     <WavedBack />
     <Row>
       <HeaderTitle {...{data}}/>
-      <StyledLink to='/research/'>Исследование</StyledLink>
+      <StyledLink to='/research/'>О проекте</StyledLink>
       <ResultLinks {...{results}} />
     </Row>
   </HeaderWrapper>

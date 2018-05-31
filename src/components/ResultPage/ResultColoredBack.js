@@ -23,6 +23,11 @@ const ColoredBackSection = Section.extend`
   background-position-y: calc(100% + 225px);
 `
 
+const SectionRow = SectionRowCenteredWide.extend`
+  justify-content: center;
+  text-align: center;
+`
+
 const TextBlock = SectionBlock.extend`
   flex-direction: column;
   color: ${key('colors.white')};
@@ -45,15 +50,15 @@ export const ResultColoredBack = ({ section }) => {
   return (
     <ColoredBackSection id={primary.anchor || null} >
       {getHeader.length > 0 &&
-        <SectionRowCenteredWide>
+        <SectionRow>
           <Lazy height={50}>
             <SectionHeader color='text' shade='white' >
             { RichText.asText(primary.header) }
             </SectionHeader>
           </Lazy>
-        </SectionRowCenteredWide>
+        </SectionRow>
       }
-      <SectionRowCenteredWide style={{textAlign: 'center'}} >
+      <SectionRow >
         {items.map(item =>
           <Lazy key={s4()} height={300}>
             <TextBlock key={s4()} >
@@ -61,7 +66,7 @@ export const ResultColoredBack = ({ section }) => {
             </TextBlock>
           </Lazy>
         )}
-      </SectionRowCenteredWide>
+      </SectionRow>
     </ColoredBackSection>
   )
 }

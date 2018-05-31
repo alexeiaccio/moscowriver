@@ -17,7 +17,10 @@ export { Section }
 
 export const SectionOne = styled(Section)`
   height: 100vh;
-  background-color: ${key(['colors', 'gray', 3])};
+  background-color: ${key(['colors', 'gray', 4])};
+  background-image: url(${patternWaves});
+  background-repeat: repeat;
+  background-position: center;
 `
 
 export const ContentWrapper = styled.div`

@@ -37,8 +37,8 @@ const Back = WaveWrapper.extend`
   transform: ${({move}) => 'translateY(' + move + 'px)'};
 `
 
-export default ({data, results, layout, move, id}) => (
-  <Header id={id} >
+export default ({data, results, layout, move}) => (
+  <Header id='header' >
     <Back move={move} >
       <WavePattern />
     </Back>

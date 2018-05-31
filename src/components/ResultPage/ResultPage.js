@@ -21,7 +21,7 @@ export default ({data: { data, uid }, results}) => {
 
   return (
     <Fragment >
-     <Header id='header' data={{title: [{ text: '390 взглядов на Москву-реку' }]}} {...{results}} move={-140} />
+     <Header data={{title: [{ text: '390 взглядов на Москву-реку' }]}} {...{results}} move={-140} />
      <main>
         <ResultSectionOne {...{data}} />
         {pageBody.map(section => {

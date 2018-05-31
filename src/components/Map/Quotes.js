@@ -63,7 +63,7 @@ class Quotes extends React.Component {
             positionFixed={false}
             >
             {({ placement, ref, style, arrowProps }) => (
-              <div ref={ref} style={style} data-placement={placement}
+              <div ref={ref} style={Object.assign({}, style, {zIndex: 5000})} data-placement={placement}
               onMouseEnter={() => this.props.onMouseEnter()}
               onMouseLeave={() => this.props.onMouseLeave()}
               >
@@ -83,7 +83,7 @@ class Quotes extends React.Component {
             positionFixed={false}
             >
             {({ placement, ref, style, arrowProps }) => (
-              <div ref={ref} style={style} data-placement={placement}
+              <div ref={ref} style={Object.assign({}, style, {zIndex: 5000})} data-placement={placement}
               >
                 <Popover style={aprearStyle}>
                   <Quote data={data} color={getSectorColor(uid)} />

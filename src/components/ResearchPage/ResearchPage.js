@@ -475,7 +475,7 @@ export default ({data, results}) => {
   const sectionsId = name => sections(name).chain(uid).option('')
   const sectionsHeader = name => sections(name).chain(body).chain(head).chain(header).option([])
   const sectionParagraphs = name => sections(name).chain(body).chain(head).chain(items).option([])
-  const sectionUrl = text => head(text).chain(url).option('/')
+  const sectionUrl = text => head(text).chain(url).option(second(text).chain(url).option('/'))
 
   const pageTitle = sections('research').chain(body).chain(head).chain(title).option([])
   const pageCite = sections('research').chain(body).chain(head).chain(cite).option([])
@@ -617,10 +617,15 @@ export default ({data, results}) => {
                   { getParagraphsFromProps(paragraph.text) }
                   </SectionProjectColumn>
                 : <SectionProjectColumn key={s4()}>
-                    <Link to={sectionUrl(paragraph.text)} target='_blank'>
+                    <Link to={sectionUrl(paragraph.text)} target="_blank" rel="noopener" >
                     { getParagraphsFromProps(paragraph.text) }
                     </Link>
-                    <RoundButtonWithImage to={sectionUrl(paragraph.text)} url={paragraph.image.url} text={getStringFromProps(paragraph.textimage)} />
+                    <RoundButtonWithImage
+                      to={sectionUrl(paragraph.text)}
+                      url={paragraph.image.url}
+                      text={getStringFromProps(paragraph.textimage)}
+                      target="_blank" rel="noopener"
+                    />
                   </SectionProjectColumn>
                 }
                 </Fragment>

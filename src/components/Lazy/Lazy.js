@@ -21,8 +21,8 @@ const style = {
   animation: `${Appear} .8s ease-in-out`
 }
 
-export const Lazy = ({ children, height, offset }) => (
-  <LazyLoad throttle={200} height={height || 200} offset={offset || -100} once>
+export const Lazy = ({ children, height, offset, throttle }) => (
+  <LazyLoad throttle={throttle || 200} height={height || 200} offset={offset || -100} once>
   {Children.map(children, child =>
     cloneElement(child, { style: style }))
   }

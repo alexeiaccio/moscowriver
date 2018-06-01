@@ -1,15 +1,31 @@
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import { key } from 'styled-theme'
 import MapBack from '../../assets/MapBack.png'
 
+const Appear = keyframes`
+  0% {
+    opacity: 0;
+    filter: blur(1000);
+  }
+  75% {
+    opacity: 0;
+    filter: blur(1000);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+`
 export const MapBlock = styled.div`
-  height: 2000px;
+  height: 182vh;
+  min-height: 2500px;
   width: 3500px;
-  flex: 0 0 auto;
-  margin-top: calc(50vh - 977px);
+  flex: 0 0 3500px;
+  margin-top: 47px;
   transform: scale(.55);
-  background: url(${MapBack});
+  background: url(${MapBack}) 50% calc(50% + 1px) repeat;
   background-size: 3500px 2000px;
+  animation: ${Appear} 1.6s ease-in-out;
   & div {
     background-color: rgba(255,255,255,0) !important;
   }
@@ -21,7 +37,7 @@ export const MapWrapper = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   overflow: hidden;
 `
 

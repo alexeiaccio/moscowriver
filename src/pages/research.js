@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import map from 'crocks/pointfree/map'
 import { findSection, s4, getElementsFromProps } from 'Helpers'
 
-import { ResearchPage } from 'Components'
+import { ResearchPage, SEO } from 'Components'
 
 const Research = ({ data }) => {
   const sections = data.researchparts.edges
@@ -15,16 +15,17 @@ const Research = ({ data }) => {
     seotitle,
     seodescription,
     seokeywords,
+    seoimage
   } = research.node.data
 
   return (
     <Fragment>
-      <Helmet
+      <SEO
+        uid={research.node.uid}
         title={seotitle}
-        meta={[
-          { name: 'description', content: seodescription },
-          { name: 'keywords', content: seokeywords },
-        ]}
+        description={seodescription}
+        keywords={seokeywords}
+        image={seoimage.url}
       />
       <ResearchPage data={sections} {...{results}} />
     </Fragment>
@@ -45,6 +46,9 @@ export const query = graphql`
             seotitle
             seodescription
             seokeywords
+            seoimage {
+              url
+            }
             body {
               primary {
                 header {

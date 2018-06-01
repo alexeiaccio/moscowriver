@@ -1,20 +1,26 @@
 import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 
-import { ResultPage } from 'Components'
+import { ResultPage, SEO } from 'Components'
 
 const ResultTemplate = ({ data }) => {
   const results = data.results.edges
+  const {
+    seotitle,
+    seodescription,
+    seokeywords,
+    seoimage
+  } = data.result.data
 
   return (
     <Fragment>
-        <Helmet
-          title={data.result.data.seotitle}
-          meta={[
-            { name: 'description', content: data.result.data.seodescription },
-            { name: 'keywords', content: data.result.data.seokeywords },
-          ]}
-        />
+      <SEO
+        uid={data.result.uid}
+        title={seotitle}
+        description={seodescription}
+        keywords={seokeywords}
+        image={seoimage.url}
+      />
       <ResultPage data={data.result} {...{results}} />
     </Fragment>
   )
@@ -31,6 +37,9 @@ export const query = graphql`
         seotitle
         seodescription
         seokeywords
+        seoimage {
+          url
+        }
         title {
           text
         }

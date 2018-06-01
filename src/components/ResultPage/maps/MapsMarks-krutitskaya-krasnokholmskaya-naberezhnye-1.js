@@ -60,7 +60,7 @@ const MapsMarks = ({state, uid}) => {
                 <path d="M0 7.29062L13.109 0L17.9694 8.73936L4.86041 16.03L0 7.29062Z" />
               </g>
               {/* Active */}
-              <use xlinkHref={`#mark_2-${ getActive(2) || 0 }`} />
+              <use xlinkHref={`#mark_2-${ getActive(1) || 0 }`} />
             </g>
           }
           {state.activeList === 0 &&

@@ -35,20 +35,20 @@ const MapsMarks = ({state, uid}) => {
         width="650" height="500" viewBox="0 0 650 500" fill="none" xmlns="http://www.w3.org/2000/svg"
       >
         <g id="maps_01">
-          {state.activeList === 2 &&
+          {state.activeList === 1 &&
             <g id="maps_2" strokeLinecap="round">
               <path id="mark_2-0" d="M153.5 0L100.5 17.5L44.5 38.5L26.5 47.5L0 26M157 9L100.5 31L64.5 44.5L74.5 63.5V82L72 94L84.5 99.5L89 108.5V124L72 131.5"
-                transform="translate(324 169)" stroke="#945BA4" strokeWidth={state.items[2][0] ? 8 : 2} />
+                transform="translate(324 169)" stroke="#945BA4" strokeWidth={state.items[1][0] ? 8 : 2} />
               <path id="mark_2-1" d="M0 0L9.5 25L24.5 29L55.5 71V90L84.5 135L103.5 176.5L110 173L116.5 206.5L119.5 237V270L110 282.5L98.5 305L76 331.5"
-                transform="translate(292 129.5)" stroke="#53B36C" strokeWidth={state.items[2][1] ? 8 : 2} />
+                transform="translate(292 129.5)" stroke="#53B36C" strokeWidth={state.items[1][1] ? 8 : 2} />
               <path id="mark_2-2" d="M35.4238 58.9284L1.17332 10.1332C0.529318 9.21572 0.764998 7.94819 1.69574 7.32352L10.9908 1.08507C11.8906 0.481152 13.1077 0.703737 13.7355 1.58703L48.5772 50.6062C49.2497 51.5523 48.9782 52.8703 47.9865 53.4736L38.1003 59.4881C37.2 60.0357 36.0292 59.791 35.4238 58.9284Z"
-                transform="translate(314 141)" stroke="#F0C41B" strokeWidth={state.items[2][2] ? 8 : 2} />
+                transform="translate(314 141)" stroke="#F0C41B" strokeWidth={state.items[1][2] ? 8 : 2} />
               <path id="mark_2-3" d="M0 0L19.5 43.5L65 91L94 129.5L120 188.5C123.167 203 129.3 233.9 128.5 241.5C127.7 249.1 128.5 264.333 126 276L130.5 291L111 343"
-                transform="translate(278 124.5)" stroke="#F0C41B" strokeWidth={state.items[2][3] ? 8 : 2} />
+                transform="translate(278 124.5)" stroke="#F0C41B" strokeWidth={state.items[1][3] ? 8 : 2} />
               <path id="mark_2-4" d="M124.5 98.5L110 70.5L91 77L70 28L52 0L0 39V50L10.5 64.5" transform="translate(302.5 227)" stroke="#C4549A"
-                strokeWidth={state.items[2][4] ? 8 : 2} />
+                strokeWidth={state.items[1][4] ? 8 : 2} />
               <path id="mark_2-5" d="M0 0L24.5 48.5L73 96L103 148.5L117.5 182.5L128 237.5V274.5L113.5 302.5L88.5 333M117.5 343.5L136.5 289L144.5 269L189.5 243M119.5 139.5L130 144.5L134.5 152V163.5L119.5 170.5L98.5 126.5L82.5 102L111 89.5"
-                transform="translate(276 126.5)" stroke="#F05A5A" strokeWidth={state.items[2][5] ? 8 : 2} />
+                transform="translate(276 126.5)" stroke="#F05A5A" strokeWidth={state.items[1][5] ? 8 : 2} />
               <g id="mark_2-6" transform="translate(281 114)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[2][6] ? 8 : 2}>
                 <path d="M9.30957 0L14.7865 13.9644L5.47693 17.6156L0 3.65129L9.30957 0Z" />
                 <path d="M59 101.693L71.2238 92.9997L77.0195 101.149L64.7957 109.843L59 101.693Z" />
@@ -61,21 +61,6 @@ const MapsMarks = ({state, uid}) => {
               </g>
               {/* Active */}
               <use xlinkHref={`#mark_2-${ getActive(2) || 0 }`} />
-            </g>
-          }
-          {state.activeList === 1 &&
-            <g id="maps_1">
-              <path id="mark_1-0" d="M0 4.28544L6.07077 0L22.4973 22.8546H30.4565L38.9565 14.458L42.4565 18.958L76.7764 66.958V73.5627L61.7782 81.4189L58.2072 78.9192L56.7788 81.4189C51.8984 77.8479 39.1381 66.4207 27.1396 49.28C15.141 32.1392 4.04713 12.1416 0 4.28544Z"
-                transform="translate(284.043 125.542)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[1][0] ? 10 : 0} />
-              <path id="mark_1-1" d="M0 6.5L1.5 0L19.5 20L14 21L0 6.5Z" transform="translate(315.5 190)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[1][1] ? 10 : 0} />
-              <path id="mark_1-2" d="M29.5 32.5H4L0 20.5L5.5 0H18L19 7.5L32.5 9V30L29.5 32.5Z" transform="translate(381.5 246)" fill="#F0C41B" stroke="#F0C41B" strokeWidth={state.items[1][2] ? 10 : 0}
-              />
-              <path id="mark_1-3" d="M0 0C2.33333 8.16667 7.2 26.6 8 35C8.8 43.4 10.3333 58.5 11 65L14 68.5L12 75.5V93.5" transform="translate(400.5 300.5)"
-                stroke="#C4549A" strokeLinecap="round" strokeWidth={state.items[1][3] ? 10 : 2} />
-              <path id="mark_1-4" d="M31.5 4L40.5 0L37 22L25 63.5L15.5 72.5L0 54.5L23 24.5L31.5 4Z" transform="translate(366 402)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[1][4] ? 10 : 0}
-              />
-              {/* Active */}
-              <use xlinkHref={`#mark_1-${ getActive(1) || 0 }`} />
             </g>
           }
           {state.activeList === 0 &&

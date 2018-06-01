@@ -49,12 +49,12 @@ const MapsMarks = ({state, uid}) => {
                 strokeWidth={state.items[1][4] ? 8 : 2} />
               <path id="mark_2-5" d="M0 0L24.5 48.5L73 96L103 148.5L117.5 182.5L128 237.5V274.5L113.5 302.5L88.5 333M117.5 343.5L136.5 289L144.5 269L189.5 243M119.5 139.5L130 144.5L134.5 152V163.5L119.5 170.5L98.5 126.5L82.5 102L111 89.5"
                 transform="translate(276 126.5)" stroke="#F05A5A" strokeWidth={state.items[1][5] ? 8 : 2} />
-              <g id="mark_2-6" transform="translate(281 114)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[2][6] ? 8 : 2}>
+              <g id="mark_2-6" transform="translate(281 114)" fill="#53B36C" stroke="#53B36C" strokeWidth={state.items[1][6] ? 8 : 2}>
                 <path d="M9.30957 0L14.7865 13.9644L5.47693 17.6156L0 3.65129L9.30957 0Z" />
                 <path d="M59 101.693L71.2238 92.9997L77.0195 101.149L64.7957 109.843L59 101.693Z" />
                 <path d="M106.335 186.971L120.608 182.356L123.684 191.871L109.412 196.486L106.335 186.971Z" />
               </g>
-              <g id="mark_2-7" transform="translate(294 160)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[2][7] ? 8 : 2}>
+              <g id="mark_2-7" transform="translate(294 160)" fill="#F05A5A" stroke="#F05A5A" strokeWidth={state.items[1][7] ? 8 : 2}>
                 <path d="M105.043 240L119.727 243.065L117.684 252.854L103 249.789L105.043 240Z" />
                 <path d="M56.9697 66.9381L70.0788 59.6475L74.9392 68.3868L61.8301 75.6774L56.9697 66.9381Z" />
                 <path d="M0 7.29062L13.109 0L17.9694 8.73936L4.86041 16.03L0 7.29062Z" />

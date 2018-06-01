@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import Link from 'gatsby-link'
 import Helmet from 'react-helmet'
 
-import { IndexPage } from 'Components'
+import { IndexPage, SEO } from 'Components'
 
 class Index extends React.Component {
    render() {
@@ -11,16 +11,17 @@ class Index extends React.Component {
       seotitle,
       seodescription,
       seokeywords,
+      seoimage
     } = data.homepage.data
 
     return (
       <Fragment>
-        <Helmet
+        <SEO
+          uid={null}
           title={seotitle}
-          meta={[
-            { name: 'description', content: seodescription },
-            { name: 'keywords', content: seokeywords },
-          ]}
+          description={seodescription}
+          keywords={seokeywords}
+          image={seoimage.url}
         />
        <IndexPage data={data}/>
       </Fragment>
@@ -44,6 +45,9 @@ export const query = graphql`
         seotitle
         seodescription
         seokeywords
+        seoimage {
+          url
+        }
       }
     }
     quotes: allPrismicDocument(filter: {type: {eq: "quote"}}) {

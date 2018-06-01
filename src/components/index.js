@@ -22,6 +22,7 @@ export { default as Map } from './Map/Map'
 export { default as MapQuotes } from './Map/MapQuotes'
 export { WavedBack } from './Backs/WavedBack'
 export { Lazy } from './Lazy/Lazy'
+export { SEO } from './SEO/SEO'
 
 export { default as IndexPage } from './IndexPage/IndexPage'
 export { default as ResearchPage } from './ResearchPage/ResearchPage'

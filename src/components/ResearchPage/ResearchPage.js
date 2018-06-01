@@ -496,13 +496,12 @@ export default ({data, results}) => {
           <Description width={640} size={3} data={{description: pageDescription}} />
           <Navigation data={ sort([5,6,4,2,3,7,0,1], pageNav) } />
         </SectionOne>
-        <Lazy height={800}>
-          <SectionContext id={sectionsId('context')} >
-            <Row>
-                <SectionHeader color='text' shade='bright.blue' >
-                { getStringFromProps(sectionsHeader('context')) }
-                </SectionHeader>
-            </Row>
+        <SectionContext id={sectionsId('context')} >          
+          <Row>
+              <SectionHeader color='text' shade='bright.blue' >
+              { getStringFromProps(sectionsHeader('context')) }
+              </SectionHeader>
+          </Row>
             <SectionRow>
               {sectionParagraphs('context').map(paragraph =>
                 <Fragment key={s4()} >
@@ -525,8 +524,7 @@ export default ({data, results}) => {
                 </Fragment>
               )}
             </SectionRow>
-          </SectionContext>
-        </Lazy>
+        </SectionContext>
         <SectionBlue id={sectionsId('river')} >
           <Row>
             <Lazy height={50}>
@@ -602,37 +600,35 @@ export default ({data, results}) => {
           )}
           </SectionNextRow>
         </SectionBlue>
-        <Lazy height={800}>
-          <SectionContext id={sectionsId('projectmoscow')} >
-            <SectionNextRow>
-                <SectionHeader color='text' shade='bright.blue' >
-                { getStringFromProps(sectionsHeader('projectmoscow')) }
-                </SectionHeader>
-            </SectionNextRow>
-            <SectionNextRow>
-              {sectionParagraphs('projectmoscow').map(paragraph =>
-                <Fragment key={s4()} >
-                {paragraph.image.url === null
-                ? <SectionProjectColumn key={s4()}>
+        <SectionContext id={sectionsId('projectmoscow')} >
+          <SectionNextRow>
+              <SectionHeader color='text' shade='bright.blue' >
+              { getStringFromProps(sectionsHeader('projectmoscow')) }
+              </SectionHeader>
+          </SectionNextRow>
+          <SectionNextRow>
+            {sectionParagraphs('projectmoscow').map(paragraph =>
+              <Fragment key={s4()} >
+              {paragraph.image.url === null
+              ? <SectionProjectColumn key={s4()}>
+                { getParagraphsFromProps(paragraph.text) }
+                </SectionProjectColumn>
+              : <SectionProjectColumn key={s4()}>
+                  <Link to={sectionUrl(paragraph.text)} target="_blank" rel="noopener" >
                   { getParagraphsFromProps(paragraph.text) }
-                  </SectionProjectColumn>
-                : <SectionProjectColumn key={s4()}>
-                    <Link to={sectionUrl(paragraph.text)} target="_blank" rel="noopener" >
-                    { getParagraphsFromProps(paragraph.text) }
-                    </Link>
-                    <RoundButtonWithImage
-                      to={sectionUrl(paragraph.text)}
-                      url={paragraph.image.url}
-                      text={getStringFromProps(paragraph.textimage)}
-                      target="_blank" rel="noopener"
-                    />
-                  </SectionProjectColumn>
-                }
-                </Fragment>
-              )}
-            </SectionNextRow>
-          </SectionContext>
-        </Lazy>
+                  </Link>
+                  <RoundButtonWithImage
+                    to={sectionUrl(paragraph.text)}
+                    url={paragraph.image.url}
+                    text={getStringFromProps(paragraph.textimage)}
+                    target="_blank" rel="noopener"
+                  />
+                </SectionProjectColumn>
+              }
+              </Fragment>
+            )}
+          </SectionNextRow>
+        </SectionContext>
         <SectionGeo id={sectionsId('orchestra')}>
           <SectionOrchestraRow>
             <Lazy height={50}>
@@ -647,7 +643,9 @@ export default ({data, results}) => {
               <SectionOrchestraColumn key={s4()}>
                 <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                 {(paragraph.image.url !== null) &&
-                  <Image className='img' url={paragraph.image.url} />
+                  <Link key={s4()}  to='http://orchestra-design.com/' target="_blank" rel="noopener">
+                    <Image key={s4()}  className='img' url={paragraph.image.url} />
+                  </Link>
                 }
               </SectionOrchestraColumn>
             </Lazy>

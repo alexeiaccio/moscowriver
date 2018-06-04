@@ -9,6 +9,12 @@ if (process.env.NODE_ENV === `production`) {
   }
 }
 
+import PodkovaRegularWoff from './fonts/subset-Podkova-Regular.woff'
+import PodkovaMediumWoff from './fonts/subset-Podkova-Medium.woff'
+import MontserratRegularWoff from './fonts/subset-Montserrat-Regular.woff'
+import MontserratMediumWoff from './fonts/subset-Montserrat-Medium.woff'
+import MontserratSemiBoldWoff from './fonts/subset-Montserrat-SemiBold.woff'
+
 module.exports = class HTML extends React.Component {
   render() {
     let css
@@ -29,6 +35,11 @@ module.exports = class HTML extends React.Component {
             name="viewport"
             content="width=1200"
           />
+          <link rel="preload" href={PodkovaRegularWoff} as="font" />
+          <link rel="preload" href={PodkovaMediumWoff} as="font" />
+          <link rel="preload" href={MontserratRegularWoff} as="font" />
+          <link rel="preload" href={MontserratMediumWoff} as="font" />
+          <link rel="preload" href={MontserratSemiBoldWoff} as="font" />
           {this.props.headComponents}
           {css}
         </head>

@@ -22,7 +22,6 @@ export const SectionOne = styled(Section)`
 
 export const ContentWrapper = styled.div`
   flex: 1 100%;
-  z-index: 4000;
 `
 
 export const SectionTwo = styled(Section)`

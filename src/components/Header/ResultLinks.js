@@ -13,7 +13,6 @@ const Wrapper = styled.div`
 `
 
 const Menu = styled.div`
-  max-width: 370px;
   padding: ${key(['space', 2])}px ${key(['space', 3])}px;
   display: flex;
   flex-direction: column;

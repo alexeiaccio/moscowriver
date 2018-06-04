@@ -43,6 +43,7 @@ const SectionOne = Section.extend`
   justify-content:  space-between;
   align-items: center;
   height: calc(100vh - 120px);
+  min-height: 800px;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAzSURBVHgBpYxRDgAgCEKfq4N1s/Lkpc0P/dYNYcAQ4FBv+xPDNWgyvx4RurFSgRms/akHyzsJj/3feW8AAAAASUVORK5CYII=) repeat, ${({image}) => 'url(' + image + ')'} no-repeat ${key('colors.black')};
   background-size: 6px 6px, cover;
   background-position: center;
@@ -129,6 +130,7 @@ const SectionColumn =  Column.extend`
   font-size: ${key(['fontSizes', 5])}px;
   line-height: ${key(['lineHeights', 4])};
   max-width: 45%;
+  -webkit-flex: 45%;
   &:last-of-type {
     margin-top: ${key(['space', 11])}px;
     max-width: 600px;
@@ -185,6 +187,7 @@ const SectionRiverColumn =  Column.extend`
   font-size: ${key(['fontSizes', 5])}px;
   line-height: ${key(['lineHeights', 4])};
   max-width: 45%;
+  -webkit-flex: 45%;
   & h3 {
     margin-bottom: ${key(['space', 3])}px;
     font-size: ${key(['fontSizes', 3])}px;
@@ -681,8 +684,8 @@ export default ({data, results}) => {
           </Lazy>
         </SectionCommand>
         <SectionOne image={pageBackImg} >
+          <FootGradient reversed />
           <FootCite color='blue' fontSize={1} data={{cite: footCite}} />
-          <Description width={1040} size={4} data={{description: footDescription}} />
           <FootGradient />
         </SectionOne>
       </main>

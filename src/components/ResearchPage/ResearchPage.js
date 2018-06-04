@@ -217,6 +217,7 @@ const SectionRiverColumn =  Column.extend`
   &:nth-last-of-type(2) {
     margin: 0 0 ${key(['space', 5])}px 0;
     max-width: 720px;
+    -webkit-flex: 100%;
     font-weight: ${key('fontWeights.medium')};
     & a {
       color: ${key('colors.text')};

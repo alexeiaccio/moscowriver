@@ -49,6 +49,7 @@ const SectionOne = Section.extend`
 `
 
 const SectionRow = Row.extend`
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   width: 1070px;

@@ -49,8 +49,8 @@ class Quotes extends React.Component {
                 color={getSectorColor(uid)}
                 className={`sector ${this.props.isQuote ? 'active' : ''}`}
                 >
-                <use href={`#${uid}a`} className='shade' />
-                <use href={`#${uid}b`} />
+                <use xlinkHref={`#${uid}a`} className='shade' />
+                <use xlinkHref={`#${uid}b`} />
               </Sector>
             </g>
           )}

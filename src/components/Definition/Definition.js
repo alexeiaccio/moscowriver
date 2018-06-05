@@ -4,7 +4,7 @@ import { Manager, Reference, Popper } from 'react-popper'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 import { RichText } from 'prismic-reactjs'
-import { linkResolver, s4, htmlSerializer } from 'Helpers'
+import { linkResolver } from 'Helpers'
 
 const DefSpan =styled.span`
   cursor: pointer;
@@ -64,38 +64,44 @@ const Popover = styled.div`
   transform: translateY(-35px);
 `
 
-const DefWrapper = styled.h6`
+const DefWrapper = styled.div`
   width: 420px;
   padding: ${key(['space', 5])}px ${key(['space', 7])}px;
-  font-size: ${key(['fontSizes', 6])}px;
-  line-height: ${key(['lineHeights', 5])};
   border: 10px solid ${({color}) => key('colors.' + color)};
 `
 
-const DefHeader = styled.div`
+const DefHeader = styled.h6`
   position: relative;
   display: inline-block;
   color: ${({color}) => key('colors.' + color)};
   font-weight: ${key('fontWeights.medium')};
-  font-size: ${key(['fontSizes', 4])}px;
-  line-height: ${key(['lineHeights', 4])};
+  font-size: ${key(['fontSizes', 3])}px;
+  line-height: ${key(['lineHeights', 3])};
   z-index: 5000;
   &::after {
     content: '';
     position: absolute;
-    bottom: calc(${key(['fontSizes', 4])}px * .37);
+    bottom: calc(${key(['fontSizes', 3])}px * .37);
     display: flex;
     width: 100%;
-    height: calc(${key(['fontSizes', 4])}px * .48);
+    height: calc(${key(['fontSizes', 3])}px * .48);
     background-color: ${({shade}) => key('colors.' + shade)};
     transition: background-color .4s ease-in-out;
     z-index: -1;
   }
 `
 
-const Def = styled.p`
+const Def = styled.div`
   margin-top: 10px;
-  font-family: ${key('fonts.base')};
+  font-family: ${key('fonts.base')};  
+  font-size: ${key(['fontSizes', 6])}px;
+  line-height: ${key(['lineHeights', 5])};
+  & strong {
+    font-weight: ${key('fontWeights.semibold')};
+  }
+  & em {
+    font-style: italic;
+  }
 `
 
 const Appear = keyframes`
@@ -169,10 +175,10 @@ class Definition extends React.Component {
                 <Popover style={aprearStyle}>
                   <DefWrapper color='yellow' >
                     <DefHeader color='text' shade='yellow' >
-                    { this.props.definitions[0].node.data.title[0].text }
+                    { RichText.asText(this.props.definitions[0].node.data.title) }
                     </DefHeader>
                     <Def>
-                    { this.props.definitions[0].node.data.definition[0].text }
+                    { RichText.render(this.props.definitions[0].node.data.definition, linkResolver) }
                     </Def>
                   </DefWrapper>
                 </Popover>

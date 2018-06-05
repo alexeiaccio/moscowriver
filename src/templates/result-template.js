@@ -5,6 +5,7 @@ import { ResultPage, SEO } from 'Components'
 
 const ResultTemplate = ({ data }) => {
   const results = data.results.edges
+  const definitions = data.definitions.edges
   const {
     seotitle,
     seodescription,
@@ -21,7 +22,7 @@ const ResultTemplate = ({ data }) => {
         keywords={seokeywords}
         image={seoimage.url}
       />
-      <ResultPage data={data.result} {...{results}} />
+      <ResultPage data={data.result} {...{results}} {...{definitions}}/>
     </Fragment>
   )
 }
@@ -100,6 +101,28 @@ export const query = graphql`
           data {
             title {
               text
+            }
+          }
+        }
+      }
+    }
+    definitions: allPrismicDocument(filter: {type: {eq: "definition"}}) {
+      edges {
+        node {
+          uid
+          data {
+            title {
+              type
+              text
+            }
+            definition {
+              type
+              text
+              spans {
+                type
+                start
+                end
+              }
             }
           }
         }

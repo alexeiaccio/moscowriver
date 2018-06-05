@@ -15,14 +15,14 @@ import ResultMap from './ResultMap'
 import ResultTable from './ResultTable'
 import ResultForm from './ResultForm'
 
-export default ({data: { data, uid }, results}) => {
+export default ({data: { data, uid }, results, definitions}) => {
   const pageBody = data.body
   let mapsI = 0
 
   return (
     <Fragment >
      <Header data={{title: [{ text: '390 взглядов на Москву-реку' }]}} {...{results}} move={-140} />
-     <main>
+     <main id='definition-wrapper'>
         <ResultSectionOne {...{data}} />
         {pageBody.map(section => {
           switch(section.primary.sectiontype) {
@@ -33,7 +33,7 @@ export default ({data: { data, uid }, results}) => {
               return <ResultImage key={s4()} {...{section}} />
               break
             case 'image-jumbo':
-              return <ResultImageJumbo key={s4()} {...{section}} />
+              return <ResultImageJumbo key={s4()} {...{section}} {...{definitions}} />
               break
             case 'text':
               return <ResultText key={s4()} {...{section}} />

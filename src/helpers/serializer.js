@@ -12,6 +12,7 @@ const newLine = text => {
   }
   return text
 }
+
 const propsWithUniqueKey = function(props, key) {
   return Object.assign(props || {}, { key })
 }

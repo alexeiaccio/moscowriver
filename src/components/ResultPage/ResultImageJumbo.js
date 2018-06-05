@@ -4,7 +4,9 @@ import { RichText } from 'prismic-reactjs'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 
-import { Lazy } from 'Components'
+const Elements = RichText.Elements
+
+import { Lazy, Definition } from 'Components'
 import {
   Row,
   ResultSection,
@@ -71,12 +73,32 @@ const SectionImageBlock = SectionBlock.extend`
   }
 `
 
-export const ResultImageJumbo = ({ section }) => {
+export const ResultImageJumbo = ({ section, definitions }) => {
   const { primary, items } = section
   const header = propPath(['primary', 'header'])
   const head = propPath([0])
   const text = propPath(['text'])
   const getHeader = header(section).chain(head).chain(text).option('')
+  
+  const linkResolverDefinition = doc => doc.uid
+
+  const propsWithUniqueKey = function(props, key) {
+    return Object.assign(props || {}, { key })
+  }
+
+  const htmlSerializerDefinition = function(type, element, content, children, key) {
+    let props = {}
+    
+    switch(type) {
+      case Elements.hyperlink:
+        props = {
+          definitions: definitions.filter(def => def.node.uid === element.data.uid)
+        }
+        return React.createElement(Definition, propsWithUniqueKey(props, key), children)
+      default:
+        return null
+    }
+  }
 
   return (
     <ResultSection id={primary.anchor || null} >
@@ -94,8 +116,8 @@ export const ResultImageJumbo = ({ section }) => {
         <Fragment>
           {item.sectionimage.url
           ? <SectionImageBlock className={isOdd(i) ? 'odd' : 'even'} key={s4()}>
-            <Fragment key={s4()}>
-                { RichText.render(item.text, linkResolver, htmlSerializer) }
+              <Fragment key={s4()}>
+              { RichText.render(item.text, linkResolverDefinition, htmlSerializerDefinition) }
                 <SectionImage
                   key={s4()}
                   className={
@@ -107,7 +129,7 @@ export const ResultImageJumbo = ({ section }) => {
               </Fragment>
           </SectionImageBlock>
           : <SectionImageBlock key={s4()} >
-            { RichText.render(item.text, linkResolver, htmlSerializer) }
+            { RichText.render(item.text, linkResolverDefinition, htmlSerializerDefinition) }
             </SectionImageBlock>
           }
         </Fragment>

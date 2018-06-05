@@ -38,7 +38,9 @@ export default ({ data }) => {
           <IndexTitle data={node.data} results={results}/>
           <Lazy height={800}>
             <ContentWrapper>
-              <Map />
+              <Lazy height={800}>
+                <Map />
+              </Lazy>
               <IndexCite data={node.data}/>
               <MapQuotes data={quotes} />
               <SeeVideoButton data={node.data} name='seevideo' />

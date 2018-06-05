@@ -13,8 +13,7 @@ class MapQuotes extends React.Component {
     super(props)
     this.state = {
       qoutes: Array(this.props.data.length)
-        .fill(false)
-        .map((x, i) => i === 3 ? x = true : x = false),
+        .fill(false),
       tooltips: Array(this.props.data.length).fill(false),
       mount: false,
     }
@@ -22,6 +21,12 @@ class MapQuotes extends React.Component {
 
   componentDidMount() {
     this.setState({ mount: true })
+    setTimeout(() =>
+      this.setState({ 
+        qoutes: this.state.qoutes
+          .map((x, i) => i === 3 ? x = true : x = false)
+      })
+    , 9000)
   }
 
   handleMouseDown(id) {
@@ -71,7 +76,7 @@ class MapQuotes extends React.Component {
         id='index-qoutes-wrapper'
         onClick={(e) => this.handleQuotesClose(e)}
         >
-        <QoutesBack />
+        <QoutesBack />        
         <Markers
           xmlns='http://www.w3.org/2000/svg'
           width='609' height='514'

@@ -48,7 +48,12 @@ class Quotes extends React.Component {
               <Sector
                 color={getSectorColor(uid)}
                 className={`sector ${this.props.isQuote ? 'active' : ''}`}
-                >
+              >
+                <animate 
+                  attributeName="opacity"
+                  values="0;.25;.5" dur="400ms"
+                  repeatCount="1"
+                />
                 <use xlinkHref={`#${uid}a`} className='shade' />
                 <use xlinkHref={`#${uid}b`} />
               </Sector>

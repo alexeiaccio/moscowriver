@@ -72,6 +72,9 @@ export const query = graphql`
               type
               text
               spans {
+                type
+                start
+                end
                 data {
                   url
                   uid

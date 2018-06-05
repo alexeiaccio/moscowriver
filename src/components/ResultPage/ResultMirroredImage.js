@@ -14,8 +14,8 @@ import {
 } from 'Styled'
 import { linkResolver, s4 } from 'Helpers'
 
-const MirroredImageHeader = SectionHeader.extend`
-  margin-top: ${key(['space', 10])}px;
+const MirroredSection = ResultSection.extend`
+  padding-top: ${key(['space', 10])}px;
 `
 
 const MirroredImageBlock = SectionBlock.extend`
@@ -51,13 +51,13 @@ export const ResultMirroredImage = ({ section }) => {
   const getHeader = header(section).option([{text: ''}])
 
   return (
-    <ResultSection id={primary.anchor || null} >
+    <MirroredSection id={primary.anchor || null} >
       <Lazy height={770}>
         <SectionRowCentered>
         {getHeader.length &&
-          <MirroredImageHeader color='text' shade='pink' >
+          <SectionHeader color='text' shade='pink' >
           { RichText.asText(primary.header) }
-          </MirroredImageHeader>
+          </SectionHeader>
         }
         <SectionRowCentered>
         </SectionRowCentered>
@@ -76,6 +76,6 @@ export const ResultMirroredImage = ({ section }) => {
         )}
         </SectionRowCentered>
       </Lazy>
-    </ResultSection>
+    </MirroredSection>
   )
 }

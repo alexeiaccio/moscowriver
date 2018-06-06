@@ -46,7 +46,7 @@ export default ({data, results, layout, move}) => (
       <TitleLink to='/'>
         <Title color='white' fontSize={1} lineHeight={1} data={data}/>
       </TitleLink>
-      <StyledLink to='/research/'>О проекте</StyledLink>
+      <StyledLink to='/about/'>О проекте</StyledLink>
       <ResultLinks {...{results}} />
     </Row>
   </Header>

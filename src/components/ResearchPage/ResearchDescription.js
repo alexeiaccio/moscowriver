@@ -27,8 +27,9 @@ const Description = styled.div`
   background-color: rgba(0,0,0,.5);
   color: ${key('colors.white')};
   font-size: ${({size}) => key(['fontSizes', size])}px;
-  line-height: ${({size}) => key(['lineHeights', size - 1])};
+  line-height: ${({size}) => key(['lineHeights', size - 2])};
   font-weight: ${key('fontWeights.medium')};
+  text-align: center;
   border: 10px solid ${key('colors.bright.blue')};
   & a {
     position: relative;

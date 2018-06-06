@@ -27,7 +27,7 @@ const SectionImageBlock = SectionBlock.extend`
   &.even div {
     max-width: 45%;
   }
-  &.odd .sectionimage {
+  &.odd:first-of-type .sectionimage {
     width:  450px;
     height: 320px;
   }
@@ -37,19 +37,27 @@ const SectionImageBlock = SectionBlock.extend`
     max-width: 1340px;
     height: 900px;
   }
-  &.even .sectionimage {
-    order: -1;
+  &.even .sectionimage ,
+  &.odd .sectionimage {
     width: 100%;
     max-width: 650px;
     height: 600px;
     @media (max-width: 1199px) {
-      order: 1;
       margin-top: ${key(['space', 5])}px;
     }
   }
+  &.even .sectionimage {
+    order: -1;
+    @media (max-width: 1199px) {
+      order: 1;
+    }
+  }
   @media (min-width: 1210px) {
-    &.odd .sectionimage {
+    &.odd:first-of-type .sectionimage {
       margin-right: -50px;
+    }    
+    &.odd .sectionimage {
+      margin-right: -150px;
     }
     &.even .sectionimage {
       margin-left: -150px;

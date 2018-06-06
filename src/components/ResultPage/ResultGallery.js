@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react'
 import propPath from 'crocks/Maybe/propPath'
 import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
-
 import { RichText } from 'prismic-reactjs'
+
 import { Lazy } from 'Components'
 import {
   Row,
@@ -11,6 +11,8 @@ import {
   SectionHeader,
 } from 'Styled'
 import { s4 } from 'Helpers'
+
+import IconEye from '../../assets/IconEye.svg'
 
 const WideRow = Row.extend`
   width: 1100px;
@@ -27,8 +29,9 @@ const GalleryRow = WideRow.extend`
 const Image = styled.div`
   top: 0;
   left: 0;
-  background: ${({url}) => 'url(' + url + ') center no-repeat'};
-  background-size:  cover;
+  background: url(${({url}) => url}) center no-repeat, 
+    url(${IconEye}) center no-repeat ${key(['colors', 'gray', 3])};
+  background-size: cover, 42px 27px;
   transition: all .4s ease-in-out;
   position: ${({active}) => active ? 'absolute' : 'relative'};
   width: ${({active}) => active ? '100%' : '25%'};

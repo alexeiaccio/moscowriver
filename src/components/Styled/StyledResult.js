@@ -34,6 +34,7 @@ export const SectionHeader = H2.extend`
 export const SectionImage = styled.div`
   background: url(${({url}) => url}) center no-repeat, 
     url(${IconEye}) center no-repeat ${key(['colors', 'gray', 3])};
+  background-size: cover, 42px 27px;
 `
 
 export const SectionBlock = styled.div`

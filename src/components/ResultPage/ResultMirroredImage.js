@@ -9,13 +9,17 @@ import {
   ResultSection,
   SectionRowCentered,
   SectionHeader,
-  SectionImage,
   SectionBlock,
 } from 'Styled'
 import { linkResolver, s4 } from 'Helpers'
 
 const MirroredSection = ResultSection.extend`
   padding-top: ${key(['space', 10])}px;
+`
+
+const SectionImage = styled.div`
+  background: url(${({url}) => url}) center no-repeat;
+  background-size: cover;
 `
 
 const MirroredImageBlock = SectionBlock.extend`

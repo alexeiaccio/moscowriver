@@ -55,7 +55,7 @@ const SectionGeoRow = SectionRow.extend`
 
 const SectionRiverRow = Row.extend`
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   width: 1070px;
 `
@@ -216,6 +216,11 @@ const SectionRiverColumn =  Column.extend`
   }
   & p {
     margin-bottom: ${key(['space', 5])}px;
+  }
+  & .img {
+    width:  450px;
+    height: 275px;
+    top: ${key(['space', 9])}px;
   }
 `
 
@@ -480,7 +485,7 @@ export default ({data, results}) => {
         <SectionOne image={pageBackImg} >
           <HeadCite color='blue' fontSize={1} data={{cite: pageCite}} />
           <Description width={760} size={3} data={{description: pageDescription}} />
-          <Navigation data={ sort([0,6,7,4,5,2,1,8,3], pageNav) } />
+          <Navigation data={ sort([0,1,2,3,4,5,6,7,8], pageNav) } />
         </SectionOne>
         <SectionContext id={sectionsId('context')} >          
           <Row>
@@ -530,6 +535,9 @@ export default ({data, results}) => {
               {sectionParagraphs('river').map(paragraph =>
                 <SectionRiverColumn key={s4()}>
                   <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                  {(paragraph.image.url !== null) &&
+                    <Image className='img' url={paragraph.image.url} />
+                  }
                 </SectionRiverColumn>
               )}
             </SectionRiverRow>
@@ -537,11 +545,9 @@ export default ({data, results}) => {
         </SectionBlue>        
         <SectionTimeline id={sectionsId('timeline')} >
           <SectionTimelineRow>
-            <Lazy height={50}>
-              <SectionHeader color='text' shade='bright.blue' >
-              { getStringFromProps(sectionsHeader('timeline')) }
-              </SectionHeader>
-            </Lazy>
+            <SectionHeader color='text' shade='bright.blue' >
+            { getStringFromProps(sectionsHeader('timeline')) }
+            </SectionHeader>
           </SectionTimelineRow>
           <SectionTimelineRow>
           {sectionParagraphs('timeline').map(paragraph =>

@@ -95,10 +95,11 @@ export const ResultImage = ({ section }) => {
               }
               url={item.sectionimage.url}
             >
+            { item.sectionimage.copyright !== null && 
               <ImageCopyright>
-              { item.sectionimage.copyright !== null && 
-                `Copyright: ${item.sectionimage.copyright}` }
+                `Copyright: ${item.sectionimage.copyright}` 
               </ImageCopyright>
+            }
             </SectionImage>
           </Fragment>
       </SectionImageBlock>

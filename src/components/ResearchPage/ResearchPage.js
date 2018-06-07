@@ -476,7 +476,14 @@ export default ({data, results}) => {
   const footCite = sections('foot').chain(body).chain(head).chain(cite).option([])
   const pageAnchors = data.map(edge => assoc('uid', uid(edge).option({}))({}))
   const pageHeaders = data.map(edge => body(edge).chain(head).chain(header).chain(head).option({}))
-  const pageNav = pageHeaders.map((header, i) => assign(header, pageAnchors[i])).filter(x => x.text)
+  const pageNav = [
+    {text: 'Зачем проводили исследование', uid: 'context'},
+    {text: 'Как проводили исследование', uid: 'geography'},
+    {text: 'Методы исследования', uid: 'river'},
+    {text: 'Что получили в результате', uid: 'timeline'},
+    {text: 'Что будет дальше', uid: 'nextsteps'},
+    {text: 'Наша команда', uid: 'command'},
+  ]
 
   return (
     <Fragment>
@@ -485,7 +492,7 @@ export default ({data, results}) => {
         <SectionOne image={pageBackImg} >
           <HeadCite color='blue' fontSize={1} data={{cite: pageCite}} />
           <Description width={760} size={3} data={{description: pageDescription}} />
-          <Navigation data={ sort([0,1,2,3,4,5,6,7,8], pageNav) } />
+          <Navigation data={ pageNav } />
         </SectionOne>
         <SectionContext id={sectionsId('context')} >          
           <Row>

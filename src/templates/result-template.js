@@ -68,7 +68,6 @@ export const query = graphql`
             }
             sectionimage {
               url
-              alt
               copyright
             }
             text {

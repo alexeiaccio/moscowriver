@@ -97,7 +97,7 @@ export const ResultImage = ({ section }) => {
             >
             { item.sectionimage.copyright !== null && 
               <ImageCopyright>
-                `Copyright: ${item.sectionimage.copyright}` 
+                Copyright: { item.sectionimage.copyright }
               </ImageCopyright>
             }
             </SectionImage>

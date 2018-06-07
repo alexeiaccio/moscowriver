@@ -53,5 +53,6 @@ export {
   SectionRowCenteredWide,
   SectionHeader,
   SectionImage,
+  ImageCopyright,
   SectionBlock,
 } from './StyledResult'

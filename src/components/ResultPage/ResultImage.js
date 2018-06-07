@@ -10,6 +10,7 @@ import {
   ResultSection,
   SectionHeader,
   SectionImage,
+  ImageCopyright,
   SectionBlock,
 } from 'Styled'
 import { linkResolver, s4, isOdd, htmlSerializer } from 'Helpers'
@@ -93,7 +94,12 @@ export const ResultImage = ({ section }) => {
                   ? 'sectionimage margin-top' : 'sectionimage'
               }
               url={item.sectionimage.url}
-            />
+            >
+              <ImageCopyright>
+              { item.sectionimage.copyright !== null && 
+                `Copyright: ${item.sectionimage.copyright}` }
+              </ImageCopyright>
+            </SectionImage>
           </Fragment>
       </SectionImageBlock>
       : <SectionImageBlock

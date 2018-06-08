@@ -13,7 +13,7 @@ const opts = id => ({
     showinfo: 0,
     rel: 0,
     iv_load_policy: 3,
-    controls: 0,
+    controls: 2,
     enablejsapi: 0,
     disablekb: 1,
     loop: 1,

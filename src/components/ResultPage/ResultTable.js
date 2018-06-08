@@ -152,7 +152,7 @@ class ResultFunctions extends Component {
     const getTables = data => {
       const tables = []
       data.map((item, i) => {
-        if(item.header.length > 0) {
+        if(item.header.length > 0 && item.header[0].text.length > 0) {          
           return tables.push(Object.assign({}, {header: item.header[0].text, rows: item.row}))
         } else {
           return tables[tables.length-1].rows = tables[tables.length-1].rows.concat(item.row)

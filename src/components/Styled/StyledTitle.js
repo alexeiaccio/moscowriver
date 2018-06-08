@@ -11,7 +11,6 @@ const BaseWrapper = styled.div`
   background-color: ${key('colors.black')};
   flex: 0 0 auto;
   z-index: 3000;
-  cursor: pointer;
 `
 
 const TitleWrapper = BaseWrapper.extend`

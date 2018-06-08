@@ -78,7 +78,6 @@ export const query = graphql`
                 start
                 end
                 data {
-                  url
                   uid
                 }
               }

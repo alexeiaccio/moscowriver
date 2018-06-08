@@ -33,16 +33,18 @@ const MapsMarks = ({state, uid}) => {
 
   return (
     <Fragment>
-      <Map back={MapsBack} second={state.items[0][6] || state.items[1][3] ? true : false} />
+      <Map back={MapsBack} />
       <Svg width="650" height="500" viewBox="0 0 650 500" fill="none" xmlns="http://www.w3.org/2000/svg" >
         <g id="Canvas" fill="none">
           {state.activeList === 1 &&
             <g id="maps_1" strokeLinecap="round" >
               <path id="mark_1-0" d="M0.00948114 0C-0.157186 22.8333 1.80948 74.9 11.0095 100.5C19.4606 124.016 29.532 143.212 43.4063 156.5M171.51 168.5C167.899 170.067 162.145 172.341 155.51 174.591M155.51 174.591C145.911 177.847 134.47 181.054 125.01 182C105.01 184 83.0095 180.5 60.0095 168.5C53.9118 165.319 48.4116 161.294 43.4063 156.5M155.51 174.591L128.51 106.5M43.4063 156.5L82.0095 103"
                 transform="translate(116.49 176.5)" stroke="#EB5A59" strokeWidth={state.items[1][0] ? 8 : 2} />
-              <path id="mark_1-1" d="M0 227L21 267.5M136.5 130L162.5 174M181.5 0L239.5 103" transform="translate(289.5 78.5)" stroke="#F0C41B"
-                strokeWidth={state.items[1][1] ? 8 : 2} />
+              <path id="mark_1-1" d="M0 97L21 137.5M136.5 0L162.5 44" transform="translate(289.5 208.5)" stroke="#F0C41B" strokeWidth={state.items[1][1] ? 8 : 2} />
               <path id="mark_1-2" d="M0 109L180.5 0" transform="translate(396 32)" stroke="#53B36C" strokeWidth={state.items[1][2] ? 8 : 2} />
+              <path id="mark_1-3" d="M0 0L58 103" transform="translate(471 78.5)" stroke="#F0C41B" strokeWidth={state.items[1][3] ? 8 : 2} />
+              {/* Active */}
+              <use xlinkHref={`#mark_1-${ getActive(1) || 0 }`} />
             </g>
           }
           {state.activeList === 0 &&

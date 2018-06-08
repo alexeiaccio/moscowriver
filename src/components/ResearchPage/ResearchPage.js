@@ -169,10 +169,7 @@ const SectionProjectColumn =  Column.extend`
   & p {
     margin-bottom: ${key(['space', 2])}px;
   }
-  & p:last-child {
-    margin-top: ${key(['space', 9])}px;
-    font-weight: ${key('fontWeights.semibold')};
-  }
+  & p:last-child {}
   &:last-child > a {
     bottom: ${key(['space', 9])}px;
     top: auto;
@@ -503,7 +500,7 @@ export default ({data, results}) => {
             <SectionRow>
               {sectionParagraphs('context').map(paragraph =>
                 <SectionColumn key={s4()}>
-                { RichText.render(paragraph.text, linkResolver, htmlSerializer) }
+                  <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
                 </SectionColumn>
               )}
             </SectionRow>
@@ -590,33 +587,18 @@ export default ({data, results}) => {
           </SectionNextRow>
         </SectionBlue>
         <SectionProject id={sectionsId('projectmoscow')} >
-          <SectionNextRow>
-              <SectionHeader color='text' shade='bright.blue' >
+          <SectionOrchestraRow>
+              <SectionOrchestraHeader color='text'  >
               { getStringFromProps(sectionsHeader('projectmoscow')) }
-              </SectionHeader>
-          </SectionNextRow>
-          <SectionNextRow>
-            {sectionParagraphs('projectmoscow').map(paragraph =>
-              <Fragment key={s4()} >
-              {paragraph.image.url === null
-              ? <SectionProjectColumn key={s4()}>
+              </SectionOrchestraHeader>
+          </SectionOrchestraRow>
+          <SectionOrchestraRow>
+            {sectionParagraphs('projectmoscow').map(paragraph =>              
+              <SectionProjectColumn key={s4()}>
                 { getParagraphsFromProps(paragraph.text) }
-                </SectionProjectColumn>
-              : <SectionProjectColumn key={s4()}>
-                  <Link to={sectionUrl(paragraph.text)} target="_blank" rel="noopener" >
-                  { getParagraphsFromProps(paragraph.text) }
-                  </Link>
-                  <RoundButtonWithImage
-                    to={sectionUrl(paragraph.text)}
-                    url={paragraph.image.url}
-                    text={getStringFromProps(paragraph.textimage)}
-                    target="_blank" rel="noopener"
-                  />
-                </SectionProjectColumn>
-              }
-              </Fragment>
+              </SectionProjectColumn>
             )}
-          </SectionNextRow>
+          </SectionOrchestraRow>
         </SectionProject>
         <SectionGeo id={sectionsId('orchestra')}>
           <SectionOrchestraRow>

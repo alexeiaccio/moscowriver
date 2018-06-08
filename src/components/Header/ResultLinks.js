@@ -41,6 +41,7 @@ const StyledLink = styled.div`
   font-weight: ${key('fontWeights.normal')};
   text-decoration: none;
   z-index: 2000;
+  cursor: pointer;
   &::after {
     content: '';
     position: absolute;

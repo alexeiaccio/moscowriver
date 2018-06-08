@@ -18,13 +18,6 @@ const Quote = styled.p`
   padding-left: 25px;
   margin-top: ${({image}) => image ? '0px' : '10px'};
   z-index: 9000;
-  &::before {
-    content: '—';
-    display: block;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-  }
 `
 
 const QouteHeader = styled.h4`

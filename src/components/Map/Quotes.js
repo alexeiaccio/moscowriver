@@ -63,7 +63,7 @@ class Quotes extends React.Component {
         {this.props.isTooltip && ReactDOM.createPortal(
           <Popper
             placement='top'
-            modifiers={{ preventOverflow: { enabled: true } }}
+            modifiers={{ preventOverflow: { enabled: false } }}
             eventsEnabled={true}
             positionFixed={false}
             >
@@ -83,7 +83,15 @@ class Quotes extends React.Component {
         {this.props.isQuote && ReactDOM.createPortal(
           <Popper
             placement='auto'
-            modifiers={{ preventOverflow: { enabled: true } }}
+            modifiers={{
+              hide: {
+                enabled: true,
+              },
+              preventOverflow: { 
+                enabled: true,
+                boundariesElement: document.querySelector('#one')
+              },
+            }}
             eventsEnabled={true}
             positionFixed={false}
             >

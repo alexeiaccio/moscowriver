@@ -19,7 +19,7 @@ const opts = id => ({
     loop: 1,
     color: 'white',
     //origin: 'http://localhost:8000/' || 'http://localhost:5000/',
-    playlist: id
+    playlist: id,
   }
 })
 
@@ -32,11 +32,13 @@ class Video extends React.Component {
   render() {
     const id = youTubeID(this.props.data.video.embed_url)
      return (
-      <Player
-        videoId={id}
-        opts={opts(id)}
-        onReady={this._onReady}
-      />
+       <div style={{zIndex: 4000}} >
+        <Player
+          videoId={id}
+          opts={opts(id)}
+          onReady={this._onReady}
+        />
+      </div>
     )
   }
 

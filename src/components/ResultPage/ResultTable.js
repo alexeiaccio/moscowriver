@@ -81,6 +81,8 @@ const List = styled.div`
   &>* {
     width: 100%;
     max-width: 30%;
+    -webkit-flex: 30%;
+    flex: 30%;
     font-size: ${key(['fontSizes', 6])}px;
     line-height: ${key(['lineHeights', 5])};
     color: ${key('colors.white')};

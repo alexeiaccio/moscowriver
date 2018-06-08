@@ -22,7 +22,8 @@ const Row = styled.div`
 const IndexColumn = Column.extend`
   padding: 0px;
   max-width: 48%;
-  flex: 1 48%;
+  flex: 48%;
+  -webkit-flex: 48%;
 `
 
 export const IndexDescriptions = ({data}) => {

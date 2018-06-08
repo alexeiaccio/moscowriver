@@ -45,15 +45,7 @@ const Arrow = styled.div`
   }
   &[data-placement*='bottom'] {
     left: calc(50% - 15px/2);
-    top: 5px;
-  }
-  &[data-placement*='left'] {
-    top: calc(50% - 15px/2);
-    right: 5px;
-  }
-  &[data-placement*='right'] {
-    top: calc(50% - 15px/2);
-    left: 5px;
+    top: 10px;
   }
 `
 
@@ -61,7 +53,12 @@ const Popover = styled.div`
   background-color: ${key('colors.white')};
   box-shadow: 0px 4px 10px rgba(0,0,0,.25);
   z-index: 8000;
-  transform: translateY(-35px);
+  &[data-placement*='top'] {
+    transform: translateY(-35px);
+  }
+  &[data-placement*='bottom'] {
+    transform: translateY(40px);
+  }
 `
 
 const DefWrapper = styled.div`
@@ -172,7 +169,7 @@ class Definition extends React.Component {
             {({ placement, ref, style, arrowProps }) => (
               <div ref={ref} style={Object.assign({}, style, {zIndex: 5000})} data-placement={placement}
               >
-                <Popover style={aprearStyle}>
+                <Popover style={aprearStyle} data-placement={placement}>
                   <DefWrapper color='yellow' >
                     <DefHeader color='text' shade='yellow' >
                     { RichText.asText(this.props.definitions[0].node.data.title) }

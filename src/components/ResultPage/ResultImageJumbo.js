@@ -26,10 +26,13 @@ const SectionImageBlock = SectionBlock.extend`
   &.odd div,
   &.even div {
     max-width: 45%;
+    flex: 45%;
   }
   &.odd:first-of-type .sectionimage {
     width:  450px;
     height: 320px;
+    flex: 450px;
+    max-width: 450px;
   }
   &.even .sectionimage.jumbo,
   &.odd .sectionimage.jumbo {
@@ -125,7 +128,9 @@ export const ResultImageJumbo = ({ section, definitions }) => {
           {item.sectionimage.url
           ? <SectionImageBlock className={isOdd(i) ? 'odd' : 'even'} key={s4()}>
               <Fragment key={s4()}>
-              { RichText.render(item.text, linkResolverDefinition, htmlSerializerDefinition) }
+                {item.text.length > 0 &&
+                  RichText.render(item.text, linkResolverDefinition, htmlSerializerDefinition) 
+                 }
                 <SectionImage
                   key={s4()}
                   className={

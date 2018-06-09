@@ -18,7 +18,7 @@ class Index extends React.Component {
       <Fragment>
         <SEO
           uid={null}
-          title={seotitle}
+          title={null}
           description={seodescription}
           keywords={seokeywords}
           image={seoimage.url}

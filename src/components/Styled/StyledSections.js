@@ -67,17 +67,20 @@ const shiftBack = keyframes`
 
 export const Column = styled.div`
   padding: 0px ${key(['space', 5])}px;
+  &> a:last-child {
+    z-index: -1;
+  }
   &:first-child {
     &> a {
       left: -100px;
       &> span {
         transform: rotateZ(-90deg) translateY(20px);
       }
-      &:hover {
-        left: -50px;
-        &> span {
-          transform: rotateZ(0) translate(20px, 0px);
-        }
+    }
+    &:hover> a {
+      left: -50px;
+      &> span {
+        transform: rotateZ(0) translate(20px, 0px);
       }
     }
   }
@@ -87,11 +90,11 @@ export const Column = styled.div`
       &> span {
         transform: rotateZ(-90deg) translateY(-25px);
       }
-      &:hover {
-        right: -50px;
-        &> span {
-          transform: rotateZ(0) translate(-25px, 0px);
-        }
+    }
+    &:hover> a {
+      right: -50px;
+      &> span {
+        transform: rotateZ(0) translate(-25px, 0px);
       }
     }
   }

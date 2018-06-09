@@ -1,14 +1,15 @@
 import React from 'react'
 import { TitleWrapper, StyledLink, Row} from 'Styled'
-import { WavedBack, Title } from 'Components'
+import { WavedBack, Title, ResultLinks } from 'Components'
 
-export const IndexTitle = ({data}) => (
+export const IndexTitle = ({data, results}) => {
+  return (
   <TitleWrapper>
     <WavedBack />
     <Row>
-      <StyledLink to='/research/'>Исследование</StyledLink>
+      <StyledLink to='/about/'>О проекте</StyledLink>
       <Title color='white' fontSize={0} lineHeight={0} data={data} />
-      <StyledLink to='/shelepikhinskaya-naberezhnaya/'>Результаты</StyledLink>
+      <ResultLinks {...{results}} />
     </Row>
   </TitleWrapper>
-)
+)}

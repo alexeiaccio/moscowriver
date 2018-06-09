@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import styled, { keyframes } from 'styled-components'
 import { Manager, Reference, Popper } from 'react-popper'
 import { getSectorColor } from './getSectorColor'
 import Quote from './Quote'
@@ -9,6 +10,25 @@ import {
   Popover,
   Arrow
 } from 'Styled'
+
+const Appear = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  25% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+`
+
+const aprearStyle = {
+  animation: `${Appear} .6s ease-in-out`
+}
 
 class Quotes extends React.Component {
   render() {
@@ -28,9 +48,14 @@ class Quotes extends React.Component {
               <Sector
                 color={getSectorColor(uid)}
                 className={`sector ${this.props.isQuote ? 'active' : ''}`}
-                >
-                <use href={`#${uid}a`} className='shade' />
-                <use href={`#${uid}b`} />
+              >
+                <animate 
+                  attributeName="opacity"
+                  values="0;.25;.5" dur="400ms"
+                  repeatCount="1"
+                />
+                <use xlinkHref={`#${uid}a`} className='shade' />
+                <use xlinkHref={`#${uid}b`} />
               </Sector>
             </g>
           )}
@@ -38,12 +63,12 @@ class Quotes extends React.Component {
         {this.props.isTooltip && ReactDOM.createPortal(
           <Popper
             placement='top'
-            modifiers={{ preventOverflow: { enabled: true } }}
+            modifiers={{ preventOverflow: { enabled: false } }}
             eventsEnabled={true}
             positionFixed={false}
             >
             {({ placement, ref, style, arrowProps }) => (
-              <div ref={ref} style={style} data-placement={placement}
+              <div ref={ref} style={Object.assign({}, style, {zIndex: 5000})} data-placement={placement}
               onMouseEnter={() => this.props.onMouseEnter()}
               onMouseLeave={() => this.props.onMouseLeave()}
               >
@@ -58,22 +83,28 @@ class Quotes extends React.Component {
         {this.props.isQuote && ReactDOM.createPortal(
           <Popper
             placement='auto'
-            modifiers={{ preventOverflow: { enabled: true } }}
+            modifiers={{
+              hide: {
+                enabled: true,
+              },
+              preventOverflow: { 
+                enabled: true,
+                boundariesElement: document.querySelector('#one')
+              },
+            }}
             eventsEnabled={true}
             positionFixed={false}
             >
             {({ placement, ref, style, arrowProps }) => (
-              <div ref={ref} style={style} data-placement={placement}
-              //onMouseEnter={() => this.props.onMouseDown()}
-              //onMouseLeave={() => this.props.onMouseOut()}
+              <div ref={ref} style={Object.assign({}, style, {zIndex: 5000})} data-placement={placement}
               >
-                <Popover>
+                <Popover style={aprearStyle}>
                   <Quote data={data} color={getSectorColor(uid)} />
                 </Popover>
                 <Arrow
                   color={getSectorColor(uid)}
                   data-placement={placement}
-                  style={arrowProps.style}
+                  style={Object.assign({}, arrowProps.style, aprearStyle)}
                 />
               </div>
             )}

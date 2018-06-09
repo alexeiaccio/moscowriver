@@ -4,6 +4,6 @@ import { Cite } from 'Components'
 
 export const IndexCite = ({data}) => (
   <CiteWrapper>
-    <Cite color='blue' fontSize={1} data={data} />
+    <Cite color='blue' fontSize={2} data={data} />
   </CiteWrapper>
 )

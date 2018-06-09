@@ -3,7 +3,6 @@ import reset from 'styled-reset'
 
 const baseStyles = () => injectGlobal`
   ${reset}
-  /* BASE STYLES */
 
   body {
     font-family: 'Montserrat';

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { key } from 'styled-theme'
-import Link from '../Link/Link'
+import { Link } from '../Link/Link'
 import ArrowIconWhite from '../../assets/ArrowIconWhite.svg'
 
 const RoundTemplate = styled(Link)`
@@ -11,6 +11,7 @@ const RoundTemplate = styled(Link)`
   overflow: hidden;
   text-decoration: none;
   transition: all .4s ease-in-out;
+  z-index: 3000;
 `
 
 export const RoundButton = RoundTemplate.extend`
@@ -19,6 +20,11 @@ export const RoundButton = RoundTemplate.extend`
   &:hover > p {
     background-color: rgba(0,0,0,.15);
   }
+`
+
+export const RoundButtonMiddle = RoundTemplate.extend`
+  width: 150px;
+  height: 150px;
 `
 
 export const RoundButtonSmall = RoundTemplate.extend`
@@ -32,6 +38,16 @@ export const ButtonBack = styled.div`
   display: block;
   width: 225px;
   height: 225px;
+  background-size: cover;
+  background-repeat: no-repeat;
+`
+
+export const RoundButtonMiddleBack = styled.div`
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 150px;
+  height: 150px;
   background-size: cover;
   background-repeat: no-repeat;
 `
@@ -64,12 +80,17 @@ export const InputMorph = styled.input`
   font-size: ${key(['fontSizes', 3])}px;
   line-height: ${key(['lineHeights', 3])};
   font-weight: ${key('fontWeights.medium')};
-  background-color: ${props => props.button ? key('colors.bright.blue') : key('colors.white')};
-  color: ${props => props.button ? key('colors.white') : key('colors.black')};
-  border: 5px solid ${key('colors.bright.blue')};
+  background-color: ${key('colors.white')};
+  background-color: ${({button}) => button && key('colors.bright.blue')};
+  background-color: ${({success}) => success && key('colors.bright.green')};
+  text-align: ${({success}) => success && 'center'};
+  color: ${key('colors.black')};
+  color: ${({button}) => button && key('colors.white')};
+  color: ${({success}) => success && key('colors.white')};
+  border: 5px solid ${({success}) => success ? key('colors.bright.green') : key('colors.bright.blue')};
   border-radius: ${props => props.button ? '2px' : '50px'};
   outline: none !important;
-  transition: all .6s ease-in-out;
+  transition: all .4s ease-in-out;
   cursor: ${props => props.button ? 'pointer' : 'default'};
   &::placeholder {
     color: ${key(['colors', 'gray', 1])};

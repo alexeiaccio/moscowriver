@@ -17,16 +17,16 @@ export { Section }
 
 export const SectionOne = styled(Section)`
   height: 100vh;
-  background-color: ${key(['colors', 'gray', 3])};
+  background-color: ${key(['colors', 'gray', 4])};
 `
 
 export const ContentWrapper = styled.div`
   flex: 1 100%;
-  z-index: 4000;
 `
 
 export const SectionTwo = styled(Section)`
   height: 100vh;
+  min-height: 800px;
   justify-content: center;
   align-items: center;
   background-color: ${key(['colors', 'gray', 0])};
@@ -38,7 +38,8 @@ export const SectionTwo = styled(Section)`
 export const SectionThree = styled(Section)`
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 75px - 270px);
+  height: calc(100vh - 75px - 240px);
+  min-height: 640px;
   background-color: ${key('colors.white')};
   background-image: url(${patternWaves});
   background-repeat: repeat-x;
@@ -52,6 +53,7 @@ export const DescriptionWrapper = styled.div`
   color: ${key('colors.text')};
   font-size: ${key(['fontSizes', 5])}px;
   line-height: ${key(['lineHeights', 3])};
+  z-index: 4000;
 `
 
 const shiftBack = keyframes`

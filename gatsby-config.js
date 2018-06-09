@@ -5,7 +5,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: '390 взглядов на Москву-реку',
-    siteUrl: 'https://moscowriver-stage.accio.pro',
+    siteUrl: 'http://river.moscow.stories',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -22,8 +22,8 @@ module.exports = {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: [
-          'podkova\:400,500,600,700',
-          'montserrat\:400,500,600,700'
+          'podkova\:400,500',
+          'montserrat\:400,500,600'
         ]
       }
     },
@@ -31,20 +31,20 @@ module.exports = {
       resolve: 'gatsby-plugin-sitemap',
       options: {
         exclude: [
-          'thanks'
+          'poop'
         ]
       }
     },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: "GatsbyJS",
-        short_name: "GatsbyJS",
-        start_url: "/",
-        background_color: "#f7f0eb",
-        theme_color: "#a2466c",
-        display: "minimal-ui",
-        icon: "src/assets/favicon.png",
+        name: '390 взглядов на Москву-реку',
+        short_name: 'Москва-река',
+        start_url: '/',
+        background_color: '#f7f0eb',
+        theme_color: '#a2466c',
+        display: 'minimal-ui',
+        icon: 'src/assets/favicon.png',
       },
     },
   ],

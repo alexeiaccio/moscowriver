@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import {
   RoundButton,
   ButtonBack,
+  RoundButtonMiddle,
+  RoundButtonMiddleBack,
   ButtonShade,
   ButtonText
 } from 'Styled'
@@ -14,12 +16,18 @@ export const RoundButtonWithImage = ({to, url, text}) =>
     <ButtonText>{text}</ButtonText>
   </RoundButton>
 
-const RoundButtonGif = RoundButton.extend`
+const RoundButtonGif = RoundButtonMiddle.extend`
   top: auto;
   left: calc(50% - 960px/2);
-  bottom: -75px;
+  bottom: -85px;
+  &> span {
+    opacity: 0;
+  }
   &:hover {
-    bottom: -35px;
+    bottom: -50px;
+    &> span {
+      opacity: 1;
+    }
   }
 `
 
@@ -29,12 +37,12 @@ const ButtonIcon = styled.div`
   width: 100%;
   background-image: url(${props => props.url});
   background-repeat: no-repeat;
-  background-position: center 50px;
+  background-position: center 25px;
 `
 
-export const RoundButtonWithGif = ({to, url, text, icon}) =>
-  <RoundButtonGif to={to}>
-    <ButtonBack style={{backgroundImage: `url(${url})`}} />
+export const RoundButtonWithGif = ({to, url, text, icon, ...other }) =>
+  <RoundButtonGif to={to} {...other} >
+    <RoundButtonMiddleBack style={{backgroundImage: `url(${url})`}} />
     <ButtonShade />
     <ButtonIcon url={icon} />
     <ButtonText>{text}</ButtonText>

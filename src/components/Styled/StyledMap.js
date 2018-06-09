@@ -1,14 +1,31 @@
-import styled from 'styled-components'
+import styled, {keyframes} from 'styled-components'
 import { key } from 'styled-theme'
 import MapBack from '../../assets/MapBack.png'
 
+const Appear = keyframes`
+  0% {
+    opacity: 0;
+    filter: blur(1000);
+  }
+  75% {
+    opacity: 0;
+    filter: blur(1000);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+`
 export const MapBlock = styled.div`
-  height: 2000px;
+  height: 182vh;
+  min-height: 2500px;
   width: 3500px;
-  flex: 0 0 auto;
-  margin-top: calc(50vh - 977px);
+  flex: 0 0 3500px;
+  margin-top: 47px;
   transform: scale(.55);
-  background: url(${MapBack});
+  background: url(${MapBack}) 50% calc(50% + 1px) repeat;
+  background-size: 3500px 2000px;
+  animation: ${Appear} 1.6s ease-in-out;
   & div {
     background-color: rgba(255,255,255,0) !important;
   }
@@ -20,7 +37,7 @@ export const MapWrapper = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   overflow: hidden;
 `
 
@@ -40,9 +57,10 @@ export const QoutesBack = styled.div`
 `
 
 export const Markers = styled.svg`
-  margin-top: calc(50vh - 380px);
+  margin-top: calc(50vh - 360px);
   margin-left: -34px;
   transform: scale(1.1);
+  z-index: 0;
 `
 
 export const Sector = styled.g`
@@ -72,7 +90,7 @@ export const Tooltip = styled.div`
   transform: translateY(-${key(['space', 3])}px);
   box-shadow: 0px 4px 10px rgba(0,0,0,.25);
   cursor: pointer;
-  z-index: 7000;
+  z-index: 5000;
   &::after {
     content: '';
     position: absolute;

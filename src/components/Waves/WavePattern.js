@@ -10,13 +10,13 @@ class WavePattern extends React.Component {
       waves: Array.from({length: 13}, (v, i) =>
       ({
         t: i > 0 ? i = 1 + 20 * i : i += 1,
-        r: 0
+        r: 1
       }))
     }
   }
 
   handlerMouseEnter = () => {
-    const intervalId = setInterval(this.timer, 100)
+    const intervalId = setInterval(this.timer, 200)
     this.setState({intervalId: intervalId})
   }
 
@@ -26,7 +26,7 @@ class WavePattern extends React.Component {
 
   timer = () => {
     const newWaves = [...this.state.waves]
-    newWaves.map(w => w.r += 10)
+    newWaves.map(w => (w.r += 1) % 360)
     this.setState({ waves: newWaves })
   }
 
@@ -43,12 +43,14 @@ class WavePattern extends React.Component {
           <g id="Canvas">
             <g id="WavePattern">
             {this.state.waves.map(({t, r}, i) =>
-              <Motion key={i} defaultStyle={{t: t, r: r}} style={{t: t, r: spring(r + i)}}>
+              <Motion key={i} defaultStyle={{t: t, r: r}} style={{t: t, r: spring((r + i) / 10)}}>
               {({t, r}) =>
                 <use
                   xlinkHref="#path0_stroke"
                   className='classA'
-                  style={{transform: `translateY(${t}px) rotateX(${r}deg)`}} />}
+                  transform={`translate(0 ${t}) scale(1 ${Math.sin(r)})`}
+                />
+              }
               </Motion>
             )}
             </g>

@@ -11,7 +11,6 @@ const BaseWrapper = styled.div`
   background-color: ${key('colors.black')};
   flex: 0 0 auto;
   z-index: 3000;
-  cursor: pointer;
 `
 
 const TitleWrapper = BaseWrapper.extend`
@@ -54,10 +53,10 @@ const StyledLink = styled(Link)`
   &::after {
     content: '';
     position: absolute;
-    bottom: calc(${key(['fontSizes', 3])}px * .1);
+    bottom: calc(${key(['fontSizes', 4])}px * .15);
     display: flex;
     width: 100%;
-    height: calc(${key(['fontSizes', 3])}px * .5);
+    height: calc(${key(['fontSizes', 4])}px * .55);
     background-color: ${key('colors.black')};
     transition: background-color .4s ease-in-out;
     z-index: -1;

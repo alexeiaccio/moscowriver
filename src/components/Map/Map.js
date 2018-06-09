@@ -6,9 +6,9 @@ import { MapWrapper, MapBlock } from 'Styled'
 const API_KEY = process.env.GOOGLE_MAP_APY_KEY || 'AIzaSyAkA1UjP9WomYnEz-ge2K6dCM8UrOgM3h8'
 
 const createMapOptions = maps => ({
-    panControl: false,
+    panControl: true,
     mapTypeControl: false,
-    scrollwheel: false,
+    scrollwheel: true,
     styles: mapStyles,
     disableDefaultUI: true
   })
@@ -26,7 +26,7 @@ class Map extends React.Component {
     return (
       <MapWrapper>
         <MapBlock>
-          {/* <GoogleMap
+          <GoogleMap
             bootstrapURLKeys={{
               key: API_KEY,
               language: 'ru',
@@ -34,7 +34,7 @@ class Map extends React.Component {
             }}
             options={createMapOptions}
             defaultCenter={this.props.center}
-            defaultZoom={this.props.zoom} /> */}
+            defaultZoom={this.props.zoom} />
         </MapBlock>
       </MapWrapper>
     )

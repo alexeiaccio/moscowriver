@@ -7,9 +7,10 @@ import theme from './theme'
 import favicon from './favicon.png'
 
 const TemplateWrapper = ({ children }) => (
-  <div>
+  <div id='menu-wrapper'>
     <Helmet
-      title='390 взглядов на Москву-реку'
+      defaultTitle='390 взглядов на Москву-реку'
+      titleTemplate='390 взглядов на Москву-реку | %s'
       meta={[
         { name: 'description', content: 'Исследование «390 взглядов на Москву-реку»' },
         { name: 'keywords', content: 'Москва, река' },

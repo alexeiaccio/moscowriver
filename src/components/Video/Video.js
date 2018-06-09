@@ -13,13 +13,13 @@ const opts = id => ({
     showinfo: 0,
     rel: 0,
     iv_load_policy: 3,
-    controls: 0,
+    controls: 2,
     enablejsapi: 0,
     disablekb: 1,
     loop: 1,
     color: 'white',
     //origin: 'http://localhost:8000/' || 'http://localhost:5000/',
-    playlist: id
+    playlist: id,
   }
 })
 
@@ -31,12 +31,14 @@ const Player = styled(YouTube)`
 class Video extends React.Component {
   render() {
     const id = youTubeID(this.props.data.video.embed_url)
-    return (
-      <Player
-        videoId={id}
-        opts={opts(id)}
-        onReady={this._onReady}
-      />
+     return (
+       <div style={{zIndex: 4000}} >
+        <Player
+          videoId={id}
+          opts={opts(id)}
+          onReady={this._onReady}
+        />
+      </div>
     )
   }
 

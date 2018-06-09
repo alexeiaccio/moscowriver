@@ -6,7 +6,8 @@ export { default as Cite } from './Cite/Cite'
 export { default as Image } from './Image/Image'
 export { default as WavePattern } from './Waves/WavePattern'
 export { default as Video } from './Video/Video'
-export { default as Link } from './Link/Link'
+export { Link } from './Link/Link'
+export { default as ResultLinks } from './Header/ResultLinks'
 export {
   RoundButtonWithImage,
   RoundButtonWithGif
@@ -20,6 +21,9 @@ export {
 export { default as Map } from './Map/Map'
 export { default as MapQuotes } from './Map/MapQuotes'
 export { WavedBack } from './Backs/WavedBack'
+export { Lazy } from './Lazy/Lazy'
+export { SEO } from './SEO/SEO'
+export { default as Definition } from './Definition/Definition'
 
 export { default as IndexPage } from './IndexPage/IndexPage'
 export { default as ResearchPage } from './ResearchPage/ResearchPage'

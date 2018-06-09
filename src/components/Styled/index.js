@@ -35,13 +35,24 @@ export {
   DescriptionWrapper,
   Column,
   ContentWrapper,
- } from './StyledSections'
- export {
-  RoundButton,
-  RoundButtonSmall,
-  ButtonBack,
-  ButtonShade,
-  ButtonText,
-  InputMorph,
-  SubmitButton,
- } from './StyledButtons'
+} from './StyledSections'
+export {
+RoundButton,
+RoundButtonSmall,
+RoundButtonMiddle,
+RoundButtonMiddleBack,
+ButtonBack,
+ButtonShade,
+ButtonText,
+InputMorph,
+SubmitButton,
+} from './StyledButtons'
+export {
+  ResultSection,
+  SectionRowCentered,
+  SectionRowCenteredWide,
+  SectionHeader,
+  SectionImage,
+  ImageCopyright,
+  SectionBlock,
+} from './StyledResult'

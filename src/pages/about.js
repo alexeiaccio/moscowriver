@@ -1,17 +1,34 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Link from 'gatsby-link'
+import Helmet from 'react-helmet'
 import map from 'crocks/pointfree/map'
-import { s4, getElementsFromProps } from 'Helpers'
-import { ResearchPage } from 'Components'
+import { findSection, s4, getElementsFromProps } from 'Helpers'
+
+import { ResearchPage, SEO } from 'Components'
 
 const Research = ({ data }) => {
   const sections = data.researchparts.edges
-  const thisSection = name => sections.filter(x => x.node.uid === name)
-  const nextsteps = thisSection('nextsteps')[0].node.data.body
-  const timeline = thisSection('timeline')[0].node.data.body
+  const results = data.results.edges
+  const find = findSection(sections)
+  const research = find('about').option({})
+  const {
+    seotitle,
+    seodescription,
+    seokeywords,
+    seoimage
+  } = research.node.data
 
   return (
-    <ResearchPage data={sections} />
+    <Fragment>
+      <SEO
+        uid={research.node.uid}
+        title={seotitle}
+        description={seodescription}
+        keywords={seokeywords}
+        image={seoimage.url}
+      />
+      <ResearchPage data={sections} {...{results}} />
+    </Fragment>
   )
 }
 
@@ -26,6 +43,12 @@ export const query = graphql`
           ...ResearchCiteFragment
           uid
           data {
+            seotitle
+            seodescription
+            seokeywords
+            seoimage {
+              url
+            }
             body {
               primary {
                 header {
@@ -35,6 +58,7 @@ export const query = graphql`
                   embed_url
                 }
                 description {
+                  type
                   text
                   spans {
                     start
@@ -51,11 +75,6 @@ export const query = graphql`
                 text {
                   type
                   text
-                  spans {
-                    data {
-                      url
-                    }
-                  }
                 }
                 image {
                   url
@@ -64,6 +83,18 @@ export const query = graphql`
                   text
                 }
               }
+            }
+          }
+        }
+      }
+    }
+    results: allPrismicDocument(filter: {type: {eq: "result"}}) {
+      edges {
+        node {
+          uid
+          data {
+            title {
+              text
             }
           }
         }

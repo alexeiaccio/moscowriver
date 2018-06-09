@@ -6,7 +6,7 @@ import { MapWrapper, MapBlock } from 'Styled'
 const API_KEY = process.env.GOOGLE_MAP_APY_KEY || 'AIzaSyAkA1UjP9WomYnEz-ge2K6dCM8UrOgM3h8'
 
 const createMapOptions = maps => ({
-    panControl: true,
+    panControl: false,
     mapTypeControl: false,
     scrollwheel: true,
     styles: mapStyles,

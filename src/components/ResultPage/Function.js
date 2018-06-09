@@ -148,6 +148,7 @@ class Function extends React.Component {
       case text.toLowerCase().includes('речн'):
       case text.toLowerCase().includes('судн'):
       case text.toLowerCase().includes('теплох'):
+      case text.toLowerCase().includes('водн'):
         return IconBoat
         break
       case text.toLowerCase().includes('чте'):

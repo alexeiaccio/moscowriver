@@ -128,7 +128,7 @@ export const ResultImageJumbo = ({ section, definitions }) => {
           {item.sectionimage.url
           ? <SectionImageBlock className={isOdd(i) ? 'odd' : 'even'} key={s4()}>
               <Fragment key={s4()}>
-                {item.text.length > 0 &&
+                {item.text.length > 0 && item.text[0].text.length > 0 && 
                   RichText.render(item.text, linkResolverDefinition, htmlSerializerDefinition) 
                  }
                 <SectionImage

@@ -26,10 +26,10 @@ const Menu = styled.div`
   box-shadow: 0px 4px 10px rgba(0,0,0,.25);
   cursor: pointer;
   &[data-placement*='top'] {
-    transform: translate(-140px, -${key(['space', 5])}px);
+    transform: translate(-20%, -${key(['space', 5])}px);
   }
   &[data-placement*='bottom'] {
-    transform: translate(-140px, ${key(['space', 5])}px);
+    transform: translate(-20%, ${key(['space', 5])}px);
   }
 `
 
@@ -113,7 +113,7 @@ class ResultLinks extends Component {
   render() {
     const safeResults = propPath(['results'])
     const results = safeResults(this.props).option([])
-    const resultItems = results.map(result => result.node)
+    const resultItems = results.data.body.map(result => result.primary)   
 
     return (
       <Wrapper>
@@ -124,7 +124,7 @@ class ResultLinks extends Component {
               ref={ref}
               onClick={() => this.handleMouseClick()}
             >
-              <StyledLink>О набережных</StyledLink>
+              <StyledLink>Результаты исследования</StyledLink>
             </div>
           )}
           </Reference>
@@ -139,8 +139,8 @@ class ResultLinks extends Component {
               <div ref={ref} style={ Object.assign({}, style, {zIndex: 9000}) } data-placement={placement}>
                 <Menu data-placement={placement}>
                 {resultItems.map(item => (
-                  <MenuLink key={s4()} to={`/${item.uid}`} >
-                  { item.data.title[0].text }
+                  <MenuLink key={s4()} to={`/${item.uid.uid}`} >
+                  { item.linkname }
                   </MenuLink>
                 ))}
                 </Menu>

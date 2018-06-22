@@ -36,7 +36,7 @@ const SectionOne = Section.extend`
   justify-content:  space-between;
   align-items: center;
   height: calc(100vh - 120px);
-  min-height: 800px;
+  min-height: 640px;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAzSURBVHgBpYxRDgAgCEKfq4N1s/Lkpc0P/dYNYcAQ4FBv+xPDNWgyvx4RurFSgRms/akHyzsJj/3feW8AAAAASUVORK5CYII=) repeat, ${({image}) => 'url(' + image + ')'} no-repeat ${key('colors.black')};
   background-size: 6px 6px, cover;
   background-position: center;
@@ -46,6 +46,14 @@ const SectionRow = Row.extend`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 1070px;
+`
+
+const SectionCommandRow = Row.extend`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
   width: 1070px;
 `
 
@@ -82,7 +90,7 @@ const SectionContext = Section.extend`
 `
 
 const SectionProject = Section.extend`
-  padding: ${key(['space', 5])}px 0 ${key(['space', 12])}px;
+  padding: ${key(['space', 5])}px 0 ${key(['space', 5])}px;
   line-height: ${key(['lineHeights', 2])};
 `
 
@@ -107,13 +115,13 @@ const SectionOrchestraHeader = H2.extend`
     left: -101vw;
     bottom: calc(${key(['fontSizes', 1])}px * .21);
     height: calc(${key(['fontSizes', 1])}px * .43);
-    background-color: ${key('colors.text')};
+    background-color: ${({shade}) => key('colors.' + shade)};
     z-index: -1;
   }
   &::after {
     width: 100vw;
     right: -101vw;
-    background-color: ${key('colors.text')};
+    background-color: ${({shade}) => key('colors.' + shade)};
   }
 `
 
@@ -315,12 +323,13 @@ const SectionCommandColumn =  Column.extend`
   & span {
     margin-bottom: ${key(['space', 2])}px;
   }
-  &:nth-of-type(1) {
-    width: 100%;
-    margin-bottom: 0;
-  }
   &:nth-of-type(n+2) {
     width: 25%;
+  }
+  &:nth-of-type(1),
+  &:nth-of-type(8) {
+    width: 100%;
+    margin-bottom: ${key(['space', 3])}px;
   }
   &:last-of-type {
     width: 100%;
@@ -588,7 +597,7 @@ export default ({data, results}) => {
         </SectionBlue>
         <SectionProject id={sectionsId('projectmoscow')} >
           <SectionOrchestraRow>
-              <SectionOrchestraHeader color='text'  >
+              <SectionOrchestraHeader color='text' shade='bright.blue' >
               { getStringFromProps(sectionsHeader('projectmoscow')) }
               </SectionOrchestraHeader>
           </SectionOrchestraRow>
@@ -603,7 +612,7 @@ export default ({data, results}) => {
         <SectionGeo id={sectionsId('orchestra')}>
           <SectionOrchestraRow>
             <Lazy height={50}>
-              <SectionOrchestraHeader color='text' >
+              <SectionOrchestraHeader color='text' shade='text' >
               { getStringFromProps(sectionsHeader('orchestra')) }
               </SectionOrchestraHeader>
             </Lazy>
@@ -626,7 +635,7 @@ export default ({data, results}) => {
         <SectionGeo id={sectionsId('meganom')}>
           <SectionOrchestraRow>
             <Lazy height={50}>
-              <SectionOrchestraHeader color='text' >
+              <SectionOrchestraHeader color='text' shade='text' >
               { getStringFromProps(sectionsHeader('meganom')) }
               </SectionOrchestraHeader>
             </Lazy>
@@ -655,7 +664,7 @@ export default ({data, results}) => {
             </Lazy>
           </SectionRow>
           <Lazy key={s4()} height={600}>
-            <SectionRow>
+            <SectionCommandRow>
             {sectionParagraphs('command').map(paragraph  =>
               <SectionCommandColumn key={s4()}>
                 <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
@@ -667,7 +676,7 @@ export default ({data, results}) => {
                 }
               </SectionCommandColumn>
             )}
-            </SectionRow>
+            </SectionCommandRow>
           </Lazy>
           <Lazy key={s4()} height={50}>
             <Copyright color='text' >Разработка сайта&ensp;<Accio href='http://www.accio.pro/' target='_blank' rel='noreferrer' color='black' /></Copyright>

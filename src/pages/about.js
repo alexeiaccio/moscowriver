@@ -8,7 +8,7 @@ import { ResearchPage, SEO } from 'Components'
 
 const Research = ({ data }) => {
   const sections = data.researchparts.edges
-  const results = data.results.edges
+  const results = data.results
   const find = findSection(sections)
   const research = find('about').option({})
   const {
@@ -88,13 +88,13 @@ export const query = graphql`
         }
       }
     }
-    results: allPrismicDocument(filter: {type: {eq: "result"}}) {
-      edges {
-        node {
-          uid
-          data {
-            title {
-              text
+    results: prismicDocument(type: {eq: "menu"}) {
+      data {
+        body {
+          primary {
+            linkname
+            uid {
+              uid
             }
           }
         }

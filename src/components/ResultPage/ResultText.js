@@ -43,11 +43,9 @@ export const ResultText = ({ section }) => {
     <TextSection id={primary.anchor || null} >
       <HeaderRow>
       {getHeader.length > 0 &&
-        <Lazy height={50}>
-          <SectionHeader color='text' shade='pink' >
-          { RichText.asText(primary.header) }
-          </SectionHeader>
-        </Lazy>
+        <SectionHeader color='text' shade='pink' >
+        { RichText.asText(primary.header) }
+        </SectionHeader>
       }
       </HeaderRow>
       <SectionRowCenteredWide>

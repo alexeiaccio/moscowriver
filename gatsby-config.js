@@ -4,7 +4,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: '390 взглядов на Москву-реку',
+    title: 'Москвичи о реке',
     siteUrl: 'http://river.moscow.stories',
   },
   plugins: [
@@ -38,13 +38,21 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: '390 взглядов на Москву-реку',
+        name: 'Москвичи о реке',
         short_name: 'Москва-река',
         start_url: '/',
         background_color: '#f7f0eb',
         theme_color: '#a2466c',
         display: 'minimal-ui',
         icon: 'src/assets/favicon.png',
+      },
+    },
+    {
+      resolve: `gatsby-plugin-yandex-metrika`,
+      options: {
+        trackingId: '49341592',
+        webvisor: false,
+        trackHash: false,
       },
     },
   ],

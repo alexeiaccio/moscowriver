@@ -6,6 +6,7 @@ import { ResultPage, SEO } from 'Components'
 const ResultTemplate = ({ data }) => {
   const results = data.results.edges
   const definitions = data.definitions.edges
+  const siteTitle = data.homepage.data.seotitle
   const {
     seotitle,
     seodescription,
@@ -22,7 +23,7 @@ const ResultTemplate = ({ data }) => {
         keywords={seokeywords}
         image={seoimage.url}
       />
-      <ResultPage data={data.result} {...{results}} {...{definitions}}/>
+      <ResultPage data={data.result} {...{results}} {...{definitions}} {...{siteTitle}} />
     </Fragment>
   )
 }
@@ -126,6 +127,11 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    homepage: prismicDocument(type: {eq: "homepage"}) {
+      data {
+        seotitle
       }
     }
   }

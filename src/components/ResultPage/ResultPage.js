@@ -15,13 +15,13 @@ import ResultMap from './ResultMap'
 import ResultTable from './ResultTable'
 import ResultForm from './ResultForm'
 
-export default ({data: { data, uid }, results, definitions}) => {
+export default ({data: { data, uid }, results, definitions, siteTitle}) => {
   const pageBody = data.body
   let mapsI = 0
-
+  console.log(siteTitle)
   return (
     <Fragment >
-     <Header data={{title: [{ text: '390 взглядов на Москву-реку' }]}} {...{results}} move={-140} />
+     <Header data={{title: [{ text: siteTitle }]}} {...{results}} move={-140} />
      <main id='definition-wrapper'>
         <ResultSectionOne {...{data}} />
         {pageBody.map(section => {

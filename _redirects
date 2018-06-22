@@ -1,0 +1,2 @@
+# Redirect default Netlify subdomain to primary domain
+https://moscowriver-production.netlify.com/* https://stories.river.moscow/:splat 301!

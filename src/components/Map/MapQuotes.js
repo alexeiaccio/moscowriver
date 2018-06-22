@@ -21,10 +21,13 @@ class MapQuotes extends React.Component {
 
   componentDidMount() {
     this.setState({ mount: true })
+    const activeNumber = this.props.data
+      .map(({node: {uid}}, i) => parseInt(uid) === 162 && i)
+      .filter(x => x !== false)    
     setTimeout(() =>
       this.setState({ 
         qoutes: this.state.qoutes
-          .map((x, i) => i === 3 ? x = true : x = false)
+          .map((x, i) => i === activeNumber[0] ? x = true : x = false)
       })
     , 9000)
   }

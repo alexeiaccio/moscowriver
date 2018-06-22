@@ -18,7 +18,7 @@ import ResultForm from './ResultForm'
 export default ({data: { data, uid }, results, definitions, siteTitle}) => {
   const pageBody = data.body
   let mapsI = 0
-  console.log(siteTitle)
+  
   return (
     <Fragment >
      <Header data={{title: [{ text: siteTitle }]}} {...{results}} move={-140} />

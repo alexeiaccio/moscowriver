@@ -57,13 +57,13 @@ export const query = graphql`
         }
       }
     }
-    result: allPrismicDocument(filter: {type: {eq: "result"}}) {
-      edges {
-        node {
-          uid
-          data {
-            title {
-              text
+    results: prismicDocument(type: {eq: "menu"}) {
+      data {
+        body {
+          primary {
+            linkname
+            uid {
+              uid
             }
           }
         }

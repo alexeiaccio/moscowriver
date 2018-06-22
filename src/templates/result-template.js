@@ -4,7 +4,7 @@ import Helmet from 'react-helmet'
 import { ResultPage, SEO } from 'Components'
 
 const ResultTemplate = ({ data }) => {
-  const results = data.results.edges
+  const results = data.results
   const definitions = data.definitions.edges
   const siteTitle = data.homepage.data.seotitle
   const {
@@ -12,7 +12,7 @@ const ResultTemplate = ({ data }) => {
     seodescription,
     seokeywords,
     seoimage
-  } = data.result.data
+  } = data.result.data  
 
   return (
     <Fragment>
@@ -95,13 +95,13 @@ export const query = graphql`
         }
       }
     }
-    results: allPrismicDocument(filter: {type: {eq: "result"}}) {
-      edges {
-        node {
-          uid
-          data {
-            title {
-              text
+    results: prismicDocument(type: {eq: "menu"}) {
+      data {
+        body {
+          primary {
+            linkname
+            uid {
+              uid
             }
           }
         }

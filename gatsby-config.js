@@ -38,7 +38,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: '390 взглядов на Москву-реку',
+        name: 'Москвичи о реке',
         short_name: 'Москва-река',
         start_url: '/',
         background_color: '#f7f0eb',

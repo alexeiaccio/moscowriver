@@ -29,7 +29,7 @@ import { SeeVideoButton } from './SeeVideoButton'
 export default ({ data }) => {
   const node = data.homepage
   const quotes = data.quotes.edges
-  const results = data.result.edges
+  const results = data.results
 
   return (
     <Fragment>

@@ -113,7 +113,7 @@ class ResultLinks extends Component {
   render() {
     const safeResults = propPath(['results'])
     const results = safeResults(this.props).option([])
-    const resultItems = results.map(result => result.node)
+    const resultItems = results.data.body.map(result => result.primary)   
 
     return (
       <Wrapper>
@@ -139,8 +139,8 @@ class ResultLinks extends Component {
               <div ref={ref} style={ Object.assign({}, style, {zIndex: 9000}) } data-placement={placement}>
                 <Menu data-placement={placement}>
                 {resultItems.map(item => (
-                  <MenuLink key={s4()} to={`/${item.uid}`} >
-                  { item.data.title[0].text }
+                  <MenuLink key={s4()} to={`/${item.uid.uid}`} >
+                  { item.linkname }
                   </MenuLink>
                 ))}
                 </Menu>

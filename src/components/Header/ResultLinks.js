@@ -26,10 +26,10 @@ const Menu = styled.div`
   box-shadow: 0px 4px 10px rgba(0,0,0,.25);
   cursor: pointer;
   &[data-placement*='top'] {
-    transform: translate(-140px, -${key(['space', 5])}px);
+    transform: translate(-20%, -${key(['space', 5])}px);
   }
   &[data-placement*='bottom'] {
-    transform: translate(-140px, ${key(['space', 5])}px);
+    transform: translate(-20%, ${key(['space', 5])}px);
   }
 `
 
@@ -124,7 +124,7 @@ class ResultLinks extends Component {
               ref={ref}
               onClick={() => this.handleMouseClick()}
             >
-              <StyledLink>О набережных</StyledLink>
+              <StyledLink>Результаты исследования</StyledLink>
             </div>
           )}
           </Reference>

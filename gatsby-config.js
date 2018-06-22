@@ -47,5 +47,13 @@ module.exports = {
         icon: 'src/assets/favicon.png',
       },
     },
+    {
+      resolve: `gatsby-plugin-yandex-metrika`,
+      options: {
+        trackingId: '49341592',
+        webvisor: true,
+        trackHash: true,
+      },
+    },
   ],
 }

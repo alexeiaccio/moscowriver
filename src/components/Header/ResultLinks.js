@@ -111,9 +111,9 @@ class ResultLinks extends Component {
   }
 
   render() {
-    const safeResults = propPath(['results'])
+    const safeResults = propPath(['results', 'data', 'body'])
     const results = safeResults(this.props).option([])
-    const resultItems = results.data.body.map(result => result.primary)   
+    const resultItems = results.map(result => result.primary)      
 
     return (
       <Wrapper>

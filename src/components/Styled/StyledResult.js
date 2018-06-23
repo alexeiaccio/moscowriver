@@ -10,7 +10,7 @@ import {
   Column,
 } from './StyledSections'
 
-import IconEye from '../../assets/IconEye.svg'
+import Holder from '../../assets/Holder.svg'
 
 export const ResultSection = Section.extend`
   padding: ${key(['space', 5])}px 0;
@@ -33,8 +33,8 @@ export const SectionHeader = H2.extend`
 
 export const SectionImage = styled.div`
   background: url(${({url}) => url}) center no-repeat, 
-    url(${IconEye}) center no-repeat ${key(['colors', 'gray', 3])};
-  background-size: cover, 42px 27px;  
+    url(${Holder}) center no-repeat ${key(['colors', 'gray', 3])};
+  background-size: cover, 50px 50px;  
   position: relative;
 `
 

@@ -12,7 +12,7 @@ import {
 } from 'Styled'
 import { s4 } from 'Helpers'
 
-import IconEye from '../../assets/IconEye.svg'
+import Holder from '../../assets/Holder.svg'
 
 const WideRow = Row.extend`
   width: 1100px;
@@ -30,8 +30,8 @@ const Image = styled.div`
   top: 0;
   left: 0;
   background: url(${({url}) => url}) center no-repeat, 
-    url(${IconEye}) center no-repeat ${key(['colors', 'gray', 3])};
-  background-size: cover, 42px 27px;
+    url(${Holder}) center no-repeat ${key(['colors', 'gray', 3])};
+  background-size: cover, 50px 50px;
   transition: all .4s ease-in-out;
   position: ${({active}) => active ? 'absolute' : 'relative'};
   width: ${({active}) => active ? '100%' : '25%'};

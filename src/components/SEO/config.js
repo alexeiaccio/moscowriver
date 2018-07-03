@@ -1,5 +1,5 @@
 export const siteMetadata = {
-  title: '390 взглядов на Москву-реку',
+  title: 'Москвичи о реке',
   siteUrl: 'http://river.moscow.stories',
   fbAppID: ''
 }

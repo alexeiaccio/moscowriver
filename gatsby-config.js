@@ -1,5 +1,5 @@
 require('dotenv').config({
-  path: '.env.${process.env.NODE_ENV}'
+  path: '.env.${process.env.NODE_ENV}',
 })
 
 module.exports = {
@@ -15,25 +15,25 @@ module.exports = {
       resolve: 'gatsby-source-prismic',
       options: {
         repositoryName: 'mymoscowriverru',
-        accessToken: process.env.PRISMIC_TOKEN || 'MC5Xc1NrSWlRQUFDUUFoRF9s.AO-_ve-_ve-_vTt-b--_vWfvv73vv71i77-977-9DU1iDygm77-9OVYl77-9Iu-_vQzvv73vv70Q77-9',
+        accessToken:
+          process.env.PRISMIC_TOKEN ||
+          'MC5Xc1NrSWlRQUFDUUFoRF9s.AO-_ve-_ve-_vTt-b--_vWfvv73vv71i77-977-9DU1iDygm77-9OVYl77-9Iu-_vQzvv73vv70Q77-9',
       },
     },
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: [
-          'podkova\:400,500',
-          'montserrat\:400,500,600'
-        ]
-      }
+          'podkova:400,500',
+          'montserrat:400,500,600&amp;subset=cyrillic',
+        ],
+      },
     },
     {
       resolve: 'gatsby-plugin-sitemap',
       options: {
-        exclude: [
-          'poop'
-        ]
-      }
+        exclude: [],
+      },
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -53,6 +53,15 @@ module.exports = {
         trackingId: '49341592',
         webvisor: false,
         trackHash: false,
+      },
+    },
+    `gatsby-plugin-netlify-cache`,
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        mergeSecurityHeaders: true,
+        mergeLinkHeaders: true,
+        mergeCachingHeaders: true,
       },
     },
   ],

@@ -29,6 +29,7 @@ module.exports = class HTML extends React.Component {
             name="viewport"
             content="width=1200"
           />
+          <meta name="yandex-verification" content="c0654f0d7181b877" />
           {this.props.headComponents}
           {css}
         </head>

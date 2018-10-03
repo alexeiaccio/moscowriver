@@ -1,5 +1,6 @@
 import styled, {keyframes} from 'styled-components'
 import { key } from 'styled-theme'
+import MapBackBlured from '../../assets/MapBackBlured.png'
 import MapBack from '../../assets/MapBack.png'
 
 const Appear = keyframes`
@@ -21,14 +22,12 @@ export const MapBlock = styled.div`
   min-height: 2500px;
   width: 3500px;
   flex: 0 0 3500px;
-  margin-top: 47px;
+  margin-top: -33px;
   transform: scale(.55);
-  background: url(${MapBack}) 50% calc(50% + 1px) repeat;
+  background: url(${MapBackBlured}) 50% calc(50% + 1px) repeat;
+  background: url(${MapBack}) 50% calc(50% + 1px) no-repeat;
   background-size: 3500px 2000px;
   animation: ${Appear} 1.6s ease-in-out;
-  & div {
-    background-color: rgba(255,255,255,0) !important;
-  }
 `
 
 export const MapWrapper = styled.div`
@@ -39,6 +38,7 @@ export const MapWrapper = styled.div`
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  background-color: '#d2d2d2'
 `
 
 export const QoutesWrapper = styled.div`
@@ -57,7 +57,7 @@ export const QoutesBack = styled.div`
 `
 
 export const Markers = styled.svg`
-  margin-top: calc(50vh - 360px);
+  margin-top: calc(50vh - 400px);
   margin-left: -34px;
   transform: scale(1.1);
   z-index: 0;

@@ -38,7 +38,6 @@ const QouteHeader = styled.h4`
     height: calc(${key(['fontSizes', 4])}px * .48);
     background-color: ${({shade}) => key('colors.' + shade)};
     transition: background-color .4s ease-in-out;
-    opacity: .5;
     z-index: -1;
   }
 `
@@ -88,14 +87,14 @@ export default ({ data, color }) => {
     <Fragment>
       {data.image.url !== null &&
         <QouteImageHeader url={data.image.url}>
-          <QouteHeader color='white' shade='black'>
+          <QouteHeader color='white' shade="black">
           { getStringFromProps(data.title) }
           </QouteHeader>
         </QouteImageHeader>
       }
-      <QuoteWrapper color={color} image={data.image.url !== null ? true : false}>
+      <QuoteWrapper color={data.image.url !== null ? color : 'blue'} image={data.image.url !== null ? true : false}>
       {data.image.url === null &&
-        <QouteHeader color='text' shade={color}>
+        <QouteHeader color='text' shade="bright.blue">
         { getStringFromProps(data.title) }
         </QouteHeader>
       }

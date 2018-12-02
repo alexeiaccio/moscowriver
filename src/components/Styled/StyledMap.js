@@ -66,13 +66,14 @@ export const Markers = styled.svg`
 export const Sector = styled.g`
   fill: ${({color}) => key('colors.' + color)};
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.66;
   transition: all .2s ease-in-out;
   //
   &:hover {
     opacity: 1;
   }
   &.active {
+    fill: ${({active}) => key('colors.' + active)};
     opacity: 1;
   }
   & .shade {

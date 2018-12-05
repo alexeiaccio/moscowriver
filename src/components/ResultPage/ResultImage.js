@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import propPath from 'crocks/Maybe/propPath'
 import { RichText } from 'prismic-reactjs'
-import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 
 import { Lazy } from 'Components'
@@ -12,6 +11,7 @@ import {
   SectionImage,
   ImageCopyright,
   SectionBlock,
+  SubHeader,
 } from 'Styled'
 import { linkResolver, s4, isOdd, htmlSerializer } from 'Helpers'
 
@@ -27,7 +27,7 @@ const SectionImageBlock = SectionBlock.extend`
   }
   &.odd div,
   &.even div {
-    width: 45%;
+    width: 48%;
   }
   &.text div {
     max-width: 720px;
@@ -35,14 +35,16 @@ const SectionImageBlock = SectionBlock.extend`
   & .sectionimage {
     width:  450px;
     height: 275px;
-    &.margin-top {
-      margin-top: ${key(['space', 9])}px;
-    }
+    margin-top: ${key(['space', 2])}px;
   }
   &.even .sectionimage {
     order: -1;
   }
   @media (min-width: 1210px) {
+    &.odd div,
+    &.even div {
+      width: 50%;
+    }
     &.odd .sectionimage {
       margin-right: -50px;
     }
@@ -51,7 +53,7 @@ const SectionImageBlock = SectionBlock.extend`
     }
   }
   & p {
-    padding-bottom: ${key(['space', 2])}px;
+    padding-bottom: ${key(['space', 5])}px;
   }
   & li {
     padding-bottom: ${key(['space', 2])}px;
@@ -75,9 +77,12 @@ export const ResultImage = ({ section }) => {
     {getHeader.length > 0 &&
       <Lazy height={50}>
         <Row>
-          <SectionHeader color='text' shade='pink' >
-          { RichText.asText(primary.header) }
-          </SectionHeader>
+          <div>
+            <SubHeader>{primary.sectionname}</SubHeader>
+            <SectionHeader color='text' shade='pink' >
+            { RichText.asText(primary.header) }
+            </SectionHeader>
+          </div>
         </Row>
       </Lazy>
     }
@@ -89,15 +94,17 @@ export const ResultImage = ({ section }) => {
             { RichText.render(item.text, linkResolver, htmlSerializer) }
             <SectionImage
               key={s4()}
-              className={
-                item.text.filter(x => x.type.includes('heading')).length
-                  ? 'sectionimage margin-top' : 'sectionimage'
-              }
+              className="sectionimage"
               url={item.sectionimage.url}
             >
-            { item.sectionimage.copyright !== null && 
+            { item.caption && 
               <ImageCopyright>
-                Copyright: { item.sectionimage.copyright }
+                Copyright: { item.caption }
+              </ImageCopyright>
+            }
+            { !item.caption && item.sectionimage.copyright && 
+              <ImageCopyright>
+              { item.sectionimage.copyright }
               </ImageCopyright>
             }
             </SectionImage>

@@ -71,6 +71,7 @@ export const query = graphql`
               url
               copyright
             }
+            caption
             text {
               type
               text

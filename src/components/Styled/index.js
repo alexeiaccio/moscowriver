@@ -52,6 +52,7 @@ export {
   SectionRowCentered,
   SectionRowCenteredWide,
   SectionHeader,
+  SubHeader,
   SectionImage,
   ImageCopyright,
   SectionBlock,

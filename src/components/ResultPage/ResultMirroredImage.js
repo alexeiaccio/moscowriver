@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import propPath from 'crocks/Maybe/propPath'
 import { RichText } from 'prismic-reactjs'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { key } from 'styled-theme'
 
 import { Lazy } from 'Components'
@@ -9,6 +9,7 @@ import {
   ResultSection,
   SectionRowCentered,
   SectionHeader,
+  SubHeader,
   SectionBlock,
 } from 'Styled'
 import { linkResolver, s4 } from 'Helpers'
@@ -39,13 +40,14 @@ const MirroredImageBlock = SectionBlock.extend`
     }
   }
   & .mirroredimage {
-  display: none;
-  @media (min-width: 1200px) {
-    display: block;
-    position: absolute;
-    left: calc(-50vw + 215px);
-    transform: rotateY(180deg);
-    z-index: -1;
+    display: none;
+    @media (min-width: 1200px) {
+      display: block;
+      position: absolute;
+      left: calc(-50vw + 215px);
+      transform: rotateY(180deg);
+      z-index: -1;
+    }
   }
 `
 
@@ -57,14 +59,17 @@ export const ResultMirroredImage = ({ section }) => {
   return (
     <MirroredSection id={primary.anchor || null} >
       <Lazy height={770}>
-        <SectionRowCentered>
         {getHeader.length &&
-          <SectionHeader color='text' shade='pink' >
-          { RichText.asText(primary.header) }
-          </SectionHeader>
+          <SectionRowCentered>
+            <div>
+              <SubHeader>{primary.sectionname}</SubHeader>
+              <SectionHeader color='text' shade='pink'>
+              { RichText.asText(primary.header) }
+              </SectionHeader>
+            </div>
+          </SectionRowCentered>
         }
         <SectionRowCentered>
-        </SectionRowCentered>
         {items.map(item =>
           <MirroredImageBlock key={s4()} >
             <Fragment key={s4()}>

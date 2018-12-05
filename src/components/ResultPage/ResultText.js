@@ -10,6 +10,7 @@ import {
   SectionRowCenteredWide,
   Row,
   SectionHeader,
+  SubHeader,
   SectionBlock,
 } from 'Styled'
 import { linkResolver, s4 } from 'Helpers'
@@ -19,7 +20,7 @@ const TextSection = ResultSection.extend`
 `
 
 const HeaderRow = Row.extend`
-  justify-content: center;
+  width: 720px;
 `
 
 const TextBlock = SectionBlock.extend`
@@ -41,13 +42,16 @@ export const ResultText = ({ section }) => {
 
   return (
     <TextSection id={primary.anchor || null} >
-      <HeaderRow>
       {getHeader.length > 0 &&
-        <SectionHeader color='text' shade='pink' >
-        { RichText.asText(primary.header) }
-        </SectionHeader>
-      }
+      <HeaderRow>
+        <div>
+          <SubHeader>{primary.sectionname}</SubHeader>
+          <SectionHeader color='text' shade='pink'>
+          { RichText.asText(primary.header) }
+          </SectionHeader>
+        </div>
       </HeaderRow>
+      }
       <SectionRowCenteredWide>
       {items.map(item =>
         <Lazy key={s4()} height={600}>

@@ -6,8 +6,7 @@ import {
   Row,
 } from './StyledTitle'
 import {
-  Section,
-  Column,
+  Section
 } from './StyledSections'
 
 import Holder from '../../assets/Holder.svg'
@@ -27,6 +26,7 @@ export const SectionRowCenteredWide = Row.extend`
 `
 
 export const SectionHeader = H2.extend`
+  position: relative;
   margin-bottom: ${key(['space', 9])}px;
   line-height: ${key(['lineHeights', 2])};
 `
@@ -50,19 +50,28 @@ export const ImageCopyright = styled.span`
 export const SectionBlock = styled.div`
   position: relative;
   color: ${key('colors.text')};
-  padding-bottom: ${key(['space', 10])}px;
+  padding-bottom: ${key(['space', 9])}px;
   font-size: ${key(['fontSizes', 5])}px;
   line-height: ${key(['lineHeights', 4])};
   width: 100%;
   & h3 {
     color: ${key('colors.pink')};
-    font-size: ${key(['fontSizes', 1])}px;
-    line-height: ${key(['lineHeights', 1])};
-    padding-bottom: ${key(['space', 3])}px;
+    font-size: ${key(['fontSizes', 2])}px;
+    line-height: ${key(['lineHeights', 2])};
+    margin-top: ${key(['space', 9])}px;
+    margin-bottom: ${key(['space', 5])}px;
   }
   & h4 {
     margin-bottom: ${key(['space', 3])}px;
-    font-size: ${key(['fontSizes', 2])}px;
+    font-size: ${key(['fontSizes', 3])}px;
     line-height: ${key(['lineHeights', 2])};
   }
+`
+
+export const SubHeader = styled.div`
+  font-family: ${key('fonts.base')};
+  color: ${key('colors.pink')};
+  font-size: ${key(['fontSizes', 5])}px;
+  font-weight: ${key('fontWeights.medium')};
+  padding-bottom: ${key(['space', 2])}px;
 `

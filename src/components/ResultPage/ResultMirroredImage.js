@@ -27,7 +27,7 @@ const MirroredImageBlock = SectionBlock.extend`
   max-width: 480px;
   font-weight: ${key('fontWeights.medium')};
   & h3 {
-    padding-bottom: ${key(['space', 9])}px;
+    padding-bottom: ${key(['space', 7])}px;
   }
   & .sectionimage {
     width: 570px;

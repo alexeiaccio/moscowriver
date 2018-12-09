@@ -382,7 +382,7 @@ const SectionTimelineColumn =  Column.extend`
       margin-top: 140px;
     }
     &> *:nth-child(3) {
-      height: 95px;
+      height: 105px;
     }
     &> *:nth-child(9) {
       height: 125px;

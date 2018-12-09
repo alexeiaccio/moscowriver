@@ -31,6 +31,13 @@ export const SectionHeader = H2.extend`
   line-height: ${key(['lineHeights', 2])};
 `
 
+export const SectionHeaderThree = styled.h3`
+  color: ${key('colors.pink')};
+  font-size: ${key(['fontSizes', 2])}px;
+  line-height: ${key(['lineHeights', 2])};
+  margin-bottom: ${key(['space', 9])}px;
+`
+
 export const SectionImage = styled.div`
   background: url(${({url}) => url}) center no-repeat, 
     url(${Holder}) center no-repeat ${key(['colors', 'gray', 3])};
@@ -57,8 +64,7 @@ export const SectionBlock = styled.div`
   & h3 {
     color: ${key('colors.pink')};
     font-size: ${key(['fontSizes', 2])}px;
-    line-height: ${key(['lineHeights', 2])};
-    margin-top: ${key(['space', 9])}px;
+    margin-top: ${key(['space', 5])}px;
     margin-bottom: ${key(['space', 5])}px;
   }
   & h4 {

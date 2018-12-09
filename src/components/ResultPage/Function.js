@@ -111,30 +111,6 @@ class Function extends React.Component {
     this.state.isTooltip && this.setState({ isTooltip: false })
   }
 
-  getColor = (text) => {
-    switch (true) {
-      case text.toLowerCase().includes('транс'):
-      case text.toLowerCase().includes('дорож'):
-      case text.toLowerCase().includes('марш'):
-      case text.toLowerCase().includes('переход'):
-      case text.toLowerCase().includes('связь'):
-        return 'yellow'
-        break
-      case text.toLowerCase().includes('зон'):
-      case text.toLowerCase().includes('обор'):
-      case text.toLowerCase().includes('кин'):
-      case text.toLowerCase().includes('лек'):
-      case text.toLowerCase().includes('бесед'):
-      case text.toLowerCase().includes('площ'):
-      case text.toLowerCase().includes('прок'):
-      case text.toLowerCase().includes('встр'):
-      case text.toLowerCase().includes('пляж'):
-        return 'green'
-        break
-      default: return 'pink'
-    }
-  }
-
   getIcon = (text) => {
     switch (true) {      
       case text.toLowerCase().includes('бег'):
@@ -359,7 +335,7 @@ class Function extends React.Component {
     return (
       <Mark
         icon={this.getIcon(text)}
-        color={this.getColor(text)}
+        color={'pink'}
       >
         <Manager>
           <Reference>

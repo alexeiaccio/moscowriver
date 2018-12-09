@@ -12,7 +12,7 @@ import { Lazy } from 'Components'
 import {
   Row,
   ResultSection,
-  SectionHeader,
+  SectionHeaderThree,
 } from 'Styled'
 import ArrowIconPink from '../../assets/ArrowIconPink.svg'
 
@@ -43,15 +43,15 @@ const H4 = styled.h4`
   position: relative;
   margin-bottom: ${key(['space', 3])}px;
   padding: 0 ${key(['space', 5])}px;
-  font-size: ${key(['fontSizes', 3])}px;
-  line-height: ${key(['lineHeights', 3])};
+  font-size: ${key(['fontSizes', 4])}px;
+  line-height: ${key(['lineHeights', 4])};
   color: ${({active}) => active ? key('colors.black') : key(['colors', 'gray', 1])};
   cursor: pointer;
   &::before {
     content: '';
     position: absolute;
     left: 0px;
-    top: 6px;
+    top: 3px;
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -61,7 +61,7 @@ const H4 = styled.h4`
     content: '';
     position: absolute;
     left: 5px;
-    top: 11px;
+    top: 8px;
     width: 8px;
     height: 8px;
     border-radius: 50%;
@@ -153,9 +153,9 @@ class ResultMap extends Component {
         {getHeader.length > 0 &&
           <Lazy height={50}>
             <Row>
-              <SectionHeader color='text' shade='pink' >
+              <SectionHeaderThree>
               { RichText.asText(primary.header) }
-              </SectionHeader>
+              </SectionHeaderThree>
             </Row>
           </Lazy>
         }

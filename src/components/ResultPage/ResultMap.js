@@ -6,18 +6,49 @@ import { key } from 'styled-theme'
 
 import {
   getStringFromProps,
+  getElementsFromProps,
   s4,
 } from 'Helpers'
 import { Lazy } from 'Components'
 import {
   Row,
   ResultSection,
-  SectionHeaderThree,
+  SubHeader,
 } from 'Styled'
 import ArrowIconPink from '../../assets/ArrowIconPink.svg'
 
 const MapSection = ResultSection.extend`
   padding-bottom: ${key(['space', 10])}px;
+`
+
+const Header = styled.div`
+  & h2 {
+    position: relative;
+    margin-bottom: ${key(['space', 9])}px;
+    line-height: ${key(['lineHeights', 2])};
+    display: inline-flex;
+    font-family: ${key('fonts.headers')};
+    font-size: ${key(['fontSizes', 1])}px;
+    font-weight: ${key('fontWeights.normal')};
+    color: ${key('colors.text')};
+    z-index: 5;
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 100%;
+      bottom: calc(${key(['fontSizes', 1])}px * .21);
+      height: calc(${key(['fontSizes', 1])}px * .45);
+      background-color: ${key('colors.pink')};
+      z-index: -1;
+    }
+  }
+  & h3 {
+    color: ${key('colors.pink')};
+    font-size: ${key(['fontSizes', 2])}px;
+    line-height: ${key(['lineHeights', 2])};
+    margin-bottom: ${key(['space', 9])}px;
+  }
 `
 
 const SectionMapsRow = Row.extend`
@@ -151,13 +182,14 @@ class ResultMap extends Component {
     return (
       <MapSection id={primary.anchor || null} >
         {getHeader.length > 0 &&
-          <Lazy height={50}>
-            <Row>
-              <SectionHeaderThree>
-              { RichText.asText(primary.header) }
-              </SectionHeaderThree>
-            </Row>
-          </Lazy>
+          <Row>
+            <div>
+              <SubHeader>{primary.sectionname}</SubHeader>
+              <Header>
+              { getElementsFromProps(primary.header) }
+              </Header>
+            </div>
+          </Row>
         }
         <Lazy height={600}>
           <SectionMapsRow>

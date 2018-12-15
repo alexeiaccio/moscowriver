@@ -15,7 +15,7 @@ import {
 import { linkResolver, s4 } from 'Helpers'
 
 const MirroredSection = ResultSection.extend`
-  padding-top: ${key(['space', 10])}px;
+  /* padding-top: ${key(['space', 10])}px; */
 `
 
 const SectionImage = styled.div`
@@ -26,8 +26,10 @@ const SectionImage = styled.div`
 const MirroredImageBlock = SectionBlock.extend`
   max-width: 480px;
   font-weight: ${key('fontWeights.medium')};
+  padding-bottom: 0px;
   & h3 {
-    padding-bottom: ${key(['space', 7])}px;
+    line-height: ${key(['lineHeights', 2])};
+    text-align: center;
   }
   & .sectionimage {
     width: 570px;
@@ -59,7 +61,7 @@ export const ResultMirroredImage = ({ section }) => {
   return (
     <MirroredSection id={primary.anchor || null} >
       <Lazy height={770}>
-        {getHeader.length &&
+        {/* getHeader.length &&
           <SectionRowCentered>
             <div>
               <SubHeader>{primary.sectionname}</SubHeader>
@@ -68,7 +70,7 @@ export const ResultMirroredImage = ({ section }) => {
               </SectionHeader>
             </div>
           </SectionRowCentered>
-        }
+         */}
         <SectionRowCentered>
         {items.map(item =>
           <MirroredImageBlock key={s4()} >

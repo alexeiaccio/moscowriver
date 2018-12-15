@@ -75,16 +75,14 @@ export const ResultImage = ({ section }) => {
   return (
     <ResultSection id={primary.anchor || null} >
     {getHeader.length > 0 &&
-      <Lazy height={50}>
-        <Row>
-          <div>
-            <SubHeader>{primary.sectionname}</SubHeader>
-            <SectionHeader color='text' shade='pink' >
-            { RichText.asText(primary.header) }
-            </SectionHeader>
-          </div>
-        </Row>
-      </Lazy>
+      <Row>
+        <div>
+          <SubHeader>{primary.sectionname}</SubHeader>
+          <SectionHeader color='text' shade='pink' >
+          { RichText.asText(primary.header) }
+          </SectionHeader>
+        </div>
+      </Row>
     }
     {items.map((item, i) =>
       <Lazy key={s4()} height={300}>

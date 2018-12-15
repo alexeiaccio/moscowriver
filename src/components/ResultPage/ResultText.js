@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import propPath from 'crocks/Maybe/propPath'
 import { RichText } from 'prismic-reactjs'
-import styled, { keyframes } from 'styled-components'
 import { key } from 'styled-theme'
 
 import { Lazy } from 'Components'
@@ -9,8 +8,7 @@ import {
   ResultSection,
   SectionRowCenteredWide,
   Row,
-  SectionHeader,
-  SubHeader,
+  SectionHeaderThree,
   SectionBlock,
 } from 'Styled'
 import { linkResolver, s4 } from 'Helpers'
@@ -21,15 +19,22 @@ const TextSection = ResultSection.extend`
 
 const HeaderRow = Row.extend`
   width: 720px;
+  & h3 {
+    margin-bottom: ${key(['space', 5])}px;
+    font-weight: ${key('fontWeights.medium')};
+  }
 `
 
 const TextBlock = SectionBlock.extend`
   flex-direction: column;
   font-weight: ${key('fontWeights.medium')};
+  & p:not(:last-of-type) {
+    margin-bottom: ${key(['space', 3])}px;
+  }
   &:last-of-type {
-    padding: ${key(['space', 7])}px;
-    font-weight: ${key('fontWeights.semibold')};
-    border: 10px solid ${key('colors.pink')};
+    padding: ${key(['space', 5])}px;
+    font-weight: ${key('fontWeights.medium')};
+    border: 5px solid ${key('colors.pink')};
   }
 `
 
@@ -44,12 +49,9 @@ export const ResultText = ({ section }) => {
     <TextSection id={primary.anchor || null} >
       {getHeader.length > 0 &&
       <HeaderRow>
-        <div>
-          <SubHeader>{primary.sectionname}</SubHeader>
-          <SectionHeader color='text' shade='pink'>
-          { RichText.asText(primary.header) }
-          </SectionHeader>
-        </div>
+        <SectionHeaderThree color='text' shade='pink'>
+        { RichText.asText(primary.header) }
+        </SectionHeaderThree>
       </HeaderRow>
       }
       <SectionRowCenteredWide>

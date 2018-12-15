@@ -15,7 +15,7 @@ import {
 import { linkResolver, s4 } from 'Helpers'
 
 const MirroredSection = ResultSection.extend`
-  /* padding-top: ${key(['space', 10])}px; */
+  min-height: 460px;
 `
 
 const SectionImage = styled.div`
@@ -37,8 +37,10 @@ const MirroredImageBlock = SectionBlock.extend`
     float: right;
     margin-top: ${key(['space', 7])}px;
     @media (min-width: 1200px) {
-      margin-top: -${key(['space', 11])}px;
-      margin-right: calc(-50vw + 215px);
+      position: absolute;
+      top: 0px;
+      right: calc(-50vw + 215px);
+      z-index: -1;
     }
   }
   & .mirroredimage {
@@ -46,6 +48,7 @@ const MirroredImageBlock = SectionBlock.extend`
     @media (min-width: 1200px) {
       display: block;
       position: absolute;
+      top: 0px;
       left: calc(-50vw + 215px);
       transform: rotateY(180deg);
       z-index: -1;

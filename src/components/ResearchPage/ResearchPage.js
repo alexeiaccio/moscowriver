@@ -265,27 +265,27 @@ const SectionGeoColumn =  Column.extend`
   &:nth-of-type(2n) {
     & p {
       float: right;
-      max-width: 45%;
+      max-width: 55%;
     }
     & h4 {
-      padding-left: 55%;
+      padding-left: 45%;
     }
     & .img {
       float: left;
       @media (min-width: 1200px) {
-        margin-left: -50px;
+        margin-left: -25px;
       }
     }
   }
   &:nth-of-type(2n+3) {
     & p {
       float: left;
-      max-width: 45%;
+      max-width: 55%;
     }
     & .img {
       float: right;
       @media (min-width: 1200px) {
-        margin-right: -50px;
+        margin-right: -25px;
       }
     }
   }

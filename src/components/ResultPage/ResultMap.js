@@ -139,7 +139,7 @@ const Map = styled.div`
   overflow: hidden;
   @media (min-width: 1200px) {
     width: 650px;
-    margin-left: -150px;
+    margin-left: -125px;
   }
   background-color: ${key(['colors', 'gray', 3])};
   border: 1px solid ${key('colors.pink')};

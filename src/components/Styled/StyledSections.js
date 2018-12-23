@@ -17,6 +17,7 @@ export { Section }
 
 export const SectionOne = styled(Section)`
   height: 100vh;
+  min-height: 800px;
   background-color: ${key(['colors', 'gray', 4])};
 `
 

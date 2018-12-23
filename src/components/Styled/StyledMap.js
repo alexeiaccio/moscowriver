@@ -43,11 +43,12 @@ export const MapWrapper = styled.div`
 
 export const QoutesWrapper = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  min-height: 800px;
   display: flex;
-  flex: 1 100%;
+  flex: 1 0 100%;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 `
 
 export const QoutesBack = styled.div`
@@ -57,7 +58,7 @@ export const QoutesBack = styled.div`
 `
 
 export const Markers = styled.svg`
-  margin-top: calc(50vh - 400px);
+  margin-top: -284px;
   margin-left: -34px;
   transform: scale(1.1);
   z-index: 0;

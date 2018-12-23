@@ -19,6 +19,7 @@ const TextSection = ResultSection.extend`
 
 const HeaderRow = Row.extend`
   width: 720px;
+  justify-content: center;
   & h3 {
     margin-bottom: ${key(['space', 5])}px;
     font-weight: ${key('fontWeights.medium')};
@@ -33,8 +34,7 @@ const TextBlock = SectionBlock.extend`
   }
   &:last-of-type {
     padding: ${key(['space', 5])}px;
-    font-weight: ${key('fontWeights.medium')};
-    border: 5px solid ${key('colors.pink')};
+    border: 4px solid ${key('colors.pink')};
   }
 `
 

@@ -16,4 +16,4 @@ export {
   isOdd
 } from './helpers'
 
-export { htmlSerializer } from './serializer'
+export { htmlSerializer, htmlSerializer2 } from './serializer'

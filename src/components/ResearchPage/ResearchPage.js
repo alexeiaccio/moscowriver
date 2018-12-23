@@ -20,7 +20,7 @@ import {
 import {
   findSection, getStringFromProps,
   getElementsFromProps, getParagraphsFromProps, 
-  s4, linkResolver, isOdd, htmlSerializer
+  s4, linkResolver, isOdd, htmlSerializer, htmlSerializer2
 } from 'Helpers'
 import patternWaves from '../../assets/PatternWavesWhite.svg'
 import IconEye from '../../assets/IconEye.svg'
@@ -336,6 +336,15 @@ const SectionCommandColumn =  Column.extend`
   }
 `
 
+const shiftBack = keyframes`
+  0% {
+    left: -14px;
+  }
+  100% {
+    left: 0px;
+  }
+`
+
 const SectionTimelineColumn =  Column.extend`
   position: relative;
   color: ${key('colors.text')};
@@ -352,47 +361,47 @@ const SectionTimelineColumn =  Column.extend`
     max-height: 70px;
   }
   &:nth-of-type(1) {
-    &> * {
+    & div> * {
       max-width: 45%;
     }
     & p {
       height: 130px;
     }
-    &> *:nth-child(1),
-    &> *:nth-child(2) {
+    & div > *:nth-child(1),
+    & div > *:nth-child(2) {
       text-align: right;
     }
-    &> *:nth-child(3),
-    &> *:nth-child(4) {
+    & div > *:nth-child(3),
+    & div > *:nth-child(4) {
       padding-left: 65%;
     }
-    &> *:nth-child(5),
-    &> *:nth-child(6) {
+    & div > *:nth-child(5),
+    & div > *:nth-child(6) {
       padding-left: 55%;
     }
   }
   &:nth-of-type(2) {
-    &> * {
+    & div > * {
       max-width: 35%;
     }
     & p {
       height: 92px;
     }
-    &> *:nth-child(2) {
+    & div > *:nth-child(2) {
       margin-top: 140px;
     }
-    &> *:nth-child(3) {
+    & div > *:nth-child(3) {
       height: 105px;
     }
-    &> *:nth-child(9) {
+    & div > *:nth-child(9) {
       height: 125px;
     }
-    &> *:nth-child(2),
-    &> *:nth-child(3),
-    &> *:nth-child(6),
-    &> *:nth-child(7),
-    &> *:nth-child(10),
-    &> *:nth-child(11) {
+    & div > *:nth-child(2),
+    & div > *:nth-child(3),
+    & div > *:nth-child(6),
+    & div > *:nth-child(7),
+    & div > *:nth-child(10),
+    & div > *:nth-child(11) {
       padding-left: 55%;
     }
   }
@@ -416,6 +425,16 @@ const SectionTimelineColumn =  Column.extend`
     & p {
       font-weight: ${key('fontWeights.medium')};
       margin-bottom: ${key(['space', 2])}px;
+    }
+    & a {
+      position: relative;
+      color: ${key('colors.bright.blue')};
+      font-weight: ${key('fontWeights.semibold')};
+      text-decoration: none;
+      transition: all .2s ease-in-out;
+      &:hover {
+        color: ${key('colors.bright.blue')};
+      }
     }
   }
 `
@@ -564,9 +583,9 @@ export default ({data, results}) => {
           </SectionTimelineRow>
           <SectionTimelineRow>
           {sectionParagraphs('timeline').map(paragraph =>
-            <Lazy key={s4()} height={600}>
+            <Lazy key={s4()} height={2000}>
               <SectionTimelineColumn key={s4()}>
-                <Fragment key={s4()} children={getElementsFromProps(paragraph.text)} />
+                <Fragment key={s4()} children={RichText.render(paragraph.text, () => '/', htmlSerializer2)} />
               </SectionTimelineColumn>
             </Lazy>
           )}

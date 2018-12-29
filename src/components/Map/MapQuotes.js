@@ -1,6 +1,5 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import SectorsDefs from './SectorsDefs'
-import { getSectorColor } from './getSectorColor'
 import Quotes from './Quotes'
 import {
   QoutesWrapper,
@@ -33,9 +32,10 @@ class MapQuotes extends React.Component {
   }
 
   handleMouseDown(id) {
-    const newState =this.state.qoutes
+    const newState = this.state.qoutes
       .map((x, i) => i === id ? x = true : x = false)
     this.setState({ qoutes: newState })
+
     const tooltipsLeave = this.state.tooltips
     tooltipsLeave[id] = false
     this.setState({ tooltips: tooltipsLeave })
@@ -78,7 +78,7 @@ class MapQuotes extends React.Component {
       <QoutesWrapper
         id='index-qoutes-wrapper'
         onClick={(e) => this.handleQuotesClose(e)}
-        >
+      >
         <QoutesBack />        
         <Markers
           xmlns='http://www.w3.org/2000/svg'
@@ -92,10 +92,10 @@ class MapQuotes extends React.Component {
               onMouseEnter={() => this.handleMouseEnter(id)}
               onMouseLeave={() => this.handleMouseLeave(id)}
               onMouseOut={() => this.handleMouseOut(id)}
-              onMouseDown={() => this.handleMouseDown(id)}
+              onMouseDown={() => node.data.quote.length && this.handleMouseDown(id)}
               isTooltip={this.state.tooltips[id]}
               isQuote={this.state.qoutes[id]}
-              />
+            />
           ))}
         <SectorsDefs />
         </Markers>

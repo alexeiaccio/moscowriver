@@ -190,11 +190,9 @@ export class ResultForm extends React.Component {
       <TextSection id={primary.anchor || null} >
         {getHeader.length > 0 &&
           <SectionRowCenteredWide>
-            <Lazy height={50}>
-              <SectionHeader color='text' shade='pink' >
-              { RichText.asText(primary.header) }
-              </SectionHeader>
-            </Lazy>
+            <SectionHeader color='text' shade='pink' >
+            { RichText.asText(primary.header) }
+            </SectionHeader>
             {items.map(item =>
               <TextBlock key={s4()} >
               { RichText.render(item.text, linkResolver) }

@@ -32,3 +32,28 @@ export const htmlSerializer = function(type, element, content, children, key) {
       return null
   }
 }
+
+export const htmlSerializer2 = function(type, element, content, children, key) {
+ 
+  var props = {}
+  switch(type) {
+ 
+    case Elements.heading3:
+      props = {className: 'heading3'}
+      return React.createElement('h3', propsWithUniqueKey(props, key), children)
+    case Elements.heading4:
+      props = {className: 'heading4'}
+      return React.createElement('h4', propsWithUniqueKey(props, key), children)
+    case Elements.paragraph:
+      props = {className: 'paragraph'}
+      return React.createElement('p', propsWithUniqueKey(props, key), children)
+    case Elements.hyperlink:
+      props = Object.assign({
+        className: 'link',
+        href: element.data.url || '/shelepikhinskaya-naberezhnaya'
+      })
+      return React.createElement('a', propsWithUniqueKey(props, key), children)
+    default: 
+      return null
+  }
+}

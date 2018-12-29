@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import propPath from 'crocks/Maybe/propPath'
 import { RichText } from 'prismic-reactjs'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { key } from 'styled-theme'
 
 import { Lazy } from 'Components'
@@ -9,12 +9,13 @@ import {
   ResultSection,
   SectionRowCentered,
   SectionHeader,
+  SubHeader,
   SectionBlock,
 } from 'Styled'
 import { linkResolver, s4 } from 'Helpers'
 
 const MirroredSection = ResultSection.extend`
-  padding-top: ${key(['space', 10])}px;
+  min-height: 460px;
 `
 
 const SectionImage = styled.div`
@@ -25,8 +26,10 @@ const SectionImage = styled.div`
 const MirroredImageBlock = SectionBlock.extend`
   max-width: 480px;
   font-weight: ${key('fontWeights.medium')};
+  padding-bottom: 0px;
   & h3 {
-    padding-bottom: ${key(['space', 9])}px;
+    line-height: ${key(['lineHeights', 2])};
+    text-align: center;
   }
   & .sectionimage {
     width: 570px;
@@ -34,18 +37,22 @@ const MirroredImageBlock = SectionBlock.extend`
     float: right;
     margin-top: ${key(['space', 7])}px;
     @media (min-width: 1200px) {
-      margin-top: -${key(['space', 11])}px;
-      margin-right: calc(-50vw + 215px);
+      position: absolute;
+      top: 0px;
+      right: calc(-50vw + 215px);
+      z-index: -1;
     }
   }
   & .mirroredimage {
-  display: none;
-  @media (min-width: 1200px) {
-    display: block;
-    position: absolute;
-    left: calc(-50vw + 215px);
-    transform: rotateY(180deg);
-    z-index: -1;
+    display: none;
+    @media (min-width: 1200px) {
+      display: block;
+      position: absolute;
+      top: 0px;
+      left: calc(-50vw + 215px);
+      transform: rotateY(180deg);
+      z-index: -1;
+    }
   }
 `
 
@@ -57,14 +64,17 @@ export const ResultMirroredImage = ({ section }) => {
   return (
     <MirroredSection id={primary.anchor || null} >
       <Lazy height={770}>
+        {/* getHeader.length &&
+          <SectionRowCentered>
+            <div>
+              <SubHeader>{primary.sectionname}</SubHeader>
+              <SectionHeader color='text' shade='pink'>
+              { RichText.asText(primary.header) }
+              </SectionHeader>
+            </div>
+          </SectionRowCentered>
+         */}
         <SectionRowCentered>
-        {getHeader.length &&
-          <SectionHeader color='text' shade='pink' >
-          { RichText.asText(primary.header) }
-          </SectionHeader>
-        }
-        <SectionRowCentered>
-        </SectionRowCentered>
         {items.map(item =>
           <MirroredImageBlock key={s4()} >
             <Fragment key={s4()}>

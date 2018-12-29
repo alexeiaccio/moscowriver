@@ -18,6 +18,7 @@ const SectionOne = Section.extend`
   justify-content:  space-between;
   align-items: center;
   height: calc(100vh - 120px);
+  margin-bottom: ${key(['space', 10])}px;
   background: ${({image}) => 'url(' + image + ')'} center no-repeat ${key('colors.black')};
   background-size: cover;
   & * {

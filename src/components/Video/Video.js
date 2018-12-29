@@ -10,10 +10,10 @@ const opts = id => ({
   playerVars: {  // https://developers.google.com/youtube/player_parameters
     autoplay: 1,
     modestbranding: 1,
-    showinfo: 0,
+    // showinfo: 0,
     rel: 0,
     iv_load_policy: 3,
-    controls: 2,
+    controls: 1,
     enablejsapi: 0,
     disablekb: 1,
     loop: 1,

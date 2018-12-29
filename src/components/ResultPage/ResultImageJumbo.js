@@ -10,7 +10,7 @@ import { Lazy, Definition } from 'Components'
 import {
   Row,
   ResultSection,
-  SectionHeader,
+  SectionHeaderThree,
   SectionImage,
   SectionBlock,
 } from 'Styled'
@@ -23,10 +23,24 @@ const SectionImageBlock = SectionBlock.extend`
   justify-content: space-between;
   margin: 0 auto;
   width: ${key('sizes.width')};
+  & h3:first-of-type {
+    margin-top: 0px;
+  }
+  & h4 {
+    margin-bottom: ${key(['space', 3])}px;
+    font-size: ${key(['fontSizes', 3])}px;
+    line-height: ${key(['lineHeights', 2])};
+  }
   &.odd div,
   &.even div {
     max-width: 45%;
     flex: 45%;
+  }
+  &.even div {
+    @media (max-width: 1199px) {
+      max-width: 60%;
+      flex: 60%;
+    }
   }
   &.odd:first-of-type .sectionimage {
     width:  450px;
@@ -60,15 +74,15 @@ const SectionImageBlock = SectionBlock.extend`
       margin-right: -50px;
     }    
     &.odd .sectionimage {
-      margin-right: -150px;
+      margin-right: -125px;
     }
     &.even .sectionimage {
-      margin-left: -150px;
+      margin-left: -125px;
     }
     &.even .sectionimage.jumbo,
     &.odd .sectionimage.jumbo {
-      margin-right: -150px;
-      margin-left: -150px;
+      margin-right: -125px;
+      margin-left: -125px;
     }
   }
   & p {
@@ -116,9 +130,9 @@ export const ResultImageJumbo = ({ section, definitions }) => {
     {getHeader.length > 0 &&
       <Lazy height={50}>
         <Row>
-          <SectionHeader color='text' shade='pink' >
+          <SectionHeaderThree>
           { RichText.asText(primary.header) }
-          </SectionHeader>
+          </SectionHeaderThree>
         </Row>
       </Lazy>
     }

@@ -42,6 +42,7 @@ class Quotes extends React.Component {
             >
               <Sector
                 color={getSectorColor(uid)}
+                active={data.image.url !== null ? getSectorColor(uid) : 'blue'}
                 className={`sector ${this.props.isQuote ? 'active' : ''}`}
               >
                 <animate
@@ -61,7 +62,7 @@ class Quotes extends React.Component {
             <Popper
               placement="top"
               modifiers={{
-                hide: { enabled: true },
+                hide: { enabled: false },
                 preventOverflow: { enabled: false },
               }}
               eventsEnabled={true}
@@ -107,7 +108,7 @@ class Quotes extends React.Component {
                     <Quote data={data} color={getSectorColor(uid)} />
                   </Popover>
                   <Arrow
-                    color={getSectorColor(uid)}
+                    color={data.image.url !== null ? getSectorColor(uid) : 'blue'}
                     data-placement={placement}
                     style={Object.assign({}, arrowProps.style, aprearStyle)}
                   />

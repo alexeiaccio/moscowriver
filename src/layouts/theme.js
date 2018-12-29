@@ -23,9 +23,16 @@ const colors = {
   gray: [
     '#1D1D1B',
     '#5A5A5B',
+    '#7D7D7D',
     '#ABABAA',
     '#D8D8D7',
     '#EFEFEF',
+  ],
+  blues: [
+    '#3095bf',
+    '#59aacb',
+    '#82bfd8',
+    '#acd4e5',
   ]
 }
 

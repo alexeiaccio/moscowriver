@@ -75,6 +75,15 @@ export const query = graphql`
                 text {
                   type
                   text
+                  spans {
+                    start
+                    end
+                    type
+                    data {
+                      link_type
+                      uid
+                    }
+                  }
                 }
                 image {
                   url

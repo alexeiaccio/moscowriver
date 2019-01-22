@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+sitemap: https://river.moscow.stories/sitemap.xml

@@ -70,6 +70,9 @@ export const query = graphql`
             sectionimage {
               url
               copyright
+              dimensions {
+                height
+              }
             }
             caption
             text {

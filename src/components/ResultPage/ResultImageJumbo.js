@@ -152,6 +152,7 @@ export const ResultImageJumbo = ({ section, definitions }) => {
                       ? 'sectionimage' : 'sectionimage jumbo'
                   }
                   url={item.sectionimage.url}
+                  style={{ height: item.sectionimage.dimensions.height }}
                 />
               </Fragment>
           </SectionImageBlock>
